@@ -717,13 +717,28 @@
             
             addLog(`🔔 BATTLE STARTED: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
             
-            // Fighter 1 speaks
-            await fighterSpeak(1, selectedFighter1);
+            // MULTI-ROUND DEBATE - Aiko's request!
+            const totalRounds = 3;
             
-            // Fighter 2 responds
-            await fighterSpeak(2, selectedFighter2);
+            for (let round = 1; round <= totalRounds; round++) {
+                document.getElementById('roundIndicator').textContent = `ROUND ${round} of ${totalRounds}`;
+                addLog(`🔔 Round ${round} begins!`);
+                
+                // Fighter 1 opens/responds
+                await fighterSpeak(1, selectedFighter1, round, null);
+                
+                // Fighter 2 counters
+                const f1Response = document.getElementById('fighter1Text').textContent;
+                await fighterSpeak(2, selectedFighter2, round, f1Response);
+                
+                // Brief pause between rounds
+                if (round < totalRounds) {
+                    addLog(`⏳ Preparing round ${round + 1}...`);
+                    await sleep(1500);
+                }
+            }
             
-            // Judge verdict
+            // Final judge verdict
             await judgeVerdict();
             
             battleInProgress = false;
@@ -731,8 +746,8 @@
             battleBtn.textContent = '⚔️ BATTLE!';
         }
         
-        // Fighter speaks (simulated with TTS)
-        async function fighterSpeak(num, fighter) {
+        // Fighter speaks (simulated with TTS) - now with round context and debate responses!
+        async function fighterSpeak(num, fighter, round = 1, opponentResponse = null) {
             const card = document.getElementById(`fighter${num}Card`);
             const textEl = document.getElementById(`fighter${num}Text`);
             const speechEl = document.getElementById(`fighter${num}Speech`);
@@ -741,8 +756,8 @@
             speechEl.classList.add('active');
             animateVisualizer(`fighter${num}Visualizer`, true);
             
-            // Generate response (in production, this calls the actual LLM)
-            const response = generateFighterResponse(fighter);
+            // Generate response - now with round context and debate!
+            const response = generateFighterResponse(fighter, round, opponentResponse);
             
             // Typewriter effect
             textEl.textContent = '';
@@ -764,22 +779,92 @@
             animateVisualizer(`fighter${num}Visualizer`, false);
         }
         
-        // Generate response (placeholder - in production uses actual being prompts)
-        function generateFighterResponse(fighter) {
-            const responses = {
-                'Influence': "The 0.8% move here isn't convincing - it's understanding. When you truly see someone's position, agreement follows naturally. Let me show you the path...",
-                'Strategy': "Looking at the data, there's a clear asymmetric opportunity. The market hasn't priced in the second-order effects. Here's the play...",
-                'Marketing': "Attention is the new currency, but attention without resonance is just noise. I'll build a funnel that doesn't just capture - it captivates...",
-                'Sales': "Every objection is just an unsurfaced need. You said price - but what you meant was value. Let me reframe what you're really buying...",
-                'Tech': "The architecture here needs to scale not just for today's load, but for tomorrow's possibilities. I propose a modular approach that...",
-                'Operations': "Efficiency isn't about doing things faster - it's about eliminating the things that don't need doing. Let's trace the value stream...",
-                'Customer Success': "Retention isn't a metric - it's a relationship. Every churned customer is a story we didn't listen to. Here's how I build loyalty...",
-                'Finance': "The numbers tell a story, but you have to know which story to ask for. Beneath these financials, I see three scenarios worth modeling...",
-                'HR': "Culture isn't what you say - it's what you do when no one's watching. Building a team that self-selects for excellence requires...",
-                'Legal': "Risk isn't something to avoid - it's something to navigate. The compliant path isn't always the obvious one. Consider this approach...",
-                'Product': "Users don't know what they want - they know what they struggle with. My research reveals three unmet needs that nobody's addressing...",
+        // Generate response - MULTI-ROUND DEBATES with longer, richer responses!
+        function generateFighterResponse(fighter, round = 1, opponentResponse = null) {
+            // Round-specific responses for true debate!
+            const debateResponses = {
+                'Influence': {
+                    1: "The 0.8% move here isn't about convincing — it's about understanding. When you truly see someone's position, agreement follows naturally. The Unblinded Formula teaches us that influence isn't push, it's pull. I illuminate paths others don't see. Let me show you exactly why my approach creates exponential value while others create incremental noise.",
+                    counter: "My opponent speaks of conventional approaches, but they miss the deeper truth. Real influence operates at the 20% of the 20% — that's where mastery lives. The scenario demands not persuasion, but transformation. I don't close deals, I open possibilities. And that's precisely why my win rate speaks for itself.",
+                    2: "Building on my opening, consider this: every interaction is a leverage point. My opponent's strategy requires resources, time, and friction. Mine requires only clarity. The Unblinded approach compounds — each conversation creates multiple downstream effects. This isn't theory, it's mathematics.",
+                    3: "For my final argument: sustainable results come from authentic connection, not tactical maneuvering. My track record proves that heart-centered influence outperforms manipulation every single time. The judges know this. The data knows this. And now you know it too."
+                },
+                'Strategy': {
+                    1: "Looking at the data, there's a clear asymmetric opportunity the market hasn't priced in. My analysis reveals second and third-order effects that change everything. While others see a linear path, I see an exponential curve. The strategy isn't just about winning — it's about creating category dominance that compounds over years.",
+                    counter: "My opponent makes valid points, but they're optimizing the wrong function. Strategy isn't about what you do — it's about what you choose not to do. The 80/20 applied recursively means I focus on the 0.8% that moves everything. Their approach spreads resources thin. Mine concentrates firepower where it matters.",
+                    2: "Let me elaborate with specifics: market timing, competitive positioning, and value chain optimization all point to one conclusion. The risk-adjusted return on my approach is 3x higher because I've mapped the dependencies. Strategy is chess, not checkers.",
+                    3: "My closing case is simple: results. My framework has generated proven outcomes across industries. Theory is interesting; execution is everything. I bring both, systematically, repeatedly, at scale."
+                },
+                'Marketing': {
+                    1: "Attention is the new currency, but attention without resonance is just noise. I don't build funnels that capture — I build funnels that captivate. My approach transforms cold audiences into warm advocates through emotional truth, not manipulation. The copy converts because it connects on a human level.",
+                    counter: "While my opponent focuses on metrics, I focus on meaning. Sure, you can optimize click-through rates. But what about lifetime value? What about brand equity? My marketing creates customers who become missionaries. That's the compound effect they're missing.",
+                    2: "Let's talk specifics: my sequences nurture without manipulation. Each touchpoint adds value before asking for anything. By the time we make an offer, it's not selling — it's serving. That's why my conversion rates are 4x industry average.",
+                    3: "My final argument: in a world of infinite content, only authentic connection cuts through. I don't compete for attention. I earn it. And that's a moat that can't be copied."
+                },
+                'Sales': {
+                    1: "Every objection is just an unsurfaced need. When someone says 'price,' they mean 'value.' When they say 'timing,' they mean 'priority.' The 4-Step Communication Model transforms resistance into partnership. I don't close — I help people make decisions that serve them. That's why they come back.",
+                    counter: "My opponent talks tactics. I'm talking transformation. The agreement isn't the end — it's the beginning. My approach builds relationships that generate referrals, renewals, and expansion. A single conversation creates cascading revenue for years.",
+                    2: "Here's the methodology in action: understand before being understood, surface the real concern, reframe from their perspective, guide to natural agreement. This isn't manipulation — it's service. And service creates trust. Trust creates deals.",
+                    3: "For my closing: look at the scoreboard. Revenue speaks. Relationships endure. My approach delivers both because it's built on integrity. The Unblinded Formula isn't just philosophy — it's my competitive advantage."
+                },
+                'Tech': {
+                    1: "The architecture here needs to scale not just for today's load, but for tomorrow's possibilities. I propose a modular approach with API-first design, security as foundation not afterthought, and technical debt as strategic choice rather than accident. Every system I build compounds capability.",
+                    counter: "My opponent builds for requirements. I build for evolution. The difference is profound: their systems solve today's problems. Mine anticipate tomorrow's. Flexibility, extensibility, and resilience aren't features — they're architecture philosophy.",
+                    2: "Let me get specific: microservices with proper boundaries, event-driven communication for decoupling, infrastructure as code for reproducibility. This isn't overengineering — it's investing in compound returns on technical capability.",
+                    3: "My final point: in technology, the cost of wrong architecture is measured in years, not months. I've saved organizations millions by getting the foundation right. That's not an expense — it's the highest-ROI investment they'll make."
+                },
+                'Operations': {
+                    1: "Efficiency isn't about doing things faster — it's about eliminating things that don't need doing. I trace the value stream and optimize the entire flow. Bottleneck identification and elimination is my specialty. Quality systems that prevent, not just detect. Operational excellence as culture, not checklist.",
+                    counter: "My opponent optimizes within constraints. I redesign the constraints. That's the difference between 10% improvement and 10x improvement. The Pareto principle applied recursively means I find the 0.8% of activities that create 65,000x the impact.",
+                    2: "Here's what that looks like in practice: process mapping reveals hidden waste, bottleneck analysis shows where capacity is truly constrained, and workflow redesign creates flow where there was friction. The results compound daily.",
+                    3: "My closing argument: sustainable operations aren't about heroic effort. They're about systematic excellence. I build operations that improve themselves. That's the ultimate operational leverage."
+                },
+                'Customer Success': {
+                    1: "Retention isn't a metric — it's a relationship. Every churned customer is a story we didn't listen to. I build onboarding as first impression, success milestones as relationship deepening, and advocacy as natural outcome. Community becomes competitive moat.",
+                    counter: "My opponent focuses on preventing churn. I focus on creating champions. The difference in outcome is exponential: saved customers are neutral, champion customers are multipliers. My approach creates net negative churn through expansion.",
+                    2: "The methodology is clear: map the customer journey, identify moments that matter, design interventions that delight. But more importantly — listen. Really listen. Customer success is earned through genuine care.",
+                    3: "For my final case: the most valuable business asset is customer love. It can't be bought, only earned. My track record of NPS improvement and retention proves that heart-centered success scales."
+                },
+                'Finance': {
+                    1: "The numbers tell a story, but you have to know which story to ask for. Beneath these financials, I see three scenarios worth modeling. Cash flow optimization as survival strategy, unit economics that reveal truth, and financial storytelling that drives action. I translate numbers into decisions.",
+                    counter: "My opponent reports history. I model futures. The difference is between rearview mirror and windshield. Strategic finance isn't accounting — it's weaponized insight. Every dollar I touch gets deployed for maximum compound effect.",
+                    2: "Let me demonstrate: scenario modeling for decision clarity, sensitivity analysis for risk understanding, and capital allocation for growth optimization. These aren't spreadsheet exercises — they're strategic weapons.",
+                    3: "My closing: finance exists to enable mission. Not to constrain it, to enable it. I find the financial path to every strategic objective. That's why leaders trust me with their most important decisions."
+                },
+                'HR': {
+                    1: "Culture isn't what you say — it's what you do when no one's watching. Building teams that self-select for excellence requires intention. Competency frameworks that scale, learning paths that stick, performance systems that develop. Culture as competitive advantage.",
+                    counter: "My opponent builds processes. I build people. The difference is between compliance and commitment. Processes get followed. People grow. And growth compounds. Every team I've built has outperformed expectations.",
+                    2: "Here's the approach: hire for values, develop for skills. Create clarity on what excellence looks like. Celebrate publicly, correct privately. Build belonging. The result is teams that don't just execute — they innovate.",
+                    3: "My final argument: talent is the ultimate competitive advantage because it can't be copied. My track record of building high-performing cultures speaks for itself. I don't just fill roles — I build organizations."
+                },
+                'Legal': {
+                    1: "Risk isn't something to avoid — it's something to navigate. The compliant path isn't always obvious, but it's always findable. Contract structures that protect and enable, regulatory navigation with strategic clarity, intellectual property as business asset. I transform legal constraints into strategic opportunity.",
+                    counter: "My opponent sees legal as a cost center. I see it as a value driver. The difference is between saying no and finding yes. Every 'impossible' deal I've structured became possible through creative legal architecture.",
+                    2: "The specifics: proactive compliance prevents problems, strategic IP creates moats, contract design enables rather than restricts. Legal isn't the department of no — it's the department of how.",
+                    3: "For my closing: in a complex regulatory environment, legal excellence is competitive advantage. I've protected billions in value and enabled billions more. That's the ROI on world-class legal strategy."
+                },
+                'Product': {
+                    1: "Users don't know what they want — they know what they struggle with. My research reveals the three unmet needs nobody's addressing. Jobs-to-be-done frameworks guide feature prioritization through value lens. Product-market fit as continuous process, not destination.",
+                    counter: "My opponent builds features. I solve problems. The difference is between incremental and transformational. Features get compared. Solutions get chosen. My products don't compete — they create categories.",
+                    2: "Here's my methodology: deep user research reveals insights, synthesis turns insights into opportunities, and rapid validation confirms direction. But the secret sauce is empathy. Understanding users so deeply that anticipating needs becomes possible.",
+                    3: "My final case: great products feel inevitable in retrospect. That's not accident — that's craft. I've shipped products that changed markets. That track record is earned through systematic excellence in every dimension of product craft."
+                }
             };
-            return responses[fighter.domain] || "My expertise speaks for itself. Let me demonstrate the mastery that brought me to this arena...";
+            
+            const domainResponses = debateResponses[fighter.domain] || {};
+            
+            // Return appropriate response based on round and context
+            if (round === 1 && !opponentResponse) {
+                return domainResponses[1] || `As the ${fighter.domain} champion, I bring unmatched expertise to this challenge. My approach combines deep knowledge with the Unblinded Formula, creating outcomes that compound exponentially. Let me demonstrate why my methodology consistently outperforms conventional approaches.`;
+            } else if (opponentResponse) {
+                return domainResponses.counter || `I hear my opponent's points, but they're missing the fundamental insight: mastery isn't about tactics, it's about truth. The Unblinded Formula reveals what others can't see. My track record proves that authentic expertise creates results that manipulation never could.`;
+            } else if (round === 2) {
+                return domainResponses[2] || `Building on my opening, consider the evidence: consistent wins, proven methodology, and results that speak for themselves. This isn't about style — it's about substance. The data is clear.`;
+            } else if (round === 3) {
+                return domainResponses[3] || `For my final argument: the judges have seen enough. My approach works because it's built on truth. Sustainable excellence beats temporary advantage every time. The verdict should be clear.`;
+            }
+            
+            return "My expertise speaks for itself. Let me demonstrate the mastery that brought me to this arena.";
         }
         
         // Judge verdict

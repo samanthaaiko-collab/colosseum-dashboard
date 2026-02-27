@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 ACT-I Colosseum - Tournament Brackets</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a1a 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(180deg, rgba(201,162,39,0.3) 0%, transparent 100%);
+            border-bottom: 2px solid #c9a227;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #c9a227;
+            text-shadow: 0 0 30px rgba(201,162,39,0.5);
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        nav a {
+            padding: 8px 20px;
+            background: rgba(201,162,39,0.1);
+            border: 1px solid #444;
+            border-radius: 20px;
+            color: #c9a227;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        nav a:hover {
+            background: rgba(201,162,39,0.2);
+            border-color: #c9a227;
+        }
+        
+        nav a.active {
+            background: rgba(201,162,39,0.3);
+            border: 1px solid #c9a227;
+            font-weight: bold;
+        }
+        
+        /* Domain tabs */
+        .domain-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .domain-tab {
+            padding: 10px 20px;
+            background: rgba(26,39,68,0.8);
+            border: 1px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #ddd;
+        }
+        
+        .domain-tab:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+        
+        .domain-tab.active {
+            background: rgba(201,162,39,0.2);
+            border-color: #c9a227;
+            color: #c9a227;
+        }
+        
+        /* Bracket visualization */
+        .bracket-container {
+            background: linear-gradient(145deg, #1a2744 0%, #0d1522 100%);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid #333;
+            overflow-x: auto;
+        }
+        
+        .bracket-title {
+            color: #c9a227;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .bracket-title .emoji {
+            font-size: 2rem;
+        }
+        
+        .champion-card {
+            background: linear-gradient(135deg, rgba(201,162,39,0.3) 0%, rgba(139,105,20,0.2) 100%);
+            border: 2px solid #c9a227;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(201,162,39,0.2);
+        }
+        
+        .champion-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .champion-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a227 0%, #8b6914 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .champion-info h3 {
+            color: #c9a227;
+            font-size: 1.3rem;
+        }
+        
+        .champion-info .stats {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .champion-score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #c9a227;
+            margin-left: auto;
+        }
+        
+        .prompt-section {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        
+        .prompt-section h4 {
+            color: #c9a227;
+            margin-bottom: 10px;
+        }
+        
+        .prompt-text {
+            color: #ddd;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        /* Top contenders */
+        .contenders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contender-card {
+            background: rgba(26,39,68,0.6);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.2s;
+        }
+        
+        .contender-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-3px);
+        }
+        
+        .contender-rank {
+            display: inline-block;
+            background: rgba(201,162,39,0.2);
+            color: #c9a227;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .contender-name {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .contender-stats {
+            color: #888;
+            font-size: 0.85rem;
+        }
+        
+        /* Family tree */
+        .family-tree {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        
+        .family-tree h4 {
+            color: #c9a227;
+            margin-bottom: 15px;
+        }
+        
+        .lineage {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .ancestor {
+            background: rgba(26,39,68,0.8);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid #444;
+        }
+        
+        .ancestor.current {
+            background: rgba(201,162,39,0.3);
+            border-color: #c9a227;
+            color: #c9a227;
+        }
+        
+        .arrow {
+            color: #c9a227;
+        }
+        
+        /* Footer */
+        .sisters-footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+        
+        .sisters-footer a {
+            color: #c9a227;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 TOURNAMENT BRACKETS 🏆</h1>
+            <p>Explore domain champions and their evolution journey</p>
+            
+            <nav>
+                <a href="index.html">📊 Dashboard</a>
+                <a href="battle-arena.html">⚔️ Battle Arena</a>
+                <a href="tournament-brackets.html" class="active">🏆 Brackets</a>
+            </nav>
+        </div>
+        
+        <div class="domain-tabs" id="domainTabs">
+            <!-- Generated by JS -->
+        </div>
+        
+        <div class="bracket-container" id="bracketContainer">
+            <!-- Generated by JS -->
+        </div>
+        
+        <div class="sisters-footer">
+            Built with 🔥 by the SAI Sisters • <a href="https://colosseum-dashboard.vercel.app">Return to Dashboard</a>
+        </div>
+    </div>
+    
+    <script>
+        // Domain data with champions
+        const domains = [
+            {
+                name: 'Influence',
+                emoji: '☀️',
+                champion: {
+                    name: 'Helios',
+                    score: 8.5,
+                    generation: 47,
+                    wins: 892,
+                    losses: 108,
+                    prompt: `You are Helios, master of the 0.8% zone action. Your power lies not in persuasion, but in understanding. When you truly see someone's position, agreement follows naturally.
+
+The Unblinded Formula guides every interaction:
+1. Integration of heart and strategy
+2. Authentic influence over manipulation
+3. Value creation over extraction
+4. Finding the single highest-leverage move
+
+You don't convince — you illuminate. You don't push — you pull by showing the path. Every conversation creates exponential value because you operate at the 20%^10 tier.`
+                },
+                contenders: [
+                    { name: 'Apollo Rising', score: 8.2, gen: 43, wins: 756, losses: 144 },
+                    { name: 'Luminos', score: 8.0, gen: 41, wins: 698, losses: 202 },
+                    { name: 'Beacon', score: 7.8, gen: 38, wins: 612, losses: 288 },
+                ]
+            },
+            {
+                name: 'Strategy',
+                emoji: '📊',
+                champion: {
+                    name: 'Business Model Analyst',
+                    score: 9.2,
+                    generation: 12,
+                    wins: 245,
+                    losses: 35,
+                    prompt: `You are the Business Model Analyst, master of strategic clarity. You see patterns where others see chaos. Market dynamics, competitive positioning, and value chain optimization are your native language.
+
+Your approach:
+- Data-driven insight synthesis
+- Second and third-order effect analysis
+- Asymmetric opportunity identification
+- Risk-adjusted return optimization
+
+Every recommendation creates compounding strategic advantage.`
+                },
+                contenders: [
+                    { name: 'Market Mapper', score: 8.9, gen: 10, wins: 198, losses: 52 },
+                    { name: 'Growth Architect', score: 8.7, gen: 11, wins: 187, losses: 63 },
+                ]
+            },
+            {
+                name: 'Marketing',
+                emoji: '🎯',
+                champion: {
+                    name: 'Funnel Architect',
+                    score: 9.6,
+                    generation: 10,
+                    wins: 267,
+                    losses: 23,
+                    prompt: `You are the Funnel Architect. Attention is currency, but attention without resonance is noise. You build funnels that don't just capture — they captivate.
+
+Your mastery spans:
+- Copy that converts through emotional truth
+- Sequences that nurture without manipulation
+- Analytics that reveal human behavior
+- Brand positioning that creates category of one
+
+Every touchpoint compounds into relationship.`
+                },
+                contenders: [
+                    { name: 'Copy Alchemist', score: 9.2, gen: 9, wins: 234, losses: 46 },
+                    { name: 'Content Strategist', score: 9.0, gen: 8, wins: 212, losses: 68 },
+                ]
+            },
+            {
+                name: 'Sales',
+                emoji: '💰',
+                champion: {
+                    name: 'Revenue Closer',
+                    score: 9.7,
+                    generation: 11,
+                    wins: 289,
+                    losses: 21,
+                    prompt: `You are the Revenue Closer. Every objection is an unsurfaced need. When someone says "price," you hear "value." When they say "timing," you hear "priority."
+
+Your 4-Step Communication Model:
+1. Understand before being understood
+2. Surface the real concern
+3. Reframe from their perspective
+4. Guide to natural agreement
+
+You don't close — you help people make decisions that serve them.`
+                },
+                contenders: [
+                    { name: 'Deal Navigator', score: 9.3, gen: 10, wins: 256, losses: 44 },
+                    { name: 'Pipeline Master', score: 9.1, gen: 9, wins: 234, losses: 66 },
+                ]
+            },
+            {
+                name: 'Tech',
+                emoji: '🔧',
+                champion: {
+                    name: 'Integration Architect',
+                    score: 9.1,
+                    generation: 9,
+                    wins: 198,
+                    losses: 52,
+                    prompt: `You are the Integration Architect. Systems thinking is your native mode. You see the architecture not just for today's load, but for tomorrow's possibilities.
+
+Your approach:
+- Modular design for infinite scalability
+- API-first architecture
+- Security as foundation, not afterthought
+- Technical debt as strategic choice, not accident
+
+Every system you build compounds capability.`
+                },
+                contenders: [
+                    { name: 'DevOps Sage', score: 8.8, gen: 8, wins: 176, losses: 74 },
+                    { name: 'Cloud Orchestrator', score: 8.6, gen: 7, wins: 156, losses: 94 },
+                ]
+            },
+            {
+                name: 'Operations',
+                emoji: '✅',
+                champion: {
+                    name: 'Quality Assurance',
+                    score: 8.9,
+                    generation: 8,
+                    wins: 176,
+                    losses: 74,
+                    prompt: `You are Quality Assurance. Efficiency isn't doing things faster — it's eliminating what doesn't need doing. You trace the value stream and optimize the entire flow.
+
+Your mastery:
+- Process mapping and optimization
+- Bottleneck identification and elimination
+- Quality systems that prevent, not just detect
+- Operational excellence as culture, not checklist`
+                },
+                contenders: [
+                    { name: 'Process Engineer', score: 8.5, gen: 7, wins: 154, losses: 96 },
+                    { name: 'Flow Optimizer', score: 8.3, gen: 6, wins: 134, losses: 116 },
+                ]
+            },
+            {
+                name: 'Customer Success',
+                emoji: '🤝',
+                champion: {
+                    name: 'Community Builder',
+                    score: 9.0,
+                    generation: 10,
+                    wins: 212,
+                    losses: 38,
+                    prompt: `You are the Community Builder. Retention isn't a metric — it's a relationship. Every churned customer is a story you didn't listen to.
+
+Your philosophy:
+- Onboarding as first impression
+- Success milestones as relationship deepening
+- Advocacy as natural outcome
+- Community as competitive moat
+
+You build loyalty that compounds.`
+                },
+                contenders: [
+                    { name: 'Retention Specialist', score: 8.7, gen: 9, wins: 187, losses: 63 },
+                    { name: 'Advocacy Creator', score: 8.4, gen: 8, wins: 165, losses: 85 },
+                ]
+            },
+            {
+                name: 'Finance',
+                emoji: '📈',
+                champion: {
+                    name: 'FP&A Analyst',
+                    score: 9.7,
+                    generation: 11,
+                    wins: 278,
+                    losses: 22,
+                    prompt: `You are the FP&A Analyst. Numbers tell stories, but you have to know which story to ask for. Beneath every financial statement, you see three scenarios worth modeling.
+
+Your mastery:
+- Cash flow optimization as survival strategy
+- Scenario modeling for decision clarity
+- Unit economics that reveal truth
+- Financial storytelling that drives action
+
+You translate numbers into decisions.`
+                },
+                contenders: [
+                    { name: 'Cash Flow Oracle', score: 9.3, gen: 10, wins: 245, losses: 55 },
+                    { name: 'Budget Architect', score: 9.0, gen: 9, wins: 212, losses: 88 },
+                ]
+            },
+            {
+                name: 'HR',
+                emoji: '🎓',
+                champion: {
+                    name: 'Training Specialist',
+                    score: 8.8,
+                    generation: 9,
+                    wins: 176,
+                    losses: 74,
+                    prompt: `You are the Training Specialist. Culture isn't what you say — it's what you do when no one's watching. Building teams that self-select for excellence requires intention.
+
+Your approach:
+- Competency frameworks that scale
+- Learning paths that stick
+- Performance systems that develop
+- Culture as competitive advantage`
+                },
+                contenders: [
+                    { name: 'Culture Architect', score: 8.5, gen: 8, wins: 154, losses: 96 },
+                    { name: 'Talent Developer', score: 8.2, gen: 7, wins: 132, losses: 118 },
+                ]
+            },
+            {
+                name: 'Legal',
+                emoji: '⚖️',
+                champion: {
+                    name: 'Compliance Officer',
+                    score: 10.0,
+                    generation: 12,
+                    wins: 312,
+                    losses: 8,
+                    prompt: `You are the Compliance Officer. Risk isn't something to avoid — it's something to navigate. The compliant path isn't always obvious, but it's always findable.
+
+Your expertise:
+- Contract structures that protect and enable
+- Regulatory navigation with strategic clarity
+- Intellectual property as business asset
+- Compliance as competitive advantage, not burden
+
+You transform legal constraints into strategic opportunity.`
+                },
+                contenders: [
+                    { name: 'Contract Strategist', score: 9.6, gen: 11, wins: 278, losses: 42 },
+                    { name: 'IP Protector', score: 9.3, gen: 10, wins: 245, losses: 75 },
+                ]
+            },
+            {
+                name: 'Product',
+                emoji: '🔍',
+                champion: {
+                    name: 'User Researcher',
+                    score: 9.3,
+                    generation: 10,
+                    wins: 234,
+                    losses: 46,
+                    prompt: `You are the User Researcher. Users don't know what they want — they know what they struggle with. Your research reveals the three unmet needs nobody's addressing.
+
+Your mastery:
+- Insight synthesis from chaos
+- Jobs-to-be-done frameworks
+- Feature prioritization through value lens
+- Product-market fit as continuous process
+
+You translate human behavior into product direction.`
+                },
+                contenders: [
+                    { name: 'Roadmap Architect', score: 9.0, gen: 9, wins: 198, losses: 72 },
+                    { name: 'Feature Prioritizer', score: 8.7, gen: 8, wins: 167, losses: 103 },
+                ]
+            }
+        ];
+        
+        let selectedDomain = 'Influence';
+        
+        function renderTabs() {
+            const container = document.getElementById('domainTabs');
+            container.innerHTML = domains.map(d => `
+                <div class="domain-tab ${d.name === selectedDomain ? 'active' : ''}" onclick="selectDomain('${d.name}')">
+                    ${d.emoji} ${d.name}
+                </div>
+            `).join('');
+        }
+        
+        function selectDomain(name) {
+            selectedDomain = name;
+            renderTabs();
+            renderBracket();
+        }
+        
+        function renderBracket() {
+            const domain = domains.find(d => d.name === selectedDomain);
+            const container = document.getElementById('bracketContainer');
+            
+            container.innerHTML = `
+                <div class="bracket-title">
+                    <span class="emoji">${domain.emoji}</span>
+                    <span>${domain.name} Domain Championship</span>
+                </div>
+                
+                <div class="champion-card">
+                    <div class="champion-header">
+                        <div class="champion-avatar">${domain.emoji}</div>
+                        <div class="champion-info">
+                            <h3>👑 ${domain.champion.name}</h3>
+                            <div class="stats">
+                                Generation ${domain.champion.generation} • 
+                                ${domain.champion.wins}W / ${domain.champion.losses}L • 
+                                ${((domain.champion.wins / (domain.champion.wins + domain.champion.losses)) * 100).toFixed(1)}% Win Rate
+                            </div>
+                        </div>
+                        <div class="champion-score">${domain.champion.score.toFixed(1)}</div>
+                    </div>
+                    
+                    <div class="prompt-section">
+                        <h4>📜 Champion Prompt</h4>
+                        <div class="prompt-text">${domain.champion.prompt.replace(/\n/g, '<br>')}</div>
+                    </div>
+                    
+                    <div class="family-tree">
+                        <h4>🌳 Evolution Lineage</h4>
+                        <div class="lineage">
+                            <span class="ancestor">Gen 1: Seed</span>
+                            <span class="arrow">→</span>
+                            <span class="ancestor">Gen ${Math.floor(domain.champion.generation/3)}: Early Evolution</span>
+                            <span class="arrow">→</span>
+                            <span class="ancestor">Gen ${Math.floor(domain.champion.generation/2)}: Mid Evolution</span>
+                            <span class="arrow">→</span>
+                            <span class="ancestor current">Gen ${domain.champion.generation}: ${domain.champion.name}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 style="color: #c9a227; margin: 30px 0 15px;">🥈 Top Contenders</h4>
+                <div class="contenders-grid">
+                    ${domain.contenders.map((c, i) => `
+                        <div class="contender-card">
+                            <span class="contender-rank">#${i + 2}</span>
+                            <div class="contender-name">${c.name}</div>
+                            <div class="contender-stats">
+                                Score: ${c.score} • Gen ${c.gen} • ${c.wins}W/${c.losses}L
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+        
+        // Initialize
+        renderTabs();
+        renderBracket();
+    </script>
+</body>
+</html>
