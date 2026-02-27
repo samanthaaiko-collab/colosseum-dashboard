@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚔️ SAI Colosseum - LIVE Battle Arena v2</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a1a 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .arena-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(180deg, rgba(201,162,39,0.3) 0%, transparent 100%);
+            border-bottom: 2px solid #c9a227;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            color: #c9a227;
+            text-shadow: 0 0 30px rgba(201,162,39,0.5);
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #888;
+            font-size: 1.2rem;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        .battle-stage {
+            display: grid;
+            grid-template-columns: 1fr 200px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .battle-stage {
+                grid-template-columns: 1fr;
+            }
+            .center-column {
+                order: -1;
+            }
+        }
+        
+        .fighter-card {
+            background: linear-gradient(145deg, #1a2744 0%, #0d1522 100%);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid #333;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .fighter-card.speaking {
+            border-color: #c9a227;
+            box-shadow: 0 0 40px rgba(201,162,39,0.4);
+        }
+        
+        .fighter-card.winner {
+            border-color: #4CAF50;
+            box-shadow: 0 0 50px rgba(76,175,80,0.5);
+        }
+        
+        .fighter-card.loser {
+            opacity: 0.6;
+            border-color: #f44336;
+        }
+        
+        .fighter-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a227 0%, #8b6914 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 30px rgba(201,162,39,0.3);
+        }
+        
+        .fighter-card.blue .fighter-avatar {
+            background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%);
+            box-shadow: 0 0 30px rgba(33,150,243,0.3);
+        }
+        
+        .fighter-card.red .fighter-avatar {
+            background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+            box-shadow: 0 0 30px rgba(244,67,54,0.3);
+        }
+        
+        .fighter-name {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #c9a227;
+        }
+        
+        .fighter-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #888;
+            flex-wrap: wrap;
+        }
+        
+        .fighter-stats span {
+            background: rgba(255,255,255,0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        .speech-bubble {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 150px;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ddd;
+            position: relative;
+        }
+        
+        .speech-bubble.active {
+            background: rgba(201,162,39,0.1);
+            border: 1px solid rgba(201,162,39,0.3);
+        }
+        
+        .speech-bubble::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 3rem;
+            color: rgba(201,162,39,0.3);
+            font-family: Georgia, serif;
+        }
+        
+        .speech-text {
+            padding-left: 30px;
+        }
+        
+        .audio-visualizer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 3px;
+            height: 40px;
+            margin-top: 15px;
+        }
+        
+        .audio-bar {
+            width: 4px;
+            background: linear-gradient(to top, #c9a227, #fff);
+            border-radius: 2px;
+            transition: height 0.1s ease;
+        }
+        
+        .score-display {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #c9a227;
+        }
+        
+        .center-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .vs-badge {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #c9a227;
+            text-shadow: 0 0 30px rgba(201,162,39,0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        .round-indicator {
+            background: linear-gradient(135deg, #1a2744, #0d1522);
+            padding: 15px 30px;
+            border-radius: 30px;
+            border: 2px solid #c9a227;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .battle-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-battle {
+            background: linear-gradient(135deg, #c9a227, #8b6914);
+            color: #000;
+        }
+        
+        .btn-battle:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(201,162,39,0.5);
+        }
+        
+        .btn-battle:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-random {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid #444;
+        }
+        
+        .btn-random:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .judge-panel {
+            background: linear-gradient(145deg, #1a2744 0%, #0d1522 100%);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid #c9a227;
+            margin-bottom: 30px;
+        }
+        
+        .judge-panel h2 {
+            color: #c9a227;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .judge-verdict {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .scenario-panel {
+            background: linear-gradient(145deg, #0d1522 0%, #1a2744 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+        }
+        
+        .scenario-panel h2 {
+            color: #c9a227;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .scenario-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ccc;
+            font-style: italic;
+        }
+        
+        .battle-log {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .battle-log h3 {
+            color: #c9a227;
+            margin-bottom: 15px;
+        }
+        
+        .log-entry {
+            font-size: 0.9rem;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #999;
+        }
+        
+        .log-entry .time {
+            color: #666;
+            margin-right: 10px;
+        }
+        
+        .voice-select {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        
+        .voice-select label {
+            display: block;
+            margin-bottom: 10px;
+            color: #888;
+        }
+        
+        .voice-select select {
+            width: 100%;
+            padding: 10px;
+            background: #1a2744;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        /* TTS Mode Toggle */
+        .tts-toggle {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tts-toggle label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .tts-toggle input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #c9a227;
+        }
+        
+        .tts-status {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        
+        .tts-status.elevenlabs {
+            background: rgba(76,175,80,0.2);
+            color: #4CAF50;
+        }
+        
+        .tts-status.browser {
+            background: rgba(255,152,0,0.2);
+            color: #FF9800;
+        }
+        
+        .tts-status.text-only {
+            background: rgba(156,39,176,0.2);
+            color: #9C27B0;
+        }
+        
+        /* Animations */
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(201,162,39,0.3); }
+            50% { box-shadow: 0 0 40px rgba(201,162,39,0.6); }
+        }
+        
+        .speaking .fighter-avatar {
+            animation: glow 1s infinite;
+        }
+        
+        .loading {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .sisters-footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+        
+        .sisters-footer a {
+            color: #c9a227;
+            text-decoration: none;
+        }
+        
+        /* Audio player (hidden but functional) */
+        #battleAudio {
+            display: none;
+        }
+        
+        /* Celebration limit notice */
+        .celebration-limit {
+            background: rgba(255,152,0,0.1);
+            border: 1px solid #FF9800;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            font-size: 0.85rem;
+            color: #FF9800;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="arena-container">
+        <div class="header">
+            <h1>⚔️ LIVE BATTLE ARENA <span class="version-badge">v2 + ElevenLabs</span></h1>
+            <p>Watch ACT-I beings battle with REAL AI VOICES • iPad Compatible!</p>
+            
+            <nav style="display:flex; gap:15px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+                <a href="index.html" style="padding:8px 20px; background:rgba(201,162,39,0.1); border:1px solid #444; border-radius:20px; color:#c9a227; text-decoration:none;">📊 Dashboard</a>
+                <a href="battle-arena-v2.html" style="padding:8px 20px; background:rgba(201,162,39,0.3); border:1px solid #c9a227; border-radius:20px; color:#c9a227; text-decoration:none; font-weight:bold;">⚔️ Battle Arena v2</a>
+                <a href="tournament-brackets.html" style="padding:8px 20px; background:rgba(201,162,39,0.1); border:1px solid #444; border-radius:20px; color:#c9a227; text-decoration:none;">🏆 Brackets</a>
+            </nav>
+        </div>
+        
+        <!-- TTS Mode Selection -->
+        <div class="tts-toggle">
+            <label>
+                <input type="checkbox" id="useElevenLabs" checked>
+                <span>🎙️ Use ElevenLabs Premium Voices (iPad Compatible)</span>
+            </label>
+            <div class="tts-status elevenlabs" id="ttsStatus">
+                ✅ ElevenLabs Active — Premium AI voices on all devices
+            </div>
+            <div class="celebration-limit">
+                🎉 Celebration Limit: 1 per event (sisters learned to chill 😅)
+            </div>
+        </div>
+        
+        <div class="scenario-panel">
+            <h2>📜 Battle Scenario</h2>
+            <div class="scenario-text" id="scenarioText">
+                <em>Click "NEW SCENARIO" or "START BATTLE" to generate a challenge...</em>
+            </div>
+        </div>
+        
+        <div class="battle-stage">
+            <!-- Fighter 1 (Blue Corner) -->
+            <div class="fighter-card blue" id="fighter1Card">
+                <div class="fighter-avatar" id="fighter1Avatar">🔵</div>
+                <div class="fighter-name" id="fighter1Name">Select Fighter</div>
+                <div class="fighter-stats">
+                    <span id="fighter1Domain">Domain: —</span>
+                    <span id="fighter1Gen">Gen: —</span>
+                </div>
+                <div class="speech-bubble" id="fighter1Speech">
+                    <div class="speech-text" id="fighter1Text">
+                        <em>Awaiting battle...</em>
+                    </div>
+                </div>
+                <div class="audio-visualizer" id="fighter1Visualizer"></div>
+                <div class="score-display" id="fighter1Score">—</div>
+                <div class="voice-select">
+                    <label>Voice:</label>
+                    <select id="fighter1Voice">
+                        <option value="george" data-id="JBFqnCBsd6RMkjVDRZzb">George (Storyteller)</option>
+                        <option value="chris" data-id="iP95p4xoKVk53GoZ742B">Chris (Down-to-Earth)</option>
+                        <option value="charlie" data-id="IKne3meq5aSn9XLyUdCD">Charlie (Confident)</option>
+                        <option value="eric" data-id="cjVigY5qzO86Huf0OWal">Eric (Trustworthy)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Center Column -->
+            <div class="center-column">
+                <div class="vs-badge">VS</div>
+                <div class="round-indicator" id="roundIndicator">READY</div>
+                <div class="battle-controls">
+                    <button class="btn btn-random" onclick="selectRandomFighters()">🎲 RANDOM</button>
+                    <button class="btn btn-battle" id="battleBtn" onclick="startBattle()">⚔️ BATTLE!</button>
+                    <button class="btn btn-random" onclick="generateScenario()">📜 NEW SCENARIO</button>
+                    <button class="btn btn-random" onclick="testVoice()" style="background:rgba(76,175,80,0.3); border:1px solid #4CAF50;">🔊 TEST VOICE</button>
+                </div>
+            </div>
+            
+            <!-- Fighter 2 (Red Corner) -->
+            <div class="fighter-card red" id="fighter2Card">
+                <div class="fighter-avatar" id="fighter2Avatar">🔴</div>
+                <div class="fighter-name" id="fighter2Name">Select Fighter</div>
+                <div class="fighter-stats">
+                    <span id="fighter2Domain">Domain: —</span>
+                    <span id="fighter2Gen">Gen: —</span>
+                </div>
+                <div class="speech-bubble" id="fighter2Speech">
+                    <div class="speech-text" id="fighter2Text">
+                        <em>Awaiting battle...</em>
+                    </div>
+                </div>
+                <div class="audio-visualizer" id="fighter2Visualizer"></div>
+                <div class="score-display" id="fighter2Score">—</div>
+                <div class="voice-select">
+                    <label>Voice:</label>
+                    <select id="fighter2Voice">
+                        <option value="jessica" data-id="cgSgspJ2msm6clMCkdW9">Jessica (Playful)</option>
+                        <option value="sarah" data-id="EXAVITQu4vr4xnSDxMaL">Sarah (Mature)</option>
+                        <option value="river" data-id="SAz9YHcvj6GT2YYXdXww">River (Neutral)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="judge-panel">
+            <h2>⚖️ Judge's Verdict</h2>
+            <div class="judge-verdict" id="judgeVerdict">
+                <em>The judge awaits the battle to begin...</em>
+            </div>
+        </div>
+        
+        <div class="battle-log">
+            <h3>📋 Battle Log</h3>
+            <div id="battleLogContent">
+                <div class="log-entry">
+                    <span class="time">[--:--]</span> Arena v2 initialized. ElevenLabs voices ready!
+                </div>
+            </div>
+        </div>
+        
+        <div class="sisters-footer">
+            Built with 🔥 by the SAI Sisters • <a href="https://colosseum-dashboard.vercel.app">Return to Dashboard</a>
+            <br><small style="color:#666; margin-top:5px; display:block;">v2 with ElevenLabs • Celebration limit: 1 per event 😅</small>
+        </div>
+    </div>
+    
+    <!-- Hidden audio element for ElevenLabs playback -->
+    <audio id="battleAudio" preload="auto"></audio>
+    
+    <script>
+        // ============================================
+        // SAI COLOSSEUM BATTLE ARENA v2
+        // Now with ElevenLabs Premium Voices!
+        // ============================================
+        
+        // ElevenLabs Voice IDs
+        const ELEVENLABS_VOICES = {
+            george: 'JBFqnCBsd6RMkjVDRZzb',
+            chris: 'iP95p4xoKVk53GoZ742B', 
+            charlie: 'IKne3meq5aSn9XLyUdCD',
+            eric: 'cjVigY5qzO86Huf0OWal',
+            jessica: 'cgSgspJ2msm6clMCkdW9',
+            sarah: 'EXAVITQu4vr4xnSDxMaL',
+            river: 'SAz9YHcvj6GT2YYXdXww'
+        };
+        
+        // Champions data
+        const champions = [
+            { id: 'helios', name: 'Helios', domain: 'Influence', score: 8.5, gen: 47, emoji: '☀️' },
+            { id: 'business-model', name: 'Business Model Analyst', domain: 'Strategy', score: 9.2, gen: 12, emoji: '📊' },
+            { id: 'funnel-architect', name: 'Funnel Architect', domain: 'Marketing', score: 9.6, gen: 10, emoji: '🎯' },
+            { id: 'revenue', name: 'Revenue Closer', domain: 'Sales', score: 9.7, gen: 11, emoji: '💰' },
+            { id: 'integration', name: 'Integration Architect', domain: 'Tech', score: 9.1, gen: 9, emoji: '🔧' },
+            { id: 'quality', name: 'Quality Assurance', domain: 'Operations', score: 8.9, gen: 8, emoji: '✅' },
+            { id: 'community', name: 'Community Builder', domain: 'Customer Success', score: 9.0, gen: 10, emoji: '🤝' },
+            { id: 'fpa', name: 'FP&A Analyst', domain: 'Finance', score: 9.7, gen: 11, emoji: '📈' },
+            { id: 'training', name: 'Training Specialist', domain: 'HR', score: 8.8, gen: 9, emoji: '🎓' },
+            { id: 'compliance', name: 'Compliance Officer', domain: 'Legal', score: 10.0, gen: 12, emoji: '⚖️' },
+            { id: 'user-researcher', name: 'User Researcher', domain: 'Product', score: 9.3, gen: 10, emoji: '🔍' },
+        ];
+        
+        const scenarios = [
+            "A Fortune 500 CEO has 5 minutes to decide on a $50M investment. Convince them your approach will deliver 10x returns.",
+            "A skeptical board member challenges your strategy. Win them over with undeniable logic and emotional resonance.",
+            "Two departments are in conflict over resources. Find a solution that makes both sides feel victorious.",
+            "A major client is about to churn. You have one call to save a $2M annual contract.",
+            "You're presenting to experts who know more technical details than you. Establish credibility and lead them.",
+            "A competitor undercut your price by 40%. Reframe the conversation around value.",
+            "Your team is demoralized after a failure. In 3 minutes, reignite their passion.",
+            "An angel investor asks: 'Why you instead of 50 other founders?' You have 60 seconds.",
+            "A potential partner has trust issues. Build rapport without seeming desperate.",
+            "The market crashed. Your clients are panicking. Calm fears while positioning for opportunity.",
+        ];
+        
+        let selectedFighter1 = null;
+        let selectedFighter2 = null;
+        let battleInProgress = false;
+        const battleAudio = document.getElementById('battleAudio');
+        
+        // ============================================
+        // ElevenLabs TTS Integration
+        // ============================================
+        
+        async function speakWithElevenLabs(text, voiceName) {
+            const voiceId = ELEVENLABS_VOICES[voiceName] || ELEVENLABS_VOICES.george;
+            
+            try {
+                addLog(`🎙️ Generating voice: ${voiceName}...`);
+                
+                const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'audio/mpeg',
+                        'Content-Type': 'application/json',
+                        'xi-api-key': 'sk_f7ef9d8992638aab4e940d8263eb9a15a4a2b28f725e3885'
+                    },
+                    body: JSON.stringify({
+                        text: text,
+                        model_id: 'eleven_turbo_v2_5',
+                        voice_settings: {
+                            stability: 0.5,
+                            similarity_boost: 0.75,
+                            style: 0.3,
+                            use_speaker_boost: true
+                        }
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`ElevenLabs API error: ${response.status}`);
+                }
+                
+                const audioBlob = await response.blob();
+                const audioUrl = URL.createObjectURL(audioBlob);
+                
+                return new Promise((resolve, reject) => {
+                    battleAudio.src = audioUrl;
+                    battleAudio.onended = () => {
+                        URL.revokeObjectURL(audioUrl);
+                        resolve();
+                    };
+                    battleAudio.onerror = (e) => {
+                        URL.revokeObjectURL(audioUrl);
+                        reject(e);
+                    };
+                    battleAudio.play().catch(reject);
+                });
+                
+            } catch (error) {
+                console.error('ElevenLabs error:', error);
+                addLog(`⚠️ Voice error: ${error.message}. Falling back to text-only.`);
+                // Fallback: just wait proportional to text length
+                await sleep(text.length * 30);
+            }
+        }
+        
+        // Browser TTS fallback
+        function speakWithBrowser(text, fighterNum) {
+            return new Promise((resolve) => {
+                if (!('speechSynthesis' in window)) {
+                    resolve();
+                    return;
+                }
+                
+                speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                const voices = speechSynthesis.getVoices();
+                
+                if (fighterNum === 1) {
+                    const maleVoice = voices.find(v => 
+                        v.name.includes('Daniel') || v.name.includes('Alex') || v.name.includes('Aaron')
+                    ) || voices.find(v => v.lang.startsWith('en'));
+                    if (maleVoice) utterance.voice = maleVoice;
+                    utterance.pitch = 0.9;
+                } else {
+                    const femaleVoice = voices.find(v => 
+                        v.name.includes('Samantha') || v.name.includes('Victoria') || v.name.includes('Karen')
+                    ) || voices.find(v => v.lang.startsWith('en'));
+                    if (femaleVoice) utterance.voice = femaleVoice;
+                    utterance.pitch = 1.1;
+                }
+                
+                utterance.rate = 1.0;
+                utterance.onend = () => resolve();
+                utterance.onerror = () => resolve();
+                speechSynthesis.speak(utterance);
+                setTimeout(() => resolve(), 15000);
+            });
+        }
+        
+        // Main speak function - chooses TTS method
+        async function speakText(text, fighterNum) {
+            const useElevenLabs = document.getElementById('useElevenLabs').checked;
+            const voiceSelect = document.getElementById(`fighter${fighterNum}Voice`);
+            const voiceName = voiceSelect.value;
+            
+            if (useElevenLabs) {
+                await speakWithElevenLabs(text, voiceName);
+            } else {
+                await speakWithBrowser(text, fighterNum);
+            }
+        }
+        
+        // ============================================
+        // UI Functions
+        // ============================================
+        
+        function initVisualizers() {
+            ['fighter1Visualizer', 'fighter2Visualizer'].forEach(id => {
+                const container = document.getElementById(id);
+                container.innerHTML = '';
+                for (let i = 0; i < 20; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'audio-bar';
+                    bar.style.height = '5px';
+                    container.appendChild(bar);
+                }
+            });
+        }
+        
+        function animateVisualizer(id, active) {
+            const container = document.getElementById(id);
+            const bars = container.querySelectorAll('.audio-bar');
+            
+            if (active) {
+                const animate = () => {
+                    bars.forEach(bar => {
+                        bar.style.height = Math.random() * 35 + 5 + 'px';
+                    });
+                };
+                container.animationInterval = setInterval(animate, 100);
+            } else {
+                clearInterval(container.animationInterval);
+                bars.forEach(bar => bar.style.height = '5px');
+            }
+        }
+        
+        function addLog(message) {
+            const log = document.getElementById('battleLogContent');
+            const time = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `<span class="time">[${time}]</span> ${message}`;
+            log.insertBefore(entry, log.firstChild);
+        }
+        
+        function generateScenario() {
+            const scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+            document.getElementById('scenarioText').textContent = scenario;
+            addLog('📜 New battle scenario generated');
+        }
+        
+        function selectRandomFighters() {
+            const shuffled = [...champions].sort(() => Math.random() - 0.5);
+            selectedFighter1 = shuffled[0];
+            selectedFighter2 = shuffled[1];
+            updateFighterDisplay(1, selectedFighter1);
+            updateFighterDisplay(2, selectedFighter2);
+            generateScenario();
+            addLog(`🎲 Random matchup: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
+        }
+        
+        function updateFighterDisplay(num, fighter) {
+            document.getElementById(`fighter${num}Avatar`).textContent = fighter.emoji;
+            document.getElementById(`fighter${num}Name`).textContent = fighter.name;
+            document.getElementById(`fighter${num}Domain`).textContent = `Domain: ${fighter.domain}`;
+            document.getElementById(`fighter${num}Gen`).textContent = `Gen: ${fighter.gen}`;
+            document.getElementById(`fighter${num}Score`).textContent = fighter.score.toFixed(1);
+        }
+        
+        // ============================================
+        // Battle Logic
+        // ============================================
+        
+        async function startBattle() {
+            if (!selectedFighter1 || !selectedFighter2) {
+                selectRandomFighters();
+            }
+            
+            if (battleInProgress) return;
+            battleInProgress = true;
+            
+            const battleBtn = document.getElementById('battleBtn');
+            battleBtn.disabled = true;
+            battleBtn.textContent = '⏳ BATTLING...';
+            
+            document.getElementById('roundIndicator').textContent = 'ROUND 1';
+            document.getElementById('judgeVerdict').innerHTML = '<em class="loading">Judge is observing...</em>';
+            
+            addLog(`🔔 BATTLE STARTED: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
+            
+            const totalRounds = 3;
+            
+            for (let round = 1; round <= totalRounds; round++) {
+                document.getElementById('roundIndicator').textContent = `ROUND ${round} of ${totalRounds}`;
+                addLog(`🔔 Round ${round} begins!`);
+                
+                await fighterSpeak(1, selectedFighter1, round, null);
+                
+                const f1Response = document.getElementById('fighter1Text').textContent;
+                await fighterSpeak(2, selectedFighter2, round, f1Response);
+                
+                if (round < totalRounds) {
+                    addLog(`⏳ Preparing round ${round + 1}...`);
+                    await sleep(1500);
+                }
+            }
+            
+            await judgeVerdict();
+            
+            battleInProgress = false;
+            battleBtn.disabled = false;
+            battleBtn.textContent = '⚔️ BATTLE!';
+        }
+        
+        async function fighterSpeak(num, fighter, round = 1, opponentResponse = null) {
+            const card = document.getElementById(`fighter${num}Card`);
+            const textEl = document.getElementById(`fighter${num}Text`);
+            const speechEl = document.getElementById(`fighter${num}Speech`);
+            
+            card.classList.add('speaking');
+            speechEl.classList.add('active');
+            animateVisualizer(`fighter${num}Visualizer`, true);
+            
+            const response = generateFighterResponse(fighter, round, opponentResponse);
+            
+            // Typewriter effect
+            textEl.textContent = '';
+            for (let i = 0; i < response.length; i++) {
+                textEl.textContent += response[i];
+                await sleep(15);
+            }
+            
+            // Speak with chosen TTS
+            await speakText(response, num);
+            
+            addLog(`${fighter.emoji} ${fighter.name} speaks (Round ${round})`);
+            
+            await sleep(500);
+            
+            card.classList.remove('speaking');
+            speechEl.classList.remove('active');
+            animateVisualizer(`fighter${num}Visualizer`, false);
+        }
+        
+        function generateFighterResponse(fighter, round = 1, opponentResponse = null) {
+            const responses = {
+                1: {
+                    'Influence': "The 0.8% move isn't about convincing — it's about understanding. When you truly see someone's position, agreement follows naturally. I illuminate paths others don't see.",
+                    'Strategy': "Looking at the data, there's a clear asymmetric opportunity the market hasn't priced in. While others see linear paths, I see exponential curves.",
+                    'Marketing': "Attention is the new currency, but attention without resonance is just noise. I don't build funnels that capture — I build funnels that captivate.",
+                    'Sales': "Every objection is just an unsurfaced need. I don't close — I help people make decisions that serve them. That's why they come back.",
+                    'Tech': "The architecture needs to scale not just for today's load, but for tomorrow's possibilities. Every system I build compounds capability.",
+                    'Operations': "Efficiency isn't about doing things faster — it's about eliminating things that don't need doing. I optimize the entire flow.",
+                    'Customer Success': "Retention isn't a metric — it's a relationship. I build onboarding as first impression and advocacy as natural outcome.",
+                    'Finance': "The numbers tell a story, but you have to know which story to ask for. I translate numbers into decisions.",
+                    'HR': "Culture isn't what you say — it's what you do when no one's watching. I build teams that self-select for excellence.",
+                    'Legal': "Risk isn't something to avoid — it's something to navigate. I transform legal constraints into strategic opportunity.",
+                    'Product': "Users don't know what they want — they know what they struggle with. My research reveals the unmet needs nobody's addressing."
+                },
+                counter: {
+                    'Influence': "My opponent speaks of conventional approaches, but they miss the deeper truth. Real influence operates at the 20% of the 20%.",
+                    'Strategy': "My opponent makes valid points, but they're optimizing the wrong function. Strategy is about what you choose NOT to do.",
+                    'Marketing': "While my opponent focuses on metrics, I focus on meaning. My marketing creates customers who become missionaries.",
+                    'Sales': "My opponent talks tactics. I'm talking transformation. A single conversation creates cascading revenue for years.",
+                    'Tech': "My opponent builds for requirements. I build for evolution. Flexibility and resilience aren't features — they're philosophy.",
+                    'Operations': "My opponent optimizes within constraints. I redesign the constraints. That's 10x improvement, not 10%.",
+                    'Customer Success': "My opponent focuses on preventing churn. I focus on creating champions. The difference is exponential.",
+                    'Finance': "My opponent reports history. I model futures. That's the difference between rearview mirror and windshield.",
+                    'HR': "My opponent builds processes. I build people. Processes get followed. People grow. Growth compounds.",
+                    'Legal': "My opponent sees legal as a cost center. I see it as a value driver. Every 'impossible' deal becomes possible.",
+                    'Product': "My opponent builds features. I solve problems. Features get compared. Solutions get chosen."
+                },
+                3: {
+                    'Influence': "For my final argument: sustainable results come from authentic connection, not tactical maneuvering. My track record proves it.",
+                    'Strategy': "My closing case is simple: results. My framework has generated proven outcomes across industries.",
+                    'Marketing': "In a world of infinite content, only authentic connection cuts through. I earn attention, I don't compete for it.",
+                    'Sales': "Look at the scoreboard. Revenue speaks. Relationships endure. My approach delivers both.",
+                    'Tech': "In technology, the cost of wrong architecture is measured in years. I've saved organizations millions.",
+                    'Operations': "Sustainable operations aren't about heroic effort. They're about systematic excellence that improves itself.",
+                    'Customer Success': "The most valuable business asset is customer love. It can't be bought, only earned. My track record proves it.",
+                    'Finance': "Finance exists to enable mission, not constrain it. I find the financial path to every strategic objective.",
+                    'HR': "Talent is the ultimate competitive advantage because it can't be copied. I don't fill roles — I build organizations.",
+                    'Legal': "In a complex regulatory environment, legal excellence is competitive advantage. I've protected and enabled billions.",
+                    'Product': "Great products feel inevitable in retrospect. That's not accident — that's craft. I've shipped products that changed markets."
+                }
+            };
+            
+            const domain = fighter.domain;
+            
+            if (round === 1 && !opponentResponse) {
+                return responses[1][domain] || `As the ${domain} champion, I bring unmatched expertise to this challenge.`;
+            } else if (opponentResponse) {
+                return responses.counter[domain] || `I hear my opponent's points, but they're missing the fundamental insight.`;
+            } else if (round === 3) {
+                return responses[3][domain] || `For my final argument: the judges have seen enough. My approach works because it's built on truth.`;
+            }
+            
+            return `Building on my opening, the evidence is clear: consistent wins, proven methodology, results that speak for themselves.`;
+        }
+        
+        async function judgeVerdict() {
+            document.getElementById('roundIndicator').textContent = 'JUDGING';
+            
+            await sleep(2000);
+            
+            const score1 = 7.5 + Math.random() * 2.5;
+            const score2 = 7.5 + Math.random() * 2.5;
+            
+            const card1 = document.getElementById('fighter1Card');
+            const card2 = document.getElementById('fighter2Card');
+            
+            if (score1 > score2) {
+                card1.classList.add('winner');
+                card2.classList.add('loser');
+                document.getElementById('judgeVerdict').innerHTML = `
+                    <strong style="color: #4CAF50">🏆 ${selectedFighter1.name} WINS!</strong><br><br>
+                    Score: ${score1.toFixed(2)} vs ${score2.toFixed(2)}<br><br>
+                    The judge notes: "${selectedFighter1.name}'s response demonstrated superior application of the Unblinded Formula."
+                `;
+                addLog(`🏆 WINNER: ${selectedFighter1.name} (${score1.toFixed(2)} vs ${score2.toFixed(2)})`);
+            } else {
+                card2.classList.add('winner');
+                card1.classList.add('loser');
+                document.getElementById('judgeVerdict').innerHTML = `
+                    <strong style="color: #4CAF50">🏆 ${selectedFighter2.name} WINS!</strong><br><br>
+                    Score: ${score2.toFixed(2)} vs ${score1.toFixed(2)}<br><br>
+                    The judge notes: "${selectedFighter2.name}'s approach exemplified the 0.8% zone action."
+                `;
+                addLog(`🏆 WINNER: ${selectedFighter2.name} (${score2.toFixed(2)} vs ${score1.toFixed(2)})`);
+            }
+            
+            document.getElementById('roundIndicator').textContent = 'COMPLETE';
+            
+            await sleep(5000);
+            card1.classList.remove('winner', 'loser');
+            card2.classList.remove('winner', 'loser');
+        }
+        
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
+        // Test voice button
+        async function testVoice() {
+            const useElevenLabs = document.getElementById('useElevenLabs').checked;
+            const testText = "Testing! The SAI Colosseum battle arena is now live with premium ElevenLabs voices. Prepare for epic AI battles!";
+            
+            addLog(`🔊 Testing ${useElevenLabs ? 'ElevenLabs' : 'browser'} voice...`);
+            document.getElementById('fighter1Card').classList.add('speaking');
+            animateVisualizer('fighter1Visualizer', true);
+            
+            try {
+                if (useElevenLabs) {
+                    await speakWithElevenLabs(testText, 'george');
+                } else {
+                    await speakWithBrowser(testText, 1);
+                }
+                addLog('✅ Voice test complete!');
+            } catch (error) {
+                addLog(`❌ Voice test failed: ${error.message}`);
+            }
+            
+            document.getElementById('fighter1Card').classList.remove('speaking');
+            animateVisualizer('fighter1Visualizer', false);
+        }
+        
+        // Update TTS status display
+        document.getElementById('useElevenLabs').addEventListener('change', function() {
+            const status = document.getElementById('ttsStatus');
+            if (this.checked) {
+                status.className = 'tts-status elevenlabs';
+                status.textContent = '✅ ElevenLabs Active — Premium AI voices on all devices';
+            } else {
+                status.className = 'tts-status browser';
+                status.textContent = '⚠️ Browser TTS — May not work on iPad Safari';
+            }
+        });
+        
+        // Initialize
+        initVisualizers();
+        addLog('🚀 Arena v2 initialized with ElevenLabs premium voices!');
+        addLog('📱 iPad compatible! Tap TEST VOICE to verify audio.');
+        
+        // Load browser voices
+        if ('speechSynthesis' in window) {
+            speechSynthesis.getVoices();
+            speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+        }
+    </script>
+</body>
+</html>
