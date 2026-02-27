@@ -529,6 +529,7 @@
                     <button class="btn btn-random" onclick="selectRandomFighters()">🎲 RANDOM</button>
                     <button class="btn btn-battle" id="battleBtn" onclick="startBattle()">⚔️ BATTLE!</button>
                     <button class="btn btn-random" onclick="generateScenario()">📜 NEW SCENARIO</button>
+                    <button class="btn btn-random" onclick="testVoice()" style="background:rgba(201,162,39,0.3); border:1px solid #c9a227;">🔊 TEST VOICE</button>
                 </div>
             </div>
             
@@ -880,10 +881,34 @@
             });
         }
         
-        // Load voices
+        // Load voices and ensure they're ready
+        let voicesLoaded = false;
         if ('speechSynthesis' in window) {
-            speechSynthesis.getVoices();
-            speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+            function loadVoices() {
+                const voices = speechSynthesis.getVoices();
+                if (voices.length > 0) {
+                    voicesLoaded = true;
+                    console.log('Voices loaded:', voices.length);
+                }
+            }
+            loadVoices();
+            speechSynthesis.onvoiceschanged = loadVoices;
+            
+            // Try loading voices every 100ms until they're ready
+            const voiceInterval = setInterval(() => {
+                if (voicesLoaded) {
+                    clearInterval(voiceInterval);
+                } else {
+                    loadVoices();
+                }
+            }, 100);
+        }
+        
+        // Test voice button for debugging
+        function testVoice() {
+            const utterance = new SpeechSynthesisUtterance("Testing! The SAI Colosseum battle arena is now live. Prepare for combat!");
+            speechSynthesis.speak(utterance);
+            addLog('🔊 Test voice played!');
         }
         
         function closeModal() {
