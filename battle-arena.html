@@ -906,10 +906,62 @@
         
         // Test voice button for debugging
         function testVoice() {
-            const utterance = new SpeechSynthesisUtterance("Testing! The SAI Colosseum battle arena is now live. Prepare for combat!");
+            // Cancel any existing speech
+            if ('speechSynthesis' in window) {
+                speechSynthesis.cancel();
+            }
+            
+            const text = "Testing! The SAI Colosseum battle arena is now live. Prepare for combat!";
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Get available voices
+            let voices = speechSynthesis.getVoices();
+            if (voices.length > 0) {
+                // Prefer English voices
+                const englishVoice = voices.find(v => v.lang.startsWith('en')) || voices[0];
+                utterance.voice = englishVoice;
+            }
+            
+            utterance.rate = 1.0;
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
+            
+            utterance.onstart = () => {
+                addLog('🔊 Voice started speaking!');
+                document.getElementById('fighter1Card').classList.add('speaking');
+            };
+            
+            utterance.onend = () => {
+                addLog('✅ Voice finished!');
+                document.getElementById('fighter1Card').classList.remove('speaking');
+            };
+            
+            utterance.onerror = (e) => {
+                addLog('❌ Voice error: ' + e.error);
+                alert('Voice error: ' + e.error + '\n\nTry using Chrome browser on desktop for best TTS support.');
+            };
+            
             speechSynthesis.speak(utterance);
-            addLog('🔊 Test voice played!');
+            addLog('🎤 Attempting to speak: "' + text.substring(0, 30) + '..."');
         }
+        
+        // Also try creating an audio context to unlock mobile audio
+        function unlockAudio() {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) {
+                const audioCtx = new AudioContext();
+                const buffer = audioCtx.createBuffer(1, 1, 22050);
+                const source = audioCtx.createBufferSource();
+                source.buffer = buffer;
+                source.connect(audioCtx.destination);
+                source.start(0);
+                addLog('🔓 Audio context unlocked for mobile');
+            }
+        }
+        
+        // Unlock audio on first interaction
+        document.addEventListener('click', unlockAudio, { once: true });
+        document.addEventListener('touchstart', unlockAudio, { once: true });
         
         function closeModal() {
             document.getElementById('fighterModal').classList.remove('active');
