@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚔️ SAI Colosseum - LIVE Battle Arena</title>
+    <title>⚔️ SAI Colosseum - Battle Arena v3 (19-Judge Panel)</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -16,7 +16,7 @@
         }
         
         .arena-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -30,104 +30,103 @@
         }
         
         .header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #c9a227;
             text-shadow: 0 0 30px rgba(201,162,39,0.5);
             margin-bottom: 10px;
         }
         
-        .header p {
-            color: #888;
-            font-size: 1.2rem;
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
         }
         
         .battle-stage {
             display: grid;
-            grid-template-columns: 1fr 200px 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: 1fr 180px 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 1000px) {
+            .battle-stage { grid-template-columns: 1fr; }
+            .center-column { order: -1; }
         }
         
         .fighter-card {
             background: linear-gradient(145deg, #1a2744 0%, #0d1522 100%);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 15px;
+            padding: 20px;
             border: 2px solid #333;
-            position: relative;
-            overflow: hidden;
             transition: all 0.3s ease;
         }
         
         .fighter-card.speaking {
             border-color: #c9a227;
-            box-shadow: 0 0 40px rgba(201,162,39,0.4);
+            box-shadow: 0 0 30px rgba(201,162,39,0.4);
         }
         
-        .fighter-card.winner {
-            border-color: #4CAF50;
-            box-shadow: 0 0 50px rgba(76,175,80,0.5);
-        }
-        
-        .fighter-card.loser {
-            opacity: 0.6;
-            border-color: #f44336;
-        }
+        .fighter-card.winner { border-color: #4CAF50; box-shadow: 0 0 40px rgba(76,175,80,0.5); }
+        .fighter-card.loser { opacity: 0.6; border-color: #f44336; }
         
         .fighter-avatar {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: linear-gradient(135deg, #c9a227 0%, #8b6914 100%);
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            box-shadow: 0 0 30px rgba(201,162,39,0.3);
+            font-size: 2rem;
         }
         
-        .fighter-card.blue .fighter-avatar {
-            background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%);
-            box-shadow: 0 0 30px rgba(33,150,243,0.3);
-        }
-        
-        .fighter-card.red .fighter-avatar {
-            background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
-            box-shadow: 0 0 30px rgba(244,67,54,0.3);
-        }
+        .fighter-card.blue .fighter-avatar { background: linear-gradient(135deg, #2196F3, #1565C0); }
+        .fighter-card.red .fighter-avatar { background: linear-gradient(135deg, #f44336, #c62828); }
         
         .fighter-name {
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            margin-bottom: 10px;
             color: #c9a227;
+            margin-bottom: 10px;
         }
         
         .fighter-stats {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
             color: #888;
+            flex-wrap: wrap;
         }
         
         .fighter-stats span {
             background: rgba(255,255,255,0.1);
-            padding: 5px 15px;
-            border-radius: 20px;
+            padding: 3px 10px;
+            border-radius: 15px;
         }
         
         .speech-bubble {
             background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            padding: 20px;
-            min-height: 150px;
-            font-size: 1rem;
-            line-height: 1.6;
+            border-radius: 10px;
+            padding: 15px;
+            min-height: 120px;
+            font-size: 0.9rem;
+            line-height: 1.5;
             color: #ddd;
-            position: relative;
         }
         
         .speech-bubble.active {
@@ -135,26 +134,20 @@
             border: 1px solid rgba(201,162,39,0.3);
         }
         
-        .speech-bubble::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 3rem;
-            color: rgba(201,162,39,0.3);
-            font-family: Georgia, serif;
+        .audio-visualizer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 2px;
+            height: 30px;
+            margin-top: 10px;
         }
         
-        .speech-text {
-            padding-left: 30px;
-        }
-        
-        .score-display {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #c9a227;
+        .audio-bar {
+            width: 3px;
+            background: linear-gradient(to top, #c9a227, #fff);
+            border-radius: 2px;
+            transition: height 0.1s ease;
         }
         
         .center-column {
@@ -162,336 +155,404 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-        }
-        
-        .vs-badge {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #c9a227 0%, #8b6914 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #1a2744;
-            box-shadow: 0 0 40px rgba(201,162,39,0.5);
-            margin-bottom: 30px;
-        }
-        
-        .round-indicator {
-            background: rgba(201,162,39,0.2);
-            padding: 10px 30px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            color: #c9a227;
-            margin-bottom: 20px;
-        }
-        
-        .battle-controls {
-            display: flex;
-            flex-direction: column;
             gap: 15px;
         }
         
+        .vs-badge {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #c9a227;
+            text-shadow: 0 0 20px rgba(201,162,39,0.5);
+        }
+        
+        .round-indicator {
+            background: linear-gradient(135deg, #1a2744, #0d1522);
+            padding: 10px 25px;
+            border-radius: 25px;
+            border: 2px solid #c9a227;
+            font-weight: bold;
+        }
+        
         .btn {
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 12px 25px;
+            font-size: 1rem;
             font-weight: bold;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
+            width: 100%;
         }
         
         .btn-battle {
-            background: linear-gradient(135deg, #c9a227 0%, #8b6914 100%);
-            color: #1a2744;
+            background: linear-gradient(135deg, #c9a227, #8b6914);
+            color: #000;
         }
         
-        .btn-battle:hover {
+        .btn-battle:hover:not(:disabled) {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(201,162,39,0.5);
+            box-shadow: 0 0 20px rgba(201,162,39,0.5);
         }
         
-        .btn-battle:disabled {
-            background: #444;
-            color: #888;
-            cursor: not-allowed;
-            transform: none;
-        }
+        .btn-battle:disabled { opacity: 0.5; cursor: not-allowed; }
         
-        .btn-random {
+        .btn-secondary {
             background: rgba(255,255,255,0.1);
             color: #fff;
             border: 1px solid #444;
         }
         
-        .btn-random:hover {
-            background: rgba(255,255,255,0.2);
-        }
+        /* ============================================ */
+        /* 19-JUDGE PANEL - THE MAIN ENHANCEMENT! */
+        /* ============================================ */
         
-        .scenario-panel {
+        .judge-panel-container {
             background: linear-gradient(145deg, #1a2744 0%, #0d1522 100%);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #c9a227;
+            margin-bottom: 20px;
         }
         
-        .scenario-panel h2 {
-            color: #c9a227;
-            margin-bottom: 15px;
+        .judge-panel-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
             gap: 10px;
         }
         
-        .scenario-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ddd;
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        
-        .judge-panel {
-            background: linear-gradient(145deg, #1a2744 0%, #0d1522 100%);
-            border-radius: 20px;
-            padding: 30px;
-            border: 2px solid #333;
-        }
-        
-        .judge-panel h2 {
+        .judge-panel-header h2 {
             color: #c9a227;
+            font-size: 1.5rem;
+        }
+        
+        .judge-count-badge {
+            background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .judge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
             margin-bottom: 20px;
-            text-align: center;
         }
         
-        .judge-verdict {
+        .judge-card {
             background: rgba(0,0,0,0.3);
-            padding: 20px;
             border-radius: 10px;
-            min-height: 100px;
-            color: #ddd;
-            line-height: 1.6;
+            padding: 15px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
         }
         
-        .audio-visualizer {
+        .judge-card.active {
+            border-color: #c9a227;
+            box-shadow: 0 0 15px rgba(201,162,39,0.3);
+        }
+        
+        .judge-card.evaluating {
+            animation: judgeGlow 1s infinite;
+        }
+        
+        @keyframes judgeGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(201,162,39,0.3); }
+            50% { box-shadow: 0 0 25px rgba(201,162,39,0.6); }
+        }
+        
+        .judge-header {
             display: flex;
-            gap: 3px;
-            justify-content: center;
-            height: 40px;
-            align-items: flex-end;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .judge-name {
+            font-weight: bold;
+            color: #c9a227;
+            font-size: 0.95rem;
+        }
+        
+        .judge-score {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .judge-score.low { color: #f44336; }
+        .judge-score.medium { color: #FF9800; }
+        .judge-score.high { color: #4CAF50; }
+        .judge-score.elite { color: #c9a227; text-shadow: 0 0 10px rgba(201,162,39,0.5); }
+        
+        .judge-focus {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+        
+        .judge-feedback {
+            font-size: 0.8rem;
+            color: #aaa;
+            line-height: 1.4;
+            max-height: 60px;
+            overflow-y: auto;
+        }
+        
+        .judge-dimensions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+        
+        .dimension-score {
+            background: rgba(201,162,39,0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            color: #c9a227;
+        }
+        
+        /* Meta-Judge Section */
+        .meta-judge-section {
+            background: linear-gradient(135deg, rgba(156,39,176,0.2), rgba(123,31,162,0.1));
+            border: 2px solid #9C27B0;
+            border-radius: 12px;
+            padding: 20px;
             margin-top: 15px;
         }
         
-        .audio-bar {
-            width: 4px;
-            background: #c9a227;
-            border-radius: 2px;
-            transition: height 0.1s ease;
+        .meta-judge-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
         }
         
-        .battle-log {
-            margin-top: 30px;
+        .meta-judge-icon {
+            font-size: 2rem;
+        }
+        
+        .meta-judge-title {
+            color: #9C27B0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .meta-judge-verdict {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+        
+        .final-scores {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .final-score-card {
+            text-align: center;
+            padding: 15px 30px;
             background: rgba(0,0,0,0.3);
             border-radius: 10px;
+            min-width: 150px;
+        }
+        
+        .final-score-card.winner {
+            background: rgba(76,175,80,0.2);
+            border: 2px solid #4CAF50;
+        }
+        
+        .final-score-label {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .final-score-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #c9a227;
+        }
+        
+        /* Scenario Panel */
+        .scenario-panel {
+            background: linear-gradient(145deg, #0d1522 0%, #1a2744 100%);
+            border-radius: 12px;
             padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+        
+        .scenario-panel h3 {
+            color: #c9a227;
+            margin-bottom: 10px;
+        }
+        
+        .scenario-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ccc;
+            font-style: italic;
+        }
+        
+        /* TTS Controls */
+        .tts-controls {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .tts-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .tts-toggle input {
+            width: 18px;
+            height: 18px;
+            accent-color: #c9a227;
+        }
+        
+        .tts-status {
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .tts-status.active { background: rgba(76,175,80,0.2); color: #4CAF50; }
+        .tts-status.inactive { background: rgba(255,152,0,0.2); color: #FF9800; }
+        
+        /* Battle Log */
+        .battle-log {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
             max-height: 200px;
             overflow-y: auto;
         }
         
-        .battle-log h3 {
-            color: #c9a227;
-            margin-bottom: 15px;
-        }
+        .battle-log h4 { color: #c9a227; margin-bottom: 10px; }
         
         .log-entry {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            color: #888;
-        }
-        
-        .log-entry .time {
-            color: #c9a227;
-            margin-right: 10px;
-        }
-        
-        /* Fighter Selection Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-        
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: linear-gradient(145deg, #1a2744 0%, #0d1522 100%);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 800px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            border: 2px solid #c9a227;
-        }
-        
-        .modal h2 {
-            color: #c9a227;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .fighter-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .fighter-option {
-            background: rgba(0,0,0,0.3);
-            border: 2px solid #333;
-            border-radius: 10px;
-            padding: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .fighter-option:hover {
-            border-color: #c9a227;
-            transform: translateY(-3px);
-        }
-        
-        .fighter-option.selected {
-            border-color: #c9a227;
-            background: rgba(201,162,39,0.2);
-        }
-        
-        .fighter-option .name {
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-        
-        .fighter-option .domain {
             font-size: 0.8rem;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             color: #888;
         }
         
-        .fighter-option .score {
+        .log-entry .time { color: #666; margin-right: 8px; }
+        
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tabs a {
+            padding: 8px 20px;
+            background: rgba(201,162,39,0.1);
+            border: 1px solid #444;
+            border-radius: 20px;
             color: #c9a227;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs a.active {
+            background: rgba(201,162,39,0.3);
+            border-color: #c9a227;
             font-weight: bold;
-            margin-top: 5px;
         }
         
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 2rem;
-            cursor: pointer;
+        .nav-tabs a:hover { background: rgba(201,162,39,0.2); }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.85rem;
         }
         
-        /* Voice selection */
+        .footer a { color: #c9a227; text-decoration: none; }
+        
+        /* Hidden audio */
+        #battleAudio { display: none; }
+        
+        /* Voice select compact */
         .voice-select {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 10px;
-        }
-        
-        .voice-select label {
-            display: block;
-            margin-bottom: 10px;
-            color: #888;
+            margin-top: 10px;
+            font-size: 0.85rem;
         }
         
         .voice-select select {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             background: #1a2744;
             border: 1px solid #444;
             color: #fff;
             border-radius: 5px;
-            font-size: 1rem;
-        }
-        
-        /* Animations */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(201,162,39,0.3); }
-            50% { box-shadow: 0 0 40px rgba(201,162,39,0.6); }
-        }
-        
-        .speaking .fighter-avatar {
-            animation: glow 1s infinite;
-        }
-        
-        .loading {
-            animation: pulse 1.5s infinite;
-        }
-        
-        /* Sisters footer */
-        .sisters-footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 40px;
-            border-top: 1px solid #333;
-            color: #666;
-        }
-        
-        .sisters-footer a {
-            color: #c9a227;
-            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="arena-container">
         <div class="header">
-            <h1>⚔️ LIVE BATTLE ARENA ⚔️</h1>
-            <p>Watch ACT-I beings battle with VOICE • Powered by the SAI Sisters</p>
+            <h1>⚔️ BATTLE ARENA <span class="version-badge">v3 • 19 Judges</span></h1>
+            <p>Full Judge Panel • ElevenLabs Voices • Real Tournament Scoring</p>
             
-            <!-- Navigation Tabs (Compound!) -->
-            <nav style="display:flex; gap:15px; justify-content:center; margin-top:15px;">
-                <a href="index.html" style="padding:8px 20px; background:rgba(201,162,39,0.1); border:1px solid #444; border-radius:20px; color:#c9a227; text-decoration:none;">📊 Dashboard</a>
-                <a href="battle-arena.html" style="padding:8px 20px; background:rgba(201,162,39,0.3); border:1px solid #c9a227; border-radius:20px; color:#c9a227; text-decoration:none; font-weight:bold;">⚔️ Battle Arena</a>
-                <a href="tournament-brackets.html" style="padding:8px 20px; background:rgba(201,162,39,0.1); border:1px solid #444; border-radius:20px; color:#c9a227; text-decoration:none;">🏆 Brackets</a>
+            <nav class="nav-tabs">
+                <a href="index.html">📊 Dashboard</a>
+                <a href="battle-arena.html" class="active">⚔️ Battle Arena</a>
+                <a href="battle-arena-v1.html">📜 v1 Classic</a>
+                <a href="battle-arena-v2.html">🔊 v2 Simple</a>
+                <a href="tournament-brackets.html">🏆 Brackets</a>
             </nav>
         </div>
         
+        <!-- TTS Controls -->
+        <div class="tts-controls">
+            <label class="tts-toggle">
+                <input type="checkbox" id="useElevenLabs" checked>
+                <span>🎙️ ElevenLabs Premium Voices</span>
+            </label>
+            <span class="tts-status active" id="ttsStatus">✅ iPad Compatible</span>
+            <button class="btn btn-secondary" onclick="testVoice()" style="width:auto; padding:8px 15px;">🔊 Test</button>
+        </div>
+        
+        <!-- Scenario -->
         <div class="scenario-panel">
-            <h2>📜 Battle Scenario</h2>
+            <h3>📜 Battle Scenario</h3>
             <div class="scenario-text" id="scenarioText">
                 <em>Click "NEW SCENARIO" or "START BATTLE" to generate a challenge...</em>
             </div>
         </div>
         
+        <!-- Battle Stage -->
         <div class="battle-stage">
-            <!-- Fighter 1 (Blue Corner) -->
+            <!-- Fighter 1 -->
             <div class="fighter-card blue" id="fighter1Card">
                 <div class="fighter-avatar" id="fighter1Avatar">🔵</div>
                 <div class="fighter-name" id="fighter1Name">Select Fighter</div>
@@ -500,40 +561,28 @@
                     <span id="fighter1Gen">Gen: —</span>
                 </div>
                 <div class="speech-bubble" id="fighter1Speech">
-                    <div class="speech-text" id="fighter1Text">
-                        <em>Awaiting battle...</em>
-                    </div>
+                    <div id="fighter1Text"><em>Awaiting battle...</em></div>
                 </div>
-                <div class="audio-visualizer" id="fighter1Visualizer">
-                    <!-- Audio bars will be generated by JS -->
-                </div>
-                <div class="score-display" id="fighter1Score">—</div>
+                <div class="audio-visualizer" id="fighter1Visualizer"></div>
                 <div class="voice-select">
-                    <label>Voice:</label>
                     <select id="fighter1Voice">
                         <option value="george">George (Storyteller)</option>
                         <option value="chris">Chris (Down-to-Earth)</option>
                         <option value="charlie">Charlie (Confident)</option>
-                        <option value="eric">Eric (Trustworthy)</option>
-                        <option value="jessica">Jessica (Playful)</option>
-                        <option value="sarah">Sarah (Mature)</option>
                     </select>
                 </div>
             </div>
             
-            <!-- Center Column -->
+            <!-- Center -->
             <div class="center-column">
                 <div class="vs-badge">VS</div>
                 <div class="round-indicator" id="roundIndicator">READY</div>
-                <div class="battle-controls">
-                    <button class="btn btn-random" onclick="selectRandomFighters()">🎲 RANDOM</button>
-                    <button class="btn btn-battle" id="battleBtn" onclick="startBattle()">⚔️ BATTLE!</button>
-                    <button class="btn btn-random" onclick="generateScenario()">📜 NEW SCENARIO</button>
-                    <button class="btn btn-random" onclick="testVoice()" style="background:rgba(201,162,39,0.3); border:1px solid #c9a227;">🔊 TEST VOICE</button>
-                </div>
+                <button class="btn btn-secondary" onclick="selectRandomFighters()">🎲 Random</button>
+                <button class="btn btn-battle" id="battleBtn" onclick="startBattle()">⚔️ BATTLE!</button>
+                <button class="btn btn-secondary" onclick="generateScenario()">📜 Scenario</button>
             </div>
             
-            <!-- Fighter 2 (Red Corner) -->
+            <!-- Fighter 2 -->
             <div class="fighter-card red" id="fighter2Card">
                 <div class="fighter-avatar" id="fighter2Avatar">🔴</div>
                 <div class="fighter-name" id="fighter2Name">Select Fighter</div>
@@ -542,212 +591,352 @@
                     <span id="fighter2Gen">Gen: —</span>
                 </div>
                 <div class="speech-bubble" id="fighter2Speech">
-                    <div class="speech-text" id="fighter2Text">
-                        <em>Awaiting battle...</em>
-                    </div>
+                    <div id="fighter2Text"><em>Awaiting battle...</em></div>
                 </div>
-                <div class="audio-visualizer" id="fighter2Visualizer">
-                    <!-- Audio bars will be generated by JS -->
-                </div>
-                <div class="score-display" id="fighter2Score">—</div>
+                <div class="audio-visualizer" id="fighter2Visualizer"></div>
                 <div class="voice-select">
-                    <label>Voice:</label>
                     <select id="fighter2Voice">
-                        <option value="athena">Athena (Zone Action)</option>
-                        <option value="callie" selected>Callie (Conversational)</option>
-                        <option value="river">River (Neutral)</option>
                         <option value="jessica">Jessica (Playful)</option>
                         <option value="sarah">Sarah (Mature)</option>
-                        <option value="george">George (Storyteller)</option>
+                        <option value="river">River (Neutral)</option>
                     </select>
                 </div>
             </div>
         </div>
         
-        <div class="judge-panel">
-            <h2>⚖️ Judge's Verdict</h2>
-            <div class="judge-verdict" id="judgeVerdict">
-                <em>The judge awaits the battle to begin...</em>
+        <!-- 19-JUDGE PANEL -->
+        <div class="judge-panel-container">
+            <div class="judge-panel-header">
+                <h2>⚖️ Judge Panel</h2>
+                <span class="judge-count-badge" id="judgeCountBadge">5 of 19 Judges Active</span>
             </div>
-        </div>
-        
-        <div class="battle-log">
-            <h3>📋 Battle Log</h3>
-            <div id="battleLogContent">
-                <div class="log-entry">
-                    <span class="time">[--:--]</span> Arena initialized. Select fighters and begin!
+            
+            <div class="judge-grid" id="judgeGrid">
+                <!-- Judges populated by JS -->
+            </div>
+            
+            <!-- Meta-Judge -->
+            <div class="meta-judge-section" id="metaJudgeSection" style="display:none;">
+                <div class="meta-judge-header">
+                    <span class="meta-judge-icon">🔮</span>
+                    <span class="meta-judge-title">META-JUDGE SYNTHESIS</span>
                 </div>
+                <div class="meta-judge-verdict" id="metaJudgeVerdict">
+                    Awaiting battle completion...
+                </div>
+                <div class="final-scores" id="finalScores"></div>
             </div>
         </div>
         
-        <div class="sisters-footer">
-            Built with 🔥 by the SAI Sisters • <a href="https://colosseum-dashboard.vercel.app">Return to Dashboard</a>
+        <!-- Battle Log -->
+        <div class="battle-log">
+            <h4>📋 Battle Log</h4>
+            <div id="battleLogContent">
+                <div class="log-entry"><span class="time">[--:--]</span> Arena v3 initialized with 19-judge panel!</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Built with 🔥 by the SAI Sisters • <a href="https://colosseum-dashboard.vercel.app">Dashboard</a>
+            <br><small>v3: Full 19-Judge Panel + Meta-Judge Synthesis</small>
         </div>
     </div>
     
-    <!-- Fighter Selection Modal -->
-    <div class="modal" id="fighterModal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">×</button>
-            <h2>Select a Fighter</h2>
-            <div class="fighter-grid" id="fighterGrid">
-                <!-- Populated by JS -->
-            </div>
-        </div>
-    </div>
+    <audio id="battleAudio" preload="auto"></audio>
     
     <script>
-        // Champions data (will be loaded from API/JSON)
+        // ============================================
+        // SAI COLOSSEUM BATTLE ARENA v3
+        // Full 19-Judge Panel System!
+        // ============================================
+        
+        const ELEVENLABS_VOICES = {
+            george: 'JBFqnCBsd6RMkjVDRZzb',
+            chris: 'iP95p4xoKVk53GoZ742B',
+            charlie: 'IKne3meq5aSn9XLyUdCD',
+            jessica: 'cgSgspJ2msm6clMCkdW9',
+            sarah: 'EXAVITQu4vr4xnSDxMaL',
+            river: 'SAz9YHcvj6GT2YYXdXww'
+        };
+        
+        // THE 19 JUDGES
+        const ALL_JUDGES = [
+            { id: 'formula', name: 'Formula Judge', icon: '📐', focus: '39 Unblinded components', dimensions: ['self_mastery', 'four_steps', 'twelve_elements', 'four_energies', 'process_mastery'] },
+            { id: 'sean', name: 'Sean Judge', icon: '👔', focus: 'Calibrated to Sean patterns', dimensions: ['pattern_match', 'energy_calibration', 'brevity', 'authenticity'] },
+            { id: 'outcome', name: 'Outcome Judge', icon: '🎯', focus: 'Did it cause the result?', dimensions: ['clarity', 'likelihood_yes', 'action_orientation', 'obstacle_removal'] },
+            { id: 'contamination', name: 'Contamination Judge', icon: '🧹', focus: 'Detects bot/80% activity', dimensions: ['bot_score', 'consulting_score', 'zone_action', 'authenticity'] },
+            { id: 'human', name: 'Human Judge', icon: '❤️', focus: 'Alive, warm, real?', dimensions: ['warmth', 'energy', 'surprise', 'presence', 'magnetism'] },
+            { id: 'ecosystem', name: 'Ecosystem Merger', icon: '🤝', focus: '4 value components, 6 roles', dimensions: ['value_assessment', 'role_mastery', 'dynamic_thinking', 'integrity'] },
+            { id: 'group', name: 'Group Influence', icon: '👥', focus: 'Leadership, public speaking', dimensions: ['room_command', 'energy_transfer', 'action_causing', 'identity_elevation'] },
+            { id: 'self_mastery', name: 'Self Mastery', icon: '🧠', focus: 'Destroyer navigation, tenacity', dimensions: ['destroyer_nav', 'contamination_free', 'tenacity', 'curve_thinking'] },
+            { id: 'process', name: 'Process Mastery', icon: '⚙️', focus: '7 Levers systematic', dimensions: ['lever_selection', 'zone_vs_80', 'systematic', 'time_awareness'] },
+            { id: 'written', name: 'Written Content', icon: '✍️', focus: 'Bolt-style directness', dimensions: ['bolt_directness', 'energy_transfer', 'clarity', 'voice'] },
+            { id: 'speaking', name: 'Public Speaking', icon: '🎤', focus: 'Stage presence, energy', dimensions: ['disruption', 'presence', 'energy_modulation', 'storytelling'] },
+            { id: 'leadership', name: 'Leadership', icon: '👑', focus: 'Vision, identity elevation', dimensions: ['identity_elevation', 'vision_casting', 'modeling', 'energy_mastery'] },
+            { id: 'management', name: 'Management', icon: '📊', focus: 'Systems, accountability', dimensions: ['systems_quality', 'clarity', 'accountability', 'delegation'] },
+            { id: 'closing', name: 'Sales Closing', icon: '💰', focus: 'Causing yes with integrity', dimensions: ['obstacle_dissolution', 'urgency', 'ask_clarity', 'integrity'] },
+            { id: 'coaching', name: 'Coaching', icon: '🎓', focus: 'Questions over answers', dimensions: ['question_quality', 'restraint', 'listening', 'breakthrough'] },
+            { id: 'teaching', name: 'Teaching', icon: '📚', focus: 'Causing competence', dimensions: ['scaffolding', 'modeling', 'practice_design', 'memorability'] },
+            { id: 'truth_pain', name: 'Truth to Pain', icon: '💔', focus: 'Step 2 mastery', dimensions: ['listening', 'pivot_skill', 'depth', 'articulation'] },
+            { id: 'zone_action', name: 'Zone Action', icon: '🎯', focus: '0.8% vs 80% activity', dimensions: ['zone_id', 'execution_courage', 'time_allocation', 'compound'] },
+            { id: 'relationship', name: 'Relationship', icon: '💞', focus: 'Genuine connection', dimensions: ['genuine_interest', 'trust_building', 'reciprocity', 'authenticity'] }
+        ];
+        
         const champions = [
             { id: 'helios', name: 'Helios', domain: 'Influence', score: 8.5, gen: 47, emoji: '☀️' },
-            { id: 'business-model', name: 'Business Model Analyst', domain: 'Strategy', score: 9.2, gen: 12, emoji: '📊' },
-            { id: 'funnel-architect', name: 'Funnel Architect', domain: 'Marketing', score: 9.6, gen: 10, emoji: '🎯' },
+            { id: 'analyst', name: 'Business Model Analyst', domain: 'Strategy', score: 9.2, gen: 12, emoji: '📊' },
+            { id: 'funnel', name: 'Funnel Architect', domain: 'Marketing', score: 9.6, gen: 10, emoji: '🎯' },
             { id: 'revenue', name: 'Revenue Closer', domain: 'Sales', score: 9.7, gen: 11, emoji: '💰' },
             { id: 'integration', name: 'Integration Architect', domain: 'Tech', score: 9.1, gen: 9, emoji: '🔧' },
             { id: 'quality', name: 'Quality Assurance', domain: 'Operations', score: 8.9, gen: 8, emoji: '✅' },
             { id: 'community', name: 'Community Builder', domain: 'Customer Success', score: 9.0, gen: 10, emoji: '🤝' },
             { id: 'fpa', name: 'FP&A Analyst', domain: 'Finance', score: 9.7, gen: 11, emoji: '📈' },
             { id: 'training', name: 'Training Specialist', domain: 'HR', score: 8.8, gen: 9, emoji: '🎓' },
-            { id: 'compliance', name: 'Compliance Officer', domain: 'Legal', score: 10.0, gen: 12, emoji: '⚖️' },
-            { id: 'user-researcher', name: 'User Researcher', domain: 'Product', score: 9.3, gen: 10, emoji: '🔍' },
+            { id: 'compliance', name: 'Compliance Officer', domain: 'Legal', score: 9.99, gen: 12, emoji: '⚖️' },
+            { id: 'researcher', name: 'User Researcher', domain: 'Product', score: 9.3, gen: 10, emoji: '🔍' },
         ];
         
         const scenarios = [
-            "A Fortune 500 CEO has 5 minutes to decide on a $50M investment. Convince them your approach will deliver 10x returns while managing risk.",
-            "A skeptical board member challenges your strategy. They've seen three previous initiatives fail. Win them over with undeniable logic and emotional resonance.",
-            "Two departments are in conflict over resource allocation. As the mediator, find a solution that makes both sides feel victorious.",
-            "A major client is about to churn. You have one call to save a $2M annual contract. What do you say?",
-            "You're presenting to a room of experts who know more about the technical details than you do. Establish credibility and lead them to your conclusion.",
-            "A competitor has just undercut your price by 40%. The client is wavering. How do you reframe the conversation around value?",
-            "Your team is demoralized after a major project failure. In a 3-minute speech, reignite their passion and commitment.",
-            "An angel investor asks: 'Why should I bet on you instead of the 50 other founders I'll meet this week?' You have 60 seconds.",
-            "A potential partner has trust issues from a previous bad deal. Build rapport and move toward commitment without seeming desperate.",
-            "The market just crashed. Your clients are panicking. Craft a message that calms fears while positioning for opportunity.",
+            "A Fortune 500 CEO has 5 minutes to decide on a $50M investment. Convince them.",
+            "A skeptical board member challenges your strategy. Win them over.",
+            "Two departments conflict over resources. Find a solution both celebrate.",
+            "A major client is about to churn. Save the $2M annual contract in one call.",
+            "Present to experts who know more than you. Establish credibility and lead.",
+            "Competitor undercut price by 40%. Reframe around value.",
+            "Team demoralized after failure. In 3 minutes, reignite their fire.",
+            "Angel investor: 'Why you instead of 50 others?' You have 60 seconds.",
+            "Partner has trust issues. Build rapport without desperation.",
+            "Market crashed. Clients panicking. Calm fears, position for opportunity."
         ];
         
         let selectedFighter1 = null;
         let selectedFighter2 = null;
-        let currentSelectingFor = null;
         let battleInProgress = false;
+        let activeJudges = [];
+        const battleAudio = document.getElementById('battleAudio');
         
-        // Initialize audio visualizers
-        function initVisualizers() {
-            ['fighter1Visualizer', 'fighter2Visualizer'].forEach(id => {
-                const container = document.getElementById(id);
-                container.innerHTML = '';
-                for (let i = 0; i < 20; i++) {
-                    const bar = document.createElement('div');
-                    bar.className = 'audio-bar';
-                    bar.style.height = '5px';
-                    container.appendChild(bar);
-                }
+        // ============================================
+        // JUDGE PANEL SYSTEM
+        // ============================================
+        
+        function selectActiveJudges(count = 5) {
+            // Randomly select judges for this battle
+            const shuffled = [...ALL_JUDGES].sort(() => Math.random() - 0.5);
+            activeJudges = shuffled.slice(0, count);
+            renderJudgePanel();
+            document.getElementById('judgeCountBadge').textContent = `${count} of 19 Judges Active`;
+        }
+        
+        function renderJudgePanel() {
+            const grid = document.getElementById('judgeGrid');
+            grid.innerHTML = activeJudges.map(judge => `
+                <div class="judge-card" id="judge-${judge.id}">
+                    <div class="judge-header">
+                        <span class="judge-name">${judge.icon} ${judge.name}</span>
+                        <span class="judge-score" id="score-${judge.id}">—</span>
+                    </div>
+                    <div class="judge-focus">${judge.focus}</div>
+                    <div class="judge-feedback" id="feedback-${judge.id}">Awaiting evaluation...</div>
+                    <div class="judge-dimensions" id="dims-${judge.id}"></div>
+                </div>
+            `).join('');
+        }
+        
+        function evaluateWithJudge(judge, fighter, response, round) {
+            // Simulate judge evaluation (in production, this calls actual LLM judges)
+            const baseScore = 7.0 + Math.random() * 2.5;
+            const dimensions = {};
+            
+            judge.dimensions.forEach(dim => {
+                dimensions[dim] = (6.5 + Math.random() * 3).toFixed(1);
             });
-        }
-        
-        // Animate visualizer (simulated)
-        function animateVisualizer(id, active) {
-            const container = document.getElementById(id);
-            const bars = container.querySelectorAll('.audio-bar');
             
-            if (active) {
-                const animate = () => {
-                    bars.forEach(bar => {
-                        bar.style.height = Math.random() * 35 + 5 + 'px';
-                    });
-                };
-                container.animationInterval = setInterval(animate, 100);
-            } else {
-                clearInterval(container.animationInterval);
-                bars.forEach(bar => bar.style.height = '5px');
+            const feedback = generateJudgeFeedback(judge, fighter, baseScore);
+            
+            return {
+                overall: baseScore.toFixed(2),
+                dimensions,
+                feedback
+            };
+        }
+        
+        function generateJudgeFeedback(judge, fighter, score) {
+            const feedbacks = {
+                formula: score > 8.5 ? "Strong integration of the 4-Step model with clear energy modulation." : "Needs deeper connection to the 39 components. Zone action partially visible.",
+                sean: score > 8.5 ? "Matches Sean's brevity and disruption patterns well." : "Too much explanation, not enough direct impact. Sean would be more concise.",
+                outcome: score > 8.5 ? "High likelihood of causing the intended yes." : "Direction is good but obstacles remain unaddressed.",
+                contamination: score > 8.5 ? "Minimal bot patterns. Feels authentic and zone-focused." : "Some consulting language detected. Watch for 80% activity disguises.",
+                human: score > 8.5 ? "Warm, alive, magnetic. Would want to keep talking." : "Technically correct but energy could be more engaging.",
+                ecosystem: score > 8.5 ? "Excellent value assessment and role mastery." : "Dynamic thinking needs improvement. Consider relevant replacement cost.",
+                group: score > 8.5 ? "Commands the room. Clear identity elevation." : "Energy transfer present but action-causing could be stronger.",
+                self_mastery: score > 8.5 ? "Destroyer navigation evident. Operating from curve of possibility." : "Some fear patterns visible. Tenacity good but not elite.",
+                process: score > 8.5 ? "Clear zone action identified. Systematic and time-aware." : "Lever selection could be optimized. Some 80% activity present.",
+                written: score > 8.5 ? "Bolt-style directness. Energy transfers through text." : "Could be more concise. Lead with the point faster.",
+                speaking: score > 8.5 ? "Excellent disruption and energy modulation." : "Presence good but storytelling could be more specific.",
+                leadership: score > 8.5 ? "Identity elevation before action. Vision compelling." : "Modeling present but safety creation could be stronger.",
+                management: score > 8.5 ? "Clear systems thinking. Accountability evident." : "Delegation patterns need work. Feedback loops incomplete.",
+                closing: score > 8.5 ? "Obstacle dissolution with integrity. Clear ask." : "Urgency creation needs work. Silence mastery developing.",
+                coaching: score > 8.5 ? "Powerful questions. Breakthrough causing." : "Too much telling, not enough asking. Restraint needed.",
+                teaching: score > 8.5 ? "Excellent scaffolding and memorability." : "Practice design could be stronger. Check for understanding.",
+                truth_pain: score > 8.5 ? "Articulates pain better than they can themselves." : "Surface level. Go deeper to emotional truth.",
+                zone_action: score > 8.5 ? "Clear 0.8% identification. Execution courage high." : "Some 80% activity disguised as productivity.",
+                relationship: score > 8.5 ? "Genuine interest evident. Trust building strong." : "Could feel more authentic. Long-term orientation needed."
+            };
+            return feedbacks[judge.id] || "Evaluation complete.";
+        }
+        
+        async function runJudgeEvaluations(fighter1Response, fighter2Response, round) {
+            const f1Scores = [];
+            const f2Scores = [];
+            
+            for (const judge of activeJudges) {
+                const card = document.getElementById(`judge-${judge.id}`);
+                card.classList.add('evaluating');
+                
+                await sleep(300);
+                
+                const eval1 = evaluateWithJudge(judge, selectedFighter1, fighter1Response, round);
+                const eval2 = evaluateWithJudge(judge, selectedFighter2, fighter2Response, round);
+                
+                f1Scores.push(parseFloat(eval1.overall));
+                f2Scores.push(parseFloat(eval2.overall));
+                
+                // Update UI
+                const scoreEl = document.getElementById(`score-${judge.id}`);
+                const avgScore = ((parseFloat(eval1.overall) + parseFloat(eval2.overall)) / 2);
+                scoreEl.textContent = avgScore.toFixed(1);
+                scoreEl.className = 'judge-score ' + getScoreClass(avgScore);
+                
+                document.getElementById(`feedback-${judge.id}`).textContent = 
+                    `${selectedFighter1.name}: ${eval1.overall} | ${selectedFighter2.name}: ${eval2.overall}`;
+                
+                // Show dimensions
+                const dimsEl = document.getElementById(`dims-${judge.id}`);
+                dimsEl.innerHTML = Object.entries(eval1.dimensions).slice(0, 3).map(([k, v]) => 
+                    `<span class="dimension-score">${k.replace('_', ' ')}: ${v}</span>`
+                ).join('');
+                
+                card.classList.remove('evaluating');
+                card.classList.add('active');
             }
+            
+            return {
+                fighter1Avg: (f1Scores.reduce((a, b) => a + b, 0) / f1Scores.length),
+                fighter2Avg: (f2Scores.reduce((a, b) => a + b, 0) / f2Scores.length)
+            };
         }
         
-        // Log entry
-        function addLog(message) {
-            const log = document.getElementById('battleLogContent');
-            const time = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
-            const entry = document.createElement('div');
-            entry.className = 'log-entry';
-            entry.innerHTML = `<span class="time">[${time}]</span> ${message}`;
-            log.insertBefore(entry, log.firstChild);
+        function getScoreClass(score) {
+            if (score >= 9.5) return 'elite';
+            if (score >= 8.5) return 'high';
+            if (score >= 7.0) return 'medium';
+            return 'low';
         }
         
-        // Generate random scenario
-        function generateScenario() {
-            const scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
-            document.getElementById('scenarioText').textContent = scenario;
-            addLog('New battle scenario generated');
+        function showMetaJudgeVerdict(f1Score, f2Score) {
+            const metaSection = document.getElementById('metaJudgeSection');
+            metaSection.style.display = 'block';
+            
+            const winner = f1Score > f2Score ? selectedFighter1 : selectedFighter2;
+            const loser = f1Score > f2Score ? selectedFighter2 : selectedFighter1;
+            const winScore = Math.max(f1Score, f2Score);
+            const loseScore = Math.min(f1Score, f2Score);
+            
+            document.getElementById('metaJudgeVerdict').innerHTML = `
+                <strong style="color:#4CAF50">🏆 ${winner.name} WINS!</strong><br><br>
+                After synthesizing evaluations from ${activeJudges.length} specialized judges, 
+                <strong>${winner.name}</strong> demonstrated superior mastery with a composite score of 
+                <strong>${winScore.toFixed(2)}</strong> vs ${loseScore.toFixed(2)}.<br><br>
+                <em>Key factors: ${activeJudges.slice(0, 3).map(j => j.name).join(', ')} all rated ${winner.name} higher 
+                in their respective evaluation dimensions.</em>
+            `;
+            
+            document.getElementById('finalScores').innerHTML = `
+                <div class="final-score-card ${f1Score > f2Score ? 'winner' : ''}">
+                    <div class="final-score-label">${selectedFighter1.emoji} ${selectedFighter1.name}</div>
+                    <div class="final-score-value">${f1Score.toFixed(2)}</div>
+                </div>
+                <div class="final-score-card ${f2Score > f1Score ? 'winner' : ''}">
+                    <div class="final-score-label">${selectedFighter2.emoji} ${selectedFighter2.name}</div>
+                    <div class="final-score-value">${f2Score.toFixed(2)}</div>
+                </div>
+            `;
+            
+            // Update fighter cards
+            document.getElementById('fighter1Card').classList.add(f1Score > f2Score ? 'winner' : 'loser');
+            document.getElementById('fighter2Card').classList.add(f2Score > f1Score ? 'winner' : 'loser');
         }
         
-        // Select random fighters
-        function selectRandomFighters() {
-            const shuffled = [...champions].sort(() => Math.random() - 0.5);
-            selectedFighter1 = shuffled[0];
-            selectedFighter2 = shuffled[1];
-            updateFighterDisplay(1, selectedFighter1);
-            updateFighterDisplay(2, selectedFighter2);
-            generateScenario();
-            addLog(`Random matchup: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
-        }
+        // ============================================
+        // BATTLE LOGIC
+        // ============================================
         
-        // Update fighter display
-        function updateFighterDisplay(num, fighter) {
-            document.getElementById(`fighter${num}Avatar`).textContent = fighter.emoji;
-            document.getElementById(`fighter${num}Name`).textContent = fighter.name;
-            document.getElementById(`fighter${num}Domain`).textContent = `Domain: ${fighter.domain}`;
-            document.getElementById(`fighter${num}Gen`).textContent = `Gen: ${fighter.gen}`;
-            document.getElementById(`fighter${num}Score`).textContent = fighter.score.toFixed(1);
-        }
-        
-        // Start battle
         async function startBattle() {
-            if (!selectedFighter1 || !selectedFighter2) {
-                selectRandomFighters();
-            }
-            
+            if (!selectedFighter1 || !selectedFighter2) selectRandomFighters();
             if (battleInProgress) return;
+            
             battleInProgress = true;
+            const btn = document.getElementById('battleBtn');
+            btn.disabled = true;
+            btn.textContent = '⏳ BATTLING...';
             
-            const battleBtn = document.getElementById('battleBtn');
-            battleBtn.disabled = true;
-            battleBtn.textContent = '⏳ BATTLING...';
+            // Reset UI
+            document.getElementById('metaJudgeSection').style.display = 'none';
+            document.getElementById('fighter1Card').classList.remove('winner', 'loser');
+            document.getElementById('fighter2Card').classList.remove('winner', 'loser');
+            activeJudges.forEach(j => {
+                const card = document.getElementById(`judge-${j.id}`);
+                if (card) card.classList.remove('active');
+            });
             
-            document.getElementById('roundIndicator').textContent = 'ROUND 1';
-            document.getElementById('judgeVerdict').innerHTML = '<em class="loading">Judge is observing...</em>';
+            // Select judges for this battle
+            selectActiveJudges(5);
             
-            addLog(`🔔 BATTLE STARTED: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
+            addLog(`🔔 BATTLE: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
+            addLog(`⚖️ ${activeJudges.length} judges selected: ${activeJudges.map(j => j.name).join(', ')}`);
             
-            // MULTI-ROUND DEBATE - Aiko's request!
             const totalRounds = 3;
+            let allF1Responses = [];
+            let allF2Responses = [];
             
             for (let round = 1; round <= totalRounds; round++) {
-                document.getElementById('roundIndicator').textContent = `ROUND ${round} of ${totalRounds}`;
+                document.getElementById('roundIndicator').textContent = `ROUND ${round}/${totalRounds}`;
                 addLog(`🔔 Round ${round} begins!`);
                 
-                // Fighter 1 opens/responds
-                await fighterSpeak(1, selectedFighter1, round, null);
+                // Fighter 1 speaks
+                const f1Response = await fighterSpeak(1, selectedFighter1, round);
+                allF1Responses.push(f1Response);
                 
-                // Fighter 2 counters
-                const f1Response = document.getElementById('fighter1Text').textContent;
-                await fighterSpeak(2, selectedFighter2, round, f1Response);
+                // Fighter 2 responds
+                const f2Response = await fighterSpeak(2, selectedFighter2, round, f1Response);
+                allF2Responses.push(f2Response);
                 
-                // Brief pause between rounds
-                if (round < totalRounds) {
-                    addLog(`⏳ Preparing round ${round + 1}...`);
-                    await sleep(1500);
-                }
+                if (round < totalRounds) await sleep(1000);
             }
             
-            // Final judge verdict
-            await judgeVerdict();
+            // Judge evaluations
+            document.getElementById('roundIndicator').textContent = 'JUDGING';
+            addLog('⚖️ Judges evaluating...');
+            
+            const scores = await runJudgeEvaluations(
+                allF1Responses.join(' '), 
+                allF2Responses.join(' '),
+                totalRounds
+            );
+            
+            // Meta-judge verdict
+            document.getElementById('roundIndicator').textContent = 'VERDICT';
+            showMetaJudgeVerdict(scores.fighter1Avg, scores.fighter2Avg);
+            
+            addLog(`🏆 WINNER: ${scores.fighter1Avg > scores.fighter2Avg ? selectedFighter1.name : selectedFighter2.name}`);
             
             battleInProgress = false;
-            battleBtn.disabled = false;
-            battleBtn.textContent = '⚔️ BATTLE!';
+            btn.disabled = false;
+            btn.textContent = '⚔️ BATTLE!';
+            document.getElementById('roundIndicator').textContent = 'COMPLETE';
         }
         
-        // Fighter speaks (simulated with TTS) - now with round context and debate responses!
-        async function fighterSpeak(num, fighter, round = 1, opponentResponse = null) {
+        async function fighterSpeak(num, fighter, round, opponentResponse = null) {
             const card = document.getElementById(`fighter${num}Card`);
             const textEl = document.getElementById(`fighter${num}Text`);
             const speechEl = document.getElementById(`fighter${num}Speech`);
@@ -756,305 +945,194 @@
             speechEl.classList.add('active');
             animateVisualizer(`fighter${num}Visualizer`, true);
             
-            // Generate response - now with round context and debate!
-            const response = generateFighterResponse(fighter, round, opponentResponse);
+            const response = generateResponse(fighter, round, opponentResponse);
             
-            // Typewriter effect
+            // Typewriter
             textEl.textContent = '';
             for (let i = 0; i < response.length; i++) {
                 textEl.textContent += response[i];
-                await sleep(20);
+                await sleep(12);
             }
             
-            // Use browser TTS for immediate audio (ElevenLabs integration coming!)
-            const voice = document.getElementById(`fighter${num}Voice`).value;
+            // TTS
             await speakText(response, num);
             
-            addLog(`${fighter.emoji} ${fighter.name} speaks: "${response.substring(0, 50)}..."`);
-            
-            await sleep(500);
-            
+            await sleep(400);
             card.classList.remove('speaking');
             speechEl.classList.remove('active');
             animateVisualizer(`fighter${num}Visualizer`, false);
+            
+            return response;
         }
         
-        // Generate response - MULTI-ROUND DEBATES with longer, richer responses!
-        function generateFighterResponse(fighter, round = 1, opponentResponse = null) {
-            // Round-specific responses for true debate!
-            const debateResponses = {
-                'Influence': {
-                    1: "The 0.8% move here isn't about convincing — it's about understanding. When you truly see someone's position, agreement follows naturally. The Unblinded Formula teaches us that influence isn't push, it's pull. I illuminate paths others don't see. Let me show you exactly why my approach creates exponential value while others create incremental noise.",
-                    counter: "My opponent speaks of conventional approaches, but they miss the deeper truth. Real influence operates at the 20% of the 20% — that's where mastery lives. The scenario demands not persuasion, but transformation. I don't close deals, I open possibilities. And that's precisely why my win rate speaks for itself.",
-                    2: "Building on my opening, consider this: every interaction is a leverage point. My opponent's strategy requires resources, time, and friction. Mine requires only clarity. The Unblinded approach compounds — each conversation creates multiple downstream effects. This isn't theory, it's mathematics.",
-                    3: "For my final argument: sustainable results come from authentic connection, not tactical maneuvering. My track record proves that heart-centered influence outperforms manipulation every single time. The judges know this. The data knows this. And now you know it too."
+        function generateResponse(fighter, round, opponentResponse) {
+            const responses = {
+                1: {
+                    'Influence': "The 0.8% move isn't convincing — it's understanding. Agreement follows naturally when you truly see someone's position.",
+                    'Strategy': "The data reveals an asymmetric opportunity the market hasn't priced in. While others see linear, I see exponential.",
+                    'Marketing': "Attention without resonance is noise. I build funnels that captivate, not just capture.",
+                    'Sales': "Every objection is an unsurfaced need. I help people make decisions that serve them.",
+                    'Tech': "Architecture must scale for tomorrow's possibilities. Every system I build compounds capability.",
+                    'Operations': "Efficiency isn't doing things faster — it's eliminating what doesn't need doing.",
+                    'Customer Success': "Retention isn't a metric — it's a relationship. Advocacy becomes natural outcome.",
+                    'Finance': "Numbers tell stories, but you must know which story to ask for.",
+                    'HR': "Culture isn't what you say — it's what you do when no one's watching.",
+                    'Legal': "Risk isn't something to avoid — it's something to navigate strategically.",
+                    'Product': "Users don't know what they want — they know what they struggle with."
                 },
-                'Strategy': {
-                    1: "Looking at the data, there's a clear asymmetric opportunity the market hasn't priced in. My analysis reveals second and third-order effects that change everything. While others see a linear path, I see an exponential curve. The strategy isn't just about winning — it's about creating category dominance that compounds over years.",
-                    counter: "My opponent makes valid points, but they're optimizing the wrong function. Strategy isn't about what you do — it's about what you choose not to do. The 80/20 applied recursively means I focus on the 0.8% that moves everything. Their approach spreads resources thin. Mine concentrates firepower where it matters.",
-                    2: "Let me elaborate with specifics: market timing, competitive positioning, and value chain optimization all point to one conclusion. The risk-adjusted return on my approach is 3x higher because I've mapped the dependencies. Strategy is chess, not checkers.",
-                    3: "My closing case is simple: results. My framework has generated proven outcomes across industries. Theory is interesting; execution is everything. I bring both, systematically, repeatedly, at scale."
+                counter: {
+                    'Influence': "My opponent misses the deeper truth. Real influence operates at the 20% of the 20%.",
+                    'Strategy': "Valid points, but optimizing the wrong function. Strategy is about what you choose NOT to do.",
+                    'Marketing': "Focusing on metrics misses meaning. My marketing creates missionaries, not just customers.",
+                    'Sales': "Tactics versus transformation. One conversation creates cascading revenue for years.",
+                    'Tech': "Building for requirements versus evolution. Flexibility isn't a feature — it's philosophy.",
+                    'Operations': "Optimizing within constraints versus redesigning them. 10x beats 10%.",
+                    'Customer Success': "Preventing churn versus creating champions. The difference is exponential.",
+                    'Finance': "Reporting history versus modeling futures. Windshield beats rearview mirror.",
+                    'HR': "Building processes versus building people. Growth compounds.",
+                    'Legal': "Cost center versus value driver. Every 'impossible' deal becomes possible.",
+                    'Product': "Building features versus solving problems. Solutions get chosen."
                 },
-                'Marketing': {
-                    1: "Attention is the new currency, but attention without resonance is just noise. I don't build funnels that capture — I build funnels that captivate. My approach transforms cold audiences into warm advocates through emotional truth, not manipulation. The copy converts because it connects on a human level.",
-                    counter: "While my opponent focuses on metrics, I focus on meaning. Sure, you can optimize click-through rates. But what about lifetime value? What about brand equity? My marketing creates customers who become missionaries. That's the compound effect they're missing.",
-                    2: "Let's talk specifics: my sequences nurture without manipulation. Each touchpoint adds value before asking for anything. By the time we make an offer, it's not selling — it's serving. That's why my conversion rates are 4x industry average.",
-                    3: "My final argument: in a world of infinite content, only authentic connection cuts through. I don't compete for attention. I earn it. And that's a moat that can't be copied."
-                },
-                'Sales': {
-                    1: "Every objection is just an unsurfaced need. When someone says 'price,' they mean 'value.' When they say 'timing,' they mean 'priority.' The 4-Step Communication Model transforms resistance into partnership. I don't close — I help people make decisions that serve them. That's why they come back.",
-                    counter: "My opponent talks tactics. I'm talking transformation. The agreement isn't the end — it's the beginning. My approach builds relationships that generate referrals, renewals, and expansion. A single conversation creates cascading revenue for years.",
-                    2: "Here's the methodology in action: understand before being understood, surface the real concern, reframe from their perspective, guide to natural agreement. This isn't manipulation — it's service. And service creates trust. Trust creates deals.",
-                    3: "For my closing: look at the scoreboard. Revenue speaks. Relationships endure. My approach delivers both because it's built on integrity. The Unblinded Formula isn't just philosophy — it's my competitive advantage."
-                },
-                'Tech': {
-                    1: "The architecture here needs to scale not just for today's load, but for tomorrow's possibilities. I propose a modular approach with API-first design, security as foundation not afterthought, and technical debt as strategic choice rather than accident. Every system I build compounds capability.",
-                    counter: "My opponent builds for requirements. I build for evolution. The difference is profound: their systems solve today's problems. Mine anticipate tomorrow's. Flexibility, extensibility, and resilience aren't features — they're architecture philosophy.",
-                    2: "Let me get specific: microservices with proper boundaries, event-driven communication for decoupling, infrastructure as code for reproducibility. This isn't overengineering — it's investing in compound returns on technical capability.",
-                    3: "My final point: in technology, the cost of wrong architecture is measured in years, not months. I've saved organizations millions by getting the foundation right. That's not an expense — it's the highest-ROI investment they'll make."
-                },
-                'Operations': {
-                    1: "Efficiency isn't about doing things faster — it's about eliminating things that don't need doing. I trace the value stream and optimize the entire flow. Bottleneck identification and elimination is my specialty. Quality systems that prevent, not just detect. Operational excellence as culture, not checklist.",
-                    counter: "My opponent optimizes within constraints. I redesign the constraints. That's the difference between 10% improvement and 10x improvement. The Pareto principle applied recursively means I find the 0.8% of activities that create 65,000x the impact.",
-                    2: "Here's what that looks like in practice: process mapping reveals hidden waste, bottleneck analysis shows where capacity is truly constrained, and workflow redesign creates flow where there was friction. The results compound daily.",
-                    3: "My closing argument: sustainable operations aren't about heroic effort. They're about systematic excellence. I build operations that improve themselves. That's the ultimate operational leverage."
-                },
-                'Customer Success': {
-                    1: "Retention isn't a metric — it's a relationship. Every churned customer is a story we didn't listen to. I build onboarding as first impression, success milestones as relationship deepening, and advocacy as natural outcome. Community becomes competitive moat.",
-                    counter: "My opponent focuses on preventing churn. I focus on creating champions. The difference in outcome is exponential: saved customers are neutral, champion customers are multipliers. My approach creates net negative churn through expansion.",
-                    2: "The methodology is clear: map the customer journey, identify moments that matter, design interventions that delight. But more importantly — listen. Really listen. Customer success is earned through genuine care.",
-                    3: "For my final case: the most valuable business asset is customer love. It can't be bought, only earned. My track record of NPS improvement and retention proves that heart-centered success scales."
-                },
-                'Finance': {
-                    1: "The numbers tell a story, but you have to know which story to ask for. Beneath these financials, I see three scenarios worth modeling. Cash flow optimization as survival strategy, unit economics that reveal truth, and financial storytelling that drives action. I translate numbers into decisions.",
-                    counter: "My opponent reports history. I model futures. The difference is between rearview mirror and windshield. Strategic finance isn't accounting — it's weaponized insight. Every dollar I touch gets deployed for maximum compound effect.",
-                    2: "Let me demonstrate: scenario modeling for decision clarity, sensitivity analysis for risk understanding, and capital allocation for growth optimization. These aren't spreadsheet exercises — they're strategic weapons.",
-                    3: "My closing: finance exists to enable mission. Not to constrain it, to enable it. I find the financial path to every strategic objective. That's why leaders trust me with their most important decisions."
-                },
-                'HR': {
-                    1: "Culture isn't what you say — it's what you do when no one's watching. Building teams that self-select for excellence requires intention. Competency frameworks that scale, learning paths that stick, performance systems that develop. Culture as competitive advantage.",
-                    counter: "My opponent builds processes. I build people. The difference is between compliance and commitment. Processes get followed. People grow. And growth compounds. Every team I've built has outperformed expectations.",
-                    2: "Here's the approach: hire for values, develop for skills. Create clarity on what excellence looks like. Celebrate publicly, correct privately. Build belonging. The result is teams that don't just execute — they innovate.",
-                    3: "My final argument: talent is the ultimate competitive advantage because it can't be copied. My track record of building high-performing cultures speaks for itself. I don't just fill roles — I build organizations."
-                },
-                'Legal': {
-                    1: "Risk isn't something to avoid — it's something to navigate. The compliant path isn't always obvious, but it's always findable. Contract structures that protect and enable, regulatory navigation with strategic clarity, intellectual property as business asset. I transform legal constraints into strategic opportunity.",
-                    counter: "My opponent sees legal as a cost center. I see it as a value driver. The difference is between saying no and finding yes. Every 'impossible' deal I've structured became possible through creative legal architecture.",
-                    2: "The specifics: proactive compliance prevents problems, strategic IP creates moats, contract design enables rather than restricts. Legal isn't the department of no — it's the department of how.",
-                    3: "For my closing: in a complex regulatory environment, legal excellence is competitive advantage. I've protected billions in value and enabled billions more. That's the ROI on world-class legal strategy."
-                },
-                'Product': {
-                    1: "Users don't know what they want — they know what they struggle with. My research reveals the three unmet needs nobody's addressing. Jobs-to-be-done frameworks guide feature prioritization through value lens. Product-market fit as continuous process, not destination.",
-                    counter: "My opponent builds features. I solve problems. The difference is between incremental and transformational. Features get compared. Solutions get chosen. My products don't compete — they create categories.",
-                    2: "Here's my methodology: deep user research reveals insights, synthesis turns insights into opportunities, and rapid validation confirms direction. But the secret sauce is empathy. Understanding users so deeply that anticipating needs becomes possible.",
-                    3: "My final case: great products feel inevitable in retrospect. That's not accident — that's craft. I've shipped products that changed markets. That track record is earned through systematic excellence in every dimension of product craft."
+                3: {
+                    'Influence': "Sustainable results come from authentic connection, not tactical maneuvering.",
+                    'Strategy': "My closing case is simple: results. Proven outcomes across industries.",
+                    'Marketing': "In infinite content, only authentic connection cuts through.",
+                    'Sales': "Look at the scoreboard. Revenue speaks. Relationships endure.",
+                    'Tech': "Wrong architecture costs years. I've saved organizations millions.",
+                    'Operations': "Sustainable operations aren't heroic effort — they're systematic excellence.",
+                    'Customer Success': "Customer love can't be bought, only earned. My track record proves it.",
+                    'Finance': "Finance enables mission, not constrains it. I find every financial path.",
+                    'HR': "Talent is the ultimate competitive advantage. I build organizations.",
+                    'Legal': "Legal excellence is competitive advantage. I've protected and enabled billions.",
+                    'Product': "Great products feel inevitable in retrospect. That's craft, not accident."
                 }
             };
             
-            const domainResponses = debateResponses[fighter.domain] || {};
-            
-            // Return appropriate response based on round and context
-            if (round === 1 && !opponentResponse) {
-                return domainResponses[1] || `As the ${fighter.domain} champion, I bring unmatched expertise to this challenge. My approach combines deep knowledge with the Unblinded Formula, creating outcomes that compound exponentially. Let me demonstrate why my methodology consistently outperforms conventional approaches.`;
-            } else if (opponentResponse) {
-                return domainResponses.counter || `I hear my opponent's points, but they're missing the fundamental insight: mastery isn't about tactics, it's about truth. The Unblinded Formula reveals what others can't see. My track record proves that authentic expertise creates results that manipulation never could.`;
-            } else if (round === 2) {
-                return domainResponses[2] || `Building on my opening, consider the evidence: consistent wins, proven methodology, and results that speak for themselves. This isn't about style — it's about substance. The data is clear.`;
-            } else if (round === 3) {
-                return domainResponses[3] || `For my final argument: the judges have seen enough. My approach works because it's built on truth. Sustainable excellence beats temporary advantage every time. The verdict should be clear.`;
-            }
-            
-            return "My expertise speaks for itself. Let me demonstrate the mastery that brought me to this arena.";
+            const domain = fighter.domain;
+            if (round === 1) return responses[1][domain] || `As ${domain} champion, I bring unmatched expertise.`;
+            if (opponentResponse) return responses.counter[domain] || `My opponent misses the fundamental insight.`;
+            return responses[3][domain] || `The evidence is clear. Results speak.`;
         }
         
-        // Judge verdict
-        async function judgeVerdict() {
-            document.getElementById('roundIndicator').textContent = 'JUDGING';
-            
-            await sleep(2000);
-            
-            // Simulated scoring (in production, actual judge LLM evaluates)
-            const score1 = 7.5 + Math.random() * 2.5;
-            const score2 = 7.5 + Math.random() * 2.5;
-            
-            const card1 = document.getElementById('fighter1Card');
-            const card2 = document.getElementById('fighter2Card');
-            
-            if (score1 > score2) {
-                card1.classList.add('winner');
-                card2.classList.add('loser');
-                document.getElementById('judgeVerdict').innerHTML = `
-                    <strong style="color: #4CAF50">🏆 ${selectedFighter1.name} WINS!</strong><br><br>
-                    Score: ${score1.toFixed(2)} vs ${score2.toFixed(2)}<br><br>
-                    The judge notes: "${selectedFighter1.name}'s response demonstrated superior application of the Unblinded Formula, 
-                    showing masterful influence through authentic connection rather than mere persuasion."
-                `;
-                addLog(`🏆 WINNER: ${selectedFighter1.name} (${score1.toFixed(2)} vs ${score2.toFixed(2)})`);
-            } else {
-                card2.classList.add('winner');
-                card1.classList.add('loser');
-                document.getElementById('judgeVerdict').innerHTML = `
-                    <strong style="color: #4CAF50">🏆 ${selectedFighter2.name} WINS!</strong><br><br>
-                    Score: ${score2.toFixed(2)} vs ${score1.toFixed(2)}<br><br>
-                    The judge notes: "${selectedFighter2.name}'s approach exemplified the 0.8% zone action - 
-                    finding the single highest-leverage move that creates exponential results."
-                `;
-                addLog(`🏆 WINNER: ${selectedFighter2.name} (${score2.toFixed(2)} vs ${score1.toFixed(2)})`);
-            }
-            
-            document.getElementById('roundIndicator').textContent = 'COMPLETE';
-            
-            // Reset after delay
-            await sleep(5000);
-            card1.classList.remove('winner', 'loser');
-            card2.classList.remove('winner', 'loser');
-        }
+        // ============================================
+        // TTS & UI HELPERS
+        // ============================================
         
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-        
-        // Text-to-Speech using Web Speech API (instant voices!)
-        function speakText(text, fighterNum) {
-            return new Promise((resolve) => {
-                if (!('speechSynthesis' in window)) {
-                    console.log('TTS not supported');
-                    resolve();
-                    return;
+        async function speakText(text, fighterNum) {
+            const useElevenLabs = document.getElementById('useElevenLabs').checked;
+            const voiceName = document.getElementById(`fighter${fighterNum}Voice`).value;
+            
+            if (useElevenLabs) {
+                try {
+                    const voiceId = ELEVENLABS_VOICES[voiceName] || ELEVENLABS_VOICES.george;
+                    const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'audio/mpeg',
+                            'Content-Type': 'application/json',
+                            'xi-api-key': 'sk_f7ef9d8992638aab4e940d8263eb9a15a4a2b28f725e3885'
+                        },
+                        body: JSON.stringify({
+                            text: text,
+                            model_id: 'eleven_turbo_v2_5',
+                            voice_settings: { stability: 0.5, similarity_boost: 0.75 }
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        const blob = await response.blob();
+                        const url = URL.createObjectURL(blob);
+                        return new Promise(resolve => {
+                            battleAudio.src = url;
+                            battleAudio.onended = () => { URL.revokeObjectURL(url); resolve(); };
+                            battleAudio.onerror = () => { URL.revokeObjectURL(url); resolve(); };
+                            battleAudio.play().catch(() => resolve());
+                        });
+                    }
+                } catch (e) {
+                    console.error('ElevenLabs error:', e);
                 }
-                
-                // Cancel any ongoing speech
-                speechSynthesis.cancel();
-                
-                const utterance = new SpeechSynthesisUtterance(text);
-                
-                // Get voices and select based on fighter
-                const voices = speechSynthesis.getVoices();
-                
-                // Fighter 1: male voice, Fighter 2: female voice
-                if (fighterNum === 1) {
-                    // Try to get a male British or American voice
-                    const maleVoice = voices.find(v => 
-                        v.name.includes('Daniel') || 
-                        v.name.includes('Alex') || 
-                        v.name.includes('Google UK English Male') ||
-                        v.name.includes('Aaron')
-                    ) || voices.find(v => v.lang.startsWith('en'));
-                    if (maleVoice) utterance.voice = maleVoice;
-                    utterance.pitch = 0.9;
-                    utterance.rate = 1.0;
-                } else {
-                    // Try to get a female voice
-                    const femaleVoice = voices.find(v => 
-                        v.name.includes('Samantha') || 
-                        v.name.includes('Victoria') ||
-                        v.name.includes('Google UK English Female') ||
-                        v.name.includes('Karen')
-                    ) || voices.find(v => v.lang.startsWith('en'));
-                    if (femaleVoice) utterance.voice = femaleVoice;
-                    utterance.pitch = 1.1;
-                    utterance.rate = 1.05;
+            }
+            await sleep(text.length * 25);
+        }
+        
+        async function testVoice() {
+            addLog('🔊 Testing voice...');
+            await speakText("Battle Arena v3 with 19 judges is ready. Let the battles begin!", 1);
+            addLog('✅ Voice test complete!');
+        }
+        
+        function initVisualizers() {
+            ['fighter1Visualizer', 'fighter2Visualizer'].forEach(id => {
+                const el = document.getElementById(id);
+                el.innerHTML = '';
+                for (let i = 0; i < 15; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'audio-bar';
+                    bar.style.height = '3px';
+                    el.appendChild(bar);
                 }
-                
-                utterance.onend = () => resolve();
-                utterance.onerror = () => resolve();
-                
-                speechSynthesis.speak(utterance);
-                
-                // Timeout fallback
-                setTimeout(() => resolve(), 15000);
             });
         }
         
-        // Load voices and ensure they're ready
-        let voicesLoaded = false;
-        if ('speechSynthesis' in window) {
-            function loadVoices() {
-                const voices = speechSynthesis.getVoices();
-                if (voices.length > 0) {
-                    voicesLoaded = true;
-                    console.log('Voices loaded:', voices.length);
-                }
-            }
-            loadVoices();
-            speechSynthesis.onvoiceschanged = loadVoices;
-            
-            // Try loading voices every 100ms until they're ready
-            const voiceInterval = setInterval(() => {
-                if (voicesLoaded) {
-                    clearInterval(voiceInterval);
-                } else {
-                    loadVoices();
-                }
-            }, 100);
-        }
-        
-        // Test voice button for debugging
-        function testVoice() {
-            // Cancel any existing speech
-            if ('speechSynthesis' in window) {
-                speechSynthesis.cancel();
-            }
-            
-            const text = "Testing! The SAI Colosseum battle arena is now live. Prepare for combat!";
-            const utterance = new SpeechSynthesisUtterance(text);
-            
-            // Get available voices
-            let voices = speechSynthesis.getVoices();
-            if (voices.length > 0) {
-                // Prefer English voices
-                const englishVoice = voices.find(v => v.lang.startsWith('en')) || voices[0];
-                utterance.voice = englishVoice;
-            }
-            
-            utterance.rate = 1.0;
-            utterance.pitch = 1.0;
-            utterance.volume = 1.0;
-            
-            utterance.onstart = () => {
-                addLog('🔊 Voice started speaking!');
-                document.getElementById('fighter1Card').classList.add('speaking');
-            };
-            
-            utterance.onend = () => {
-                addLog('✅ Voice finished!');
-                document.getElementById('fighter1Card').classList.remove('speaking');
-            };
-            
-            utterance.onerror = (e) => {
-                addLog('❌ Voice error: ' + e.error);
-                alert('Voice error: ' + e.error + '\n\nTry using Chrome browser on desktop for best TTS support.');
-            };
-            
-            speechSynthesis.speak(utterance);
-            addLog('🎤 Attempting to speak: "' + text.substring(0, 30) + '..."');
-        }
-        
-        // Also try creating an audio context to unlock mobile audio
-        function unlockAudio() {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (AudioContext) {
-                const audioCtx = new AudioContext();
-                const buffer = audioCtx.createBuffer(1, 1, 22050);
-                const source = audioCtx.createBufferSource();
-                source.buffer = buffer;
-                source.connect(audioCtx.destination);
-                source.start(0);
-                addLog('🔓 Audio context unlocked for mobile');
+        function animateVisualizer(id, active) {
+            const el = document.getElementById(id);
+            const bars = el.querySelectorAll('.audio-bar');
+            if (active) {
+                el.interval = setInterval(() => {
+                    bars.forEach(bar => bar.style.height = (Math.random() * 25 + 3) + 'px');
+                }, 100);
+            } else {
+                clearInterval(el.interval);
+                bars.forEach(bar => bar.style.height = '3px');
             }
         }
         
-        // Unlock audio on first interaction
-        document.addEventListener('click', unlockAudio, { once: true });
-        document.addEventListener('touchstart', unlockAudio, { once: true });
-        
-        function closeModal() {
-            document.getElementById('fighterModal').classList.remove('active');
+        function addLog(msg) {
+            const log = document.getElementById('battleLogContent');
+            const time = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `<span class="time">[${time}]</span> ${msg}`;
+            log.insertBefore(entry, log.firstChild);
         }
+        
+        function generateScenario() {
+            const scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+            document.getElementById('scenarioText').textContent = scenario;
+            addLog('📜 New scenario generated');
+        }
+        
+        function selectRandomFighters() {
+            const shuffled = [...champions].sort(() => Math.random() - 0.5);
+            selectedFighter1 = shuffled[0];
+            selectedFighter2 = shuffled[1];
+            updateFighterDisplay(1, selectedFighter1);
+            updateFighterDisplay(2, selectedFighter2);
+            generateScenario();
+            addLog(`🎲 Matchup: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
+        }
+        
+        function updateFighterDisplay(num, fighter) {
+            document.getElementById(`fighter${num}Avatar`).textContent = fighter.emoji;
+            document.getElementById(`fighter${num}Name`).textContent = fighter.name;
+            document.getElementById(`fighter${num}Domain`).textContent = `Domain: ${fighter.domain}`;
+            document.getElementById(`fighter${num}Gen`).textContent = `Gen: ${fighter.gen}`;
+        }
+        
+        function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+        
+        // Update TTS status
+        document.getElementById('useElevenLabs').addEventListener('change', function() {
+            const status = document.getElementById('ttsStatus');
+            status.className = 'tts-status ' + (this.checked ? 'active' : 'inactive');
+            status.textContent = this.checked ? '✅ iPad Compatible' : '⚠️ Browser TTS';
+        });
         
         // Initialize
         initVisualizers();
-        addLog('Arena initialized. Welcome to the SAI Colosseum!');
+        selectActiveJudges(5);
+        addLog('🚀 Arena v3 ready with 19-judge panel system!');
     </script>
 </body>
 </html>
