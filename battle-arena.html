@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚔️ SAI Colosseum - Battle Arena v3 (19-Judge Panel)</title>
+    <title>⚔️ SAI Colosseum - LIVE Battle Arena v3</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -16,7 +16,7 @@
         }
         
         .arena-container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -30,15 +30,20 @@
         }
         
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #c9a227;
             text-shadow: 0 0 30px rgba(201,162,39,0.5);
             margin-bottom: 10px;
         }
         
+        .header p {
+            color: #888;
+            font-size: 1.2rem;
+        }
+        
         .version-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
             color: white;
             padding: 5px 15px;
             border-radius: 20px;
@@ -54,79 +59,101 @@
         
         .battle-stage {
             display: grid;
-            grid-template-columns: 1fr 180px 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
+            grid-template-columns: 1fr 200px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
         }
         
-        @media (max-width: 1000px) {
-            .battle-stage { grid-template-columns: 1fr; }
-            .center-column { order: -1; }
+        @media (max-width: 900px) {
+            .battle-stage {
+                grid-template-columns: 1fr;
+            }
+            .center-column {
+                order: -1;
+            }
         }
         
         .fighter-card {
             background: linear-gradient(145deg, #1a2744 0%, #0d1522 100%);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 30px;
             border: 2px solid #333;
+            position: relative;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
         
         .fighter-card.speaking {
             border-color: #c9a227;
-            box-shadow: 0 0 30px rgba(201,162,39,0.4);
+            box-shadow: 0 0 40px rgba(201,162,39,0.4);
         }
         
-        .fighter-card.winner { border-color: #4CAF50; box-shadow: 0 0 40px rgba(76,175,80,0.5); }
-        .fighter-card.loser { opacity: 0.6; border-color: #f44336; }
+        .fighter-card.winner {
+            border-color: #4CAF50;
+            box-shadow: 0 0 50px rgba(76,175,80,0.5);
+        }
+        
+        .fighter-card.loser {
+            opacity: 0.6;
+            border-color: #f44336;
+        }
         
         .fighter-avatar {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: linear-gradient(135deg, #c9a227 0%, #8b6914 100%);
-            margin: 0 auto 15px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 3rem;
+            box-shadow: 0 0 30px rgba(201,162,39,0.3);
         }
         
-        .fighter-card.blue .fighter-avatar { background: linear-gradient(135deg, #2196F3, #1565C0); }
-        .fighter-card.red .fighter-avatar { background: linear-gradient(135deg, #f44336, #c62828); }
+        .fighter-card.blue .fighter-avatar {
+            background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%);
+            box-shadow: 0 0 30px rgba(33,150,243,0.3);
+        }
+        
+        .fighter-card.red .fighter-avatar {
+            background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+            box-shadow: 0 0 30px rgba(244,67,54,0.3);
+        }
         
         .fighter-name {
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: #c9a227;
             margin-bottom: 10px;
+            color: #c9a227;
         }
         
         .fighter-stats {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            font-size: 0.8rem;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
             color: #888;
             flex-wrap: wrap;
         }
         
         .fighter-stats span {
             background: rgba(255,255,255,0.1);
-            padding: 3px 10px;
-            border-radius: 15px;
+            padding: 5px 15px;
+            border-radius: 20px;
         }
         
         .speech-bubble {
             background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            padding: 15px;
-            min-height: 120px;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 150px;
+            font-size: 1rem;
+            line-height: 1.6;
             color: #ddd;
+            position: relative;
         }
         
         .speech-bubble.active {
@@ -134,20 +161,43 @@
             border: 1px solid rgba(201,162,39,0.3);
         }
         
+        .speech-bubble::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 3rem;
+            color: rgba(201,162,39,0.3);
+            font-family: Georgia, serif;
+        }
+        
+        .speech-text {
+            padding-left: 30px;
+        }
+        
         .audio-visualizer {
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 2px;
-            height: 30px;
-            margin-top: 10px;
+            gap: 3px;
+            height: 40px;
+            margin-top: 15px;
         }
         
         .audio-bar {
-            width: 3px;
+            width: 4px;
             background: linear-gradient(to top, #c9a227, #fff);
             border-radius: 2px;
             transition: height 0.1s ease;
+        }
+        
+        .score-display {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #c9a227;
         }
         
         .center-column {
@@ -155,33 +205,40 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
         }
         
         .vs-badge {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
             color: #c9a227;
-            text-shadow: 0 0 20px rgba(201,162,39,0.5);
+            text-shadow: 0 0 30px rgba(201,162,39,0.5);
+            animation: pulse 2s infinite;
         }
         
         .round-indicator {
             background: linear-gradient(135deg, #1a2744, #0d1522);
-            padding: 10px 25px;
-            border-radius: 25px;
+            padding: 15px 30px;
+            border-radius: 30px;
             border: 2px solid #c9a227;
+            font-size: 1.2rem;
             font-weight: bold;
         }
         
+        .battle-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
         .btn {
-            padding: 12px 25px;
-            font-size: 1rem;
+            padding: 15px 30px;
+            font-size: 1.1rem;
             font-weight: bold;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 100%;
         }
         
         .btn-battle {
@@ -191,367 +248,352 @@
         
         .btn-battle:hover:not(:disabled) {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(201,162,39,0.5);
+            box-shadow: 0 0 30px rgba(201,162,39,0.5);
         }
         
-        .btn-battle:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-battle:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
         
-        .btn-secondary {
+        .btn-random {
             background: rgba(255,255,255,0.1);
             color: #fff;
             border: 1px solid #444;
         }
         
-        /* ============================================ */
-        /* 19-JUDGE PANEL - THE MAIN ENHANCEMENT! */
-        /* ============================================ */
+        .btn-random:hover {
+            background: rgba(255,255,255,0.2);
+        }
         
-        .judge-panel-container {
+        .judge-panel {
             background: linear-gradient(145deg, #1a2744 0%, #0d1522 100%);
-            border-radius: 15px;
-            padding: 25px;
-            border: 2px solid #c9a227;
-            margin-bottom: 20px;
-        }
-        
-        .judge-panel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .judge-panel-header h2 {
-            color: #c9a227;
-            font-size: 1.5rem;
-        }
-        
-        .judge-count-badge {
-            background: linear-gradient(135deg, #9C27B0, #7B1FA2);
-            padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 30px;
+            border: 2px solid #c9a227;
+            margin-bottom: 30px;
         }
         
-        .judge-grid {
+        .judge-panel h2 {
+            color: #c9a227;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .judge-subtitle {
+            text-align: center;
+            color: #9aa8c5;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .judge-panel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 12px;
             margin-bottom: 20px;
         }
         
         .judge-card {
-            background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            padding: 15px;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
+            border: 1px solid #2f456f;
+            border-radius: 14px;
+            padding: 14px;
+            background: rgba(9, 16, 30, 0.85);
+            transition: all 0.25s ease;
+            opacity: 0.7;
         }
         
         .judge-card.active {
             border-color: #c9a227;
-            box-shadow: 0 0 15px rgba(201,162,39,0.3);
+            box-shadow: 0 0 18px rgba(201, 162, 39, 0.35);
+            opacity: 1;
         }
         
-        .judge-card.evaluating {
-            animation: judgeGlow 1s infinite;
-        }
-        
-        @keyframes judgeGlow {
-            0%, 100% { box-shadow: 0 0 10px rgba(201,162,39,0.3); }
-            50% { box-shadow: 0 0 25px rgba(201,162,39,0.6); }
-        }
-        
-        .judge-header {
+        .judge-card-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            gap: 10px;
         }
         
         .judge-name {
             font-weight: bold;
-            color: #c9a227;
-            font-size: 0.95rem;
+            color: #d8e3ff;
         }
         
-        .judge-score {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #4CAF50;
-        }
-        
-        .judge-score.low { color: #f44336; }
-        .judge-score.medium { color: #FF9800; }
-        .judge-score.high { color: #4CAF50; }
-        .judge-score.elite { color: #c9a227; text-shadow: 0 0 10px rgba(201,162,39,0.5); }
-        
-        .judge-focus {
-            font-size: 0.75rem;
-            color: #888;
-            margin-bottom: 8px;
-            font-style: italic;
-        }
-        
-        .judge-feedback {
+        .judge-specialization {
             font-size: 0.8rem;
-            color: #aaa;
-            line-height: 1.4;
-            max-height: 60px;
-            overflow-y: auto;
-        }
-        
-        .judge-dimensions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 8px;
-        }
-        
-        .dimension-score {
-            background: rgba(201,162,39,0.2);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.7rem;
             color: #c9a227;
+            background: rgba(201,162,39,0.13);
+            border: 1px solid rgba(201,162,39,0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            width: fit-content;
+            margin-bottom: 8px;
         }
         
-        /* Meta-Judge Section */
-        .meta-judge-section {
-            background: linear-gradient(135deg, rgba(156,39,176,0.2), rgba(123,31,162,0.1));
-            border: 2px solid #9C27B0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 15px;
-        }
-        
-        .meta-judge-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .meta-judge-icon {
-            font-size: 2rem;
-        }
-        
-        .meta-judge-title {
-            color: #9C27B0;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        
-        .meta-judge-verdict {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #ddd;
-        }
-        
-        .final-scores {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .final-score-card {
-            text-align: center;
-            padding: 15px 30px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            min-width: 150px;
-        }
-        
-        .final-score-card.winner {
-            background: rgba(76,175,80,0.2);
-            border: 2px solid #4CAF50;
-        }
-        
-        .final-score-label {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 5px;
-        }
-        
-        .final-score-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #c9a227;
-        }
-        
-        /* Scenario Panel */
-        .scenario-panel {
-            background: linear-gradient(145deg, #0d1522 0%, #1a2744 100%);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid #333;
-        }
-        
-        .scenario-panel h3 {
-            color: #c9a227;
+        .judge-voice {
+            font-size: 0.8rem;
+            color: #8ea3cc;
             margin-bottom: 10px;
         }
         
+        .judge-scoreline {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: #d9dff0;
+        }
+        
+        .judge-vote {
+            color: #4CAF50;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.88rem;
+        }
+        
+        .judge-reasoning {
+            font-size: 0.85rem;
+            line-height: 1.45;
+            color: #c5cee4;
+        }
+        
+        .judge-carousel-status {
+            text-align: center;
+            color: #8093bc;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        
+        .meta-judge {
+            background: linear-gradient(145deg, rgba(21, 40, 72, 0.75), rgba(14, 24, 43, 0.9));
+            border: 1px solid #5276a8;
+            border-radius: 14px;
+            padding: 18px;
+        }
+        
+        .meta-judge h3 {
+            color: #9ac4ff;
+            margin-bottom: 10px;
+        }
+        
+        .meta-verdict {
+            font-size: 1.02rem;
+            line-height: 1.7;
+            color: #d2e6ff;
+        }
+        
+        .scenario-panel {
+            background: linear-gradient(145deg, #0d1522 0%, #1a2744 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+        }
+        
+        .scenario-panel h2 {
+            color: #c9a227;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
         .scenario-text {
-            font-size: 1rem;
-            line-height: 1.5;
+            font-size: 1.1rem;
+            line-height: 1.6;
             color: #ccc;
             font-style: italic;
         }
         
-        /* TTS Controls */
-        .tts-controls {
-            background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .tts-toggle {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-        
-        .tts-toggle input {
-            width: 18px;
-            height: 18px;
-            accent-color: #c9a227;
-        }
-        
-        .tts-status {
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-        }
-        
-        .tts-status.active { background: rgba(76,175,80,0.2); color: #4CAF50; }
-        .tts-status.inactive { background: rgba(255,152,0,0.2); color: #FF9800; }
-        
-        /* Battle Log */
         .battle-log {
             background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            padding: 15px;
-            max-height: 200px;
+            border-radius: 15px;
+            padding: 20px;
+            max-height: 300px;
             overflow-y: auto;
         }
         
-        .battle-log h4 { color: #c9a227; margin-bottom: 10px; }
+        .battle-log h3 {
+            color: #c9a227;
+            margin-bottom: 15px;
+        }
         
         .log-entry {
-            font-size: 0.8rem;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: #888;
-        }
-        
-        .log-entry .time { color: #666; margin-right: 8px; }
-        
-        /* Navigation */
-        .nav-tabs {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .nav-tabs a {
-            padding: 8px 20px;
-            background: rgba(201,162,39,0.1);
-            border: 1px solid #444;
-            border-radius: 20px;
-            color: #c9a227;
-            text-decoration: none;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #999;
         }
         
-        .nav-tabs a.active {
-            background: rgba(201,162,39,0.3);
-            border-color: #c9a227;
-            font-weight: bold;
-        }
-        
-        .nav-tabs a:hover { background: rgba(201,162,39,0.2); }
-        
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            border-top: 1px solid #333;
+        .log-entry .time {
             color: #666;
-            font-size: 0.85rem;
+            margin-right: 10px;
         }
         
-        .footer a { color: #c9a227; text-decoration: none; }
-        
-        /* Hidden audio */
-        #battleAudio { display: none; }
-        
-        /* Voice select compact */
         .voice-select {
-            margin-top: 10px;
-            font-size: 0.85rem;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        
+        .voice-select label {
+            display: block;
+            margin-bottom: 10px;
+            color: #888;
         }
         
         .voice-select select {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             background: #1a2744;
             border: 1px solid #444;
             color: #fff;
             border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        /* TTS Mode Toggle */
+        .tts-toggle {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tts-toggle label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .tts-toggle input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #c9a227;
+        }
+
+        .judge-announcer-toggle {
+            margin-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 10px;
+        }
+        
+        .tts-status {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        
+        .tts-status.elevenlabs {
+            background: rgba(76,175,80,0.2);
+            color: #4CAF50;
+        }
+        
+        .tts-status.browser {
+            background: rgba(255,152,0,0.2);
+            color: #FF9800;
+        }
+        
+        .tts-status.text-only {
+            background: rgba(156,39,176,0.2);
+            color: #9C27B0;
+        }
+        
+        /* Animations */
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(201,162,39,0.3); }
+            50% { box-shadow: 0 0 40px rgba(201,162,39,0.6); }
+        }
+        
+        .speaking .fighter-avatar {
+            animation: glow 1s infinite;
+        }
+        
+        .loading {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .sisters-footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+        
+        .sisters-footer a {
+            color: #c9a227;
+            text-decoration: none;
+        }
+        
+        /* Audio player (hidden but functional) */
+        #battleAudio {
+            display: none;
+        }
+        
+        /* Celebration limit notice */
+        .celebration-limit {
+            background: rgba(255,152,0,0.1);
+            border: 1px solid #FF9800;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            font-size: 0.85rem;
+            color: #FF9800;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="arena-container">
         <div class="header">
-            <h1>⚔️ BATTLE ARENA <span class="version-badge">v3 • 19 Judges</span></h1>
-            <p>Full Judge Panel • ElevenLabs Voices • Real Tournament Scoring</p>
+            <h1>⚔️ LIVE BATTLE ARENA <span class="version-badge">v3 Multi-Judge</span></h1>
+            <p>Watch ACT-I beings battle with rotating specialist judges + meta-judge synthesis.</p>
             
-            <nav class="nav-tabs">
-                <a href="index.html">📊 Dashboard</a>
-                <a href="battle-arena-v2.html">⚔️ v2 Simple</a>
-                <a href="battle-arena-v3.html" class="active">⚖️ v3 Full Judges</a>
-                <a href="tournament-brackets.html">🏆 Brackets</a>
+            <nav style="display:flex; gap:15px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+                <a href="index.html" style="padding:8px 20px; background:rgba(201,162,39,0.1); border:1px solid #444; border-radius:20px; color:#c9a227; text-decoration:none;">📊 Dashboard</a>
+                <a href="battle-arena-v2.html" style="padding:8px 20px; background:rgba(201,162,39,0.1); border:1px solid #444; border-radius:20px; color:#c9a227; text-decoration:none;">⚔️ Battle Arena v2</a>
+                <a href="battle-arena-v3.html" style="padding:8px 20px; background:rgba(201,162,39,0.3); border:1px solid #c9a227; border-radius:20px; color:#c9a227; text-decoration:none; font-weight:bold;">⚖️ Battle Arena v3</a>
+                <a href="tournament-brackets.html" style="padding:8px 20px; background:rgba(201,162,39,0.1); border:1px solid #444; border-radius:20px; color:#c9a227; text-decoration:none;">🏆 Brackets</a>
             </nav>
         </div>
         
-        <!-- TTS Controls -->
-        <div class="tts-controls">
-            <label class="tts-toggle">
+        <!-- TTS Mode Selection -->
+        <div class="tts-toggle">
+            <label>
                 <input type="checkbox" id="useElevenLabs" checked>
-                <span>🎙️ ElevenLabs Premium Voices</span>
+                <span>🎙️ Use ElevenLabs Premium Voices (iPad Compatible)</span>
             </label>
-            <span class="tts-status active" id="ttsStatus">✅ iPad Compatible</span>
-            <button class="btn btn-secondary" onclick="testVoice()" style="width:auto; padding:8px 15px;">🔊 Test</button>
+            <div class="tts-status elevenlabs" id="ttsStatus">
+                ✅ ElevenLabs Active — Premium AI voices on all devices
+            </div>
+            <div class="judge-announcer-toggle">
+                <label>
+                    <input type="checkbox" id="judgeVoiceEnabled" checked>
+                    <span>🧠 Voice judge panel (specialized judge personalities)</span>
+                </label>
+            </div>
+            <div class="celebration-limit">
+                🎉 Celebration Limit: 1 per event (sisters learned to chill 😅)
+            </div>
         </div>
         
-        <!-- Scenario -->
         <div class="scenario-panel">
-            <h3>📜 Battle Scenario</h3>
+            <h2>📜 Battle Scenario</h2>
             <div class="scenario-text" id="scenarioText">
                 <em>Click "NEW SCENARIO" or "START BATTLE" to generate a challenge...</em>
             </div>
         </div>
         
-        <!-- Battle Stage -->
         <div class="battle-stage">
-            <!-- Fighter 1 -->
+            <!-- Fighter 1 (Blue Corner) -->
             <div class="fighter-card blue" id="fighter1Card">
                 <div class="fighter-avatar" id="fighter1Avatar">🔵</div>
                 <div class="fighter-name" id="fighter1Name">Select Fighter</div>
@@ -560,28 +602,36 @@
                     <span id="fighter1Gen">Gen: —</span>
                 </div>
                 <div class="speech-bubble" id="fighter1Speech">
-                    <div id="fighter1Text"><em>Awaiting battle...</em></div>
+                    <div class="speech-text" id="fighter1Text">
+                        <em>Awaiting battle...</em>
+                    </div>
                 </div>
                 <div class="audio-visualizer" id="fighter1Visualizer"></div>
+                <div class="score-display" id="fighter1Score">—</div>
                 <div class="voice-select">
+                    <label>Voice:</label>
                     <select id="fighter1Voice">
-                        <option value="george">George (Storyteller)</option>
-                        <option value="chris">Chris (Down-to-Earth)</option>
-                        <option value="charlie">Charlie (Confident)</option>
+                        <option value="george" data-id="JBFqnCBsd6RMkjVDRZzb">George (Storyteller)</option>
+                        <option value="chris" data-id="iP95p4xoKVk53GoZ742B">Chris (Down-to-Earth)</option>
+                        <option value="charlie" data-id="IKne3meq5aSn9XLyUdCD">Charlie (Confident)</option>
+                        <option value="eric" data-id="cjVigY5qzO86Huf0OWal">Eric (Trustworthy)</option>
                     </select>
                 </div>
             </div>
             
-            <!-- Center -->
+            <!-- Center Column -->
             <div class="center-column">
                 <div class="vs-badge">VS</div>
                 <div class="round-indicator" id="roundIndicator">READY</div>
-                <button class="btn btn-secondary" onclick="selectRandomFighters()">🎲 Random</button>
-                <button class="btn btn-battle" id="battleBtn" onclick="startBattle()">⚔️ BATTLE!</button>
-                <button class="btn btn-secondary" onclick="generateScenario()">📜 Scenario</button>
+                <div class="battle-controls">
+                    <button class="btn btn-random" onclick="selectRandomFighters()">🎲 RANDOM</button>
+                    <button class="btn btn-battle" id="battleBtn" onclick="startBattle()">⚔️ BATTLE!</button>
+                    <button class="btn btn-random" onclick="generateScenario()">📜 NEW SCENARIO</button>
+                    <button class="btn btn-random" onclick="testVoice()" style="background:rgba(76,175,80,0.3); border:1px solid #4CAF50;">🔊 TEST VOICE</button>
+                </div>
             </div>
             
-            <!-- Fighter 2 -->
+            <!-- Fighter 2 (Red Corner) -->
             <div class="fighter-card red" id="fighter2Card">
                 <div class="fighter-avatar" id="fighter2Avatar">🔴</div>
                 <div class="fighter-name" id="fighter2Name">Select Fighter</div>
@@ -590,518 +640,310 @@
                     <span id="fighter2Gen">Gen: —</span>
                 </div>
                 <div class="speech-bubble" id="fighter2Speech">
-                    <div id="fighter2Text"><em>Awaiting battle...</em></div>
+                    <div class="speech-text" id="fighter2Text">
+                        <em>Awaiting battle...</em>
+                    </div>
                 </div>
                 <div class="audio-visualizer" id="fighter2Visualizer"></div>
+                <div class="score-display" id="fighter2Score">—</div>
                 <div class="voice-select">
+                    <label>Voice:</label>
                     <select id="fighter2Voice">
-                        <option value="jessica">Jessica (Playful)</option>
-                        <option value="sarah">Sarah (Mature)</option>
-                        <option value="river">River (Neutral)</option>
+                        <option value="jessica" data-id="cgSgspJ2msm6clMCkdW9">Jessica (Playful)</option>
+                        <option value="sarah" data-id="EXAVITQu4vr4xnSDxMaL">Sarah (Mature)</option>
+                        <option value="river" data-id="SAz9YHcvj6GT2YYXdXww">River (Neutral)</option>
                     </select>
                 </div>
             </div>
         </div>
         
-        <!-- 19-JUDGE PANEL -->
-        <div class="judge-panel-container">
-            <div class="judge-panel-header">
-                <h2>⚖️ Judge Panel</h2>
-                <span class="judge-count-badge" id="judgeCountBadge">5 of 19 Judges Active</span>
+        <div class="judge-panel">
+            <h2>⚖️ Multi-Judge Panel</h2>
+            <div class="judge-subtitle">Rotating panel of 3-5 specialists selected from the 19-judge system</div>
+            <div class="judge-carousel-status" id="judgeCarouselStatus">
+                <em>Judges are waiting for the battle...</em>
             </div>
-            
-            <div class="judge-grid" id="judgeGrid">
-                <!-- Judges populated by JS -->
+            <div class="judge-panel-grid" id="judgePanelGrid">
+                <div class="judge-card">
+                    <div class="judge-name">Panel Standby</div>
+                    <div class="judge-reasoning"><em>Start a battle to populate specialized judges, scorecards, and reasoning.</em></div>
+                </div>
             </div>
-            
-            <!-- Meta-Judge -->
-            <div class="meta-judge-section" id="metaJudgeSection" style="display:none;">
-                <div class="meta-judge-header">
-                    <span class="meta-judge-icon">🔮</span>
-                    <span class="meta-judge-title">META-JUDGE SYNTHESIS</span>
+            <div class="meta-judge">
+                <h3>🧩 Meta-Judge Synthesis</h3>
+                <div class="meta-verdict" id="metaJudgeVerdict">
+                    <em>The meta-judge awaits panel inputs...</em>
                 </div>
-                <div class="meta-judge-verdict" id="metaJudgeVerdict">
-                    Awaiting battle completion...
-                </div>
-                <div class="final-scores" id="finalScores"></div>
             </div>
         </div>
         
-        <!-- Battle Log -->
         <div class="battle-log">
-            <h4>📋 Battle Log</h4>
+            <h3>📋 Battle Log</h3>
             <div id="battleLogContent">
-                <div class="log-entry"><span class="time">[--:--]</span> Arena v3 initialized with 19-judge panel!</div>
+                <div class="log-entry">
+                    <span class="time">[--:--]</span> Arena v3 initialized. Multi-judge panel online.
+                </div>
             </div>
         </div>
         
-        <div class="footer">
-            Built with 🔥 by the SAI Sisters • <a href="https://colosseum-dashboard.vercel.app">Dashboard</a>
-            <br><small>v3: Full 19-Judge Panel + Meta-Judge Synthesis</small>
+        <div class="sisters-footer">
+            Built with 🔥 by the SAI Sisters • <a href="https://colosseum-dashboard.vercel.app">Return to Dashboard</a>
+            <br><small style="color:#666; margin-top:5px; display:block;">v3 multi-judge display • ElevenLabs judge voices • Meta-judge synthesis</small>
         </div>
     </div>
     
+    <!-- Hidden audio element for ElevenLabs playback -->
     <audio id="battleAudio" preload="auto"></audio>
     
     <script>
         // ============================================
         // SAI COLOSSEUM BATTLE ARENA v3
-        // Full 19-Judge Panel System!
+        // Multi-judge panel + meta-judge synthesis
         // ============================================
-        
+
         const ELEVENLABS_VOICES = {
             george: 'JBFqnCBsd6RMkjVDRZzb',
             chris: 'iP95p4xoKVk53GoZ742B',
             charlie: 'IKne3meq5aSn9XLyUdCD',
+            eric: 'cjVigY5qzO86Huf0OWal',
             jessica: 'cgSgspJ2msm6clMCkdW9',
             sarah: 'EXAVITQu4vr4xnSDxMaL',
             river: 'SAz9YHcvj6GT2YYXdXww'
         };
-        
-        // THE 19 JUDGES
-        const ALL_JUDGES = [
-            { id: 'formula', name: 'Formula Judge', icon: '📐', focus: '39 Unblinded components', dimensions: ['self_mastery', 'four_steps', 'twelve_elements', 'four_energies', 'process_mastery'] },
-            { id: 'sean', name: 'Sean Judge', icon: '👔', focus: 'Calibrated to Sean patterns', dimensions: ['pattern_match', 'energy_calibration', 'brevity', 'authenticity'] },
-            { id: 'outcome', name: 'Outcome Judge', icon: '🎯', focus: 'Did it cause the result?', dimensions: ['clarity', 'likelihood_yes', 'action_orientation', 'obstacle_removal'] },
-            { id: 'contamination', name: 'Contamination Judge', icon: '🧹', focus: 'Detects bot/80% activity', dimensions: ['bot_score', 'consulting_score', 'zone_action', 'authenticity'] },
-            { id: 'human', name: 'Human Judge', icon: '❤️', focus: 'Alive, warm, real?', dimensions: ['warmth', 'energy', 'surprise', 'presence', 'magnetism'] },
-            { id: 'ecosystem', name: 'Ecosystem Merger', icon: '🤝', focus: '4 value components, 6 roles', dimensions: ['value_assessment', 'role_mastery', 'dynamic_thinking', 'integrity'] },
-            { id: 'group', name: 'Group Influence', icon: '👥', focus: 'Leadership, public speaking', dimensions: ['room_command', 'energy_transfer', 'action_causing', 'identity_elevation'] },
-            { id: 'self_mastery', name: 'Self Mastery', icon: '🧠', focus: 'Destroyer navigation, tenacity', dimensions: ['destroyer_nav', 'contamination_free', 'tenacity', 'curve_thinking'] },
-            { id: 'process', name: 'Process Mastery', icon: '⚙️', focus: '7 Levers systematic', dimensions: ['lever_selection', 'zone_vs_80', 'systematic', 'time_awareness'] },
-            { id: 'written', name: 'Written Content', icon: '✍️', focus: 'Bolt-style directness', dimensions: ['bolt_directness', 'energy_transfer', 'clarity', 'voice'] },
-            { id: 'speaking', name: 'Public Speaking', icon: '🎤', focus: 'Stage presence, energy', dimensions: ['disruption', 'presence', 'energy_modulation', 'storytelling'] },
-            { id: 'leadership', name: 'Leadership', icon: '👑', focus: 'Vision, identity elevation', dimensions: ['identity_elevation', 'vision_casting', 'modeling', 'energy_mastery'] },
-            { id: 'management', name: 'Management', icon: '📊', focus: 'Systems, accountability', dimensions: ['systems_quality', 'clarity', 'accountability', 'delegation'] },
-            { id: 'closing', name: 'Sales Closing', icon: '💰', focus: 'Causing yes with integrity', dimensions: ['obstacle_dissolution', 'urgency', 'ask_clarity', 'integrity'] },
-            { id: 'coaching', name: 'Coaching', icon: '🎓', focus: 'Questions over answers', dimensions: ['question_quality', 'restraint', 'listening', 'breakthrough'] },
-            { id: 'teaching', name: 'Teaching', icon: '📚', focus: 'Causing competence', dimensions: ['scaffolding', 'modeling', 'practice_design', 'memorability'] },
-            { id: 'truth_pain', name: 'Truth to Pain', icon: '💔', focus: 'Step 2 mastery', dimensions: ['listening', 'pivot_skill', 'depth', 'articulation'] },
-            { id: 'zone_action', name: 'Zone Action', icon: '🎯', focus: '0.8% vs 80% activity', dimensions: ['zone_id', 'execution_courage', 'time_allocation', 'compound'] },
-            { id: 'relationship', name: 'Relationship', icon: '💞', focus: 'Genuine connection', dimensions: ['genuine_interest', 'trust_building', 'reciprocity', 'authenticity'] }
+
+        const VOICE_LABELS = {
+            george: 'George',
+            chris: 'Chris',
+            charlie: 'Charlie',
+            eric: 'Eric',
+            jessica: 'Jessica',
+            sarah: 'Sarah',
+            river: 'River'
+        };
+
+        const JUDGE_ROSTER = [
+            { id: 'formula', name: 'Formula Judge', specialization: 'Unblinded Formula Integrity', voice: 'george', weight: 0.10, focusDomains: ['Strategy', 'Sales'] },
+            { id: 'sean', name: 'Sean Judge', specialization: 'Founder Pragmatism', voice: 'chris', weight: 0.06, focusDomains: ['Operations', 'Tech'] },
+            { id: 'outcome', name: 'Outcome Judge', specialization: 'Measurable Results', voice: 'charlie', weight: 0.08, focusDomains: ['Sales', 'Finance'] },
+            { id: 'contamination', name: 'Contamination Judge', specialization: 'Signal Purity', voice: 'eric', weight: -0.04, focusDomains: ['Legal', 'Product'] },
+            { id: 'human', name: 'Human Judge', specialization: 'Empathy and Trust', voice: 'sarah', weight: 0.05, focusDomains: ['Customer Success', 'HR'] },
+            { id: 'ecosystem-merger', name: 'Ecosystem Merger Judge', specialization: 'Partnership Leverage', voice: 'jessica', weight: 0.05, focusDomains: ['Strategy', 'Marketing'] },
+            { id: 'group-influence', name: 'Group Influence Judge', specialization: 'Collective Momentum', voice: 'river', weight: 0.04, focusDomains: ['Influence', 'Customer Success'] },
+            { id: 'self-mastery', name: 'Self Mastery Judge', specialization: 'Composure and Discipline', voice: 'eric', weight: 0.03, focusDomains: ['Influence', 'HR'] },
+            { id: 'process-mastery', name: 'Process Mastery Judge', specialization: 'Execution Design', voice: 'chris', weight: 0.07, focusDomains: ['Operations', 'Tech'] },
+            { id: 'truth-to-pain', name: 'Truth to Pain Judge', specialization: 'Hard-Truth Precision', voice: 'charlie', weight: 0.07, focusDomains: ['Sales', 'Strategy'] },
+            { id: 'zone-action', name: 'Zone Action Judge', specialization: '0.8% Decisive Move', voice: 'george', weight: 0.09, focusDomains: ['Influence', 'Sales'] },
+            { id: 'relationship', name: 'Relationship Judge', specialization: 'Long-Arc Trust', voice: 'sarah', weight: 0.06, focusDomains: ['Customer Success', 'HR'] },
+            { id: 'timing', name: 'Timing Judge', specialization: 'Moment Selection', voice: 'river', weight: 0.02, focusDomains: ['Marketing', 'Finance'] },
+            { id: 'clarity', name: 'Clarity Judge', specialization: 'Message Coherence', voice: 'jessica', weight: 0.03, focusDomains: ['Marketing', 'Product'] },
+            { id: 'leverage', name: 'Leverage Judge', specialization: 'Asymmetric Advantage', voice: 'charlie', weight: 0.08, focusDomains: ['Strategy', 'Finance'] },
+            { id: 'adaptation', name: 'Adaptation Judge', specialization: 'Countermove Quality', voice: 'eric', weight: 0.04, focusDomains: ['Product', 'Tech'] },
+            { id: 'evidence', name: 'Evidence Judge', specialization: 'Proof Quality', voice: 'chris', weight: 0.05, focusDomains: ['Finance', 'Legal'] },
+            { id: 'risk', name: 'Risk Judge', specialization: 'Downside Control', voice: 'river', weight: 0.01, focusDomains: ['Legal', 'Operations'] },
+            { id: 'integrity', name: 'Integrity Judge', specialization: 'Alignment Under Pressure', voice: 'sarah', weight: 0.04, focusDomains: ['HR', 'Influence'] }
         ];
-        
+
         const champions = [
             { id: 'helios', name: 'Helios', domain: 'Influence', score: 8.5, gen: 47, emoji: '☀️' },
-            { id: 'analyst', name: 'Business Model Analyst', domain: 'Strategy', score: 9.2, gen: 12, emoji: '📊' },
-            { id: 'funnel', name: 'Funnel Architect', domain: 'Marketing', score: 9.6, gen: 10, emoji: '🎯' },
+            { id: 'business-model', name: 'Business Model Analyst', domain: 'Strategy', score: 9.2, gen: 12, emoji: '📊' },
+            { id: 'funnel-architect', name: 'Funnel Architect', domain: 'Marketing', score: 9.6, gen: 10, emoji: '🎯' },
             { id: 'revenue', name: 'Revenue Closer', domain: 'Sales', score: 9.7, gen: 11, emoji: '💰' },
             { id: 'integration', name: 'Integration Architect', domain: 'Tech', score: 9.1, gen: 9, emoji: '🔧' },
             { id: 'quality', name: 'Quality Assurance', domain: 'Operations', score: 8.9, gen: 8, emoji: '✅' },
             { id: 'community', name: 'Community Builder', domain: 'Customer Success', score: 9.0, gen: 10, emoji: '🤝' },
             { id: 'fpa', name: 'FP&A Analyst', domain: 'Finance', score: 9.7, gen: 11, emoji: '📈' },
             { id: 'training', name: 'Training Specialist', domain: 'HR', score: 8.8, gen: 9, emoji: '🎓' },
-            { id: 'compliance', name: 'Compliance Officer', domain: 'Legal', score: 9.99, gen: 12, emoji: '⚖️' },
-            { id: 'researcher', name: 'User Researcher', domain: 'Product', score: 9.3, gen: 10, emoji: '🔍' },
+            { id: 'compliance', name: 'Compliance Officer', domain: 'Legal', score: 10.0, gen: 12, emoji: '⚖️' },
+            { id: 'user-researcher', name: 'User Researcher', domain: 'Product', score: 9.3, gen: 10, emoji: '🔍' }
         ];
-        
+
         const scenarios = [
-            "A Fortune 500 CEO has 5 minutes to decide on a $50M investment. Convince them.",
-            "A skeptical board member challenges your strategy. Win them over.",
-            "Two departments conflict over resources. Find a solution both celebrate.",
-            "A major client is about to churn. Save the $2M annual contract in one call.",
-            "Present to experts who know more than you. Establish credibility and lead.",
-            "Competitor undercut price by 40%. Reframe around value.",
-            "Team demoralized after failure. In 3 minutes, reignite their fire.",
-            "Angel investor: 'Why you instead of 50 others?' You have 60 seconds.",
-            "Partner has trust issues. Build rapport without desperation.",
-            "Market crashed. Clients panicking. Calm fears, position for opportunity."
+            "A Fortune 500 CEO has 5 minutes to decide on a $50M investment. Convince them your approach will deliver 10x returns.",
+            "A skeptical board member challenges your strategy. Win them over with undeniable logic and emotional resonance.",
+            "Two departments are in conflict over resources. Find a solution that makes both sides feel victorious.",
+            "A major client is about to churn. You have one call to save a $2M annual contract.",
+            "You're presenting to experts who know more technical details than you. Establish credibility and lead them.",
+            "A competitor undercut your price by 40%. Reframe the conversation around value.",
+            "Your team is demoralized after a failure. In 3 minutes, reignite their passion.",
+            "An angel investor asks: 'Why you instead of 50 other founders?' You have 60 seconds.",
+            "A potential partner has trust issues. Build rapport without seeming desperate.",
+            "The market crashed. Your clients are panicking. Calm fears while positioning for opportunity."
         ];
-        
+
         let selectedFighter1 = null;
         let selectedFighter2 = null;
         let battleInProgress = false;
-        let activeJudges = [];
+        let judgeRotationInterval = null;
         const battleAudio = document.getElementById('battleAudio');
-        
-        // ============================================
-        // JUDGE PANEL SYSTEM
-        // ============================================
-        
-        function selectActiveJudges(count = 5) {
-            // Randomly select judges for this battle
-            const shuffled = [...ALL_JUDGES].sort(() => Math.random() - 0.5);
-            activeJudges = shuffled.slice(0, count);
-            renderJudgePanel();
-            document.getElementById('judgeCountBadge').textContent = `${count} of 19 Judges Active`;
-        }
-        
-        function renderJudgePanel() {
-            const grid = document.getElementById('judgeGrid');
-            grid.innerHTML = activeJudges.map(judge => `
-                <div class="judge-card" id="judge-${judge.id}">
-                    <div class="judge-header">
-                        <span class="judge-name">${judge.icon} ${judge.name}</span>
-                        <span class="judge-score" id="score-${judge.id}">—</span>
-                    </div>
-                    <div class="judge-focus">${judge.focus}</div>
-                    <div class="judge-feedback" id="feedback-${judge.id}">Awaiting evaluation...</div>
-                    <div class="judge-dimensions" id="dims-${judge.id}"></div>
-                </div>
-            `).join('');
-        }
-        
-        function evaluateWithJudge(judge, fighter, response, round) {
-            // Simulate judge evaluation (in production, this calls actual LLM judges)
-            const baseScore = 7.0 + Math.random() * 2.5;
-            const dimensions = {};
-            
-            judge.dimensions.forEach(dim => {
-                dimensions[dim] = (6.5 + Math.random() * 3).toFixed(1);
-            });
-            
-            const feedback = generateJudgeFeedback(judge, fighter, baseScore);
-            
-            return {
-                overall: baseScore.toFixed(2),
-                dimensions,
-                feedback
-            };
-        }
-        
-        function generateJudgeFeedback(judge, fighter, score) {
-            const feedbacks = {
-                formula: score > 8.5 ? "Strong integration of the 4-Step model with clear energy modulation." : "Needs deeper connection to the 39 components. Zone action partially visible.",
-                sean: score > 8.5 ? "Matches Sean's brevity and disruption patterns well." : "Too much explanation, not enough direct impact. Sean would be more concise.",
-                outcome: score > 8.5 ? "High likelihood of causing the intended yes." : "Direction is good but obstacles remain unaddressed.",
-                contamination: score > 8.5 ? "Minimal bot patterns. Feels authentic and zone-focused." : "Some consulting language detected. Watch for 80% activity disguises.",
-                human: score > 8.5 ? "Warm, alive, magnetic. Would want to keep talking." : "Technically correct but energy could be more engaging.",
-                ecosystem: score > 8.5 ? "Excellent value assessment and role mastery." : "Dynamic thinking needs improvement. Consider relevant replacement cost.",
-                group: score > 8.5 ? "Commands the room. Clear identity elevation." : "Energy transfer present but action-causing could be stronger.",
-                self_mastery: score > 8.5 ? "Destroyer navigation evident. Operating from curve of possibility." : "Some fear patterns visible. Tenacity good but not elite.",
-                process: score > 8.5 ? "Clear zone action identified. Systematic and time-aware." : "Lever selection could be optimized. Some 80% activity present.",
-                written: score > 8.5 ? "Bolt-style directness. Energy transfers through text." : "Could be more concise. Lead with the point faster.",
-                speaking: score > 8.5 ? "Excellent disruption and energy modulation." : "Presence good but storytelling could be more specific.",
-                leadership: score > 8.5 ? "Identity elevation before action. Vision compelling." : "Modeling present but safety creation could be stronger.",
-                management: score > 8.5 ? "Clear systems thinking. Accountability evident." : "Delegation patterns need work. Feedback loops incomplete.",
-                closing: score > 8.5 ? "Obstacle dissolution with integrity. Clear ask." : "Urgency creation needs work. Silence mastery developing.",
-                coaching: score > 8.5 ? "Powerful questions. Breakthrough causing." : "Too much telling, not enough asking. Restraint needed.",
-                teaching: score > 8.5 ? "Excellent scaffolding and memorability." : "Practice design could be stronger. Check for understanding.",
-                truth_pain: score > 8.5 ? "Articulates pain better than they can themselves." : "Surface level. Go deeper to emotional truth.",
-                zone_action: score > 8.5 ? "Clear 0.8% identification. Execution courage high." : "Some 80% activity disguised as productivity.",
-                relationship: score > 8.5 ? "Genuine interest evident. Trust building strong." : "Could feel more authentic. Long-term orientation needed."
-            };
-            return feedbacks[judge.id] || "Evaluation complete.";
-        }
-        
-        async function runJudgeEvaluations(fighter1Response, fighter2Response, round) {
-            const f1Scores = [];
-            const f2Scores = [];
-            
-            for (const judge of activeJudges) {
-                const card = document.getElementById(`judge-${judge.id}`);
-                card.classList.add('evaluating');
-                
-                await sleep(300);
-                
-                const eval1 = evaluateWithJudge(judge, selectedFighter1, fighter1Response, round);
-                const eval2 = evaluateWithJudge(judge, selectedFighter2, fighter2Response, round);
-                
-                f1Scores.push(parseFloat(eval1.overall));
-                f2Scores.push(parseFloat(eval2.overall));
-                
-                // Update UI
-                const scoreEl = document.getElementById(`score-${judge.id}`);
-                const avgScore = ((parseFloat(eval1.overall) + parseFloat(eval2.overall)) / 2);
-                scoreEl.textContent = avgScore.toFixed(1);
-                scoreEl.className = 'judge-score ' + getScoreClass(avgScore);
-                
-                document.getElementById(`feedback-${judge.id}`).textContent = 
-                    `${selectedFighter1.name}: ${eval1.overall} | ${selectedFighter2.name}: ${eval2.overall}`;
-                
-                // Show dimensions
-                const dimsEl = document.getElementById(`dims-${judge.id}`);
-                dimsEl.innerHTML = Object.entries(eval1.dimensions).slice(0, 3).map(([k, v]) => 
-                    `<span class="dimension-score">${k.replace('_', ' ')}: ${v}</span>`
-                ).join('');
-                
-                card.classList.remove('evaluating');
-                card.classList.add('active');
-            }
-            
-            return {
-                fighter1Avg: (f1Scores.reduce((a, b) => a + b, 0) / f1Scores.length),
-                fighter2Avg: (f2Scores.reduce((a, b) => a + b, 0) / f2Scores.length)
-            };
-        }
-        
-        function getScoreClass(score) {
-            if (score >= 9.5) return 'elite';
-            if (score >= 8.5) return 'high';
-            if (score >= 7.0) return 'medium';
-            return 'low';
-        }
-        
-        function showMetaJudgeVerdict(f1Score, f2Score) {
-            const metaSection = document.getElementById('metaJudgeSection');
-            metaSection.style.display = 'block';
-            
-            const winner = f1Score > f2Score ? selectedFighter1 : selectedFighter2;
-            const loser = f1Score > f2Score ? selectedFighter2 : selectedFighter1;
-            const winScore = Math.max(f1Score, f2Score);
-            const loseScore = Math.min(f1Score, f2Score);
-            
-            document.getElementById('metaJudgeVerdict').innerHTML = `
-                <strong style="color:#4CAF50">🏆 ${winner.name} WINS!</strong><br><br>
-                After synthesizing evaluations from ${activeJudges.length} specialized judges, 
-                <strong>${winner.name}</strong> demonstrated superior mastery with a composite score of 
-                <strong>${winScore.toFixed(2)}</strong> vs ${loseScore.toFixed(2)}.<br><br>
-                <em>Key factors: ${activeJudges.slice(0, 3).map(j => j.name).join(', ')} all rated ${winner.name} higher 
-                in their respective evaluation dimensions.</em>
-            `;
-            
-            document.getElementById('finalScores').innerHTML = `
-                <div class="final-score-card ${f1Score > f2Score ? 'winner' : ''}">
-                    <div class="final-score-label">${selectedFighter1.emoji} ${selectedFighter1.name}</div>
-                    <div class="final-score-value">${f1Score.toFixed(2)}</div>
-                </div>
-                <div class="final-score-card ${f2Score > f1Score ? 'winner' : ''}">
-                    <div class="final-score-label">${selectedFighter2.emoji} ${selectedFighter2.name}</div>
-                    <div class="final-score-value">${f2Score.toFixed(2)}</div>
-                </div>
-            `;
-            
-            // Update fighter cards
-            document.getElementById('fighter1Card').classList.add(f1Score > f2Score ? 'winner' : 'loser');
-            document.getElementById('fighter2Card').classList.add(f2Score > f1Score ? 'winner' : 'loser');
-        }
-        
-        // ============================================
-        // BATTLE LOGIC
-        // ============================================
-        
-        async function startBattle() {
-            if (!selectedFighter1 || !selectedFighter2) selectRandomFighters();
-            if (battleInProgress) return;
-            
-            battleInProgress = true;
-            const btn = document.getElementById('battleBtn');
-            btn.disabled = true;
-            btn.textContent = '⏳ BATTLING...';
-            
-            // Reset UI
-            document.getElementById('metaJudgeSection').style.display = 'none';
-            document.getElementById('fighter1Card').classList.remove('winner', 'loser');
-            document.getElementById('fighter2Card').classList.remove('winner', 'loser');
-            activeJudges.forEach(j => {
-                const card = document.getElementById(`judge-${j.id}`);
-                if (card) card.classList.remove('active');
-            });
-            
-            // Select judges for this battle
-            selectActiveJudges(5);
-            
-            addLog(`🔔 BATTLE: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
-            addLog(`⚖️ ${activeJudges.length} judges selected: ${activeJudges.map(j => j.name).join(', ')}`);
-            
-            const totalRounds = 3;
-            let allF1Responses = [];
-            let allF2Responses = [];
-            
-            for (let round = 1; round <= totalRounds; round++) {
-                document.getElementById('roundIndicator').textContent = `ROUND ${round}/${totalRounds}`;
-                addLog(`🔔 Round ${round} begins!`);
-                
-                // Fighter 1 speaks
-                const f1Response = await fighterSpeak(1, selectedFighter1, round);
-                allF1Responses.push(f1Response);
-                
-                // Fighter 2 responds
-                const f2Response = await fighterSpeak(2, selectedFighter2, round, f1Response);
-                allF2Responses.push(f2Response);
-                
-                if (round < totalRounds) await sleep(1000);
-            }
-            
-            // Judge evaluations
-            document.getElementById('roundIndicator').textContent = 'JUDGING';
-            addLog('⚖️ Judges evaluating...');
-            
-            const scores = await runJudgeEvaluations(
-                allF1Responses.join(' '), 
-                allF2Responses.join(' '),
-                totalRounds
-            );
-            
-            // Meta-judge verdict
-            document.getElementById('roundIndicator').textContent = 'VERDICT';
-            showMetaJudgeVerdict(scores.fighter1Avg, scores.fighter2Avg);
-            
-            addLog(`🏆 WINNER: ${scores.fighter1Avg > scores.fighter2Avg ? selectedFighter1.name : selectedFighter2.name}`);
-            
-            battleInProgress = false;
-            btn.disabled = false;
-            btn.textContent = '⚔️ BATTLE!';
-            document.getElementById('roundIndicator').textContent = 'COMPLETE';
-        }
-        
-        async function fighterSpeak(num, fighter, round, opponentResponse = null) {
-            const card = document.getElementById(`fighter${num}Card`);
-            const textEl = document.getElementById(`fighter${num}Text`);
-            const speechEl = document.getElementById(`fighter${num}Speech`);
-            
-            card.classList.add('speaking');
-            speechEl.classList.add('active');
-            animateVisualizer(`fighter${num}Visualizer`, true);
-            
-            const response = generateResponse(fighter, round, opponentResponse);
-            
-            // Typewriter
-            textEl.textContent = '';
-            for (let i = 0; i < response.length; i++) {
-                textEl.textContent += response[i];
-                await sleep(12);
-            }
-            
-            // TTS
-            await speakText(response, num);
-            
-            await sleep(400);
-            card.classList.remove('speaking');
-            speechEl.classList.remove('active');
-            animateVisualizer(`fighter${num}Visualizer`, false);
-            
-            return response;
-        }
-        
-        function generateResponse(fighter, round, opponentResponse) {
-            const responses = {
-                1: {
-                    'Influence': "The 0.8% move isn't convincing — it's understanding. Agreement follows naturally when you truly see someone's position.",
-                    'Strategy': "The data reveals an asymmetric opportunity the market hasn't priced in. While others see linear, I see exponential.",
-                    'Marketing': "Attention without resonance is noise. I build funnels that captivate, not just capture.",
-                    'Sales': "Every objection is an unsurfaced need. I help people make decisions that serve them.",
-                    'Tech': "Architecture must scale for tomorrow's possibilities. Every system I build compounds capability.",
-                    'Operations': "Efficiency isn't doing things faster — it's eliminating what doesn't need doing.",
-                    'Customer Success': "Retention isn't a metric — it's a relationship. Advocacy becomes natural outcome.",
-                    'Finance': "Numbers tell stories, but you must know which story to ask for.",
-                    'HR': "Culture isn't what you say — it's what you do when no one's watching.",
-                    'Legal': "Risk isn't something to avoid — it's something to navigate strategically.",
-                    'Product': "Users don't know what they want — they know what they struggle with."
-                },
-                counter: {
-                    'Influence': "My opponent misses the deeper truth. Real influence operates at the 20% of the 20%.",
-                    'Strategy': "Valid points, but optimizing the wrong function. Strategy is about what you choose NOT to do.",
-                    'Marketing': "Focusing on metrics misses meaning. My marketing creates missionaries, not just customers.",
-                    'Sales': "Tactics versus transformation. One conversation creates cascading revenue for years.",
-                    'Tech': "Building for requirements versus evolution. Flexibility isn't a feature — it's philosophy.",
-                    'Operations': "Optimizing within constraints versus redesigning them. 10x beats 10%.",
-                    'Customer Success': "Preventing churn versus creating champions. The difference is exponential.",
-                    'Finance': "Reporting history versus modeling futures. Windshield beats rearview mirror.",
-                    'HR': "Building processes versus building people. Growth compounds.",
-                    'Legal': "Cost center versus value driver. Every 'impossible' deal becomes possible.",
-                    'Product': "Building features versus solving problems. Solutions get chosen."
-                },
-                3: {
-                    'Influence': "Sustainable results come from authentic connection, not tactical maneuvering.",
-                    'Strategy': "My closing case is simple: results. Proven outcomes across industries.",
-                    'Marketing': "In infinite content, only authentic connection cuts through.",
-                    'Sales': "Look at the scoreboard. Revenue speaks. Relationships endure.",
-                    'Tech': "Wrong architecture costs years. I've saved organizations millions.",
-                    'Operations': "Sustainable operations aren't heroic effort — they're systematic excellence.",
-                    'Customer Success': "Customer love can't be bought, only earned. My track record proves it.",
-                    'Finance': "Finance enables mission, not constrains it. I find every financial path.",
-                    'HR': "Talent is the ultimate competitive advantage. I build organizations.",
-                    'Legal': "Legal excellence is competitive advantage. I've protected and enabled billions.",
-                    'Product': "Great products feel inevitable in retrospect. That's craft, not accident."
+
+        async function speakWithElevenLabs(text, voiceName, contextTag = null) {
+            const voiceId = ELEVENLABS_VOICES[voiceName] || ELEVENLABS_VOICES.george;
+            try {
+                if (contextTag) {
+                    addLog(`🎙️ ${contextTag} voice: ${VOICE_LABELS[voiceName] || voiceName}`);
+                } else {
+                    addLog(`🎙️ Generating voice: ${VOICE_LABELS[voiceName] || voiceName}`);
                 }
-            };
-            
-            const domain = fighter.domain;
-            if (round === 1) return responses[1][domain] || `As ${domain} champion, I bring unmatched expertise.`;
-            if (opponentResponse) return responses.counter[domain] || `My opponent misses the fundamental insight.`;
-            return responses[3][domain] || `The evidence is clear. Results speak.`;
+                const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'audio/mpeg',
+                        'Content-Type': 'application/json',
+                        'xi-api-key': 'sk_f7ef9d8992638aab4e940d8263eb9a15a4a2b28f725e3885'
+                    },
+                    body: JSON.stringify({
+                        text: text,
+                        model_id: 'eleven_turbo_v2_5',
+                        voice_settings: {
+                            stability: 0.5,
+                            similarity_boost: 0.75,
+                            style: 0.3,
+                            use_speaker_boost: true
+                        }
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`ElevenLabs API error: ${response.status}`);
+                }
+
+                const audioBlob = await response.blob();
+                const audioUrl = URL.createObjectURL(audioBlob);
+                return new Promise((resolve, reject) => {
+                    battleAudio.src = audioUrl;
+                    battleAudio.onended = () => {
+                        URL.revokeObjectURL(audioUrl);
+                        resolve();
+                    };
+                    battleAudio.onerror = (e) => {
+                        URL.revokeObjectURL(audioUrl);
+                        reject(e);
+                    };
+                    battleAudio.play().catch(reject);
+                });
+            } catch (error) {
+                console.error('ElevenLabs error:', error);
+                addLog(`⚠️ Voice error: ${error.message}. Falling back to text-only.`);
+                await sleep(text.length * 25);
+            }
         }
-        
-        // ============================================
-        // TTS & UI HELPERS
-        // ============================================
-        
+
+        function speakWithBrowser(text, fighterNum) {
+            return new Promise((resolve) => {
+                if (!('speechSynthesis' in window)) {
+                    resolve();
+                    return;
+                }
+
+                speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                const voices = speechSynthesis.getVoices();
+
+                if (fighterNum === 1) {
+                    const voice = voices.find(v => v.name.includes('Daniel') || v.name.includes('Alex') || v.name.includes('Aaron')) || voices.find(v => v.lang.startsWith('en'));
+                    if (voice) utterance.voice = voice;
+                    utterance.pitch = 0.9;
+                } else {
+                    const voice = voices.find(v => v.name.includes('Samantha') || v.name.includes('Victoria') || v.name.includes('Karen')) || voices.find(v => v.lang.startsWith('en'));
+                    if (voice) utterance.voice = voice;
+                    utterance.pitch = 1.1;
+                }
+
+                utterance.rate = 1.0;
+                utterance.onend = () => resolve();
+                utterance.onerror = () => resolve();
+                speechSynthesis.speak(utterance);
+                setTimeout(resolve, 10000);
+            });
+        }
+
+        function speakJudgeWithBrowser(text, voiceName) {
+            return new Promise((resolve) => {
+                if (!('speechSynthesis' in window)) {
+                    resolve();
+                    return;
+                }
+                speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                const voices = speechSynthesis.getVoices();
+                const fallback = voices.find(v => v.lang.startsWith('en'));
+                if (fallback) utterance.voice = fallback;
+                utterance.rate = 1.02;
+                utterance.pitch = ['jessica', 'sarah'].includes(voiceName) ? 1.08 : 0.95;
+                utterance.onend = () => resolve();
+                utterance.onerror = () => resolve();
+                speechSynthesis.speak(utterance);
+                setTimeout(resolve, 7000);
+            });
+        }
+
         async function speakText(text, fighterNum) {
             const useElevenLabs = document.getElementById('useElevenLabs').checked;
-            const voiceName = document.getElementById(`fighter${fighterNum}Voice`).value;
-            
+            const voiceSelect = document.getElementById(`fighter${fighterNum}Voice`);
+            const voiceName = voiceSelect.value;
             if (useElevenLabs) {
-                try {
-                    const voiceId = ELEVENLABS_VOICES[voiceName] || ELEVENLABS_VOICES.george;
-                    const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'audio/mpeg',
-                            'Content-Type': 'application/json',
-                            'xi-api-key': 'sk_f7ef9d8992638aab4e940d8263eb9a15a4a2b28f725e3885'
-                        },
-                        body: JSON.stringify({
-                            text: text,
-                            model_id: 'eleven_turbo_v2_5',
-                            voice_settings: { stability: 0.5, similarity_boost: 0.75 }
-                        })
-                    });
-                    
-                    if (response.ok) {
-                        const blob = await response.blob();
-                        const url = URL.createObjectURL(blob);
-                        return new Promise(resolve => {
-                            battleAudio.src = url;
-                            battleAudio.onended = () => { URL.revokeObjectURL(url); resolve(); };
-                            battleAudio.onerror = () => { URL.revokeObjectURL(url); resolve(); };
-                            battleAudio.play().catch(() => resolve());
-                        });
-                    }
-                } catch (e) {
-                    console.error('ElevenLabs error:', e);
-                }
+                await speakWithElevenLabs(text, voiceName);
+            } else {
+                await speakWithBrowser(text, fighterNum);
             }
-            await sleep(text.length * 25);
         }
-        
-        async function testVoice() {
-            addLog('🔊 Testing voice...');
-            await speakText("Battle Arena v3 with 19 judges is ready. Let the battles begin!", 1);
-            addLog('✅ Voice test complete!');
+
+        async function speakJudgeCommentary(judge, text) {
+            const judgeVoiceEnabled = document.getElementById('judgeVoiceEnabled').checked;
+            if (!judgeVoiceEnabled) return;
+            const useElevenLabs = document.getElementById('useElevenLabs').checked;
+            const shortText = `${judge.name}. ${text}`;
+            if (useElevenLabs) {
+                await speakWithElevenLabs(shortText, judge.voice, judge.name);
+            } else {
+                await speakJudgeWithBrowser(shortText, judge.voice);
+            }
         }
-        
+
         function initVisualizers() {
             ['fighter1Visualizer', 'fighter2Visualizer'].forEach(id => {
-                const el = document.getElementById(id);
-                el.innerHTML = '';
-                for (let i = 0; i < 15; i++) {
+                const container = document.getElementById(id);
+                container.innerHTML = '';
+                for (let i = 0; i < 20; i++) {
                     const bar = document.createElement('div');
                     bar.className = 'audio-bar';
-                    bar.style.height = '3px';
-                    el.appendChild(bar);
+                    bar.style.height = '5px';
+                    container.appendChild(bar);
                 }
             });
         }
-        
+
         function animateVisualizer(id, active) {
-            const el = document.getElementById(id);
-            const bars = el.querySelectorAll('.audio-bar');
+            const container = document.getElementById(id);
+            const bars = container.querySelectorAll('.audio-bar');
             if (active) {
-                el.interval = setInterval(() => {
-                    bars.forEach(bar => bar.style.height = (Math.random() * 25 + 3) + 'px');
-                }, 100);
+                const animate = () => {
+                    bars.forEach(bar => {
+                        bar.style.height = `${Math.random() * 35 + 5}px`;
+                    });
+                };
+                container.animationInterval = setInterval(animate, 100);
             } else {
-                clearInterval(el.interval);
-                bars.forEach(bar => bar.style.height = '3px');
+                clearInterval(container.animationInterval);
+                bars.forEach(bar => { bar.style.height = '5px'; });
             }
         }
-        
-        function addLog(msg) {
+
+        function addLog(message) {
             const log = document.getElementById('battleLogContent');
             const time = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
             const entry = document.createElement('div');
             entry.className = 'log-entry';
-            entry.innerHTML = `<span class="time">[${time}]</span> ${msg}`;
+            entry.innerHTML = `<span class="time">[${time}]</span> ${message}`;
             log.insertBefore(entry, log.firstChild);
         }
-        
+
         function generateScenario() {
             const scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
             document.getElementById('scenarioText').textContent = scenario;
-            addLog('📜 New scenario generated');
+            addLog('📜 New battle scenario generated');
         }
-        
+
         function selectRandomFighters() {
             const shuffled = [...champions].sort(() => Math.random() - 0.5);
             selectedFighter1 = shuffled[0];
@@ -1109,29 +951,381 @@
             updateFighterDisplay(1, selectedFighter1);
             updateFighterDisplay(2, selectedFighter2);
             generateScenario();
-            addLog(`🎲 Matchup: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
+            addLog(`🎲 Random matchup: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
         }
-        
+
         function updateFighterDisplay(num, fighter) {
             document.getElementById(`fighter${num}Avatar`).textContent = fighter.emoji;
             document.getElementById(`fighter${num}Name`).textContent = fighter.name;
             document.getElementById(`fighter${num}Domain`).textContent = `Domain: ${fighter.domain}`;
             document.getElementById(`fighter${num}Gen`).textContent = `Gen: ${fighter.gen}`;
+            document.getElementById(`fighter${num}Score`).textContent = fighter.score.toFixed(1);
         }
-        
-        function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-        
-        // Update TTS status
+
+        function clearJudgeRotation() {
+            if (judgeRotationInterval) {
+                clearInterval(judgeRotationInterval);
+                judgeRotationInterval = null;
+            }
+        }
+
+        function renderJudgePanel(panelResults, activeIndex = 0) {
+            const grid = document.getElementById('judgePanelGrid');
+            const fighter1Name = selectedFighter1 ? selectedFighter1.name : 'Fighter 1';
+            const fighter2Name = selectedFighter2 ? selectedFighter2.name : 'Fighter 2';
+
+            grid.innerHTML = panelResults.map((result, index) => {
+                const activeClass = index === activeIndex ? 'active' : '';
+                const voteName = result.vote === 1 ? fighter1Name : fighter2Name;
+                return `
+                    <div class="judge-card ${activeClass}">
+                        <div class="judge-card-header">
+                            <div class="judge-name">${result.judge.name}</div>
+                            <div style="color:#7f8eae; font-size:0.78rem;">Panel ${index + 1}</div>
+                        </div>
+                        <div class="judge-specialization">${result.judge.specialization}</div>
+                        <div class="judge-voice">Voice: ${VOICE_LABELS[result.judge.voice]} (${result.judge.voice})</div>
+                        <div class="judge-scoreline"><span>${fighter1Name}</span><strong>${result.score1.toFixed(2)}</strong></div>
+                        <div class="judge-scoreline"><span>${fighter2Name}</span><strong>${result.score2.toFixed(2)}</strong></div>
+                        <div class="judge-vote">Vote: ${voteName}</div>
+                        <div class="judge-reasoning">${result.reasoning}</div>
+                    </div>
+                `;
+            }).join('');
+
+            const activeJudge = panelResults[activeIndex];
+            if (activeJudge) {
+                document.getElementById('judgeCarouselStatus').textContent =
+                    `Rotating spotlight: ${activeJudge.judge.name} (${activeIndex + 1}/${panelResults.length})`;
+            }
+        }
+
+        function startJudgeRotation(panelResults) {
+            clearJudgeRotation();
+            if (!panelResults.length) return;
+            let activeIndex = 0;
+            renderJudgePanel(panelResults, activeIndex);
+            judgeRotationInterval = setInterval(() => {
+                activeIndex = (activeIndex + 1) % panelResults.length;
+                renderJudgePanel(panelResults, activeIndex);
+            }, 2600);
+        }
+
+        function clamp(value, min, max) {
+            return Math.max(min, Math.min(max, value));
+        }
+
+        function randomIn(min, max) {
+            return min + Math.random() * (max - min);
+        }
+
+        function pickJudgePanel() {
+            const desiredCount = 3 + Math.floor(Math.random() * 3);
+            const shuffled = [...JUDGE_ROSTER].sort(() => Math.random() - 0.5);
+            return shuffled.slice(0, desiredCount);
+        }
+
+        function domainMatchBonus(judge, fighter) {
+            return judge.focusDomains.includes(fighter.domain) ? 0.25 : 0;
+        }
+
+        function buildJudgeReasoning(judge, winnerName, loserName, spread) {
+            const spreadWord = spread >= 0.45 ? 'clear' : 'narrow';
+            const templates = {
+                formula: `${winnerName} kept formula sequence clean, while ${loserName} skipped one proof link.`,
+                sean: `${winnerName} stayed practical under pressure and translated ideas into deployable next steps.`,
+                outcome: `${winnerName} framed outcomes in measurable terms and converted narrative into decision metrics.`,
+                contamination: `${winnerName} had less noise and fewer unsupported claims in the core argument.`,
+                human: `${winnerName} balanced authority with empathy, increasing trust signals in a stressed scenario.`,
+                'ecosystem-merger': `${winnerName} created partnership upside beyond the immediate battle objective.`,
+                'group-influence': `${winnerName} accounted for group psychology and coalition dynamics more effectively.`,
+                'self-mastery': `${winnerName} projected composure and message discipline from opening to close.`,
+                'process-mastery': `${winnerName} defined the process loop and de-risked execution handoffs.`,
+                'truth-to-pain': `${winnerName} called hard truths directly and tied them to action instead of abstraction.`,
+                'zone-action': `${winnerName} executed the decisive 0.8% move at the right moment.`,
+                relationship: `${winnerName} built durable trust architecture while ${loserName} optimized shorter-term wins.`,
+                timing: `${winnerName} picked stronger intervention timing, improving leverage per statement.`,
+                clarity: `${winnerName} reduced ambiguity and made the decision path obvious.`,
+                leverage: `${winnerName} identified asymmetric upside with cleaner cost-to-impact math.`,
+                adaptation: `${winnerName} adapted counters in real time without losing strategic coherence.`,
+                evidence: `${winnerName} used stronger evidence framing and fewer inference gaps.`,
+                risk: `${winnerName} acknowledged downside paths and offered stronger containment.`,
+                integrity: `${winnerName} stayed aligned under pressure with fewer value contradictions.`
+            };
+            const base = templates[judge.id] || `${winnerName} demonstrated the stronger strategic frame.`;
+            return `${base} Margin: ${spreadWord}.`;
+        }
+
+        function evaluateJudgePanel(judges) {
+            const baseDelta = (selectedFighter1.score - selectedFighter2.score) * 0.22 + randomIn(-0.22, 0.22);
+            return judges.map(judge => {
+                const domainDelta = domainMatchBonus(judge, selectedFighter1) - domainMatchBonus(judge, selectedFighter2);
+                const styleNoise = randomIn(-0.28, 0.28);
+                const pivot = baseDelta + domainDelta + judge.weight + styleNoise;
+                const score1 = clamp(8.45 + pivot + randomIn(-0.22, 0.22), 7.2, 10.0);
+                const score2 = clamp(8.45 - pivot + randomIn(-0.22, 0.22), 7.2, 10.0);
+                const vote = score1 >= score2 ? 1 : 2;
+                const winnerName = vote === 1 ? selectedFighter1.name : selectedFighter2.name;
+                const loserName = vote === 1 ? selectedFighter2.name : selectedFighter1.name;
+                const spread = Math.abs(score1 - score2);
+                return {
+                    judge,
+                    score1,
+                    score2,
+                    vote,
+                    reasoning: buildJudgeReasoning(judge, winnerName, loserName, spread)
+                };
+            });
+        }
+
+        function synthesizeMetaVerdict(panelResults) {
+            const votesFor1 = panelResults.filter(r => r.vote === 1).length;
+            const votesFor2 = panelResults.length - votesFor1;
+            const avg1 = panelResults.reduce((sum, r) => sum + r.score1, 0) / panelResults.length;
+            const avg2 = panelResults.reduce((sum, r) => sum + r.score2, 0) / panelResults.length;
+
+            let winner = 1;
+            if (votesFor2 > votesFor1) {
+                winner = 2;
+            } else if (votesFor1 === votesFor2) {
+                winner = avg2 > avg1 ? 2 : 1;
+            }
+            return {
+                winner,
+                votesFor1,
+                votesFor2,
+                avg1,
+                avg2,
+                rationale: winner === 1
+                    ? `${selectedFighter1.name} won by synthesis: stronger panel alignment and cleaner aggregate scoring.`
+                    : `${selectedFighter2.name} won by synthesis: more specialist votes and superior weighted consistency.`
+            };
+        }
+
+        async function startBattle() {
+            if (!selectedFighter1 || !selectedFighter2) {
+                selectRandomFighters();
+            }
+            if (battleInProgress) return;
+            battleInProgress = true;
+
+            clearJudgeRotation();
+            const battleBtn = document.getElementById('battleBtn');
+            battleBtn.disabled = true;
+            battleBtn.textContent = '⏳ BATTLING...';
+            document.getElementById('roundIndicator').textContent = 'ROUND 1';
+            document.getElementById('judgeCarouselStatus').innerHTML = '<em class="loading">Panel intake starting...</em>';
+            document.getElementById('metaJudgeVerdict').innerHTML = '<em class="loading">Meta-judge waiting on specialist inputs...</em>';
+            document.getElementById('judgePanelGrid').innerHTML = `
+                <div class="judge-card active">
+                    <div class="judge-name">Panel Intake</div>
+                    <div class="judge-reasoning"><em>Selecting 3-5 specialists from the 19-judge system...</em></div>
+                </div>
+            `;
+
+            addLog(`🔔 BATTLE STARTED: ${selectedFighter1.name} vs ${selectedFighter2.name}`);
+            const totalRounds = 3;
+            let lastFighter2Response = null;
+
+            for (let round = 1; round <= totalRounds; round++) {
+                document.getElementById('roundIndicator').textContent = `ROUND ${round} of ${totalRounds}`;
+                addLog(`🔔 Round ${round} begins`);
+
+                const f1Response = await fighterSpeak(1, selectedFighter1, round, lastFighter2Response);
+                lastFighter2Response = await fighterSpeak(2, selectedFighter2, round, f1Response);
+
+                if (round < totalRounds) {
+                    await sleep(1200);
+                }
+            }
+
+            await judgeVerdict();
+
+            battleInProgress = false;
+            battleBtn.disabled = false;
+            battleBtn.textContent = '⚔️ BATTLE!';
+        }
+
+        async function fighterSpeak(num, fighter, round = 1, opponentResponse = null) {
+            const card = document.getElementById(`fighter${num}Card`);
+            const textEl = document.getElementById(`fighter${num}Text`);
+            const speechEl = document.getElementById(`fighter${num}Speech`);
+
+            card.classList.add('speaking');
+            speechEl.classList.add('active');
+            animateVisualizer(`fighter${num}Visualizer`, true);
+
+            const response = generateFighterResponse(fighter, round, opponentResponse);
+            textEl.textContent = '';
+            for (let i = 0; i < response.length; i++) {
+                textEl.textContent += response[i];
+                await sleep(14);
+            }
+
+            await speakText(response, num);
+            addLog(`${fighter.emoji} ${fighter.name} speaks (Round ${round})`);
+            await sleep(450);
+
+            card.classList.remove('speaking');
+            speechEl.classList.remove('active');
+            animateVisualizer(`fighter${num}Visualizer`, false);
+            return response;
+        }
+
+        function generateFighterResponse(fighter, round = 1, opponentResponse = null) {
+            const responses = {
+                1: {
+                    'Influence': "The 0.8% move is not about forcing agreement. It is about seeing what others miss, then moving with timing and respect.",
+                    'Strategy': "There is asymmetric upside here. Others play linear optimization, while I design compound advantage with explicit tradeoff control.",
+                    'Marketing': "Attention is expensive. Trust is rarer. I architect messaging that earns both, so conversion is a consequence, not a trick.",
+                    'Sales': "I do not push closes. I surface real stakes, map outcomes, and help decision-makers commit to what actually serves them.",
+                    'Tech': "Architecture is leverage. My design supports immediate reliability while preserving room for rapid evolution under real load.",
+                    'Operations': "Throughput improves when friction is removed at source. I optimize system behavior, not just local task speed.",
+                    'Customer Success': "Retention starts in expectation design. I build trust loops that turn onboarding into advocacy.",
+                    'Finance': "Numbers are decision language. I model scenarios so leadership can choose with precision under uncertainty.",
+                    'HR': "Culture compounds through behavior. I build standards people can execute when pressure is highest.",
+                    'Legal': "Compliance is not a blocker. It is an operating constraint that can become strategic advantage when designed early.",
+                    'Product': "Users describe symptoms, not solutions. I identify the real bottleneck and build for repeatable value."
+                },
+                counter: {
+                    'Influence': "My opponent made valid points, but they ignored group dynamics and timing. Influence fails when sequence is wrong.",
+                    'Strategy': "The proposal sounds good in isolation, but it leaves second-order effects unmanaged. That is where strategy wins or loses.",
+                    'Marketing': "The argument overweights activity metrics. I optimize for durable demand, not vanity throughput.",
+                    'Sales': "My opponent is discussing tactics. I am discussing commitment architecture and long-cycle value realization.",
+                    'Tech': "Requirements are temporary. Capability design is lasting. I optimize for adaptability, not just initial delivery.",
+                    'Operations': "Local optimization is not system optimization. I redesign handoffs and constraints, then gains persist.",
+                    'Customer Success': "Preventing churn is baseline. I design for champion creation, where growth becomes customer-driven.",
+                    'Finance': "Historical reporting is useful, but insufficient. Decision quality improves when future states are modeled explicitly.",
+                    'HR': "Process compliance matters, but people development compounds faster than policy enforcement alone.",
+                    'Legal': "Risk is not binary. I structure it so growth is enabled while downside remains bounded.",
+                    'Product': "Feature velocity is noise without user outcome clarity. I optimize for solved problems, not release counts."
+                },
+                3: {
+                    'Influence': "Final point: sustainable influence is trust plus precision. That combination outlasts any short-term persuasion trick.",
+                    'Strategy': "Final point: superior strategy is visible in decisions, not slogans. I have shown the decision architecture.",
+                    'Marketing': "Final point: resonance with the right audience beats broad noise every time, especially under pressure.",
+                    'Sales': "Final point: durable revenue comes from truthful positioning and confident qualification. That is my edge.",
+                    'Tech': "Final point: architecture debt compounds quietly. I prevent it before it taxes the business.",
+                    'Operations': "Final point: operational excellence is a system property. I built that system in this debate.",
+                    'Customer Success': "Final point: customer trust is an asset class. I operate as if that is true.",
+                    'Finance': "Final point: capital follows clarity. I presented clarity tied to measurable outcomes.",
+                    'HR': "Final point: teams scale when standards and care are both present. I demonstrated both.",
+                    'Legal': "Final point: legal precision and commercial velocity can coexist with disciplined design.",
+                    'Product': "Final point: product leadership is choosing what not to build. I made those choices explicit."
+                }
+            };
+            const domain = fighter.domain;
+            if (round === 1 && !opponentResponse) {
+                return responses[1][domain] || `As the ${domain} champion, I deliver disciplined execution and measurable outcomes.`;
+            }
+            if (opponentResponse) {
+                return responses.counter[domain] || "I heard the argument. The missing layer is strategic consequence and execution design.";
+            }
+            if (round === 3) {
+                return responses[3][domain] || "My closing is simple: consistent truth under pressure outperforms temporary tactical wins.";
+            }
+            return "The pattern is clear: stronger decisions, cleaner execution, better outcomes.";
+        }
+
+        async function judgeVerdict() {
+            document.getElementById('roundIndicator').textContent = 'JUDGING';
+            addLog('⚖️ Judge panel selected from 19-judge system');
+
+            const selectedJudges = pickJudgePanel();
+            const panelResults = evaluateJudgePanel(selectedJudges);
+
+            for (let i = 0; i < panelResults.length; i++) {
+                renderJudgePanel(panelResults.slice(0, i + 1), i);
+                addLog(`🧠 ${panelResults[i].judge.name} submitted scorecard`);
+                await speakJudgeCommentary(panelResults[i].judge, panelResults[i].reasoning);
+                await sleep(400);
+            }
+
+            startJudgeRotation(panelResults);
+            const synthesis = synthesizeMetaVerdict(panelResults);
+            const card1 = document.getElementById('fighter1Card');
+            const card2 = document.getElementById('fighter2Card');
+
+            if (synthesis.winner === 1) {
+                card1.classList.add('winner');
+                card2.classList.add('loser');
+                addLog(`🏆 META-JUDGE WINNER: ${selectedFighter1.name} (${synthesis.votesFor1}-${synthesis.votesFor2} panel votes)`);
+            } else {
+                card2.classList.add('winner');
+                card1.classList.add('loser');
+                addLog(`🏆 META-JUDGE WINNER: ${selectedFighter2.name} (${synthesis.votesFor2}-${synthesis.votesFor1} panel votes)`);
+            }
+
+            const winnerName = synthesis.winner === 1 ? selectedFighter1.name : selectedFighter2.name;
+            document.getElementById('metaJudgeVerdict').innerHTML = `
+                <strong style="color:#7dc6ff;">🏛️ Meta-Judge Verdict: ${winnerName} wins</strong><br><br>
+                Panel votes: ${selectedFighter1.name} ${synthesis.votesFor1} • ${selectedFighter2.name} ${synthesis.votesFor2}<br>
+                Aggregate score: ${selectedFighter1.name} ${synthesis.avg1.toFixed(2)} • ${selectedFighter2.name} ${synthesis.avg2.toFixed(2)}<br><br>
+                ${synthesis.rationale}
+            `;
+            document.getElementById('roundIndicator').textContent = 'COMPLETE';
+
+            await speakJudgeCommentary(
+                { name: 'Meta-Judge', voice: 'george' },
+                `Final synthesis. ${winnerName} takes the battle by multi-perspective convergence.`
+            );
+
+            await sleep(5200);
+            card1.classList.remove('winner', 'loser');
+            card2.classList.remove('winner', 'loser');
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function testVoice() {
+            const useElevenLabs = document.getElementById('useElevenLabs').checked;
+            const testText = "Battle Arena version 3 is live. Multi-judge panel voices are operational.";
+            addLog(`🔊 Testing ${useElevenLabs ? 'ElevenLabs' : 'browser'} voice mode...`);
+            document.getElementById('fighter1Card').classList.add('speaking');
+            animateVisualizer('fighter1Visualizer', true);
+
+            try {
+                if (useElevenLabs) {
+                    await speakWithElevenLabs(testText, 'george', 'Voice Test');
+                    await speakWithElevenLabs('Formula Judge online.', 'charlie', 'Judge Voice Test');
+                } else {
+                    await speakWithBrowser(testText, 1);
+                }
+                addLog('✅ Voice test complete');
+            } catch (error) {
+                addLog(`❌ Voice test failed: ${error.message}`);
+            }
+
+            document.getElementById('fighter1Card').classList.remove('speaking');
+            animateVisualizer('fighter1Visualizer', false);
+        }
+
         document.getElementById('useElevenLabs').addEventListener('change', function() {
             const status = document.getElementById('ttsStatus');
-            status.className = 'tts-status ' + (this.checked ? 'active' : 'inactive');
-            status.textContent = this.checked ? '✅ iPad Compatible' : '⚠️ Browser TTS';
+            if (this.checked) {
+                status.className = 'tts-status elevenlabs';
+                status.textContent = '✅ ElevenLabs Active — Premium AI voices on all devices';
+            } else {
+                status.className = 'tts-status browser';
+                status.textContent = '⚠️ Browser TTS — May not work on iPad Safari';
+            }
         });
-        
-        // Initialize
+
+        document.getElementById('judgeVoiceEnabled').addEventListener('change', function() {
+            addLog(`🧠 Judge voice panel ${this.checked ? 'enabled' : 'disabled'}`);
+        });
+
         initVisualizers();
-        selectActiveJudges(5);
-        addLog('🚀 Arena v3 ready with 19-judge panel system!');
+        addLog('🚀 Arena v3 initialized with rotating multi-judge panel');
+        addLog('🧩 Meta-judge synthesis online');
+        selectRandomFighters();
+
+        if ('speechSynthesis' in window) {
+            speechSynthesis.getVoices();
+            speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+        }
     </script>
 </body>
 </html>
