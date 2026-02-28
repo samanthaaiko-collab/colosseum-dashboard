@@ -4,7 +4,8 @@
     "total_beings": 23401,
     "total_battles": 547693,
     "max_generation": 585,
-    "active_domains": 11
+    "active_domains": 11,
+    "total_tournaments": 11
   },
   "domains": [
     {
