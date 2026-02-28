@@ -1,345 +1,346 @@
 {
-  "generated_at": "2026-02-28T08:44:25.212538",
-  "stats": {
-    "total_beings": 23374,
-    "total_battles": 547247,
-    "max_generation": 575,
-    "active_domains": 11,
+  "generated_at": "2026-02-28T13:58:16.027373Z",
+  "total_beings": 23401,
+  "total_battles": 547693,
+  "generation_depth": 578,
+  "total_tournaments": 10,
+  "domains": {
     "domains": [
       {
-        "name": "main",
-        "beings_count": 7658,
-        "battle_count": 13208,
-        "generation_depth": 575,
-        "avg_score": 0,
-        "champion": {
-          "id": "B-036f833b",
-          "name": "Prometheus",
-          "score": 8.35,
-          "wins": 2,
-          "losses": 0,
-          "generation": 525
-        },
-        "online": true
-      },
-      {
         "name": "cs",
-        "beings_count": 1520,
-        "battle_count": 53284,
+        "online": true,
+        "beings": 1520,
+        "battles": 53322,
         "generation_depth": 56,
-        "avg_score": 0,
         "champion": {
-          "id": "b9ccc1a7-b181-4752-bfaf-6f51c637fa50",
-          "name": "Community",
+          "name": "Product Liaison-Elite-G6-G12-G22-G34-G43-G53",
           "score": 9.5,
-          "wins": 73,
-          "losses": 147,
-          "generation": 0
-        },
-        "online": true
+          "wins": 1,
+          "losses": 0
+        }
       },
       {
         "name": "finance",
-        "beings_count": 1592,
-        "battle_count": 53258,
+        "online": true,
+        "beings": 1592,
+        "battles": 53291,
         "generation_depth": 63,
-        "avg_score": 0,
         "champion": {
-          "id": "a5eb834f-736f-4f27-b0e1-ffe42a90d8d0",
-          "name": "Tax",
+          "name": "Working Capital Optimizer-X-G8-G15-G21-G33-G55",
           "score": 9.5,
-          "wins": 74,
-          "losses": 154,
-          "generation": 0
-        },
-        "online": true
+          "wins": 0,
+          "losses": 1
+        }
       },
       {
         "name": "hr",
-        "beings_count": 1610,
-        "battle_count": 53320,
+        "online": true,
+        "beings": 1610,
+        "battles": 53358,
         "generation_depth": 65,
-        "avg_score": 0,
         "champion": {
-          "id": "54ceccb9-e9f8-48ad-9102-e03de9d62728",
-          "name": "People",
+          "name": "Employee Engagement Lead-X-G7-G15-G33-G52-G57",
           "score": 9.5,
-          "wins": 67,
-          "losses": 148,
-          "generation": 0
-        },
-        "online": true
+          "wins": 0,
+          "losses": 1
+        }
       },
       {
         "name": "legal",
-        "beings_count": 1638,
-        "battle_count": 53031,
+        "online": true,
+        "beings": 1638,
+        "battles": 53065,
         "generation_depth": 68,
-        "avg_score": 0,
         "champion": {
-          "id": "b374cdde-7197-4bce-8d60-cca47a3e617a",
-          "name": "IP Strategist",
+          "name": "AI and Ethics Counsel-X-G6-G13-G19-G35-G54",
           "score": 9.5,
-          "wins": 77,
-          "losses": 171,
-          "generation": 0
-        },
-        "online": true
+          "wins": 0,
+          "losses": 1
+        }
       },
       {
         "name": "marketing",
-        "beings_count": 1540,
-        "battle_count": 53050,
+        "online": true,
+        "beings": 1540,
+        "battles": 53090,
         "generation_depth": 58,
-        "avg_score": 0,
         "champion": {
-          "id": "ac65a993-2285-4e55-b2c3-9bceec05539e",
-          "name": "Technical Marketer",
+          "name": "Specificity Champion-Prime-G9-G17-G22-G30-G45",
           "score": 9.5,
-          "wins": 63,
-          "losses": 162,
-          "generation": 0
-        },
-        "online": true
+          "wins": 2,
+          "losses": 0
+        }
       },
       {
         "name": "ops",
-        "beings_count": 1600,
-        "battle_count": 53760,
+        "online": true,
+        "beings": 1600,
+        "battles": 53800,
         "generation_depth": 64,
-        "avg_score": 0,
         "champion": {
-          "id": "3e6ed415-2b1c-45eb-9a05-c4fa200ce367",
-          "name": "Operations",
+          "name": "Decision Process Designer-Elite-G6-G12-G48",
           "score": 9.5,
-          "wins": 55,
-          "losses": 155,
-          "generation": 0
-        },
-        "online": true
+          "wins": 0,
+          "losses": 1
+        }
       },
       {
         "name": "product",
-        "beings_count": 1440,
-        "battle_count": 53451,
+        "online": true,
+        "beings": 1440,
+        "battles": 53487,
         "generation_depth": 48,
-        "avg_score": 0,
         "champion": {
-          "id": "B-7c690405",
-          "name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G27",
-          "score": 9.8,
-          "wins": 3,
-          "losses": 8,
-          "generation": 27
-        },
-        "online": true
+          "name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G32-G43",
+          "score": 9.5,
+          "wins": 0,
+          "losses": 1
+        }
       },
       {
         "name": "sales",
-        "beings_count": 1560,
-        "battle_count": 53905,
+        "online": true,
+        "beings": 1560,
+        "battles": 53947,
         "generation_depth": 60,
-        "avg_score": 0,
         "champion": {
-          "id": "B-2307810b",
-          "name": "Agreement Architect-Alpha",
+          "name": "Executive Communicator-Alpha-G9-G28-G43-G46",
           "score": 9.5,
-          "wins": 56,
-          "losses": 145,
-          "generation": 5
-        },
-        "online": true
+          "wins": 1,
+          "losses": 1
+        }
       },
       {
         "name": "strategy",
-        "beings_count": 1566,
-        "battle_count": 53367,
+        "online": true,
+        "beings": 1566,
+        "battles": 53407,
         "generation_depth": 61,
-        "avg_score": 0,
         "champion": {
-          "id": "b3823d97-c651-4eaa-9a1b-4db9a4622b30",
-          "name": "Market Intelligence",
+          "name": "Leverage Identifier-II-G8-G19-G25-G39-G51",
           "score": 9.5,
-          "wins": 67,
-          "losses": 165,
-          "generation": 0
-        },
-        "online": true
+          "wins": 2,
+          "losses": 0
+        }
       },
       {
         "name": "tech",
-        "beings_count": 1650,
-        "battle_count": 53613,
+        "online": true,
+        "beings": 1650,
+        "battles": 53654,
         "generation_depth": 69,
-        "avg_score": 0,
         "champion": {
-          "id": "B-15c3782e",
-          "name": "Performance Optimizer-Prime",
+          "name": "Infrastructure Economist-X-G9-G17-G33-G64",
           "score": 9.5,
-          "wins": 45,
-          "losses": 161,
-          "generation": 0
-        },
-        "online": true
+          "wins": 0,
+          "losses": 1
+        }
       }
     ]
   },
-  "domains": [
+  "leaderboard": [
     {
-      "name": "main",
-      "beings_count": 7658,
-      "battle_count": 13208,
-      "generation_depth": 575,
-      "champion": {
-        "id": "B-036f833b",
-        "name": "Prometheus",
-        "score": 8.35,
-        "wins": 2,
-        "losses": 0,
-        "generation": 525
-      }
+      "id": "B-036f833b",
+      "name": "Prometheus",
+      "generation": 525,
+      "wins": 2,
+      "losses": 0,
+      "total_rounds": 2,
+      "avg_mastery_score": 8.35,
+      "best_score": 8.5
     },
     {
-      "name": "cs",
-      "beings_count": 1520,
-      "battle_count": 53284,
-      "generation_depth": 56,
-      "champion": {
-        "id": "b9ccc1a7-b181-4752-bfaf-6f51c637fa50",
-        "name": "Community",
-        "score": 9.5,
-        "wins": 73,
-        "losses": 147,
-        "generation": 0
-      }
+      "id": "B-5e8543f6",
+      "name": "Artemis",
+      "generation": 233,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     },
     {
-      "name": "finance",
-      "beings_count": 1592,
-      "battle_count": 53258,
-      "generation_depth": 63,
-      "champion": {
-        "id": "a5eb834f-736f-4f27-b0e1-ffe42a90d8d0",
-        "name": "Tax",
-        "score": 9.5,
-        "wins": 74,
-        "losses": 154,
-        "generation": 0
-      }
+      "id": "B-36ef43d7",
+      "name": "Jade",
+      "generation": 324,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     },
     {
-      "name": "hr",
-      "beings_count": 1610,
-      "battle_count": 53320,
-      "generation_depth": 65,
-      "champion": {
-        "id": "54ceccb9-e9f8-48ad-9102-e03de9d62728",
-        "name": "People",
-        "score": 9.5,
-        "wins": 67,
-        "losses": 148,
-        "generation": 0
-      }
+      "id": "B-84018161",
+      "name": "Onyx",
+      "generation": 358,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     },
     {
-      "name": "legal",
-      "beings_count": 1638,
-      "battle_count": 53031,
-      "generation_depth": 68,
-      "champion": {
-        "id": "b374cdde-7197-4bce-8d60-cca47a3e617a",
-        "name": "IP Strategist",
-        "score": 9.5,
-        "wins": 77,
-        "losses": 171,
-        "generation": 0
-      }
+      "id": "B-ac4bc3b4",
+      "name": "Coral",
+      "generation": 360,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     },
     {
-      "name": "marketing",
-      "beings_count": 1540,
-      "battle_count": 53050,
-      "generation_depth": 58,
-      "champion": {
-        "id": "ac65a993-2285-4e55-b2c3-9bceec05539e",
-        "name": "Technical Marketer",
-        "score": 9.5,
-        "wins": 63,
-        "losses": 162,
-        "generation": 0
-      }
+      "id": "B-bc45ec5c",
+      "name": "Artemis",
+      "generation": 385,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     },
     {
-      "name": "ops",
-      "beings_count": 1600,
-      "battle_count": 53760,
-      "generation_depth": 64,
-      "champion": {
-        "id": "3e6ed415-2b1c-45eb-9a05-c4fa200ce367",
-        "name": "Operations",
-        "score": 9.5,
-        "wins": 55,
-        "losses": 155,
-        "generation": 0
-      }
+      "id": "B-c5b3122b",
+      "name": "Drift",
+      "generation": 403,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     },
     {
-      "name": "product",
-      "beings_count": 1440,
-      "battle_count": 53451,
-      "generation_depth": 48,
-      "champion": {
-        "id": "B-7c690405",
-        "name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G27",
-        "score": 9.8,
-        "wins": 3,
-        "losses": 8,
-        "generation": 27
-      }
+      "id": "B-926e01a0",
+      "name": "Rune",
+      "generation": 433,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     },
     {
-      "name": "sales",
-      "beings_count": 1560,
-      "battle_count": 53905,
-      "generation_depth": 60,
-      "champion": {
-        "id": "B-2307810b",
-        "name": "Agreement Architect-Alpha",
-        "score": 9.5,
-        "wins": 56,
-        "losses": 145,
-        "generation": 5
-      }
+      "id": "B-7fef452a",
+      "name": "Selene",
+      "generation": 438,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     },
     {
-      "name": "strategy",
-      "beings_count": 1566,
-      "battle_count": 53367,
-      "generation_depth": 61,
-      "champion": {
-        "id": "b3823d97-c651-4eaa-9a1b-4db9a4622b30",
-        "name": "Market Intelligence",
-        "score": 9.5,
-        "wins": 67,
-        "losses": 165,
-        "generation": 0
-      }
+      "id": "B-89c3985f",
+      "name": "Phoenix",
+      "generation": 452,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     },
     {
-      "name": "tech",
-      "beings_count": 1650,
-      "battle_count": 53613,
-      "generation_depth": 69,
-      "champion": {
-        "id": "B-15c3782e",
-        "name": "Performance Optimizer-Prime",
-        "score": 9.5,
-        "wins": 45,
-        "losses": 161,
-        "generation": 0
-      }
+      "id": "B-5c74781e",
+      "name": "Cedar",
+      "generation": 458,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
+    },
+    {
+      "id": "B-ea07f4fc",
+      "name": "Zephyr",
+      "generation": 463,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
+    },
+    {
+      "id": "B-bede2218",
+      "name": "Rain",
+      "generation": 485,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
+    },
+    {
+      "id": "B-4e3fa0b6",
+      "name": "Wolf",
+      "generation": 501,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
+    },
+    {
+      "id": "B-bf259118",
+      "name": "Thea",
+      "generation": 522,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
+    },
+    {
+      "id": "B-031e496b",
+      "name": "Thea",
+      "generation": 523,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
+    },
+    {
+      "id": "B-3277cf00",
+      "name": "Thorn",
+      "generation": 525,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
+    },
+    {
+      "id": "B-154b70ef",
+      "name": "Thorn",
+      "generation": 526,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
+    },
+    {
+      "id": "B-b6b26d44",
+      "name": "Ridge",
+      "generation": 543,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
+    },
+    {
+      "id": "B-eaddc1f5",
+      "name": "Selene",
+      "generation": 548,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2
     }
   ],
-  "domain_data": {},
-  "activity": []
+  "activity": {
+    "items": []
+  }
 }
