@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email/Ad Colosseum — ACT-I</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a0a1a; color: #e0e0e0; min-height: 100vh; }
+        
+        .nav { display: flex; gap: 8px; padding: 12px 20px; background: #111128; border-bottom: 2px solid #2a2a4a; flex-wrap: wrap; }
+        .nav a { color: #8888cc; text-decoration: none; padding: 6px 14px; border-radius: 6px; font-size: 14px; transition: all 0.2s; }
+        .nav a:hover, .nav a.active { background: #1a1a3a; color: #ffcc00; }
+        
+        .header { text-align: center; padding: 40px 20px 20px; }
+        .header h1 { font-size: 2.5em; background: linear-gradient(135deg, #ff6b35, #ffcc00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header p { color: #888; margin-top: 8px; font-size: 1.1em; }
+        
+        .stats-row { display: flex; justify-content: center; gap: 30px; padding: 20px; flex-wrap: wrap; }
+        .stat { text-align: center; background: #111128; padding: 20px 30px; border-radius: 12px; border: 1px solid #2a2a4a; min-width: 140px; }
+        .stat .number { font-size: 2.2em; font-weight: bold; color: #ffcc00; }
+        .stat .label { font-size: 0.85em; color: #888; margin-top: 4px; }
+        
+        .champions { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+        .champions h2 { font-size: 1.5em; margin-bottom: 20px; color: #ffcc00; text-align: center; }
+        
+        .champion-card { background: #111128; border: 1px solid #2a2a4a; border-radius: 12px; padding: 20px; margin-bottom: 16px; transition: all 0.3s; position: relative; overflow: hidden; }
+        .champion-card:hover { border-color: #ffcc00; transform: translateY(-2px); }
+        .champion-card.gold { border-color: #ffcc00; background: linear-gradient(135deg, #111128, #1a1a0a); }
+        .champion-card.silver { border-color: #c0c0c0; }
+        .champion-card.bronze { border-color: #cd7f32; }
+        
+        .rank { font-size: 1.8em; position: absolute; top: 15px; left: 20px; }
+        .card-content { margin-left: 50px; }
+        .subject-line { font-size: 1.2em; font-weight: bold; color: #fff; margin-bottom: 8px; }
+        
+        .metrics { display: flex; gap: 20px; margin-top: 10px; flex-wrap: wrap; }
+        .metric { font-size: 0.9em; }
+        .metric .val { color: #ffcc00; font-weight: bold; }
+        .metric .lbl { color: #666; }
+        
+        .win-bar { height: 6px; background: #1a1a3a; border-radius: 3px; margin-top: 10px; overflow: hidden; }
+        .win-bar .fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+        .win-bar .fill.high { background: linear-gradient(90deg, #00cc66, #ffcc00); }
+        .win-bar .fill.mid { background: linear-gradient(90deg, #ffcc00, #ff6b35); }
+        .win-bar .fill.low { background: linear-gradient(90deg, #ff6b35, #ff3333); }
+        
+        .personas { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .personas h2 { font-size: 1.5em; margin-bottom: 20px; color: #ffcc00; text-align: center; }
+        .persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+        .persona-card { background: #111128; border: 1px solid #2a2a4a; border-radius: 12px; padding: 16px; }
+        .persona-card .name { font-weight: bold; color: #fff; font-size: 1.1em; }
+        .persona-card .type { color: #ffcc00; font-size: 0.85em; margin-top: 2px; }
+        .persona-card .desc { color: #888; font-size: 0.85em; margin-top: 8px; line-height: 1.4; }
+        
+        .scoring { max-width: 900px; margin: 40px auto; padding: 0 20px 60px; }
+        .scoring h2 { font-size: 1.5em; margin-bottom: 20px; color: #ffcc00; text-align: center; }
+        .dimension { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a1a3a; }
+        .dimension .icon { font-size: 1.5em; width: 40px; text-align: center; }
+        .dimension .name { font-weight: bold; width: 120px; }
+        .dimension .desc { color: #888; font-size: 0.9em; flex: 1; }
+        
+        .methodology { max-width: 900px; margin: 20px auto; padding: 20px; background: #0d0d2a; border: 1px solid #2a2a4a; border-radius: 12px; }
+        .methodology h3 { color: #ffcc00; margin-bottom: 10px; }
+        .methodology p { color: #aaa; line-height: 1.6; font-size: 0.95em; }
+        
+        .live-badge { display: inline-block; background: #00cc66; color: #000; padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: bold; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        
+        .footer { text-align: center; padding: 40px; color: #444; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html">📊 Dashboard</a>
+        <a href="battle-arena.html">⚔️ Battle Arena</a>
+        <a href="tournament-brackets.html">🏆 Brackets</a>
+        <a href="email-colosseum.html" class="active">📧 Email Colosseum</a>
+    </nav>
+
+    <div class="header">
+        <h1>📧 Email/Ad Colosseum</h1>
+        <p>Pre-testing email subjects, copy & ads against AI personas <span class="live-badge">LIVE</span></p>
+        <p style="color: #666; margin-top: 6px; font-size: 0.9em;">Powered by Sean Callagy's 4-Step Communication Model</p>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat">
+            <div class="number" id="totalBattles">252</div>
+            <div class="label">Battles Fought</div>
+        </div>
+        <div class="stat">
+            <div class="number" id="totalBeings">20</div>
+            <div class="label">Subject Lines</div>
+        </div>
+        <div class="stat">
+            <div class="number" id="totalPersonas">7</div>
+            <div class="label">Judge Personas</div>
+        </div>
+        <div class="stat">
+            <div class="number">5</div>
+            <div class="label">Scoring Dimensions</div>
+        </div>
+    </div>
+
+    <div class="champions">
+        <h2>🏆 Current Champions</h2>
+        
+        <div class="champion-card gold">
+            <div class="rank">🥇</div>
+            <div class="card-content">
+                <div class="subject-line">"The 3-second mistake costing PI attorneys $47K per case"</div>
+                <div class="metrics">
+                    <div class="metric"><span class="val">30W-7L</span> <span class="lbl">Record</span></div>
+                    <div class="metric"><span class="val">7.65</span> <span class="lbl">Score</span></div>
+                    <div class="metric"><span class="val">81%</span> <span class="lbl">Win Rate</span></div>
+                </div>
+                <div class="win-bar"><div class="fill high" style="width: 81%"></div></div>
+                <div style="color: #666; font-size: 0.8em; margin-top: 8px;">Pattern: Specificity ($47K) + Pain (mistake) + Targeting (PI attorneys)</div>
+            </div>
+        </div>
+
+        <div class="champion-card silver">
+            <div class="rank">🥈</div>
+            <div class="card-content">
+                <div class="subject-line">"Ready to stop being the bottleneck?"</div>
+                <div class="metrics">
+                    <div class="metric"><span class="val">20W-4L</span> <span class="lbl">Record</span></div>
+                    <div class="metric"><span class="val">6.80</span> <span class="lbl">Score</span></div>
+                    <div class="metric"><span class="val">83%</span> <span class="lbl">Win Rate</span></div>
+                </div>
+                <div class="win-bar"><div class="fill high" style="width: 83%"></div></div>
+                <div style="color: #666; font-size: 0.8em; margin-top: 8px;">Pattern: Direct Challenge + Identity Question + Brevity</div>
+            </div>
+        </div>
+
+        <div class="champion-card bronze">
+            <div class="rank">🥉</div>
+            <div class="card-content">
+                <div class="subject-line">"What if your best cases are already in your pipeline?"</div>
+                <div class="metrics">
+                    <div class="metric"><span class="val">20W-9L</span> <span class="lbl">Record</span></div>
+                    <div class="metric"><span class="val">6.55</span> <span class="lbl">Score</span></div>
+                    <div class="metric"><span class="val">69%</span> <span class="lbl">Win Rate</span></div>
+                </div>
+                <div class="win-bar"><div class="fill mid" style="width: 69%"></div></div>
+                <div style="color: #666; font-size: 0.8em; margin-top: 8px;">Pattern: Reframe + Curiosity + Hidden Value</div>
+            </div>
+        </div>
+
+        <div class="champion-card">
+            <div class="rank">4️⃣</div>
+            <div class="card-content">
+                <div class="subject-line">"You're leaving money on the table. Here's proof."</div>
+                <div class="metrics">
+                    <div class="metric"><span class="val">18W-12L</span> <span class="lbl">Record</span></div>
+                    <div class="metric"><span class="val">6.20</span> <span class="lbl">Score</span></div>
+                    <div class="metric"><span class="val">60%</span> <span class="lbl">Win Rate</span></div>
+                </div>
+                <div class="win-bar"><div class="fill mid" style="width: 60%"></div></div>
+            </div>
+        </div>
+
+        <div class="champion-card">
+            <div class="rank">5️⃣</div>
+            <div class="card-content">
+                <div class="subject-line">"The method behind two Top 100 verdicts"</div>
+                <div class="metrics">
+                    <div class="metric"><span class="val">16W-9L</span> <span class="lbl">Record</span></div>
+                    <div class="metric"><span class="val">6.15</span> <span class="lbl">Score</span></div>
+                    <div class="metric"><span class="val">64%</span> <span class="lbl">Win Rate</span></div>
+                </div>
+                <div class="win-bar"><div class="fill mid" style="width: 64%"></div></div>
+                <div style="color: #666; font-size: 0.8em; margin-top: 8px;">Pattern: Authority (Top 100) — works but lands better after truth-to-pain</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="methodology">
+        <h3>🧠 Key Insight: Sean's 4-Step Model Predicts Winners</h3>
+        <p><strong>Hook → Truth → Pain → Solution.</strong> The data confirms it. Specificity ("$47K per case") outperforms generic claims. Direct challenges ("stop being the bottleneck") outperform soft questions. Authority plays ("Top 100 verdicts") climb but land best AFTER truth-to-pain — exactly as the model predicts. The Colosseum isn't just testing copy; it's validating the Unblinded Formula in real-time.</p>
+    </div>
+
+    <div class="personas">
+        <h2>⚖️ Judge Personas</h2>
+        <div class="persona-grid">
+            <div class="persona-card">
+                <div class="name">Marcus Chen</div>
+                <div class="type">🏛️ Solo PI Attorney</div>
+                <div class="desc">15 years experience. Burned out. Skeptical of marketing. Gets 100+ emails daily. High bar for curiosity.</div>
+            </div>
+            <div class="persona-card">
+                <div class="name">Sarah Mitchell</div>
+                <div class="type">🏛️ Mid-Size Partner</div>
+                <div class="desc">Partner at 25-attorney firm. Values efficiency and proven results. Delegation mindset.</div>
+            </div>
+            <div class="persona-card">
+                <div class="name">David Park</div>
+                <div class="type">🏛️ BigLaw Associate</div>
+                <div class="desc">5th year at AmLaw 100 firm. Career-driven, cautious about reputation. Risk-averse.</div>
+            </div>
+            <div class="persona-card">
+                <div class="name">Jennifer Rodriguez</div>
+                <div class="type">🏛️ Family Law</div>
+                <div class="desc">Client-care oriented. High emotional intelligence. Values relevance over urgency.</div>
+            </div>
+            <div class="persona-card">
+                <div class="name">Dr. Michael Torres</div>
+                <div class="type">🏥 Orthopedic Surgeon</div>
+                <div class="desc">60+ hrs/week. Values efficiency above all. 3 seconds to decide on an email.</div>
+            </div>
+            <div class="persona-card">
+                <div class="name">Dr. Lisa Chang</div>
+                <div class="type">🏥 Primary Care</div>
+                <div class="desc">Family medicine. Overwhelmed patient load. Inbox-fatigued but genuinely cares.</div>
+            </div>
+            <div class="persona-card">
+                <div class="name">Karen Williams</div>
+                <div class="type">🏥 Practice Admin</div>
+                <div class="desc">Cost-conscious. Gatekeeps doctor access. Results-driven decision maker.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scoring">
+        <h2>📏 Scoring Dimensions</h2>
+        <div class="dimension">
+            <div class="icon">🔍</div>
+            <div class="name">Curiosity</div>
+            <div class="desc">Does it make me want to know more?</div>
+        </div>
+        <div class="dimension">
+            <div class="icon">🎯</div>
+            <div class="name">Relevance</div>
+            <div class="desc">Does this feel like it's for ME specifically?</div>
+        </div>
+        <div class="dimension">
+            <div class="icon">🛡️</div>
+            <div class="name">Credibility</div>
+            <div class="desc">Do I trust the sender?</div>
+        </div>
+        <div class="dimension">
+            <div class="icon">⚡</div>
+            <div class="name">Urgency</div>
+            <div class="desc">Do I feel I need to act now?</div>
+        </div>
+        <div class="dimension">
+            <div class="icon">💎</div>
+            <div class="name">Clarity</div>
+            <div class="desc">Do I understand the value in 3 seconds?</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Email/Ad Colosseum — Domain #12 | Built Feb 27, 2026</p>
+        <p>Powered by Sean Callagy's 4-Step Communication Model × Unblinded Formula</p>
+        <p style="margin-top: 8px;">🔥 SAI Collective | ACT-I</p>
+    </div>
+</body>
+</html>
