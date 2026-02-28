@@ -1,0 +1,231 @@
+{
+  "generated_at": "2026-02-28T13:41:32Z",
+  "stats": {
+    "total_beings": 7649,
+    "total_battles": 13196,
+    "max_generation": 574,
+    "total_tournaments": 10
+  },
+  "champions": [
+    {
+      "id": "B-036f833b",
+      "name": "Prometheus",
+      "generation": 525,
+      "wins": 2,
+      "losses": 0,
+      "total_rounds": 2,
+      "avg_mastery_score": 8.35,
+      "best_score": 8.5,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-5e8543f6",
+      "name": "Artemis",
+      "generation": 233,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 0.0
+    },
+    {
+      "id": "B-36ef43d7",
+      "name": "Jade",
+      "generation": 324,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-84018161",
+      "name": "Onyx",
+      "generation": 358,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-ac4bc3b4",
+      "name": "Coral",
+      "generation": 360,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-bc45ec5c",
+      "name": "Artemis",
+      "generation": 385,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-c5b3122b",
+      "name": "Drift",
+      "generation": 403,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-926e01a0",
+      "name": "Rune",
+      "generation": 433,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-7fef452a",
+      "name": "Selene",
+      "generation": 438,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 0.0
+    },
+    {
+      "id": "B-89c3985f",
+      "name": "Phoenix",
+      "generation": 452,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 0.0
+    },
+    {
+      "id": "B-5c74781e",
+      "name": "Cedar",
+      "generation": 458,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-ea07f4fc",
+      "name": "Zephyr",
+      "generation": 463,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-bede2218",
+      "name": "Rain",
+      "generation": 485,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-4e3fa0b6",
+      "name": "Wolf",
+      "generation": 501,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-bf259118",
+      "name": "Thea",
+      "generation": 522,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-031e496b",
+      "name": "Thea",
+      "generation": 523,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-3277cf00",
+      "name": "Thorn",
+      "generation": 525,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 0.0
+    },
+    {
+      "id": "B-154b70ef",
+      "name": "Thorn",
+      "generation": 526,
+      "wins": 1,
+      "losses": 0,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 100.0
+    },
+    {
+      "id": "B-b6b26d44",
+      "name": "Ridge",
+      "generation": 543,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 0.0
+    },
+    {
+      "id": "B-eaddc1f5",
+      "name": "Selene",
+      "generation": 548,
+      "wins": 0,
+      "losses": 1,
+      "total_rounds": 1,
+      "avg_mastery_score": 8.2,
+      "best_score": 8.2,
+      "win_rate": 0.0
+    }
+  ]
+}
