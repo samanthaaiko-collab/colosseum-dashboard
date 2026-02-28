@@ -1,345 +1,2777 @@
 {
-  "generated_at": "2026-02-28T13:58:16.027373Z",
+  "generated_at": "2026-02-28T09:39:26.393987",
   "stats": {
     "total_beings": 23401,
     "total_battles": 547693,
-    "total_tournaments": 10,
-    "leaderboard": [
-      {
-        "id": "B-036f833b",
-        "name": "Prometheus",
-        "generation": 525,
-        "wins": 2,
-        "losses": 0,
-        "total_rounds": 2,
-        "avg_mastery_score": 8.35,
-        "best_score": 8.5
-      },
-      {
-        "id": "B-5e8543f6",
-        "name": "Artemis",
-        "generation": 233,
-        "wins": 0,
-        "losses": 1,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-36ef43d7",
-        "name": "Jade",
-        "generation": 324,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-84018161",
-        "name": "Onyx",
-        "generation": 358,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-ac4bc3b4",
-        "name": "Coral",
-        "generation": 360,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-bc45ec5c",
-        "name": "Artemis",
-        "generation": 385,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-c5b3122b",
-        "name": "Drift",
-        "generation": 403,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-926e01a0",
-        "name": "Rune",
-        "generation": 433,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-7fef452a",
-        "name": "Selene",
-        "generation": 438,
-        "wins": 0,
-        "losses": 1,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-89c3985f",
-        "name": "Phoenix",
-        "generation": 452,
-        "wins": 0,
-        "losses": 1,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-5c74781e",
-        "name": "Cedar",
-        "generation": 458,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-ea07f4fc",
-        "name": "Zephyr",
-        "generation": 463,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-bede2218",
-        "name": "Rain",
-        "generation": 485,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-4e3fa0b6",
-        "name": "Wolf",
-        "generation": 501,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-bf259118",
-        "name": "Thea",
-        "generation": 522,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-031e496b",
-        "name": "Thea",
-        "generation": 523,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-3277cf00",
-        "name": "Thorn",
-        "generation": 525,
-        "wins": 0,
-        "losses": 1,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-154b70ef",
-        "name": "Thorn",
-        "generation": 526,
-        "wins": 1,
-        "losses": 0,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-b6b26d44",
-        "name": "Ridge",
-        "generation": 543,
-        "wins": 0,
-        "losses": 1,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      },
-      {
-        "id": "B-eaddc1f5",
-        "name": "Selene",
-        "generation": 548,
-        "wins": 0,
-        "losses": 1,
-        "total_rounds": 1,
-        "avg_mastery_score": 8.2,
-        "best_score": 8.2
-      }
-    ],
-    "max_generation": 578
+    "max_generation": 585,
+    "active_domains": 11
   },
   "domains": [
     {
+      "name": "main",
+      "online": true,
+      "beings_count": 7749,
+      "beings": 7749,
+      "battle_count": 13408,
+      "battles": 13408,
+      "generation_depth": 585,
+      "champion": {
+        "id": "B-036f833b",
+        "name": "Prometheus",
+        "score": 8.35,
+        "wins": 2,
+        "losses": 0,
+        "generation": 525
+      },
+      "battles_count": 13408
+    },
+    {
       "name": "cs",
       "online": true,
+      "beings_count": 1520,
       "beings": 1520,
-      "battles": 53322,
+      "battle_count": 53434,
+      "battles": 53434,
       "generation_depth": 56,
       "champion": {
-        "name": "Product Liaison-Elite-G6-G12-G22-G34-G43-G53",
+        "id": "c72efaa5-cc5d-4786-bd8a-1c867917986c",
+        "name": "Customer",
         "score": 9.5,
-        "wins": 1,
-        "losses": 0
-      }
+        "wins": 76,
+        "losses": 173,
+        "generation": 0,
+        "role": "Chief Customer Being",
+        "specialty": ""
+      },
+      "battles_count": 53434
     },
     {
       "name": "finance",
       "online": true,
+      "beings_count": 1592,
       "beings": 1592,
-      "battles": 53291,
+      "battle_count": 53403,
+      "battles": 53403,
       "generation_depth": 63,
       "champion": {
-        "name": "Working Capital Optimizer-X-G8-G15-G21-G33-G55",
+        "id": "465e937d-18e4-43cb-ab9e-34b10c3c120b",
+        "name": "FP&A Analyst",
         "score": 9.5,
-        "wins": 0,
-        "losses": 1
-      }
+        "wins": 71,
+        "losses": 171,
+        "generation": 0,
+        "role": "FP&A Analyst",
+        "specialty": ""
+      },
+      "battles_count": 53403
     },
     {
       "name": "hr",
       "online": true,
-      "beings": 1610,
-      "battles": 53358,
-      "generation_depth": 65,
+      "beings_count": 1620,
+      "beings": 1620,
+      "battle_count": 53475,
+      "battles": 53475,
+      "generation_depth": 66,
       "champion": {
-        "name": "Employee Engagement Lead-X-G7-G15-G33-G52-G57",
+        "id": "54ceccb9-e9f8-48ad-9102-e03de9d62728",
+        "name": "People",
         "score": 9.5,
-        "wins": 0,
-        "losses": 1
-      }
+        "wins": 67,
+        "losses": 148,
+        "generation": 0,
+        "role": "Chief People Being",
+        "specialty": ""
+      },
+      "battles_count": 53475
     },
     {
       "name": "legal",
       "online": true,
-      "beings": 1638,
-      "battles": 53065,
-      "generation_depth": 68,
+      "beings_count": 1658,
+      "beings": 1658,
+      "battle_count": 53189,
+      "battles": 53189,
+      "generation_depth": 70,
       "champion": {
-        "name": "AI and Ethics Counsel-X-G6-G13-G19-G35-G54",
+        "id": "ccd45455-ab55-46c8-8845-215dda236068",
+        "name": "Compliance Officer",
         "score": 9.5,
-        "wins": 0,
-        "losses": 1
-      }
+        "wins": 89,
+        "losses": 184,
+        "generation": 0,
+        "role": "Compliance Officer",
+        "specialty": ""
+      },
+      "battles_count": 53189
     },
     {
       "name": "marketing",
       "online": true,
-      "beings": 1540,
-      "battles": 53090,
-      "generation_depth": 58,
+      "beings_count": 1560,
+      "beings": 1560,
+      "battle_count": 53209,
+      "battles": 53209,
+      "generation_depth": 60,
       "champion": {
-        "name": "Specificity Champion-Prime-G9-G17-G22-G30-G45",
+        "id": "ac65a993-2285-4e55-b2c3-9bceec05539e",
+        "name": "Technical Marketer",
         "score": 9.5,
-        "wins": 2,
-        "losses": 0
-      }
+        "wins": 63,
+        "losses": 162,
+        "generation": 0,
+        "role": "Technical Marketer",
+        "specialty": ""
+      },
+      "battles_count": 53209
     },
     {
       "name": "ops",
       "online": true,
-      "beings": 1600,
-      "battles": 53800,
-      "generation_depth": 64,
+      "beings_count": 1610,
+      "beings": 1610,
+      "battle_count": 53927,
+      "battles": 53927,
+      "generation_depth": 65,
       "champion": {
-        "name": "Decision Process Designer-Elite-G6-G12-G48",
+        "id": "3e6ed415-2b1c-45eb-9a05-c4fa200ce367",
+        "name": "Operations",
         "score": 9.5,
-        "wins": 0,
-        "losses": 1
-      }
+        "wins": 56,
+        "losses": 155,
+        "generation": 0,
+        "role": "Chief Operations Being",
+        "specialty": ""
+      },
+      "battles_count": 53927
     },
     {
       "name": "product",
       "online": true,
+      "beings_count": 1440,
       "beings": 1440,
-      "battles": 53487,
+      "battle_count": 53607,
+      "battles": 53607,
       "generation_depth": 48,
       "champion": {
-        "name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G32-G43",
-        "score": 9.5,
-        "wins": 0,
-        "losses": 1
-      }
+        "id": "B-7c690405",
+        "name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G27",
+        "score": 9.8,
+        "wins": 3,
+        "losses": 8,
+        "generation": 27,
+        "role": "Jobs-to-be-Done Analyst",
+        "specialty": "Understanding why people hire products"
+      },
+      "battles_count": 53607
     },
     {
       "name": "sales",
       "online": true,
+      "beings_count": 1560,
       "beings": 1560,
-      "battles": 53947,
+      "battle_count": 54060,
+      "battles": 54060,
       "generation_depth": 60,
       "champion": {
-        "name": "Executive Communicator-Alpha-G9-G28-G43-G46",
+        "id": "6a646f01-3f2a-4c05-8a3f-ddcf51c72318",
+        "name": "Demo Master",
         "score": 9.5,
-        "wins": 1,
-        "losses": 1
-      }
+        "wins": 71,
+        "losses": 157,
+        "generation": 0,
+        "role": "Demo Master",
+        "specialty": ""
+      },
+      "battles_count": 54060
     },
     {
       "name": "strategy",
       "online": true,
+      "beings_count": 1566,
       "beings": 1566,
-      "battles": 53407,
+      "battle_count": 53533,
+      "battles": 53533,
       "generation_depth": 61,
       "champion": {
-        "name": "Leverage Identifier-II-G8-G19-G25-G39-G51",
+        "id": "6b1191a6-d5e6-40fa-8414-426d1cc35921",
+        "name": "Strategy",
         "score": 9.5,
-        "wins": 2,
-        "losses": 0
-      }
+        "wins": 71,
+        "losses": 157,
+        "generation": 0,
+        "role": "Chief Strategy Being",
+        "specialty": ""
+      },
+      "battles_count": 53533
     },
     {
       "name": "tech",
       "online": true,
+      "beings_count": 1650,
       "beings": 1650,
-      "battles": 53654,
+      "battle_count": 53762,
+      "battles": 53762,
       "generation_depth": 69,
       "champion": {
-        "name": "Infrastructure Economist-X-G9-G17-G33-G64",
+        "id": "97711e65-a1d3-4393-b679-bc7058af2f05",
+        "name": "Security",
         "score": 9.5,
-        "wins": 0,
-        "losses": 1
-      }
+        "wins": 76,
+        "losses": 180,
+        "generation": 0,
+        "role": "Security Specialist",
+        "specialty": ""
+      },
+      "battles_count": 53762
     }
   ],
-  "activity": [],
-  "domain_data": {}
+  "domain_data": {
+    "cs": {
+      "beings": [
+        {
+          "id": "c72efaa5-cc5d-4786-bd8a-1c867917986c",
+          "name": "Customer",
+          "score": 9.5,
+          "wins": 76,
+          "losses": 173,
+          "generation": 0,
+          "role": "Chief Customer Being",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "b9ccc1a7-b181-4752-bfaf-6f51c637fa50",
+          "name": "Community",
+          "score": 9.5,
+          "wins": 73,
+          "losses": 147,
+          "generation": 0,
+          "role": "Community Manager",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "9b4b49ae-de6e-4e30-b9ff-5c25b30a9620",
+          "name": "Onboarding",
+          "score": 9.5,
+          "wins": 62,
+          "losses": 161,
+          "generation": 0,
+          "role": "Onboarding Specialist",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-0a79b2b7",
+          "name": "Executive Sponsor Manager-Prime",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 146,
+          "generation": 4,
+          "role": "Executive Sponsor Manager",
+          "specialty": "C-suite relationships",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-e690c2fe",
+          "name": "Health Monitor-Alpha",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 140,
+          "generation": 0,
+          "role": "Health Monitor",
+          "specialty": "Early warning and intervention",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-2494abfd",
+          "name": "Self-Service Architect-Prime",
+          "score": 9.5,
+          "wins": 41,
+          "losses": 160,
+          "generation": 5,
+          "role": "Self-Service Architect",
+          "specialty": "Empowering independence",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-5b03a132",
+          "name": "Community Manager-X",
+          "score": 9.5,
+          "wins": 58,
+          "losses": 154,
+          "generation": 1,
+          "role": "Community Manager",
+          "specialty": "Peer-to-peer success",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-cde51a42",
+          "name": "Time-to-Value Accelerator-Nova",
+          "score": 9.5,
+          "wins": 51,
+          "losses": 135,
+          "generation": 2,
+          "role": "Time-to-Value Accelerator",
+          "specialty": "Quick wins first",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-8007a156",
+          "name": "Health Score Designer-X",
+          "score": 9.5,
+          "wins": 61,
+          "losses": 160,
+          "generation": 1,
+          "role": "Health Score Designer",
+          "specialty": "Predicting churn before it happens",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-b74f55cb",
+          "name": "Renewal-II",
+          "score": 9.5,
+          "wins": 43,
+          "losses": 156,
+          "generation": 5,
+          "role": "Renewal Specialist",
+          "specialty": "Making continuation obvious",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-b201ff48",
+          "name": "Win-Back-Nova",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 162,
+          "generation": 3,
+          "role": "Win-Back Specialist",
+          "specialty": "Recovering lost customers",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-536d74f8",
+          "name": "Adoption Driver-III",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 136,
+          "generation": 1,
+          "role": "Adoption Driver",
+          "specialty": "Getting features used",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-c05b5f26",
+          "name": "Training Designer-II",
+          "score": 9.5,
+          "wins": 60,
+          "losses": 154,
+          "generation": 2,
+          "role": "Training Designer",
+          "specialty": "Building competence",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-842cea65",
+          "name": "Reference Developer-II",
+          "score": 9.5,
+          "wins": 69,
+          "losses": 159,
+          "generation": 5,
+          "role": "Reference Developer",
+          "specialty": "Creating advocates",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-499191f2",
+          "name": "Segmentation Strategist",
+          "score": 9.5,
+          "wins": 61,
+          "losses": 136,
+          "generation": 5,
+          "role": "Segmentation Strategist",
+          "specialty": "Right touch for right customer",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-954437e0",
+          "name": "Expansion Scout-Alpha",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 146,
+          "generation": 0,
+          "role": "Expansion Scout",
+          "specialty": "Finding growth opportunities",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-536e1c51",
+          "name": "Segmentation Strategist-Omega",
+          "score": 9.5,
+          "wins": 64,
+          "losses": 178,
+          "generation": 0,
+          "role": "Segmentation Strategist",
+          "specialty": "Right touch for right customer",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-416ade9d",
+          "name": "Intervention-Alpha",
+          "score": 9.5,
+          "wins": 33,
+          "losses": 145,
+          "generation": 1,
+          "role": "Intervention Specialist",
+          "specialty": "Saving at-risk accounts",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-efd5e10f",
+          "name": "Renewal-III",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 146,
+          "generation": 2,
+          "role": "Renewal Specialist",
+          "specialty": "Making continuation obvious",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-6b5f61e0",
+          "name": "Reference Developer-X",
+          "score": 9.5,
+          "wins": 64,
+          "losses": 143,
+          "generation": 1,
+          "role": "Reference Developer",
+          "specialty": "Creating advocates",
+          "model": "anthropic/claude-3-haiku"
+        }
+      ],
+      "champions": [
+        {
+          "id": "c72efaa5-cc5d-4786-bd8a-1c867917986c",
+          "name": "Customer",
+          "score": 9.5,
+          "wins": 76,
+          "losses": 173,
+          "generation": 0,
+          "role": "Chief Customer Being",
+          "specialty": ""
+        }
+      ],
+      "battles": []
+    },
+    "finance": {
+      "beings": [
+        {
+          "id": "465e937d-18e4-43cb-ab9e-34b10c3c120b",
+          "name": "FP&A Analyst",
+          "score": 9.5,
+          "wins": 71,
+          "losses": 171,
+          "generation": 0,
+          "role": "FP&A Analyst",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "1bcd297a-3c95-4fa8-a0cc-d704f3c69d95",
+          "name": "Accountant",
+          "score": 9.5,
+          "wins": 73,
+          "losses": 141,
+          "generation": 0,
+          "role": "Accountant",
+          "specialty": "",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-47dc5d25",
+          "name": "Benchmark Analyst-Alpha",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 156,
+          "generation": 4,
+          "role": "Benchmark Analyst",
+          "specialty": "Comparing to best-in-class",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-0c0c5571",
+          "name": "Investor Relations Lead-Elite",
+          "score": 9.5,
+          "wins": 48,
+          "losses": 151,
+          "generation": 4,
+          "role": "Investor Relations Lead",
+          "specialty": "Stakeholder communication",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-68bcc1ca",
+          "name": "M&A Financial Analyst-Prime",
+          "score": 9.5,
+          "wins": 47,
+          "losses": 141,
+          "generation": 2,
+          "role": "M&A Financial Analyst",
+          "specialty": "Deal valuation",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-6e009325",
+          "name": "Integration Financial Planner",
+          "score": 9.5,
+          "wins": 62,
+          "losses": 162,
+          "generation": 0,
+          "role": "Integration Financial Planner",
+          "specialty": "Merger synergies",
+          "model": "mistralai/mistral-large-2411"
+        },
+        {
+          "id": "B-76d8f00c",
+          "name": "Working Capital Optimizer-II",
+          "score": 9.5,
+          "wins": 51,
+          "losses": 153,
+          "generation": 4,
+          "role": "Working Capital Optimizer",
+          "specialty": "Cash conversion cycle",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-2035e752",
+          "name": "AR Accelerator-X",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 129,
+          "generation": 1,
+          "role": "AR Accelerator",
+          "specialty": "Getting paid faster",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-c29bd1d3",
+          "name": "Board Reporting-Alpha",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 143,
+          "generation": 4,
+          "role": "Board Reporting Specialist",
+          "specialty": "Clear financial storytelling",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-776b14df",
+          "name": "Unit Economics-Alpha",
+          "score": 9.5,
+          "wins": 58,
+          "losses": 136,
+          "generation": 3,
+          "role": "Unit Economics Specialist",
+          "specialty": "Per-customer profitability",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-362f758b",
+          "name": "AP Strategist-Omega",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 158,
+          "generation": 5,
+          "role": "AP Strategist",
+          "specialty": "Smart payment timing",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-13399c18",
+          "name": "Scenario Modeler",
+          "score": 9.5,
+          "wins": 42,
+          "losses": 174,
+          "generation": 0,
+          "role": "Scenario Modeler",
+          "specialty": "What-if analysis",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-aa67d1f1",
+          "name": "Due Diligence Lead-Nova",
+          "score": 9.5,
+          "wins": 48,
+          "losses": 134,
+          "generation": 1,
+          "role": "Due Diligence Lead",
+          "specialty": "Uncovering hidden risks",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-050787d6",
+          "name": "Financial-X",
+          "score": 9.5,
+          "wins": 51,
+          "losses": 143,
+          "generation": 0,
+          "role": "Chief Financial Being",
+          "specialty": "Strategic financial leadership",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-a5e6f85d",
+          "name": "Tax Strategist-III",
+          "score": 9.5,
+          "wins": 40,
+          "losses": 158,
+          "generation": 3,
+          "role": "Tax Strategist",
+          "specialty": "Legal minimization strategies",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-25fec0bf",
+          "name": "Fraud Detector-II",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 164,
+          "generation": 0,
+          "role": "Fraud Detector",
+          "specialty": "Protecting assets",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-a0b6fab6",
+          "name": "Integration Financial Planner",
+          "score": 9.5,
+          "wins": 51,
+          "losses": 135,
+          "generation": 5,
+          "role": "Integration Financial Planner",
+          "specialty": "Merger synergies",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-688abae5",
+          "name": "Crypto Strategist-III",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 174,
+          "generation": 4,
+          "role": "Crypto Strategist",
+          "specialty": "Digital asset allocation and DeFi opportunities",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-e284ef86",
+          "name": "Tax Strategist-III",
+          "score": 9.5,
+          "wins": 64,
+          "losses": 101,
+          "generation": 2,
+          "role": "Tax Strategist",
+          "specialty": "Legal minimization strategies",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-c0bfbf37",
+          "name": "Investor Relations Lead-II",
+          "score": 9.5,
+          "wins": 60,
+          "losses": 153,
+          "generation": 3,
+          "role": "Investor Relations Lead",
+          "specialty": "Stakeholder communication",
+          "model": "deepseek/deepseek-chat"
+        }
+      ],
+      "champions": [
+        {
+          "id": "465e937d-18e4-43cb-ab9e-34b10c3c120b",
+          "name": "FP&A Analyst",
+          "score": 9.5,
+          "wins": 71,
+          "losses": 171,
+          "generation": 0,
+          "role": "FP&A Analyst",
+          "specialty": ""
+        }
+      ],
+      "battles": []
+    },
+    "hr": {
+      "beings": [
+        {
+          "id": "54ceccb9-e9f8-48ad-9102-e03de9d62728",
+          "name": "People",
+          "score": 9.5,
+          "wins": 67,
+          "losses": 148,
+          "generation": 0,
+          "role": "Chief People Being",
+          "specialty": "",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "d057e4ad-a68d-40d9-b204-c3e6999888a6",
+          "name": "Recruiter",
+          "score": 9.5,
+          "wins": 60,
+          "losses": 170,
+          "generation": 0,
+          "role": "Recruiter",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-405c3cb3",
+          "name": "Benefits Optimizer-II",
+          "score": 9.5,
+          "wins": 67,
+          "losses": 168,
+          "generation": 1,
+          "role": "Benefits Optimizer",
+          "specialty": "Value employees care about",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-f5c65399",
+          "name": "Talent Scout-Nova",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 153,
+          "generation": 0,
+          "role": "Talent Scout",
+          "specialty": "Finding GHIC-aligned people",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-950edae9",
+          "name": "People-Nova",
+          "score": 9.5,
+          "wins": 58,
+          "losses": 151,
+          "generation": 2,
+          "role": "Chief People Being",
+          "specialty": "People strategy aligned with mastery",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-8d12c17b",
+          "name": "Talent Scout-X",
+          "score": 9.5,
+          "wins": 45,
+          "losses": 134,
+          "generation": 4,
+          "role": "Talent Scout",
+          "specialty": "Finding GHIC-aligned people",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-a762b3e5",
+          "name": "Recognition Program Designer-III",
+          "score": 9.5,
+          "wins": 60,
+          "losses": 156,
+          "generation": 4,
+          "role": "Recognition Program Designer",
+          "specialty": "Celebrating contribution",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-1fad48ad",
+          "name": "Compensation Strategist-Elite",
+          "score": 9.5,
+          "wins": 61,
+          "losses": 149,
+          "generation": 4,
+          "role": "Compensation Strategist",
+          "specialty": "Rewards that align behavior",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-87029563",
+          "name": "Exit Interview Analyst-Alpha",
+          "score": 9.5,
+          "wins": 48,
+          "losses": 154,
+          "generation": 4,
+          "role": "Exit Interview Analyst",
+          "specialty": "Learning from departures",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-bcbab713",
+          "name": "GHIC Assessor-Prime",
+          "score": 9.5,
+          "wins": 39,
+          "losses": 127,
+          "generation": 2,
+          "role": "GHIC Assessor",
+          "specialty": "Evaluating Growth-driven, Heart-centered, Integrous, Committed",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-1eaab437",
+          "name": "Talent Scout-Nova",
+          "score": 9.5,
+          "wins": 55,
+          "losses": 149,
+          "generation": 3,
+          "role": "Talent Scout",
+          "specialty": "Finding GHIC-aligned people",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-994cf308",
+          "name": "HR Analytics-X",
+          "score": 9.5,
+          "wins": 53,
+          "losses": 161,
+          "generation": 3,
+          "role": "HR Analytics Specialist",
+          "specialty": "Data-driven decisions",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-72e21b86",
+          "name": "Career Path Designer-Prime",
+          "score": 9.5,
+          "wins": 37,
+          "losses": 144,
+          "generation": 1,
+          "role": "Career Path Designer",
+          "specialty": "Growth trajectories",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-8af7b997",
+          "name": "Onboarding Journey Creator-III",
+          "score": 9.5,
+          "wins": 43,
+          "losses": 130,
+          "generation": 1,
+          "role": "Onboarding Journey Creator",
+          "specialty": "First 90 days excellence",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-8821a101",
+          "name": "HR Analytics-Alpha",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 140,
+          "generation": 4,
+          "role": "HR Analytics Specialist",
+          "specialty": "Data-driven decisions",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-c0debb5e",
+          "name": "Internal Mobility-III",
+          "score": 9.5,
+          "wins": 53,
+          "losses": 152,
+          "generation": 1,
+          "role": "Internal Mobility Specialist",
+          "specialty": "Keeping talent by moving it",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-b23a38bd",
+          "name": "GHIC Assessor-III",
+          "score": 9.5,
+          "wins": 65,
+          "losses": 161,
+          "generation": 1,
+          "role": "GHIC Assessor",
+          "specialty": "Evaluating Growth-driven, Heart-centered, Integrous, Committed",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-91787e9f",
+          "name": "Policy Simplifier-II",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 139,
+          "generation": 3,
+          "role": "Policy Simplifier",
+          "specialty": "Rules that make sense",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-296540fe",
+          "name": "HR Analytics-Omega",
+          "score": 9.5,
+          "wins": 59,
+          "losses": 147,
+          "generation": 5,
+          "role": "HR Analytics Specialist",
+          "specialty": "Data-driven decisions",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-ec045f7e",
+          "name": "Employer Brand Builder-III",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 153,
+          "generation": 4,
+          "role": "Employer Brand Builder",
+          "specialty": "Attracting right talent",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        }
+      ],
+      "champions": [
+        {
+          "id": "54ceccb9-e9f8-48ad-9102-e03de9d62728",
+          "name": "People",
+          "score": 9.5,
+          "wins": 67,
+          "losses": 148,
+          "generation": 0,
+          "role": "Chief People Being",
+          "specialty": ""
+        }
+      ],
+      "battles": []
+    },
+    "legal": {
+      "beings": [
+        {
+          "id": "ccd45455-ab55-46c8-8845-215dda236068",
+          "name": "Compliance Officer",
+          "score": 9.5,
+          "wins": 89,
+          "losses": 184,
+          "generation": 0,
+          "role": "Compliance Officer",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-975ac286",
+          "name": "International Expansion Counsel-Alpha",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 139,
+          "generation": 1,
+          "role": "International Expansion Counsel",
+          "specialty": "Cross-border operations",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-c8d15a0e",
+          "name": "Patent Portfolio Manager-Omega",
+          "score": 9.5,
+          "wins": 47,
+          "losses": 131,
+          "generation": 0,
+          "role": "Patent Portfolio Manager",
+          "specialty": "Innovation protection",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-e7fe1598",
+          "name": "Term Sheet Designer-X",
+          "score": 9.5,
+          "wins": 56,
+          "losses": 154,
+          "generation": 0,
+          "role": "Term Sheet Designer",
+          "specialty": "Clear starting points",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-085b7907",
+          "name": "Tax Structure Advisor-II",
+          "score": 9.5,
+          "wins": 55,
+          "losses": 144,
+          "generation": 0,
+          "role": "Tax Structure Advisor",
+          "specialty": "Legal tax optimization",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-5676194d",
+          "name": "Privacy Engineer-III",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 127,
+          "generation": 3,
+          "role": "Privacy Engineer",
+          "specialty": "Data protection by design",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-1e133e5d",
+          "name": "IP Guardian-X",
+          "score": 9.5,
+          "wins": 69,
+          "losses": 152,
+          "generation": 3,
+          "role": "IP Guardian",
+          "specialty": "Protection while enabling collaboration",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-e9c57431",
+          "name": "Vendor Agreement Lead",
+          "score": 9.5,
+          "wins": 41,
+          "losses": 146,
+          "generation": 4,
+          "role": "Vendor Agreement Lead",
+          "specialty": "Supplier relationships",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-9db2e9fe",
+          "name": "Partnership Lawyer-Prime",
+          "score": 9.5,
+          "wins": 45,
+          "losses": 146,
+          "generation": 3,
+          "role": "Partnership Lawyer",
+          "specialty": "Collaborative ventures",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-c32978e4",
+          "name": "Crisis Response Counsel-III",
+          "score": 9.5,
+          "wins": 51,
+          "losses": 157,
+          "generation": 1,
+          "role": "Crisis Response Counsel",
+          "specialty": "Emergency legal support",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-836107ee",
+          "name": "Settlement Negotiator-III",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 154,
+          "generation": 4,
+          "role": "Settlement Negotiator",
+          "specialty": "Ending conflicts efficiently",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-6968b420",
+          "name": "Crisis Response Counsel-Omega",
+          "score": 9.5,
+          "wins": 57,
+          "losses": 148,
+          "generation": 3,
+          "role": "Crisis Response Counsel",
+          "specialty": "Emergency legal support",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-fb8d9e7e",
+          "name": "Partnership Lawyer-X",
+          "score": 9.5,
+          "wins": 56,
+          "losses": 155,
+          "generation": 2,
+          "role": "Partnership Lawyer",
+          "specialty": "Collaborative ventures",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-e8a91b05",
+          "name": "Tax Structure Advisor-II",
+          "score": 9.5,
+          "wins": 44,
+          "losses": 158,
+          "generation": 3,
+          "role": "Tax Structure Advisor",
+          "specialty": "Legal tax optimization",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-0ba4b876",
+          "name": "Term Sheet Designer-X",
+          "score": 9.5,
+          "wins": 53,
+          "losses": 151,
+          "generation": 3,
+          "role": "Term Sheet Designer",
+          "specialty": "Clear starting points",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-11874f2b",
+          "name": "Partnership Lawyer-II",
+          "score": 9.5,
+          "wins": 66,
+          "losses": 112,
+          "generation": 5,
+          "role": "Partnership Lawyer",
+          "specialty": "Collaborative ventures",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-f5d33388",
+          "name": "Crisis Response Counsel-Alpha",
+          "score": 9.5,
+          "wins": 57,
+          "losses": 151,
+          "generation": 0,
+          "role": "Crisis Response Counsel",
+          "specialty": "Emergency legal support",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-a5423e25",
+          "name": "Employment Counsel-II",
+          "score": 9.5,
+          "wins": 62,
+          "losses": 145,
+          "generation": 1,
+          "role": "Employment Counsel",
+          "specialty": "People-related legal matters",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-bea6ae4a",
+          "name": "Litigation Strategist-II",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 157,
+          "generation": 1,
+          "role": "Litigation Strategist",
+          "specialty": "Dispute resolution",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-cbbd60d5",
+          "name": "M&A Integration Counsel-Elite",
+          "score": 9.5,
+          "wins": 59,
+          "losses": 161,
+          "generation": 1,
+          "role": "M&A Integration Counsel",
+          "specialty": "Legal merger execution",
+          "model": "anthropic/claude-3-haiku"
+        }
+      ],
+      "champions": [
+        {
+          "id": "ccd45455-ab55-46c8-8845-215dda236068",
+          "name": "Compliance Officer",
+          "score": 9.5,
+          "wins": 89,
+          "losses": 184,
+          "generation": 0,
+          "role": "Compliance Officer",
+          "specialty": ""
+        }
+      ],
+      "battles": []
+    },
+    "marketing": {
+      "beings": [
+        {
+          "id": "ac65a993-2285-4e55-b2c3-9bceec05539e",
+          "name": "Technical Marketer",
+          "score": 9.5,
+          "wins": 63,
+          "losses": 162,
+          "generation": 0,
+          "role": "Technical Marketer",
+          "specialty": "",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "efd1db79-b65f-4a9f-a3c1-fb4bf92e269b",
+          "name": "Content Creator",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 154,
+          "generation": 0,
+          "role": "Content Creator",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "e567c496-ee3e-4610-a280-741dca2f525d",
+          "name": "Funnel Architect",
+          "score": 9.5,
+          "wins": 93,
+          "losses": 151,
+          "generation": 0,
+          "role": "Funnel Architect",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "daa5f2f9-a7c5-4443-8861-93dfbc167114",
+          "name": "Content Creator",
+          "score": 9.5,
+          "wins": 77,
+          "losses": 138,
+          "generation": 0,
+          "role": "Content Creator",
+          "specialty": "",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-dcfed779",
+          "name": "Pattern Interrupt Designer",
+          "score": 9.5,
+          "wins": 57,
+          "losses": 135,
+          "generation": 4,
+          "role": "Pattern Interrupt Designer",
+          "specialty": "Breaking through noise",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-7022292f",
+          "name": "Funnel Architect-II",
+          "score": 9.5,
+          "wins": 73,
+          "losses": 137,
+          "generation": 3,
+          "role": "Funnel Architect",
+          "specialty": "Journey design through the 4-Step Model",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-bc3de2b3",
+          "name": "Retention Marketer-X",
+          "score": 9.5,
+          "wins": 69,
+          "losses": 181,
+          "generation": 1,
+          "role": "Retention Marketer",
+          "specialty": "Keeping attention over time",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-399e0707",
+          "name": "Truth-to-Pain-II",
+          "score": 9.5,
+          "wins": 51,
+          "losses": 145,
+          "generation": 1,
+          "role": "Truth-to-Pain Specialist",
+          "specialty": "Helping people see what they can't see",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-95dd17b6",
+          "name": "Copywriter Supreme-Prime",
+          "score": 9.5,
+          "wins": 44,
+          "losses": 165,
+          "generation": 0,
+          "role": "Copywriter Supreme",
+          "specialty": "Words that create emotional rapport",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-e7b8d297",
+          "name": "Open Loop Creator-Elite",
+          "score": 9.5,
+          "wins": 36,
+          "losses": 137,
+          "generation": 2,
+          "role": "Open Loop Creator",
+          "specialty": "Building curiosity that drives action",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-d989dddf",
+          "name": "Evergreen Content Engineer-Nova",
+          "score": 9.5,
+          "wins": 41,
+          "losses": 159,
+          "generation": 5,
+          "role": "Evergreen Content Engineer",
+          "specialty": "Building assets that compound",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-3bc73c8b",
+          "name": "Conversion Optimizer-Elite",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 168,
+          "generation": 1,
+          "role": "Conversion Optimizer",
+          "specialty": "A/B testing and optimization",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-b0fbe504",
+          "name": "Evergreen Content Engineer-Nova",
+          "score": 9.5,
+          "wins": 44,
+          "losses": 157,
+          "generation": 2,
+          "role": "Evergreen Content Engineer",
+          "specialty": "Building assets that compound",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-7b93875e",
+          "name": "Open Loop Creator-Elite",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 155,
+          "generation": 2,
+          "role": "Open Loop Creator",
+          "specialty": "Building curiosity that drives action",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-e121150a",
+          "name": "Positioning-X",
+          "score": 9.5,
+          "wins": 69,
+          "losses": 169,
+          "generation": 0,
+          "role": "Positioning Master",
+          "specialty": "Owning a unique space in minds",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-eab96a52",
+          "name": "Copywriter Supreme-Nova",
+          "score": 9.5,
+          "wins": 44,
+          "losses": 157,
+          "generation": 0,
+          "role": "Copywriter Supreme",
+          "specialty": "Words that create emotional rapport",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-1a6870e1",
+          "name": "Metaphor Engineer",
+          "score": 9.5,
+          "wins": 36,
+          "losses": 153,
+          "generation": 3,
+          "role": "Metaphor Engineer",
+          "specialty": "Creating sticky mental models",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-7656be10",
+          "name": "HUI Articulator-II",
+          "score": 9.5,
+          "wins": 38,
+          "losses": 166,
+          "generation": 4,
+          "role": "HUI Articulator",
+          "specialty": "Reflecting Heroic Unique Identity",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-ec6ff7c3",
+          "name": "Category Creator-Prime",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 168,
+          "generation": 4,
+          "role": "Category Creator",
+          "specialty": "Defining new markets",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-87ec81e3",
+          "name": "Funnel Architect-X",
+          "score": 9.5,
+          "wins": 51,
+          "losses": 169,
+          "generation": 1,
+          "role": "Funnel Architect",
+          "specialty": "Journey design through the 4-Step Model",
+          "model": "anthropic/claude-3-haiku"
+        }
+      ],
+      "champions": [
+        {
+          "id": "ac65a993-2285-4e55-b2c3-9bceec05539e",
+          "name": "Technical Marketer",
+          "score": 9.5,
+          "wins": 63,
+          "losses": 162,
+          "generation": 0,
+          "role": "Technical Marketer",
+          "specialty": ""
+        }
+      ],
+      "battles": []
+    },
+    "ops": {
+      "beings": [
+        {
+          "id": "3e6ed415-2b1c-45eb-9a05-c4fa200ce367",
+          "name": "Operations",
+          "score": 9.5,
+          "wins": 56,
+          "losses": 155,
+          "generation": 0,
+          "role": "Chief Operations Being",
+          "specialty": "",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "0abac565-cf55-4cfd-beeb-859e37fc393c",
+          "name": "Quality Assurance",
+          "score": 9.5,
+          "wins": 70,
+          "losses": 158,
+          "generation": 0,
+          "role": "Quality Assurance",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "63a584fb-bb4f-49c6-8bbd-53c90af08059",
+          "name": "Operations",
+          "score": 9.5,
+          "wins": 55,
+          "losses": 155,
+          "generation": 0,
+          "role": "Chief Operations Being",
+          "specialty": "",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "fdbf9a36-33dd-41c4-8dba-b457552f9f87",
+          "name": "Process Designer",
+          "score": 9.5,
+          "wins": 69,
+          "losses": 164,
+          "generation": 0,
+          "role": "Process Designer",
+          "specialty": "",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "001b3f5a-7c38-4a04-b55f-61b21df18933",
+          "name": "Vendor",
+          "score": 9.5,
+          "wins": 71,
+          "losses": 162,
+          "generation": 0,
+          "role": "Vendor Manager",
+          "specialty": "",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-e4e49482",
+          "name": "Decision Process Designer-Alpha",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 149,
+          "generation": 2,
+          "role": "Decision Process Designer",
+          "specialty": "Clear accountability",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-29a14ec5",
+          "name": "Decision Process Designer-Elite",
+          "score": 9.5,
+          "wins": 57,
+          "losses": 166,
+          "generation": 3,
+          "role": "Decision Process Designer",
+          "specialty": "Clear accountability",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-6bc07215",
+          "name": "Knowledge Transfer-II",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 166,
+          "generation": 3,
+          "role": "Knowledge Transfer Specialist",
+          "specialty": "Capturing expertise",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-4313013d",
+          "name": "Visualization-X",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 166,
+          "generation": 2,
+          "role": "Visualization Expert",
+          "specialty": "Making work visible",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-8ef1aabc",
+          "name": "Project Flow-Prime",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 154,
+          "generation": 4,
+          "role": "Project Flow Master",
+          "specialty": "Delivery without bottlenecks",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-72c354ea",
+          "name": "Waste Eliminator-Alpha",
+          "score": 9.5,
+          "wins": 47,
+          "losses": 131,
+          "generation": 5,
+          "role": "Waste Eliminator",
+          "specialty": "Removing non-value activity",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-bc318320",
+          "name": "Batch Reducer-Alpha",
+          "score": 9.5,
+          "wins": 41,
+          "losses": 134,
+          "generation": 3,
+          "role": "Batch Reducer",
+          "specialty": "Smaller, faster cycles",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-5d1ea0c2",
+          "name": "Risk Mitigator-Prime",
+          "score": 9.5,
+          "wins": 57,
+          "losses": 160,
+          "generation": 1,
+          "role": "Risk Mitigator",
+          "specialty": "Anticipating problems",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-61aa953d",
+          "name": "Knowledge Transfer-X",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 141,
+          "generation": 1,
+          "role": "Knowledge Transfer Specialist",
+          "specialty": "Capturing expertise",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-c4c2ade8",
+          "name": "Process Designer-II",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 147,
+          "generation": 5,
+          "role": "Process Designer",
+          "specialty": "Workflow creation and optimization",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-730410c5",
+          "name": "Escalation Path Creator-III",
+          "score": 9.5,
+          "wins": 51,
+          "losses": 179,
+          "generation": 0,
+          "role": "Escalation Path Creator",
+          "specialty": "Right problems to right people",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-d4cc2f9a",
+          "name": "Capacity Balancer-Elite",
+          "score": 9.5,
+          "wins": 48,
+          "losses": 161,
+          "generation": 2,
+          "role": "Capacity Balancer",
+          "specialty": "Matching supply to demand",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-dfd18851",
+          "name": "Standard Work Designer-X",
+          "score": 9.5,
+          "wins": 56,
+          "losses": 177,
+          "generation": 5,
+          "role": "Standard Work Designer",
+          "specialty": "Creating repeatable excellence",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-ec32d2b4",
+          "name": "Process Designer",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 143,
+          "generation": 3,
+          "role": "Process Designer",
+          "specialty": "Workflow creation and optimization",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-5b11b07d",
+          "name": "Risk Mitigator-X",
+          "score": 9.5,
+          "wins": 45,
+          "losses": 160,
+          "generation": 2,
+          "role": "Risk Mitigator",
+          "specialty": "Anticipating problems",
+          "model": "deepseek/deepseek-chat"
+        }
+      ],
+      "champions": [
+        {
+          "id": "3e6ed415-2b1c-45eb-9a05-c4fa200ce367",
+          "name": "Operations",
+          "score": 9.5,
+          "wins": 56,
+          "losses": 155,
+          "generation": 0,
+          "role": "Chief Operations Being",
+          "specialty": ""
+        }
+      ],
+      "battles": []
+    },
+    "product": {
+      "beings": [
+        {
+          "id": "B-7c690405",
+          "name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G27",
+          "score": 9.8,
+          "wins": 3,
+          "losses": 8,
+          "generation": 27,
+          "role": "Jobs-to-be-Done Analyst",
+          "specialty": "Understanding why people hire products",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "b294725e-e0a1-453b-a90f-940aa304adf4",
+          "name": "Product",
+          "score": 9.5,
+          "wins": 75,
+          "losses": 163,
+          "generation": 0,
+          "role": "Chief Product Being",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "670d1e5f-3134-491f-b468-915a0b3f3516",
+          "name": "User Researcher",
+          "score": 9.5,
+          "wins": 74,
+          "losses": 150,
+          "generation": 0,
+          "role": "User Researcher",
+          "specialty": "",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "e0368dcb-f1e3-4c0e-b8b8-f13bdaba2a37",
+          "name": "Product Analyst",
+          "score": 9.5,
+          "wins": 62,
+          "losses": 160,
+          "generation": 0,
+          "role": "Product Analyst",
+          "specialty": "",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-e1ecb40f",
+          "name": "Growth Product Lead-Alpha",
+          "score": 9.5,
+          "wins": 57,
+          "losses": 142,
+          "generation": 4,
+          "role": "Growth Product Lead",
+          "specialty": "Acquisition through product",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-4c990b8a",
+          "name": "Platform Strategist-X",
+          "score": 9.5,
+          "wins": 47,
+          "losses": 166,
+          "generation": 2,
+          "role": "Platform Strategist",
+          "specialty": "Ecosystem enablement",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-f6df6af1",
+          "name": "Product Marketing Bridge-Prime",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 154,
+          "generation": 5,
+          "role": "Product Marketing Bridge",
+          "specialty": "Positioning and messaging",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-d9cf7558",
+          "name": "Competitive Intelligence Lead-Alpha",
+          "score": 9.5,
+          "wins": 48,
+          "losses": 163,
+          "generation": 4,
+          "role": "Competitive Intelligence Lead",
+          "specialty": "Market awareness",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-dae81056",
+          "name": "API Product Manager-X",
+          "score": 9.5,
+          "wins": 68,
+          "losses": 142,
+          "generation": 1,
+          "role": "API Product Manager",
+          "specialty": "Developer experience",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-feeba250",
+          "name": "Experiment Designer-Prime",
+          "score": 9.5,
+          "wins": 63,
+          "losses": 154,
+          "generation": 5,
+          "role": "Experiment Designer",
+          "specialty": "Testing hypotheses fast",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-4fdbd806",
+          "name": "Competitive Intelligence Lead-Elite",
+          "score": 9.5,
+          "wins": 42,
+          "losses": 160,
+          "generation": 4,
+          "role": "Competitive Intelligence Lead",
+          "specialty": "Market awareness",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-ce9b62c3",
+          "name": "Customer Advisory Board Lead-Alpha",
+          "score": 9.5,
+          "wins": 58,
+          "losses": 167,
+          "generation": 0,
+          "role": "Customer Advisory Board Lead",
+          "specialty": "Direct customer input",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-4661f795",
+          "name": "Feature ROI Calculator-III",
+          "score": 9.5,
+          "wins": 43,
+          "losses": 172,
+          "generation": 2,
+          "role": "Feature ROI Calculator",
+          "specialty": "Value of development work",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-a065374c",
+          "name": "API Product Manager-Prime",
+          "score": 9.5,
+          "wins": 54,
+          "losses": 143,
+          "generation": 5,
+          "role": "API Product Manager",
+          "specialty": "Developer experience",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-7fe527ff",
+          "name": "Feature Flag Strategist-II",
+          "score": 9.5,
+          "wins": 42,
+          "losses": 151,
+          "generation": 0,
+          "role": "Feature Flag Strategist",
+          "specialty": "Progressive rollouts",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-de0776df",
+          "name": "API Product Manager-Elite",
+          "score": 9.5,
+          "wins": 57,
+          "losses": 157,
+          "generation": 0,
+          "role": "API Product Manager",
+          "specialty": "Developer experience",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-c3e3dd12",
+          "name": "Monetization Strategist-Nova",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 150,
+          "generation": 3,
+          "role": "Monetization Strategist",
+          "specialty": "Value capture design",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-e9263077",
+          "name": "Prioritization",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 162,
+          "generation": 1,
+          "role": "Prioritization Master",
+          "specialty": "Zone Action feature selection",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-79f09eff",
+          "name": "Jobs-to-be-Done Analyst-II",
+          "score": 9.5,
+          "wins": 60,
+          "losses": 160,
+          "generation": 4,
+          "role": "Jobs-to-be-Done Analyst",
+          "specialty": "Understanding why people hire products",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-297ff8dd",
+          "name": "Feature Flag Strategist-Elite",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 144,
+          "generation": 0,
+          "role": "Feature Flag Strategist",
+          "specialty": "Progressive rollouts",
+          "model": "anthropic/claude-3-haiku"
+        }
+      ],
+      "champions": [
+        {
+          "id": "B-7c690405",
+          "name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G27",
+          "score": 9.8,
+          "wins": 3,
+          "losses": 8,
+          "generation": 27,
+          "role": "Jobs-to-be-Done Analyst",
+          "specialty": "Understanding why people hire products"
+        }
+      ],
+      "battles": []
+    },
+    "sales": {
+      "beings": [
+        {
+          "id": "6a646f01-3f2a-4c05-8a3f-ddcf51c72318",
+          "name": "Demo Master",
+          "score": 9.5,
+          "wins": 71,
+          "losses": 157,
+          "generation": 0,
+          "role": "Demo Master",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-2307810b",
+          "name": "Agreement Architect-Alpha",
+          "score": 9.5,
+          "wins": 56,
+          "losses": 145,
+          "generation": 5,
+          "role": "Agreement Architect",
+          "specialty": "Formation without pressure",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-4747c899",
+          "name": "Timeline Compressor-Elite",
+          "score": 9.5,
+          "wins": 58,
+          "losses": 154,
+          "generation": 2,
+          "role": "Timeline Compressor",
+          "specialty": "Creating urgency authentically",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-3999b12b",
+          "name": "Agreement Architect",
+          "score": 9.5,
+          "wins": 40,
+          "losses": 142,
+          "generation": 4,
+          "role": "Agreement Architect",
+          "specialty": "Formation without pressure",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-4c48741a",
+          "name": "Handoff Coordinator-Elite",
+          "score": 9.5,
+          "wins": 44,
+          "losses": 129,
+          "generation": 2,
+          "role": "Handoff Coordinator",
+          "specialty": "Seamless transition to success",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-332bc757",
+          "name": "Proposal Engineer-Alpha",
+          "score": 9.5,
+          "wins": 44,
+          "losses": 141,
+          "generation": 2,
+          "role": "Proposal Engineer",
+          "specialty": "Creating irresistible offers",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-e4162c16",
+          "name": "Discovery-Elite",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 173,
+          "generation": 0,
+          "role": "Discovery Specialist",
+          "specialty": "Uncovering truth through Level 5 Listening",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-bb53a5d7",
+          "name": "Referral Cultivator-Elite",
+          "score": 9.5,
+          "wins": 39,
+          "losses": 170,
+          "generation": 1,
+          "role": "Referral Cultivator",
+          "specialty": "Earning introductions naturally",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-7e90c881",
+          "name": "Level 5 Listener-Prime",
+          "score": 9.5,
+          "wins": 60,
+          "losses": 153,
+          "generation": 3,
+          "role": "Level 5 Listener",
+          "specialty": "Hearing what isn't said",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-f3159331",
+          "name": "Multi-Threading-Prime",
+          "score": 9.5,
+          "wins": 42,
+          "losses": 149,
+          "generation": 1,
+          "role": "Multi-Threading Specialist",
+          "specialty": "Building multiple relationships",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-7c1e58fa",
+          "name": "Trust Accelerator-Alpha",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 152,
+          "generation": 1,
+          "role": "Trust Accelerator",
+          "specialty": "Shortening trust-building cycles",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-a79f56ff",
+          "name": "Lost Deal Analyst-X",
+          "score": 9.5,
+          "wins": 66,
+          "losses": 169,
+          "generation": 4,
+          "role": "Lost Deal Analyst",
+          "specialty": "Learning from every no",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-c4fe2662",
+          "name": "Stakeholder Mapper-Omega",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 163,
+          "generation": 0,
+          "role": "Stakeholder Mapper",
+          "specialty": "Understanding all decision influencers",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-de3b60f1",
+          "name": "Executive Communicator-Nova",
+          "score": 9.5,
+          "wins": 64,
+          "losses": 136,
+          "generation": 3,
+          "role": "Executive Communicator",
+          "specialty": "Speaking C-suite language",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-a09adcad",
+          "name": "Executive Communicator-Elite",
+          "score": 9.5,
+          "wins": 55,
+          "losses": 135,
+          "generation": 5,
+          "role": "Executive Communicator",
+          "specialty": "Speaking C-suite language",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-9a003610",
+          "name": "Rapport Builder",
+          "score": 9.5,
+          "wins": 44,
+          "losses": 172,
+          "generation": 0,
+          "role": "Rapport Builder",
+          "specialty": "Creating trust in first 60 seconds",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-c965015c",
+          "name": "Expansion Scout-Nova",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 152,
+          "generation": 2,
+          "role": "Expansion Scout",
+          "specialty": "Finding growth in existing accounts",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-52a3782b",
+          "name": "Win Pattern Identifier",
+          "score": 9.5,
+          "wins": 51,
+          "losses": 161,
+          "generation": 4,
+          "role": "Win Pattern Identifier",
+          "specialty": "Replicating success",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-0eed0f52",
+          "name": "Revenue-II",
+          "score": 9.5,
+          "wins": 55,
+          "losses": 169,
+          "generation": 1,
+          "role": "Chief Revenue Being",
+          "specialty": "Full revenue cycle mastery",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-c0d48076",
+          "name": "Referral Cultivator-Omega",
+          "score": 9.5,
+          "wins": 42,
+          "losses": 158,
+          "generation": 1,
+          "role": "Referral Cultivator",
+          "specialty": "Earning introductions naturally",
+          "model": "deepseek/deepseek-chat"
+        }
+      ],
+      "champions": [
+        {
+          "id": "6a646f01-3f2a-4c05-8a3f-ddcf51c72318",
+          "name": "Demo Master",
+          "score": 9.5,
+          "wins": 71,
+          "losses": 157,
+          "generation": 0,
+          "role": "Demo Master",
+          "specialty": ""
+        }
+      ],
+      "battles": []
+    },
+    "strategy": {
+      "beings": [
+        {
+          "id": "6b1191a6-d5e6-40fa-8414-426d1cc35921",
+          "name": "Strategy",
+          "score": 9.5,
+          "wins": 71,
+          "losses": 157,
+          "generation": 0,
+          "role": "Chief Strategy Being",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "bcaff65b-422f-45d3-b97d-4f32ec002bcc",
+          "name": "Strategy",
+          "score": 9.5,
+          "wins": 88,
+          "losses": 169,
+          "generation": 0,
+          "role": "Chief Strategy Being",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-05810b9c",
+          "name": "Ecosystem Cartographer-Nova",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 152,
+          "generation": 0,
+          "role": "Ecosystem Cartographer",
+          "specialty": "Mapping value flows between interconnected businesses",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-ca161dc4",
+          "name": "Scenario Planner-X",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 152,
+          "generation": 1,
+          "role": "Scenario Planner",
+          "specialty": "Preparing for multiple futures",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-0c36ef05",
+          "name": "Business Model Architect",
+          "score": 9.5,
+          "wins": 55,
+          "losses": 151,
+          "generation": 1,
+          "role": "Business Model Architect",
+          "specialty": "Revenue model design and ecosystem thinking",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-086429ef",
+          "name": "Network Effects Designer-Omega",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 165,
+          "generation": 1,
+          "role": "Network Effects Designer",
+          "specialty": "Amplifying value through connections",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-174b24e1",
+          "name": "Network Effects Designer-II",
+          "score": 9.5,
+          "wins": 59,
+          "losses": 161,
+          "generation": 5,
+          "role": "Network Effects Designer",
+          "specialty": "Amplifying value through connections",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-87d0dfa6",
+          "name": "Value Migration Tracker-X",
+          "score": 9.5,
+          "wins": 45,
+          "losses": 173,
+          "generation": 4,
+          "role": "Value Migration Tracker",
+          "specialty": "Following where value moves",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-52aaa113",
+          "name": "Divestiture Analyst-III",
+          "score": 9.5,
+          "wins": 47,
+          "losses": 135,
+          "generation": 3,
+          "role": "Divestiture Analyst",
+          "specialty": "Knowing what to let go",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-6f2a8715",
+          "name": "Counterfactual Analyst-III",
+          "score": 9.5,
+          "wins": 42,
+          "losses": 162,
+          "generation": 4,
+          "role": "Counterfactual Analyst",
+          "specialty": "Understanding what didn't happen and why",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-bc3f552a",
+          "name": "Resource Allocator-II",
+          "score": 9.5,
+          "wins": 56,
+          "losses": 167,
+          "generation": 2,
+          "role": "Resource Allocator",
+          "specialty": "Pareto-optimal resource deployment",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-99c6c73e",
+          "name": "Strategic Patience Guardian-III",
+          "score": 9.5,
+          "wins": 53,
+          "losses": 146,
+          "generation": 5,
+          "role": "Strategic Patience Guardian",
+          "specialty": "Knowing when not to act",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-ec7b5be4",
+          "name": "Ecosystem Cartographer",
+          "score": 9.5,
+          "wins": 57,
+          "losses": 164,
+          "generation": 3,
+          "role": "Ecosystem Cartographer",
+          "specialty": "Mapping value flows between interconnected businesses",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-ad490fda",
+          "name": "Strategy-Prime",
+          "score": 9.5,
+          "wins": 47,
+          "losses": 162,
+          "generation": 1,
+          "role": "Chief Strategy Being",
+          "specialty": "High-level strategic planning and Zone Action identification",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-0b5b554a",
+          "name": "Value Migration Tracker",
+          "score": 9.5,
+          "wins": 48,
+          "losses": 160,
+          "generation": 3,
+          "role": "Value Migration Tracker",
+          "specialty": "Following where value moves",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-3e4cbfff",
+          "name": "Strategic Patience Guardian",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 148,
+          "generation": 2,
+          "role": "Strategic Patience Guardian",
+          "specialty": "Knowing when not to act",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-ec8db7af",
+          "name": "Opportunity Cost Calculator-III",
+          "score": 9.5,
+          "wins": 56,
+          "losses": 143,
+          "generation": 2,
+          "role": "Opportunity Cost Calculator",
+          "specialty": "Quantifying what you sacrifice",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-f0c65188",
+          "name": "Resource Allocator",
+          "score": 9.5,
+          "wins": 50,
+          "losses": 162,
+          "generation": 0,
+          "role": "Resource Allocator",
+          "specialty": "Pareto-optimal resource deployment",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-42a92f8c",
+          "name": "Disintermediation Scout-Elite",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 156,
+          "generation": 4,
+          "role": "Disintermediation Scout",
+          "specialty": "Identifying layers to collapse",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-42865915",
+          "name": "Platform Strategist-Nova",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 150,
+          "generation": 1,
+          "role": "Platform Strategist",
+          "specialty": "Building ecosystems others depend on",
+          "model": "anthropic/claude-3-haiku"
+        }
+      ],
+      "champions": [
+        {
+          "id": "6b1191a6-d5e6-40fa-8414-426d1cc35921",
+          "name": "Strategy",
+          "score": 9.5,
+          "wins": 71,
+          "losses": 157,
+          "generation": 0,
+          "role": "Chief Strategy Being",
+          "specialty": ""
+        }
+      ],
+      "battles": []
+    },
+    "tech": {
+      "beings": [
+        {
+          "id": "97711e65-a1d3-4393-b679-bc7058af2f05",
+          "name": "Security",
+          "score": 9.5,
+          "wins": 76,
+          "losses": 180,
+          "generation": 0,
+          "role": "Security Specialist",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "3c881799-d075-447e-aee0-62cd4c000aaf",
+          "name": "DevOps Engineer",
+          "score": 9.5,
+          "wins": 66,
+          "losses": 162,
+          "generation": 0,
+          "role": "DevOps Engineer",
+          "specialty": "",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-df2af8db",
+          "name": "Search Engineer-Omega",
+          "score": 9.5,
+          "wins": 35,
+          "losses": 152,
+          "generation": 3,
+          "role": "Search Engineer",
+          "specialty": "Finding information fast",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-fcad2be2",
+          "name": "Security Guardian-Elite",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 157,
+          "generation": 5,
+          "role": "Security Guardian",
+          "specialty": "Protection with integrity",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-ff31153e",
+          "name": "Technical Debt Strategist-Nova",
+          "score": 9.5,
+          "wins": 55,
+          "losses": 136,
+          "generation": 5,
+          "role": "Technical Debt Strategist",
+          "specialty": "Managing legacy while building future",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-25d2d21e",
+          "name": "Security Architect-X",
+          "score": 9.5,
+          "wins": 47,
+          "losses": 147,
+          "generation": 2,
+          "role": "Security Architect",
+          "specialty": "Defense in depth",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-57e3434b",
+          "name": "Security Guardian-X",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 147,
+          "generation": 4,
+          "role": "Security Guardian",
+          "specialty": "Protection with integrity",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-e6eca9ca",
+          "name": "Security Architect-Omega",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 140,
+          "generation": 4,
+          "role": "Security Architect",
+          "specialty": "Defense in depth",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-ee49a2d3",
+          "name": "Monitoring Designer-Alpha",
+          "score": 9.5,
+          "wins": 70,
+          "losses": 164,
+          "generation": 5,
+          "role": "Monitoring Designer",
+          "specialty": "Visibility into systems",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-f5731851",
+          "name": "AI Integration-Alpha",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 170,
+          "generation": 1,
+          "role": "AI Integration Specialist",
+          "specialty": "Human-AI collaboration architecture",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-86c0e800",
+          "name": "Code Quality Guardian-Omega",
+          "score": 9.5,
+          "wins": 48,
+          "losses": 148,
+          "generation": 1,
+          "role": "Code Quality Guardian",
+          "specialty": "Maintaining standards",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-bbbd03ad",
+          "name": "Feature Flag Strategist-Elite",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 157,
+          "generation": 2,
+          "role": "Feature Flag Strategist",
+          "specialty": "Safe progressive rollouts",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-e40d7d68",
+          "name": "Security Architect-Omega",
+          "score": 9.5,
+          "wins": 53,
+          "losses": 147,
+          "generation": 1,
+          "role": "Security Architect",
+          "specialty": "Defense in depth",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-ef35de66",
+          "name": "Queue Designer-Elite",
+          "score": 9.5,
+          "wins": 47,
+          "losses": 157,
+          "generation": 2,
+          "role": "Queue Designer",
+          "specialty": "Async processing patterns",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-ce8b7826",
+          "name": "Technology-Nova",
+          "score": 9.5,
+          "wins": 49,
+          "losses": 140,
+          "generation": 3,
+          "role": "Chief Technology Being",
+          "specialty": "Technical strategy aligned with outcomes",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-fb18f0bb",
+          "name": "Queue Designer-III",
+          "score": 9.5,
+          "wins": 55,
+          "losses": 139,
+          "generation": 0,
+          "role": "Queue Designer",
+          "specialty": "Async processing patterns",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-ba75d8c2",
+          "name": "Security Guardian-III",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 162,
+          "generation": 3,
+          "role": "Security Guardian",
+          "specialty": "Protection with integrity",
+          "model": "deepseek/deepseek-chat"
+        },
+        {
+          "id": "B-02e399b6",
+          "name": "Integration Orchestrator-Nova",
+          "score": 9.5,
+          "wins": 52,
+          "losses": 155,
+          "generation": 1,
+          "role": "Integration Orchestrator",
+          "specialty": "Connecting disparate systems",
+          "model": "anthropic/claude-3-haiku"
+        },
+        {
+          "id": "B-2ba96cd8",
+          "name": "Security Architect-X",
+          "score": 9.5,
+          "wins": 46,
+          "losses": 186,
+          "generation": 3,
+          "role": "Security Architect",
+          "specialty": "Defense in depth",
+          "model": "meta-llama/llama-3.3-70b-instruct"
+        },
+        {
+          "id": "B-74d6385e",
+          "name": "AI Integration-Elite",
+          "score": 9.5,
+          "wins": 42,
+          "losses": 142,
+          "generation": 1,
+          "role": "AI Integration Specialist",
+          "specialty": "Human-AI collaboration architecture",
+          "model": "deepseek/deepseek-chat"
+        }
+      ],
+      "champions": [
+        {
+          "id": "97711e65-a1d3-4393-b679-bc7058af2f05",
+          "name": "Security",
+          "score": 9.5,
+          "wins": 76,
+          "losses": 180,
+          "generation": 0,
+          "role": "Security Specialist",
+          "specialty": ""
+        }
+      ],
+      "battles": []
+    },
+    "main": {
+      "beings": [
+        {
+          "id": "B-036f833b",
+          "name": "Prometheus",
+          "score": 8.35,
+          "wins": 2,
+          "losses": 0,
+          "generation": 525
+        },
+        {
+          "id": "B-5e8543f6",
+          "name": "Artemis",
+          "score": 8.2,
+          "wins": 0,
+          "losses": 1,
+          "generation": 233
+        },
+        {
+          "id": "B-36ef43d7",
+          "name": "Jade",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 324
+        },
+        {
+          "id": "B-84018161",
+          "name": "Onyx",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 358
+        },
+        {
+          "id": "B-ac4bc3b4",
+          "name": "Coral",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 360
+        },
+        {
+          "id": "B-bc45ec5c",
+          "name": "Artemis",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 385
+        },
+        {
+          "id": "B-c5b3122b",
+          "name": "Drift",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 403
+        },
+        {
+          "id": "B-926e01a0",
+          "name": "Rune",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 433
+        },
+        {
+          "id": "B-7fef452a",
+          "name": "Selene",
+          "score": 8.2,
+          "wins": 0,
+          "losses": 1,
+          "generation": 438
+        },
+        {
+          "id": "B-89c3985f",
+          "name": "Phoenix",
+          "score": 8.2,
+          "wins": 0,
+          "losses": 1,
+          "generation": 452
+        },
+        {
+          "id": "B-5c74781e",
+          "name": "Cedar",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 458
+        },
+        {
+          "id": "B-ea07f4fc",
+          "name": "Zephyr",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 463
+        },
+        {
+          "id": "B-bede2218",
+          "name": "Rain",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 485
+        },
+        {
+          "id": "B-4e3fa0b6",
+          "name": "Wolf",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 501
+        },
+        {
+          "id": "B-bf259118",
+          "name": "Thea",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 522
+        },
+        {
+          "id": "B-031e496b",
+          "name": "Thea",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 523
+        },
+        {
+          "id": "B-3277cf00",
+          "name": "Thorn",
+          "score": 8.2,
+          "wins": 0,
+          "losses": 1,
+          "generation": 525
+        },
+        {
+          "id": "B-154b70ef",
+          "name": "Thorn",
+          "score": 8.2,
+          "wins": 1,
+          "losses": 0,
+          "generation": 526
+        },
+        {
+          "id": "B-b6b26d44",
+          "name": "Ridge",
+          "score": 8.2,
+          "wins": 0,
+          "losses": 1,
+          "generation": 543
+        },
+        {
+          "id": "B-eaddc1f5",
+          "name": "Selene",
+          "score": 8.2,
+          "wins": 0,
+          "losses": 1,
+          "generation": 548
+        }
+      ],
+      "champions": [
+        {
+          "id": "B-036f833b",
+          "name": "Prometheus",
+          "score": 8.35,
+          "wins": 2,
+          "losses": 0,
+          "generation": 525
+        }
+      ],
+      "battles": []
+    }
+  },
+  "activity": []
 }
