@@ -1,16 +1,16 @@
 {
   "stats": {
-    "total_beings": 23878,
+    "total_beings": 23953,
     "total_battles": 5000,
     "total_domains": 11,
-    "max_generation": 599,
-    "generated_at": "2026-02-28T16:08:34.000091+00:00"
+    "max_generation": 604,
+    "generated_at": "2026-02-28T16:38:34.108654+00:00"
   },
   "domains": [
     {
       "name": "main",
-      "beings_count": 7902,
-      "generation_depth": 599,
+      "beings_count": 7947,
+      "generation_depth": 604,
       "avg_score": 0.0,
       "battle_count": 0,
       "champion_name": "Sage",
@@ -20,7 +20,7 @@
       "name": "strategy",
       "beings_count": 1576,
       "generation_depth": 62,
-      "avg_score": 8.494,
+      "avg_score": 8.517,
       "battle_count": 500,
       "champion_name": "Strategy",
       "champion_score": 9.5
@@ -29,70 +29,70 @@
       "name": "marketing",
       "beings_count": 1610,
       "generation_depth": 65,
-      "avg_score": 8.212,
+      "avg_score": 8.275,
       "battle_count": 500,
-      "champion_name": "Funnel Architect",
-      "champion_score": 9.5
+      "champion_name": "Specificity Champion-Elite-G6-G19-G27",
+      "champion_score": 9.8
     },
     {
       "name": "sales",
-      "beings_count": 1580,
-      "generation_depth": 62,
-      "avg_score": 8.378,
+      "beings_count": 1590,
+      "generation_depth": 63,
+      "avg_score": 8.392,
       "battle_count": 500,
-      "champion_name": "Demo Master",
+      "champion_name": "Executive Communicator-Prime",
       "champion_score": 9.5
     },
     {
       "name": "tech",
       "beings_count": 1660,
       "generation_depth": 70,
-      "avg_score": 8.472,
+      "avg_score": 8.454,
       "battle_count": 500,
       "champion_name": "Security",
       "champion_score": 9.5
     },
     {
       "name": "ops",
-      "beings_count": 1630,
-      "generation_depth": 67,
-      "avg_score": 8.382,
+      "beings_count": 1640,
+      "generation_depth": 68,
+      "avg_score": 8.37,
       "battle_count": 500,
-      "champion_name": "Project",
+      "champion_name": "Lead Time Reducer-Alpha",
       "champion_score": 9.5
     },
     {
       "name": "cs",
       "beings_count": 1540,
       "generation_depth": 58,
-      "avg_score": 8.49,
+      "avg_score": 8.517,
       "battle_count": 500,
-      "champion_name": "Customer",
+      "champion_name": "Community",
       "champion_score": 9.5
     },
     {
       "name": "finance",
-      "beings_count": 1622,
-      "generation_depth": 66,
-      "avg_score": 8.39,
+      "beings_count": 1632,
+      "generation_depth": 67,
+      "avg_score": 8.374,
       "battle_count": 500,
-      "champion_name": "AP Strategist-II",
-      "champion_score": 9.5
+      "champion_name": "Working Capital Optimizer-X-G8-G15-G40",
+      "champion_score": 9.8
     },
     {
       "name": "hr",
       "beings_count": 1630,
       "generation_depth": 67,
-      "avg_score": 8.419,
+      "avg_score": 8.445,
       "battle_count": 500,
-      "champion_name": "Learning Experience Designer-II",
-      "champion_score": 9.5
+      "champion_name": "Learning Experience Designer-Omega",
+      "champion_score": 10.0
     },
     {
       "name": "legal",
       "beings_count": 1668,
       "generation_depth": 71,
-      "avg_score": 8.393,
+      "avg_score": 8.407,
       "battle_count": 500,
       "champion_name": "Compliance Officer",
       "champion_score": 9.5
@@ -101,10 +101,10 @@
       "name": "product",
       "beings_count": 1460,
       "generation_depth": 50,
-      "avg_score": 8.433,
+      "avg_score": 8.442,
       "battle_count": 500,
-      "champion_name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G27",
-      "champion_score": 9.8
+      "champion_name": "Product",
+      "champion_score": 9.5
     }
   ]
 }
