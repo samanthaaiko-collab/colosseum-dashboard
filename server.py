@@ -26,6 +26,7 @@ except ImportError:  # pragma: no cover
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_MAIN_DB = "/Users/samantha/Projects/colosseum/colosseum.db"
 DEFAULT_DOMAINS_ROOT = "/Users/samantha/Projects/colosseum/domains"
+DEFAULT_EMAIL_DB = str(BASE_DIR / "email_ad.db")
 DEFAULT_DOMAINS = [
     "strategy",
     "marketing",
@@ -80,6 +81,7 @@ class ColosseumData:
     def __init__(self) -> None:
         self.main_db = os.getenv("COLOSSEUM_MAIN_DB", DEFAULT_MAIN_DB)
         self.domains_root = os.getenv("COLOSSEUM_DOMAINS_ROOT", DEFAULT_DOMAINS_ROOT)
+        self.email_db = os.getenv("COLOSSEUM_EMAIL_DB", DEFAULT_EMAIL_DB)
         configured = os.getenv("COLOSSEUM_DOMAIN_LIST", ",".join(DEFAULT_DOMAINS))
         self.domains = [d.strip() for d in configured.split(",") if d.strip()]
         self._battle_table_cache: Dict[str, Optional[Tuple[str, Dict[str, str]]]] = {}
@@ -140,6 +142,19 @@ class ColosseumData:
             except ValueError:
                 continue
         return 0.0
+
+    def _safe_json(self, value: Any) -> Any:
+        if value is None:
+            return None
+        if isinstance(value, (dict, list)):
+            return value
+        text = str(value).strip()
+        if not text:
+            return None
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            return text
 
     def _detect_battle_table(self, db_path: str) -> Optional[Tuple[str, Dict[str, str]]]:
         if db_path in self._battle_table_cache:
@@ -486,6 +501,152 @@ class ColosseumData:
             "activity": self.activity_feed(limit=120),
         }
 
+    def load_email_leaderboard(
+        self, limit: int = 25, being_type: Optional[str] = "subject_line"
+    ) -> List[Dict[str, Any]]:
+        with self._connect(self.email_db) as conn:
+            if not self._table_exists(conn, "beings"):
+                return []
+            if being_type:
+                rows = conn.execute(
+                    """
+                    SELECT id, type, content, score, wins, losses, generation, created_at, metadata
+                    FROM beings
+                    WHERE type = ?
+                    ORDER BY COALESCE(score, 0) DESC, COALESCE(wins, 0) DESC, COALESCE(losses, 0) ASC, id ASC
+                    LIMIT ?
+                    """,
+                    (being_type, limit),
+                ).fetchall()
+            else:
+                rows = conn.execute(
+                    """
+                    SELECT id, type, content, score, wins, losses, generation, created_at, metadata
+                    FROM beings
+                    ORDER BY COALESCE(score, 0) DESC, COALESCE(wins, 0) DESC, COALESCE(losses, 0) ASC, id ASC
+                    LIMIT ?
+                    """,
+                    (limit,),
+                ).fetchall()
+
+        leaderboard = [dict(r) for r in rows]
+        for row in leaderboard:
+            row["score"] = float(row["score"] or 0.0)
+            row["wins"] = int(row["wins"] or 0)
+            row["losses"] = int(row["losses"] or 0)
+            row["generation"] = int(row["generation"] or 0)
+            row["created_at"] = self._coerce_timestamp(row.get("created_at"))
+            row["metadata"] = self._safe_json(row.get("metadata"))
+            total = row["wins"] + row["losses"]
+            row["win_rate"] = round(row["wins"] / total, 4) if total else 0.0
+        return leaderboard
+
+    def load_email_battles(
+        self, limit: int = 60, battle_type: Optional[str] = "subject_line"
+    ) -> List[Dict[str, Any]]:
+        with self._connect(self.email_db) as conn:
+            if not self._table_exists(conn, "battles"):
+                return []
+
+            where_sql = "WHERE b.battle_type = ?" if battle_type else ""
+            params: Tuple[Any, ...] = (battle_type, limit) if battle_type else (limit,)
+            rows = conn.execute(
+                f"""
+                SELECT
+                    b.id AS battle_id,
+                    b.being_a_id,
+                    b.being_b_id,
+                    b.winner_id,
+                    b.persona_id,
+                    b.battle_type,
+                    b.scores_a,
+                    b.scores_b,
+                    b.reasoning,
+                    b.created_at,
+                    a.content AS being_a_content,
+                    c.content AS being_b_content,
+                    w.content AS winner_content,
+                    p.name AS persona_name,
+                    p.category AS persona_category,
+                    p.archetype AS persona_archetype
+                FROM battles b
+                LEFT JOIN beings a ON a.id = b.being_a_id
+                LEFT JOIN beings c ON c.id = b.being_b_id
+                LEFT JOIN beings w ON w.id = b.winner_id
+                LEFT JOIN personas p ON p.id = b.persona_id
+                {where_sql}
+                ORDER BY b.created_at DESC, b.id DESC
+                LIMIT ?
+                """,
+                params,
+            ).fetchall()
+
+        battles = [dict(r) for r in rows]
+        for row in battles:
+            row["created_at"] = self._coerce_timestamp(row.get("created_at"))
+            row["scores_a"] = self._safe_json(row.get("scores_a")) or {}
+            row["scores_b"] = self._safe_json(row.get("scores_b")) or {}
+            row["reasoning"] = str(row.get("reasoning") or "").strip()
+            if row.get("winner_id") == row.get("being_a_id"):
+                row["winner_side"] = "A"
+            elif row.get("winner_id") == row.get("being_b_id"):
+                row["winner_side"] = "B"
+            else:
+                row["winner_side"] = "?"
+        return battles
+
+    def load_email_personas(self, limit: int = 100) -> List[Dict[str, Any]]:
+        with self._connect(self.email_db) as conn:
+            if not self._table_exists(conn, "personas"):
+                return []
+            rows = conn.execute(
+                """
+                SELECT id, name, category, archetype, description, behavior_traits, scoring_weights
+                FROM personas
+                ORDER BY id ASC
+                LIMIT ?
+                """,
+                (limit,),
+            ).fetchall()
+
+        personas = [dict(r) for r in rows]
+        for row in personas:
+            row["behavior_traits"] = self._safe_json(row.get("behavior_traits")) or {}
+            row["scoring_weights"] = self._safe_json(row.get("scoring_weights")) or {}
+        return personas
+
+    def export_email_snapshot(
+        self,
+        leaderboard_limit: int = 100,
+        battles_limit: int = 300,
+        battle_type: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        summary = {
+            "beings": 0,
+            "battles": 0,
+            "personas": 0,
+            "ab_test_queue": 0,
+        }
+        with self._connect(self.email_db) as conn:
+            for table_name in summary:
+                if not self._table_exists(conn, table_name):
+                    continue
+                row = conn.execute(f"SELECT COUNT(*) AS count FROM {table_name}").fetchone()
+                summary[table_name] = int(row["count"] if row else 0)
+
+        return {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "db_path": self.email_db,
+            "online": True,
+            "summary": summary,
+            "leaderboard": self.load_email_leaderboard(
+                limit=leaderboard_limit,
+                being_type="subject_line",
+            ),
+            "battles": self.load_email_battles(limit=battles_limit, battle_type=battle_type),
+            "personas": self.load_email_personas(limit=500),
+        }
+
 
 data = ColosseumData()
 app = Flask(__name__)
@@ -609,6 +770,69 @@ def api_activity() -> Any:
 def api_export() -> Any:
     battle_limit = min(max(int(request.args.get("battle_limit", 120)), 1), 1000)
     return jsonify(data.export_snapshot(battle_limit=battle_limit))
+
+
+@app.get("/api/email/leaderboard")
+def api_email_leaderboard() -> Any:
+    limit = min(max(int(request.args.get("limit", 25)), 1), 500)
+    requested_type = (request.args.get("type", "subject_line") or "").strip()
+    being_type = None if requested_type.lower() == "all" else requested_type or "subject_line"
+    try:
+        leaderboard = data.load_email_leaderboard(limit=limit, being_type=being_type)
+    except FileNotFoundError:
+        return jsonify({"error": "Email arena DB not available", "db_path": data.email_db}), 503
+    return jsonify(
+        {
+            "count": len(leaderboard),
+            "type": being_type or "all",
+            "leaderboard": leaderboard,
+        }
+    )
+
+
+@app.get("/api/email/battles")
+def api_email_battles() -> Any:
+    limit = min(max(int(request.args.get("limit", 60)), 1), 500)
+    requested_type = (request.args.get("type", "subject_line") or "").strip()
+    battle_type = None if requested_type.lower() == "all" else requested_type or "subject_line"
+    try:
+        battles = data.load_email_battles(limit=limit, battle_type=battle_type)
+    except FileNotFoundError:
+        return jsonify({"error": "Email arena DB not available", "db_path": data.email_db}), 503
+    return jsonify(
+        {
+            "count": len(battles),
+            "type": battle_type or "all",
+            "battles": battles,
+        }
+    )
+
+
+@app.get("/api/email/personas")
+def api_email_personas() -> Any:
+    limit = min(max(int(request.args.get("limit", 100)), 1), 500)
+    try:
+        personas = data.load_email_personas(limit=limit)
+    except FileNotFoundError:
+        return jsonify({"error": "Email arena DB not available", "db_path": data.email_db}), 503
+    return jsonify({"count": len(personas), "personas": personas})
+
+
+@app.get("/api/email/export")
+def api_email_export() -> Any:
+    leaderboard_limit = min(max(int(request.args.get("leaderboard_limit", 100)), 1), 1000)
+    battles_limit = min(max(int(request.args.get("battles_limit", 300)), 1), 2000)
+    requested_type = (request.args.get("type", "all") or "").strip()
+    battle_type = None if requested_type.lower() == "all" else requested_type
+    try:
+        payload = data.export_email_snapshot(
+            leaderboard_limit=leaderboard_limit,
+            battles_limit=battles_limit,
+            battle_type=battle_type,
+        )
+    except FileNotFoundError:
+        return jsonify({"error": "Email arena DB not available", "db_path": data.email_db}), 503
+    return jsonify(payload)
 
 
 @app.get("/")
