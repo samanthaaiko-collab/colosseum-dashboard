@@ -1,16 +1,16 @@
 {
   "stats": {
-    "total_beings": 24504,
+    "total_beings": 24619,
     "total_battles": 5000,
     "total_domains": 11,
-    "max_generation": 630,
-    "generated_at": "2026-02-28T19:13:30.004641+00:00"
+    "max_generation": 635,
+    "generated_at": "2026-02-28T19:44:25.593590+00:00"
   },
   "domains": [
     {
       "name": "main",
-      "beings_count": 8208,
-      "generation_depth": 630,
+      "beings_count": 8253,
+      "generation_depth": 635,
       "avg_score": 0.0,
       "battle_count": 0,
       "champion_name": "Sage",
@@ -18,27 +18,27 @@
     },
     {
       "name": "strategy",
-      "beings_count": 1626,
-      "generation_depth": 67,
-      "avg_score": 8.436,
+      "beings_count": 1636,
+      "generation_depth": 68,
+      "avg_score": 8.409,
       "battle_count": 500,
       "champion_name": "Leverage Identifier-Alpha",
       "champion_score": 9.5
     },
     {
       "name": "marketing",
-      "beings_count": 1640,
-      "generation_depth": 68,
-      "avg_score": 8.389,
+      "beings_count": 1660,
+      "generation_depth": 70,
+      "avg_score": 8.38,
       "battle_count": 500,
       "champion_name": "Specificity Champion-Elite-G6-G19-G27",
       "champion_score": 9.8
     },
     {
       "name": "sales",
-      "beings_count": 1620,
-      "generation_depth": 66,
-      "avg_score": 8.329,
+      "beings_count": 1640,
+      "generation_depth": 68,
+      "avg_score": 8.291,
       "battle_count": 500,
       "champion_name": "Revenue",
       "champion_score": 9.5
@@ -47,43 +47,43 @@
       "name": "tech",
       "beings_count": 1680,
       "generation_depth": 72,
-      "avg_score": 8.44,
+      "avg_score": 8.467,
       "battle_count": 500,
       "champion_name": "Infrastructure Economist-X-G6-G17-G19",
       "champion_score": 9.8
     },
     {
       "name": "ops",
-      "beings_count": 1650,
-      "generation_depth": 69,
-      "avg_score": 8.483,
+      "beings_count": 1660,
+      "generation_depth": 70,
+      "avg_score": 8.441,
       "battle_count": 500,
       "champion_name": "Lead Time Reducer-Alpha",
       "champion_score": 9.5
     },
     {
       "name": "cs",
-      "beings_count": 1570,
-      "generation_depth": 61,
-      "avg_score": 8.484,
+      "beings_count": 1580,
+      "generation_depth": 62,
+      "avg_score": 8.45,
       "battle_count": 500,
-      "champion_name": "Success Planner",
+      "champion_name": "Customer-Elite",
       "champion_score": 9.5
     },
     {
       "name": "finance",
       "beings_count": 1642,
       "generation_depth": 68,
-      "avg_score": 8.427,
+      "avg_score": 8.442,
       "battle_count": 500,
-      "champion_name": "Working Capital Optimizer-X-G8-G15-G40",
+      "champion_name": "Working Capital Optimizer-X-G8-G15-G33",
       "champion_score": 9.8
     },
     {
       "name": "hr",
       "beings_count": 1680,
       "generation_depth": 72,
-      "avg_score": 8.381,
+      "avg_score": 8.406,
       "battle_count": 500,
       "champion_name": "Employer Brand Builder-III",
       "champion_score": 9.5
@@ -92,16 +92,16 @@
       "name": "legal",
       "beings_count": 1698,
       "generation_depth": 74,
-      "avg_score": 8.44,
+      "avg_score": 8.451,
       "battle_count": 500,
-      "champion_name": "AI and Ethics Counsel-X",
+      "champion_name": "Legal-III",
       "champion_score": 10.0
     },
     {
       "name": "product",
       "beings_count": 1490,
       "generation_depth": 53,
-      "avg_score": 8.495,
+      "avg_score": 8.485,
       "battle_count": 500,
       "champion_name": "Customer Advisory Board Lead-Alpha",
       "champion_score": 9.5
