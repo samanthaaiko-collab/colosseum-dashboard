@@ -1,16 +1,16 @@
 {
   "stats": {
-    "total_beings": 25261,
+    "total_beings": 25354,
     "total_battles": 5000,
     "total_domains": 11,
-    "max_generation": 663,
-    "generated_at": "2026-02-28T22:13:55.352770+00:00"
+    "max_generation": 670,
+    "generated_at": "2026-02-28T22:44:02.913211+00:00"
   },
   "domains": [
     {
       "name": "main",
-      "beings_count": 8515,
-      "generation_depth": 663,
+      "beings_count": 8578,
+      "generation_depth": 670,
       "avg_score": 0.0,
       "battle_count": 0,
       "champion_name": "Sage",
@@ -20,7 +20,7 @@
       "name": "strategy",
       "beings_count": 1676,
       "generation_depth": 72,
-      "avg_score": 8.356,
+      "avg_score": 8.403,
       "battle_count": 500,
       "champion_name": "Business Model Analyst",
       "champion_score": 9.5
@@ -29,7 +29,7 @@
       "name": "marketing",
       "beings_count": 1700,
       "generation_depth": 74,
-      "avg_score": 8.387,
+      "avg_score": 8.407,
       "battle_count": 500,
       "champion_name": "Specificity Champion-Elite-G6-G13-G18",
       "champion_score": 9.8
@@ -38,7 +38,7 @@
       "name": "sales",
       "beings_count": 1690,
       "generation_depth": 73,
-      "avg_score": 8.358,
+      "avg_score": 8.413,
       "battle_count": 500,
       "champion_name": "Level 5 Listener-II",
       "champion_score": 9.5
@@ -47,7 +47,7 @@
       "name": "tech",
       "beings_count": 1710,
       "generation_depth": 75,
-      "avg_score": 8.458,
+      "avg_score": 8.488,
       "battle_count": 500,
       "champion_name": "Infrastructure Economist-X-G6-G17-G19",
       "champion_score": 9.8
@@ -56,16 +56,16 @@
       "name": "ops",
       "beings_count": 1680,
       "generation_depth": 72,
-      "avg_score": 8.493,
+      "avg_score": 8.502,
       "battle_count": 500,
       "champion_name": "Resource Scheduler-III",
       "champion_score": 9.8
     },
     {
       "name": "cs",
-      "beings_count": 1590,
-      "generation_depth": 63,
-      "avg_score": 8.536,
+      "beings_count": 1610,
+      "generation_depth": 65,
+      "avg_score": 8.457,
       "battle_count": 500,
       "champion_name": "Community",
       "champion_score": 9.5
@@ -74,16 +74,16 @@
       "name": "finance",
       "beings_count": 1692,
       "generation_depth": 73,
-      "avg_score": 8.352,
+      "avg_score": 8.383,
       "battle_count": 500,
       "champion_name": "Debt Structure Designer-Nova",
       "champion_score": 10.0
     },
     {
       "name": "hr",
-      "beings_count": 1720,
-      "generation_depth": 76,
-      "avg_score": 8.314,
+      "beings_count": 1730,
+      "generation_depth": 77,
+      "avg_score": 8.308,
       "battle_count": 500,
       "champion_name": "Employer Brand Builder-III",
       "champion_score": 9.5
@@ -92,7 +92,7 @@
       "name": "legal",
       "beings_count": 1768,
       "generation_depth": 81,
-      "avg_score": 8.346,
+      "avg_score": 8.381,
       "battle_count": 500,
       "champion_name": "Legal-III",
       "champion_score": 10.0
@@ -101,9 +101,9 @@
       "name": "product",
       "beings_count": 1520,
       "generation_depth": 56,
-      "avg_score": 8.522,
+      "avg_score": 8.528,
       "battle_count": 500,
-      "champion_name": "Roadmap",
+      "champion_name": "Product",
       "champion_score": 9.5
     }
   ]
