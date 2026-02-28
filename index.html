@@ -509,14 +509,14 @@
           <article class="card"><div class="card-label">Total Beings</div><div class="card-value" id="statBeings">0</div></article>
           <article class="card"><div class="card-label">Total Battles</div><div class="card-value" id="statBattles">0</div></article>
           <article class="card"><div class="card-label">Generation Depth</div><div class="card-value" id="statGeneration">0</div></article>
-          <article class="card"><div class="card-label">Active Domains</div><div class="card-value" id="statDomains">0</div></article>
+          <article class="card"><div class="card-label">Total Tournaments</div><div class="card-value" id="statDomains">0</div></article>
           <article class="card"><div class="card-label">Monitoring Mode</div><div class="card-value" id="statMode">Live</div></article>
         </section>
 
         <section class="panel-grid">
           <article class="panel">
             <div class="panel-header">
-              <h3>Cross-Domain Champions</h3>
+              <h3>Main Colosseum Champions</h3>
               <span class="badge">Top 10</span>
             </div>
             <table class="leaderboard">
@@ -524,8 +524,8 @@
                 <tr>
                   <th>#</th>
                   <th>Being</th>
-                  <th>Domain</th>
-                  <th>Score</th>
+                  <th>Generation</th>
+                  <th>Avg Mastery</th>
                   <th>W/L</th>
                 </tr>
               </thead>
@@ -654,6 +654,7 @@
       const DOMAIN_ORDER = ["main", "strategy", "marketing", "sales", "tech", "ops", "cs", "finance", "hr", "legal", "product"];
       const query = new URLSearchParams(window.location.search);
       const API_BASE = (query.get("api") || window.COLOSSEUM_API_BASE || "/api").replace(/\/$/, "");
+      const MAIN_DATA_URL = "./data/main_colosseum.json";
       const FORCE_STATIC = query.get("static") === "1";
       const REFRESH_MS = 15000;
 
@@ -662,6 +663,7 @@
         selectedDomain: "main",
         domains: [],
         stats: null,
+        mainColosseum: null,
         activity: [],
         globalTop: [],
         snapshot: null,
@@ -734,6 +736,14 @@
         const response = await fetch(`${API_BASE}${path}`, { cache: "no-store" });
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}: ${path}`);
+        }
+        return response.json();
+      }
+
+      async function fetchMainColosseum() {
+        const response = await fetch(MAIN_DATA_URL, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${MAIN_DATA_URL}`);
         }
         return response.json();
       }
@@ -863,21 +873,44 @@
       }
 
       function renderStats() {
+        const jsonStats = state.mainColosseum?.stats || {};
         const stats = state.stats || {};
-        els.statBeings.textContent = numberFmt(stats.total_beings);
-        els.statBattles.textContent = numberFmt(stats.total_battles);
-        els.statGeneration.textContent = numberFmt(stats.max_generation);
-        els.statDomains.textContent = `${numberFmt(stats.active_domains)}/${numberFmt(stats.total_domains)}`;
-        els.statMode.textContent = state.mode === "snapshot" ? "Snapshot" : "Live";
+        const mergedStats = {
+          ...stats,
+          ...jsonStats,
+        };
+
+        els.statBeings.textContent = numberFmt(mergedStats.total_beings);
+        els.statBattles.textContent = numberFmt(mergedStats.total_battles);
+        els.statGeneration.textContent = numberFmt(mergedStats.max_generation);
+        els.statDomains.textContent = numberFmt(mergedStats.total_tournaments);
+        els.statMode.textContent = state.mainColosseum ? "JSON Export" : (state.mode === "snapshot" ? "Snapshot" : "Live");
         els.lastRefresh.textContent = new Date().toLocaleTimeString();
 
-        const topRows = (stats.leaderboard || []).map((being, idx) => {
+        const champions = Array.isArray(state.mainColosseum?.champions)
+          ? state.mainColosseum.champions
+          : (stats.leaderboard || []);
+
+        const rankedChampions = [...champions].sort((a, b) => {
+          const aScore = Number(a.avg_mastery_score ?? a.score ?? 0);
+          const bScore = Number(b.avg_mastery_score ?? b.score ?? 0);
+          if (bScore !== aScore) return bScore - aScore;
+
+          const aBest = Number(a.best_score ?? a.score ?? 0);
+          const bBest = Number(b.best_score ?? b.score ?? 0);
+          if (bBest !== aBest) return bBest - aBest;
+
+          return Number(b.win_rate ?? 0) - Number(a.win_rate ?? 0);
+        }).slice(0, 10);
+
+        const topRows = rankedChampions.map((being, idx) => {
+          const avgMastery = Number(being.avg_mastery_score ?? being.score ?? 0);
           return `
             <tr>
               <td>${idx + 1}</td>
-              <td><button class="being-link" data-being-id="${being.id}" data-being-domain="${being.domain || ""}">${being.name || being.id}</button></td>
-              <td>${being.domain || "-"}</td>
-              <td class="${scoreClass(being.score)}">${(being.score || 0).toFixed(2)}</td>
+              <td><button class="being-link" data-being-id="${being.id}" data-being-domain="main">${being.name || being.id}</button></td>
+              <td>Gen ${numberFmt(being.generation)}</td>
+              <td class="${scoreClass(avgMastery)}">${avgMastery.toFixed(2)}</td>
               <td>${being.wins || 0}/${being.losses || 0}</td>
             </tr>
           `;
@@ -1257,13 +1290,15 @@
             state.domainCache = {};
           }
 
-          const [stats, domains, activity] = await Promise.all([
+          const [stats, domains, activity, mainColosseum] = await Promise.all([
             apiStats(),
             apiDomains(),
             apiActivity(30),
+            fetchMainColosseum(),
           ]);
 
           state.stats = stats;
+          state.mainColosseum = mainColosseum;
           state.domains = domains.domains || [];
           state.activity = activity.items || [];
           updateChampionMonitor(state.domains);
@@ -1284,12 +1319,14 @@
 
           state.mode = "snapshot";
           state.domainCache = {};
-          const [stats, domains, activity] = await Promise.all([
+          const [stats, domains, activity, mainColosseum] = await Promise.all([
             apiStats(),
             apiDomains(),
             apiActivity(30),
+            fetchMainColosseum(),
           ]);
           state.stats = stats;
+          state.mainColosseum = mainColosseum;
           state.domains = domains.domains || [];
           state.activity = activity.items || [];
           updateChampionMonitor(state.domains);
