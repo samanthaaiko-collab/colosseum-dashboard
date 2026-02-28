@@ -156,6 +156,71 @@
         .dimension .name { font-weight: bold; width: 120px; }
         .dimension .desc { color: #888; font-size: 0.9em; flex: 1; }
 
+        /* Modal overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: #111128;
+            border: 1px solid #2a2a4a;
+            border-radius: 16px;
+            max-width: 640px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 28px;
+            position: relative;
+            animation: modalIn 0.2s ease-out;
+        }
+        @keyframes modalIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.6em;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .modal-close:hover { color: #fff; }
+        .modal-rank { color: #ffcc00; font-size: 0.9em; font-weight: bold; margin-bottom: 6px; }
+        .modal-subject { font-size: 1.3em; color: #fff; font-weight: bold; line-height: 1.4; margin-bottom: 18px; }
+        .modal-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+        .modal-stat { background: #0d0d2a; border: 1px solid #2a2a4a; border-radius: 10px; padding: 12px 18px; flex: 1; min-width: 100px; text-align: center; }
+        .modal-stat .val { font-size: 1.5em; font-weight: bold; color: #ffcc00; }
+        .modal-stat .lbl { font-size: 0.78em; color: #888; margin-top: 4px; }
+        .modal-winbar { height: 10px; background: #1a1a3a; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
+        .modal-winbar .fill { height: 100%; border-radius: 5px; }
+        .modal-section-title { color: #ffcc00; font-size: 0.95em; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #1a1a3a; padding-bottom: 6px; }
+        .modal-battles { display: grid; gap: 10px; }
+        .modal-battle {
+            background: #0d0d2a;
+            border: 1px solid #1f1f46;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.88em;
+        }
+        .modal-battle .opponent { color: #c6c6de; }
+        .modal-battle .result { font-weight: bold; margin-top: 4px; }
+        .modal-battle .result.win { color: #00cc66; }
+        .modal-battle .result.loss { color: #ff5555; }
+        .modal-battle .judge { color: #8888cc; font-size: 0.82em; margin-top: 4px; }
+        .modal-battle .reasoning { color: #999; font-size: 0.85em; margin-top: 6px; line-height: 1.4; }
+
+        .leaderboard-table tbody tr { cursor: pointer; transition: background 0.15s; }
+        .leaderboard-table tbody tr:hover { background: rgba(255, 204, 0, 0.08) !important; }
+
         .footer { text-align: center; padding: 40px 20px; color: #444; font-size: 0.85em; }
 
         @media (max-width: 740px) {
@@ -280,6 +345,14 @@
         <p style="margin-top: 8px;">Last data refresh: <span id="footerUpdated">Loading...</span></p>
     </div>
 
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContent">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
     <script>
         (function () {
             const DATA_URL = '/data/email_colosseum.json';
@@ -356,6 +429,8 @@
                 els.totalPersonas.textContent = personas.length.toLocaleString();
             }
 
+            let currentData = null;
+
             function renderLeaderboard(entries) {
                 if (!Array.isArray(entries) || entries.length === 0) {
                     els.leaderboardBody.innerHTML = '<tr><td colspan="6" class="empty-row">No leaderboard data available.</td></tr>';
@@ -366,7 +441,7 @@
                     const winRate = toNumber(entry.win_rate);
                     const barWidth = clamp(winRate, 0, 100);
                     return `
-                        <tr>
+                        <tr data-entry-index="${index}" onclick="window._openDetail(${index})">
                             <td class="rank-col">${index + 1}</td>
                             <td class="content-col">${escapeHtml(entry.content || '')}</td>
                             <td>${formatScore(entry.score)}</td>
@@ -384,6 +459,100 @@
 
                 els.leaderboardBody.innerHTML = rows.join('');
             }
+
+            function openDetailModal(index) {
+                if (!currentData) return;
+                const entry = (currentData.leaderboard || [])[index];
+                if (!entry) return;
+
+                const winRate = toNumber(entry.win_rate);
+                const wins = toNumber(entry.wins);
+                const losses = toNumber(entry.losses);
+                const total = wins + losses;
+                const barClass = scoreClass(winRate);
+
+                // Find battles involving this subject line
+                const battles = (currentData.recent_battles || []).filter(b =>
+                    (b.being_a_content === entry.content) || (b.being_b_content === entry.content)
+                );
+
+                let battlesHtml = '';
+                if (battles.length > 0) {
+                    battlesHtml = `
+                        <div class="modal-section-title">⚔️ Recent Battles (${battles.length})</div>
+                        <div class="modal-battles">
+                            ${battles.slice(0, 8).map(b => {
+                                const isA = b.being_a_content === entry.content;
+                                const opponent = isA ? b.being_b_content : b.being_a_content;
+                                const won = b.winner_content === entry.content;
+                                return `
+                                    <div class="modal-battle">
+                                        <div class="opponent">vs. "${escapeHtml(opponent || '?')}"</div>
+                                        <div class="result ${won ? 'win' : 'loss'}">${won ? '✅ WON' : '❌ LOST'}</div>
+                                        <div class="judge">Judge: ${escapeHtml(b.persona_name || 'Unknown')}</div>
+                                        ${b.reasoning ? `<div class="reasoning">${escapeHtml(String(b.reasoning).substring(0, 300))}${String(b.reasoning).length > 300 ? '...' : ''}</div>` : ''}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                } else {
+                    battlesHtml = `
+                        <div class="modal-section-title">⚔️ Battle History</div>
+                        <p style="color:#666;font-size:0.9em;">Battle details load from recent matches. Older battles are archived.</p>
+                    `;
+                }
+
+                document.getElementById('modalBody').innerHTML = `
+                    <div class="modal-rank">#${index + 1} • Gen ${toNumber(entry.generation)}</div>
+                    <div class="modal-subject">"${escapeHtml(entry.content)}"</div>
+                    <div class="modal-stats">
+                        <div class="modal-stat">
+                            <div class="val">${formatScore(entry.score)}</div>
+                            <div class="lbl">Score</div>
+                        </div>
+                        <div class="modal-stat">
+                            <div class="val">${wins}</div>
+                            <div class="lbl">Wins</div>
+                        </div>
+                        <div class="modal-stat">
+                            <div class="val">${losses}</div>
+                            <div class="lbl">Losses</div>
+                        </div>
+                        <div class="modal-stat">
+                            <div class="val">${formatRate(winRate)}</div>
+                            <div class="lbl">Win Rate</div>
+                        </div>
+                    </div>
+                    <div class="modal-winbar">
+                        <div class="fill ${barClass}" style="width:${clamp(winRate, 0, 100)}%"></div>
+                    </div>
+                    <div class="modal-section-title">📊 Performance Summary</div>
+                    <p style="color:#aaa;font-size:0.9em;line-height:1.6;margin-bottom:20px;">
+                        This subject line has competed in <strong style="color:#fff">${total}</strong> battles with a 
+                        <strong style="color:${winRate >= 70 ? '#00cc66' : winRate >= 50 ? '#ffcc00' : '#ff5555'}">${formatRate(winRate)}</strong> win rate.
+                        ${winRate >= 75 ? 'A dominant performer — consistently chosen by judges across personas.' : 
+                          winRate >= 60 ? 'A strong contender with solid cross-persona appeal.' :
+                          winRate >= 50 ? 'A competitive entry holding its own against tough opponents.' :
+                          'Needs refinement — struggling against stronger variants.'}
+                    </p>
+                    ${battlesHtml}
+                `;
+
+                document.getElementById('modalOverlay').classList.add('active');
+            }
+
+            window._openDetail = openDetailModal;
+
+            // Close modal
+            document.getElementById('modalClose').addEventListener('click', () => {
+                document.getElementById('modalOverlay').classList.remove('active');
+            });
+            document.getElementById('modalOverlay').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('modalOverlay')) {
+                    document.getElementById('modalOverlay').classList.remove('active');
+                }
+            });
 
             function renderRecentBattles(battles) {
                 if (!Array.isArray(battles) || battles.length === 0) {
@@ -456,6 +625,7 @@
                     }
 
                     const data = await response.json();
+                    currentData = data;
                     renderStats(data);
                     renderLeaderboard(data.leaderboard);
                     renderRecentBattles(data.recent_battles);
