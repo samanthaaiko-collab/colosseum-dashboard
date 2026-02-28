@@ -654,7 +654,7 @@
       const DOMAIN_ORDER = ["main", "strategy", "marketing", "sales", "tech", "ops", "cs", "finance", "hr", "legal", "product"];
       const query = new URLSearchParams(window.location.search);
       const API_BASE = (query.get("api") || window.COLOSSEUM_API_BASE || "/api").replace(/\/$/, "");
-      const MAIN_DATA_URL = "./data/main_colosseum.json";
+      const MAIN_DATA_URL = "/data/main_colosseum.json";
       const FORCE_STATIC = query.get("static") === "1";
       const REFRESH_MS = 15000;
 
@@ -750,7 +750,7 @@
 
       async function ensureSnapshot() {
         if (state.snapshot) return state.snapshot;
-        const response = await fetch("./data/snapshot.json", { cache: "no-store" });
+        const response = await fetch("/data/snapshot.json", { cache: "no-store" });
         if (!response.ok) {
           throw new Error("snapshot unavailable");
         }
