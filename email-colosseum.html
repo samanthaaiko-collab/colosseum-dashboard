@@ -356,6 +356,8 @@
     <script>
         (function () {
             const DATA_URL = '/data/email_colosseum.json';
+            const BODIES_URL = '/data/email_bodies.json';
+            let emailBodies = {};
 
             const els = {
                 totalBattles: document.getElementById('totalBattles'),
@@ -503,6 +505,26 @@
                     `;
                 }
 
+                // Check for full email body
+                const bodyData = emailBodies[String(entry.id)] || null;
+                let emailHtml = '';
+                if (bodyData) {
+                    const bodyText = escapeHtml(bodyData.body).replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+                    emailHtml = `
+                        <div class="modal-section-title">📧 Full Email Preview</div>
+                        <div style="background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;padding:20px;margin-bottom:20px;">
+                            <div style="color:#ffcc00;font-weight:bold;font-size:0.82em;margin-bottom:4px;">SUBJECT</div>
+                            <div style="color:#fff;font-size:1.05em;font-weight:bold;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #1f1f46;">${escapeHtml(entry.content)}</div>
+                            <div style="color:#c6c6de;font-size:0.92em;line-height:1.7;"><p>${bodyText}</p></div>
+                        </div>
+                    `;
+                } else {
+                    emailHtml = `
+                        <div class="modal-section-title">📧 Email Body</div>
+                        <p style="color:#666;font-size:0.9em;font-style:italic;margin-bottom:20px;">Full email copy is being generated for this subject line...</p>
+                    `;
+                }
+
                 document.getElementById('modalBody').innerHTML = `
                     <div class="modal-rank">#${index + 1} • Gen ${toNumber(entry.generation)}</div>
                     <div class="modal-subject">"${escapeHtml(entry.content)}"</div>
@@ -527,6 +549,7 @@
                     <div class="modal-winbar">
                         <div class="fill ${barClass}" style="width:${clamp(winRate, 0, 100)}%"></div>
                     </div>
+                    ${emailHtml}
                     <div class="modal-section-title">📊 Performance Summary</div>
                     <p style="color:#aaa;font-size:0.9em;line-height:1.6;margin-bottom:20px;">
                         This subject line has competed in <strong style="color:#fff">${total}</strong> battles with a 
@@ -626,6 +649,13 @@
 
                     const data = await response.json();
                     currentData = data;
+
+                    // Load email bodies
+                    try {
+                        const bodiesResp = await fetch(BODIES_URL, { cache: 'no-store' });
+                        if (bodiesResp.ok) emailBodies = await bodiesResp.json();
+                    } catch(e) { console.log('No email bodies yet'); }
+
                     renderStats(data);
                     renderLeaderboard(data.leaderboard);
                     renderRecentBattles(data.recent_battles);
