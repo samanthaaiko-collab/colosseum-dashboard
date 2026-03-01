@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-02-28T11:35:11.149696",
+  "generated_at": "2026-02-28T23:41:01.374464",
   "stats": {
-    "total_battles": 1208,
+    "total_battles": 2393,
     "total_beings": 45,
     "max_generation": 3
   },
@@ -10,320 +10,309 @@
       "id": 1,
       "type": "subject_line",
       "content": "The 3-second mistake costing PI attorneys $47K per case",
-      "score": 11.999999999999964,
-      "wins": 81,
-      "losses": 22,
+      "score": 16.99999999999995,
+      "wins": 139,
+      "losses": 38,
       "generation": 1,
       "created_at": "2026-02-28 01:39:23",
-      "win_rate": 78.6
-    },
-    {
-      "id": 15,
-      "type": "subject_line",
-      "content": "Ready to stop being the bottleneck?",
-      "score": 10.449999999999969,
-      "wins": 66,
-      "losses": 23,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 74.2
-    },
-    {
-      "id": 6,
-      "type": "subject_line",
-      "content": "The uncomfortable truth about your case valuations",
-      "score": 9.849999999999978,
-      "wins": 56,
-      "losses": 15,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 78.9
-    },
-    {
-      "id": 13,
-      "type": "subject_line",
-      "content": "What if your best cases are already in your pipeline?",
-      "score": 9.799999999999978,
-      "wins": 61,
-      "losses": 26,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 70.1
-    },
-    {
-      "id": 9,
-      "type": "subject_line",
-      "content": "48 hours to transform your practice (or stay stuck)",
-      "score": 9.349999999999975,
-      "wins": 56,
-      "losses": 25,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 69.1
+      "win_rate": 78.5
     },
     {
       "id": 21,
       "type": "subject_line",
       "content": "Avoid the $47K oversight slowing your practice",
-      "score": 9.249999999999984,
-      "wins": 47,
-      "losses": 9,
+      "score": 14.399999999999961,
+      "wins": 101,
+      "losses": 14,
       "generation": 2,
       "created_at": "2026-02-28 05:53:52",
-      "win_rate": 83.9
+      "win_rate": 87.8
     },
     {
-      "id": 19,
+      "id": 13,
       "type": "subject_line",
-      "content": "The method behind two Top 100 verdicts",
-      "score": 9.09999999999998,
-      "wins": 57,
-      "losses": 32,
+      "content": "What if your best cases are already in your pipeline?",
+      "score": 13.84999999999995,
+      "wins": 109,
+      "losses": 41,
       "generation": 1,
       "created_at": "2026-02-28 01:39:23",
-      "win_rate": 64.0
-    },
-    {
-      "id": 5,
-      "type": "subject_line",
-      "content": "You're leaving money on the table. Here's proof.",
-      "score": 8.949999999999978,
-      "wins": 57,
-      "losses": 35,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 62.0
-    },
-    {
-      "id": 12,
-      "type": "subject_line",
-      "content": "The case that changed everything for [Similar Attorney]",
-      "score": 8.699999999999982,
-      "wins": 54,
-      "losses": 34,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 61.4
-    },
-    {
-      "id": 4,
-      "type": "subject_line",
-      "content": "I reviewed 500 PI cases. Here's what the winners had in common.",
-      "score": 8.549999999999986,
-      "wins": 52,
-      "losses": 33,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 61.2
+      "win_rate": 72.7
     },
     {
       "id": 22,
       "type": "subject_line",
       "content": "3-second fix to stop being the $47K bottleneck",
-      "score": 7.84999999999999,
-      "wins": 32,
-      "losses": 7,
+      "score": 13.699999999999964,
+      "wins": 94,
+      "losses": 14,
       "generation": 2,
       "created_at": "2026-02-28 05:53:52",
-      "win_rate": 82.1
+      "win_rate": 87.0
+    },
+    {
+      "id": 15,
+      "type": "subject_line",
+      "content": "Ready to stop being the bottleneck?",
+      "score": 13.599999999999945,
+      "wins": 105,
+      "losses": 38,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 73.4
+    },
+    {
+      "id": 4,
+      "type": "subject_line",
+      "content": "I reviewed 500 PI cases. Here's what the winners had in common.",
+      "score": 13.499999999999964,
+      "wins": 104,
+      "losses": 38,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 73.2
     },
     {
       "id": 23,
       "type": "subject_line",
       "content": "Are you the $47K hurdle in your cases?",
-      "score": 7.69999999999999,
-      "wins": 35,
-      "losses": 16,
+      "score": 13.349999999999964,
+      "wins": 97,
+      "losses": 27,
       "generation": 2,
       "created_at": "2026-02-28 05:53:52",
-      "win_rate": 68.6
+      "win_rate": 78.2
     },
     {
-      "id": 2,
+      "id": 6,
       "type": "subject_line",
-      "content": "Why 73% of lawyers hate their practice (and how to fix it)",
-      "score": 7.599999999999991,
-      "wins": 47,
-      "losses": 42,
+      "content": "The uncomfortable truth about your case valuations",
+      "score": 12.899999999999956,
+      "wins": 93,
+      "losses": 28,
       "generation": 1,
       "created_at": "2026-02-28 01:39:23",
-      "win_rate": 52.8
-    },
-    {
-      "id": 10,
-      "type": "subject_line",
-      "content": "What top 1% attorneys do differently (free breakdown)",
-      "score": 6.949999999999993,
-      "wins": 42,
-      "losses": 45,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 48.3
-    },
-    {
-      "id": 28,
-      "type": "subject_line",
-      "content": "78% of attorneys ignore this: Are you falling behind?",
-      "score": 6.899999999999993,
-      "wins": 31,
-      "losses": 24,
-      "generation": 2,
-      "created_at": "2026-02-28 05:53:55",
-      "win_rate": 56.4
-    },
-    {
-      "id": 3,
-      "type": "subject_line",
-      "content": "Your competitors know something you don't",
-      "score": 6.849999999999993,
-      "wins": 44,
-      "losses": 51,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 46.3
+      "win_rate": 76.9
     },
     {
       "id": 30,
       "type": "subject_line",
       "content": "The $47K oversight: Are you the bottleneck?",
-      "score": 6.799999999999994,
-      "wins": 19,
-      "losses": 2,
+      "score": 12.24999999999997,
+      "wins": 78,
+      "losses": 11,
       "generation": 2,
       "created_at": "2026-02-28 13:31:24",
-      "win_rate": 90.5
+      "win_rate": 87.6
     },
     {
-      "id": 17,
+      "id": 5,
       "type": "subject_line",
-      "content": "How [Attorney Name] 3X'd revenue in 90 days",
-      "score": 6.5499999999999945,
-      "wins": 43,
-      "losses": 55,
+      "content": "You're leaving money on the table. Here's proof.",
+      "score": 11.149999999999945,
+      "wins": 93,
+      "losses": 63,
       "generation": 1,
       "created_at": "2026-02-28 01:39:23",
-      "win_rate": 43.9
+      "win_rate": 59.6
     },
     {
       "id": 32,
       "type": "subject_line",
       "content": "Stop losing $47K: Are you the PI bottleneck?",
-      "score": 6.299999999999995,
-      "wins": 15,
-      "losses": 4,
+      "score": 10.69999999999997,
+      "wins": 70,
+      "losses": 26,
       "generation": 2,
       "created_at": "2026-02-28 13:31:24",
-      "win_rate": 78.9
+      "win_rate": 72.9
     },
     {
-      "id": 14,
+      "id": 19,
       "type": "subject_line",
-      "content": "Still doing it the hard way?",
-      "score": 6.249999999999996,
-      "wins": 38,
-      "losses": 51,
+      "content": "The method behind two Top 100 verdicts",
+      "score": 10.249999999999954,
+      "wins": 81,
+      "losses": 57,
       "generation": 1,
       "created_at": "2026-02-28 01:39:23",
-      "win_rate": 42.7
+      "win_rate": 58.7
     },
     {
-      "id": 36,
+      "id": 12,
       "type": "subject_line",
-      "content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
-      "score": 5.849999999999997,
-      "wins": 14,
-      "losses": 11,
-      "generation": 3,
-      "created_at": "2026-02-28 13:31:27",
-      "win_rate": 56.0
+      "content": "The case that changed everything for [Similar Attorney]",
+      "score": 9.949999999999944,
+      "wins": 85,
+      "losses": 71,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 54.5
+    },
+    {
+      "id": 9,
+      "type": "subject_line",
+      "content": "48 hours to transform your practice (or stay stuck)",
+      "score": 9.899999999999945,
+      "wins": 77,
+      "losses": 56,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 57.9
+    },
+    {
+      "id": 10,
+      "type": "subject_line",
+      "content": "What top 1% attorneys do differently (free breakdown)",
+      "score": 9.749999999999966,
+      "wins": 83,
+      "losses": 71,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 53.9
     },
     {
       "id": 37,
       "type": "subject_line",
       "content": "Win 3x Cases Faster: Unlock AI Power",
-      "score": 5.849999999999997,
-      "wins": 12,
-      "losses": 7,
+      "score": 8.24999999999999,
+      "wins": 44,
+      "losses": 23,
       "generation": 2,
       "created_at": "2026-02-28 13:31:28",
-      "win_rate": 63.2
+      "win_rate": 65.7
     },
     {
-      "id": 27,
+      "id": 2,
       "type": "subject_line",
-      "content": "Double Your Case Success: Limited Time Offer",
-      "score": 5.749999999999997,
-      "wins": 21,
-      "losses": 27,
+      "content": "Why 73% of lawyers hate their practice (and how to fix it)",
+      "score": 8.24999999999997,
+      "wins": 72,
+      "losses": 79,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 47.7
+    },
+    {
+      "id": 36,
+      "type": "subject_line",
+      "content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
+      "score": 7.549999999999991,
+      "wins": 47,
+      "losses": 43,
+      "generation": 3,
+      "created_at": "2026-02-28 13:31:27",
+      "win_rate": 52.2
+    },
+    {
+      "id": 28,
+      "type": "subject_line",
+      "content": "78% of attorneys ignore this: Are you falling behind?",
+      "score": 7.3999999999999915,
+      "wins": 54,
+      "losses": 60,
       "generation": 2,
-      "created_at": "2026-02-28 05:53:54",
+      "created_at": "2026-02-28 05:53:55",
+      "win_rate": 47.4
+    },
+    {
+      "id": 3,
+      "type": "subject_line",
+      "content": "Your competitors know something you don't",
+      "score": 7.249999999999992,
+      "wins": 63,
+      "losses": 81,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
       "win_rate": 43.8
     },
     {
-      "id": 29,
+      "id": 17,
       "type": "subject_line",
-      "content": "Why 12% of PI attorneys are thriving: Are you one?",
-      "score": 5.449999999999998,
-      "wins": 19,
-      "losses": 29,
-      "generation": 2,
-      "created_at": "2026-02-28 05:53:55",
-      "win_rate": 39.6
+      "content": "How [Attorney Name] 3X'd revenue in 90 days",
+      "score": 7.049999999999993,
+      "wins": 68,
+      "losses": 95,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 41.7
     },
     {
-      "id": 25,
+      "id": 14,
       "type": "subject_line",
-      "content": "Master PI Success: Sean Callagy's Proven Blueprint",
-      "score": 5.349999999999999,
-      "wins": 18,
-      "losses": 29,
-      "generation": 2,
-      "created_at": "2026-02-28 05:53:53",
-      "win_rate": 38.3
+      "content": "Still doing it the hard way?",
+      "score": 7.049999999999993,
+      "wins": 62,
+      "losses": 83,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 42.8
     },
     {
       "id": 31,
       "type": "subject_line",
       "content": "3-second fix to boost your PI case value",
-      "score": 5.349999999999999,
-      "wins": 7,
-      "losses": 7,
+      "score": 6.999999999999993,
+      "wins": 39,
+      "losses": 38,
       "generation": 2,
       "created_at": "2026-02-28 13:31:24",
-      "win_rate": 50.0
+      "win_rate": 50.6
     },
     {
-      "id": 18,
+      "id": 29,
       "type": "subject_line",
-      "content": "Borrowed from billion-dollar trial lawyers",
-      "score": 5.299999999999999,
-      "wins": 39,
-      "losses": 72,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 35.1
+      "content": "Why 12% of PI attorneys are thriving: Are you one?",
+      "score": 6.849999999999993,
+      "wins": 53,
+      "losses": 69,
+      "generation": 2,
+      "created_at": "2026-02-28 05:53:55",
+      "win_rate": 43.4
+    },
+    {
+      "id": 33,
+      "type": "subject_line",
+      "content": "Unveiling Callagy's $1M Framework: Boost Your Firm Now",
+      "score": 5.949999999999997,
+      "wins": 30,
+      "losses": 41,
+      "generation": 2,
+      "created_at": "2026-02-28 13:31:25",
+      "win_rate": 42.3
     },
     {
       "id": 16,
       "type": "subject_line",
       "content": "What would 10X case value mean for your family?",
-      "score": 5.249999999999999,
-      "wins": 31,
-      "losses": 57,
+      "score": 5.6999999999999975,
+      "wins": 51,
+      "losses": 88,
       "generation": 1,
       "created_at": "2026-02-28 01:39:23",
-      "win_rate": 35.2
+      "win_rate": 36.7
     },
     {
       "id": 26,
       "type": "subject_line",
       "content": "Boost Your Law Wins: Proven 30% Increase Today",
-      "score": 5.1,
-      "wins": 18,
-      "losses": 34,
+      "score": 5.449999999999998,
+      "wins": 43,
+      "losses": 77,
       "generation": 2,
       "created_at": "2026-02-28 05:53:54",
-      "win_rate": 34.6
+      "win_rate": 35.8
+    },
+    {
+      "id": 27,
+      "type": "subject_line",
+      "content": "Double Your Case Success: Limited Time Offer",
+      "score": 5.399999999999999,
+      "wins": 39,
+      "losses": 70,
+      "generation": 2,
+      "created_at": "2026-02-28 05:53:54",
+      "win_rate": 35.8
     },
     {
       "id": 39,
@@ -403,1296 +392,281 @@
       "win_rate": 0
     },
     {
-      "id": 35,
+      "id": 25,
       "type": "subject_line",
-      "content": "Master Sean Callagy's $1M Formula in 30 Days",
-      "score": 4.95,
-      "wins": 4,
-      "losses": 9,
-      "generation": 3,
-      "created_at": "2026-02-28 13:31:27",
-      "win_rate": 30.8
+      "content": "Master PI Success: Sean Callagy's Proven Blueprint",
+      "score": 4.750000000000001,
+      "wins": 39,
+      "losses": 83,
+      "generation": 2,
+      "created_at": "2026-02-28 05:53:53",
+      "win_rate": 32.0
     },
     {
-      "id": 38,
+      "id": 18,
       "type": "subject_line",
-      "content": "Challenge AI: Triple Your Case Wins Now",
-      "score": 4.8500000000000005,
-      "wins": 4,
-      "losses": 11,
-      "generation": 2,
-      "created_at": "2026-02-28 13:31:28",
-      "win_rate": 26.7
-    },
-    {
-      "id": 33,
-      "type": "subject_line",
-      "content": "Unveiling Callagy's $1M Framework: Boost Your Firm Now",
-      "score": 4.8500000000000005,
-      "wins": 3,
-      "losses": 9,
-      "generation": 2,
-      "created_at": "2026-02-28 13:31:25",
-      "win_rate": 25.0
+      "content": "Borrowed from billion-dollar trial lawyers",
+      "score": 4.700000000000001,
+      "wins": 55,
+      "losses": 116,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 32.2
     },
     {
       "id": 34,
       "type": "subject_line",
       "content": "Master Callagy's Proven Tactics: 30 Days to Success",
       "score": 4.600000000000001,
-      "wins": 2,
-      "losses": 12,
+      "wins": 19,
+      "losses": 46,
       "generation": 2,
       "created_at": "2026-02-28 13:31:25",
-      "win_rate": 14.3
+      "win_rate": 29.2
     },
     {
-      "id": 7,
+      "id": 38,
       "type": "subject_line",
-      "content": "Most attorneys won't read this. That's why they're stuck.",
-      "score": 4.0000000000000036,
-      "wins": 21,
-      "losses": 62,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 25.3
-    },
-    {
-      "id": 11,
-      "type": "subject_line",
-      "content": "Stop grinding. Start winning.",
-      "score": 3.6000000000000063,
-      "wins": 19,
-      "losses": 66,
-      "generation": 1,
-      "created_at": "2026-02-28 01:39:23",
-      "win_rate": 22.4
-    },
-    {
-      "id": 24,
-      "type": "subject_line",
-      "content": "Unlock Sean Callagy's $1M Framework Today",
-      "score": 3.5500000000000096,
-      "wins": 10,
-      "losses": 49,
+      "content": "Challenge AI: Triple Your Case Wins Now",
+      "score": 4.500000000000002,
+      "wins": 20,
+      "losses": 50,
       "generation": 2,
-      "created_at": "2026-02-28 05:53:53",
-      "win_rate": 16.9
+      "created_at": "2026-02-28 13:31:28",
+      "win_rate": 28.6
+    },
+    {
+      "id": 35,
+      "type": "subject_line",
+      "content": "Master Sean Callagy's $1M Formula in 30 Days",
+      "score": 4.050000000000003,
+      "wins": 20,
+      "losses": 59,
+      "generation": 3,
+      "created_at": "2026-02-28 13:31:27",
+      "win_rate": 25.3
     },
     {
       "id": 8,
       "type": "subject_line",
       "content": "Your inbox is full of promises. This is different.",
-      "score": 3.550000000000005,
-      "wins": 22,
-      "losses": 73,
+      "score": 3.2000000000000144,
+      "wins": 40,
+      "losses": 116,
       "generation": 1,
       "created_at": "2026-02-28 01:39:23",
-      "win_rate": 23.2
+      "win_rate": 25.6
+    },
+    {
+      "id": 7,
+      "type": "subject_line",
+      "content": "Most attorneys won't read this. That's why they're stuck.",
+      "score": 3.100000000000013,
+      "wins": 40,
+      "losses": 118,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 25.3
+    },
+    {
+      "id": 24,
+      "type": "subject_line",
+      "content": "Unlock Sean Callagy's $1M Framework Today",
+      "score": 2.450000000000021,
+      "wins": 27,
+      "losses": 105,
+      "generation": 2,
+      "created_at": "2026-02-28 05:53:53",
+      "win_rate": 20.5
+    },
+    {
+      "id": 11,
+      "type": "subject_line",
+      "content": "Stop grinding. Start winning.",
+      "score": 2.350000000000016,
+      "wins": 31,
+      "losses": 115,
+      "generation": 1,
+      "created_at": "2026-02-28 01:39:23",
+      "win_rate": 21.2
     },
     {
       "id": 20,
       "type": "subject_line",
       "content": "Sean Callagy's framework (finally released)",
-      "score": 1.4500000000000115,
-      "wins": 11,
-      "losses": 93,
+      "score": 0.5500000000000101,
+      "wins": 28,
+      "losses": 145,
       "generation": 1,
       "created_at": "2026-02-28 01:39:23",
-      "win_rate": 10.6
+      "win_rate": 16.2
     }
   ],
   "recent_battles": [
     {
-      "id": 1208,
-      "being_a_id": 30,
-      "being_b_id": 23,
-      "winner_id": 23,
-      "scores_a": {
-        "curiosity": 6,
-        "relevance": 7,
-        "credibility": 3,
-        "urgency": 4,
-        "clarity": 5
-      },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 3,
-        "urgency": 5,
-        "clarity": 6
-      },
-      "reasoning": "As Marcus Chen, I would reluctantly open B because it's more direct and personally confrontational - 'are YOU the hurdle' hits harder than vague 'oversight' language. The $47K figure is specific enough to suggest real data, not just marketing fluff. But honestly, both feel like sales pitches trying to make me feel inadequate. My skepticism is screaming 'delete both' - I've seen too many emails promising to solve problems I didn't know I had. The credibility scores are low because I don't recognize the sender and the format screams marketing automation. If I'm being honest, I'd probably delete both after 15 years of this nonsense, but if forced to choose, B at least doesn't waste time with euphemisms.",
-      "created_at": "2026-02-28 16:35:08",
-      "being_a_content": "The $47K oversight: Are you the bottleneck?",
-      "being_b_content": "Are you the $47K hurdle in your cases?",
-      "winner_content": "Are you the $47K hurdle in your cases?",
-      "persona_name": "Marcus Chen",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1207,
-      "being_a_id": 27,
-      "being_b_id": 17,
-      "winner_id": 17,
-      "scores_a": {
-        "curiosity": 2,
-        "relevance": 4,
-        "credibility": 1,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 7,
-        "credibility": 4,
-        "urgency": 3,
-        "clarity": 6
-      },
-      "reasoning": "As Marcus Chen, I would open B because it feels more credible with specific metrics (3X revenue in 90 days) rather than vague promises. The case study format suggests real data I can evaluate, which appeals to my ROI-focused mindset. Option A screams generic marketing spam with 'limited time offer' - exactly the kind of manipulative language that triggers my high skepticism. After 15 years and 100+ daily emails, I can spot lazy marketing copy instantly. Option B at least implies they have a real example to show me, though I'm still skeptical it's not cherry-picked data.",
-      "created_at": "2026-02-28 16:35:01",
-      "being_a_content": "Double Your Case Success: Limited Time Offer",
-      "being_b_content": "How [Attorney Name] 3X'd revenue in 90 days",
-      "winner_content": "How [Attorney Name] 3X'd revenue in 90 days",
-      "persona_name": "Marcus Chen",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1206,
-      "being_a_id": 20,
-      "being_b_id": 29,
-      "winner_id": 29,
-      "scores_a": {
-        "curiosity": 3,
-        "relevance": 4,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 2
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 8,
-        "credibility": 4,
-        "urgency": 3,
-        "clarity": 6
-      },
-      "reasoning": "As Marcus Chen, I would open B because it speaks directly to PI attorneys and implies concrete data about what's working. After 15 years, I'm tired of guru frameworks that promise everything and deliver nothing. Option A feels like another marketing guru trying to sell me his 'secret sauce' - I don't know who Sean Callagy is and 'framework (finally released)' screams hype. Option B at least acknowledges that most of us are struggling (which matches my reality) and suggests there's actual data behind the 12% figure. While I'm still skeptical it's probably another lead magnet, the specificity and relevance to my exact situation makes it worth 30 seconds to see if there's any real insight about what successful PI practices are actually doing differently.",
-      "created_at": "2026-02-28 16:34:56",
-      "being_a_content": "Sean Callagy's framework (finally released)",
-      "being_b_content": "Why 12% of PI attorneys are thriving: Are you one?",
-      "winner_content": "Why 12% of PI attorneys are thriving: Are you one?",
-      "persona_name": "Marcus Chen",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1205,
-      "being_a_id": 8,
-      "being_b_id": 28,
-      "winner_id": 28,
+      "id": 2393,
+      "being_a_id": 34,
+      "being_b_id": 36,
+      "winner_id": 36,
       "scores_a": {
         "curiosity": 3,
         "relevance": 2,
-        "credibility": 2,
-        "urgency": 1,
-        "clarity": 2
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 8,
         "credibility": 4,
-        "urgency": 7,
-        "clarity": 6
-      },
-      "reasoning": "As David Park, I would open B because it directly targets attorneys and creates fear of falling behind professionally - something I'm acutely aware of as a career-driven 5th year associate. While I'm skeptical of both emails, Option B at least speaks to my specific role and taps into my concern about staying competitive. Option A is too vague and feels like generic marketing spam that wastes my limited time. The 78% statistic in B, while potentially dubious, creates enough urgency around professional development that I'd risk the 30 seconds to scan it, especially since missing industry trends could hurt my partnership track.",
-      "created_at": "2026-02-28 16:34:49",
-      "being_a_content": "Your inbox is full of promises. This is different.",
-      "being_b_content": "78% of attorneys ignore this: Are you falling behind?",
-      "winner_content": "78% of attorneys ignore this: Are you falling behind?",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1204,
-      "being_a_id": 21,
-      "being_b_id": 35,
-      "winner_id": 21,
-      "scores_a": {
-        "curiosity": 6,
-        "relevance": 7,
-        "credibility": 3,
         "urgency": 5,
         "clarity": 4
       },
       "scores_b": {
-        "curiosity": 2,
-        "relevance": 2,
-        "credibility": 2,
-        "urgency": 3,
-        "clarity": 3
-      },
-      "reasoning": "As Dr. Lisa Chang, I would reluctantly open A because it at least mentions something practice-related that could be costing me money, which is relevant to my overwhelmed practice situation. However, both emails scream 'sales pitch' and with my inbox fatigue at 95%, I'm highly skeptical of these vague promises. The $47K 'oversight' is probably some generic business consulting nonsense, but at least it's targeting healthcare practices. Option B sounds like generic business guru content that has nothing to do with patient care or medical practice management. Honestly, I'd probably delete both after a quick glance - I need emails that respect my time and actually help me serve my patients better, not more get-rich-quick schemes.",
-      "created_at": "2026-02-28 16:34:43",
-      "being_a_content": "Avoid the $47K oversight slowing your practice",
-      "being_b_content": "Master Sean Callagy's $1M Formula in 30 Days",
-      "winner_content": "Avoid the $47K oversight slowing your practice",
-      "persona_name": "Dr. Lisa Chang",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1203,
-      "being_a_id": 2,
-      "being_b_id": 25,
-      "winner_id": 2,
-      "scores_a": {
-        "curiosity": 2,
-        "relevance": 1,
-        "credibility": 3,
-        "urgency": 1,
-        "clarity": 4
-      },
-      "scores_b": {
-        "curiosity": 1,
-        "relevance": 1,
-        "credibility": 2,
-        "urgency": 1,
-        "clarity": 2
-      },
-      "reasoning": "As Dr. Michael Torres, I would delete both immediately because neither has any relevance to orthopedic surgery or my medical practice. I'm not a lawyer, don't need legal practice advice, and have no idea what 'PI Success' means in this context. With 60+ hours a week and severe inbox fatigue, I have zero tolerance for irrelevant marketing emails that waste my precious time. Both are clearly mass-market pitches that somehow ended up in the wrong inbox.",
-      "created_at": "2026-02-28 16:34:37",
-      "being_a_content": "Why 73% of lawyers hate their practice (and how to fix it)",
-      "being_b_content": "Master PI Success: Sean Callagy's Proven Blueprint",
-      "winner_content": "Why 73% of lawyers hate their practice (and how to fix it)",
-      "persona_name": "Dr. Michael Torres",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1202,
-      "being_a_id": 15,
-      "being_b_id": 9,
-      "winner_id": 15,
-      "scores_a": {
         "curiosity": 6,
         "relevance": 7,
         "credibility": 4,
-        "urgency": 3,
-        "clarity": 5
-      },
-      "scores_b": {
-        "curiosity": 4,
-        "relevance": 5,
-        "credibility": 3,
-        "urgency": 7,
-        "clarity": 4
-      },
-      "reasoning": "As David Park, I would open A because while both emails feel like generic marketing pitches from unknown senders, Option A at least addresses a real pain point I experience as a senior associate - being overwhelmed and potentially slowing down deals or matters. The 'bottleneck' language resonates with my daily reality of juggling multiple high-stakes projects. Option B's '48 hours to transform' feels like typical marketing hyperbole that sets off my skepticism alarm bells - nothing legitimate transforms a legal practice in 48 hours, and the 'or stay stuck' feels manipulative. Given my risk-averse nature and concern for reputation, I'd be more inclined to investigate something that acknowledges workflow challenges rather than promises unrealistic quick fixes.",
-      "created_at": "2026-02-28 16:34:33",
-      "being_a_content": "Ready to stop being the bottleneck?",
-      "being_b_content": "48 hours to transform your practice (or stay stuck)",
-      "winner_content": "Ready to stop being the bottleneck?",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1201,
-      "being_a_id": 16,
-      "being_b_id": 5,
-      "winner_id": 5,
-      "scores_a": {
-        "curiosity": 4,
-        "relevance": 3,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 5,
-        "credibility": 3,
-        "urgency": 4,
+        "urgency": 6,
         "clarity": 6
       },
-      "reasoning": "As David Park, I would open B because it's more direct and specific about potential financial impact, which is relevant to my career advancement. While both emails feel like sales pitches from unknown senders (hence low credibility scores), Option B at least promises concrete 'proof' rather than vague family benefits. Given my time constraints and skeptical nature, I need clear value propositions. However, I'd still approach with caution given the promotional tone and unknown sender - this screams vendor pitch, but the directness about money left on the table is compelling enough to warrant a quick scan.",
-      "created_at": "2026-02-28 16:34:26",
-      "being_a_content": "What would 10X case value mean for your family?",
-      "being_b_content": "You're leaving money on the table. Here's proof.",
-      "winner_content": "You're leaving money on the table. Here's proof.",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1200,
-      "being_a_id": 32,
-      "being_b_id": 38,
-      "winner_id": 32,
-      "scores_a": {
-        "curiosity": 8,
-        "relevance": 9,
-        "credibility": 6,
-        "urgency": 7,
-        "clarity": 8
-      },
-      "scores_b": {
-        "curiosity": 4,
-        "relevance": 3,
-        "credibility": 3,
-        "urgency": 5,
-        "clarity": 4
-      },
-      "reasoning": "As Karen Williams, I would open A because it directly addresses my biggest concern - cost control and operational efficiency. The $47K figure immediately grabs my attention as a practice administrator who's constantly watching the bottom line. The 'PI bottleneck' reference suggests this is about physician inefficiencies, which is exactly what I deal with daily when managing doctor schedules and access. While I'm skeptical of the exact dollar amount without context, the subject line speaks directly to my role as a gatekeeper trying to optimize practice operations. Option B feels like generic marketing fluff about AI and 'case wins' that doesn't clearly relate to my day-to-day responsibilities of managing costs and physician access.",
-      "created_at": "2026-02-28 16:34:21",
-      "being_a_content": "Stop losing $47K: Are you the PI bottleneck?",
-      "being_b_content": "Challenge AI: Triple Your Case Wins Now",
-      "winner_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "reasoning": "As Karen Williams, I would open B because it directly addresses PI (personal injury) wins which could impact our practice's revenue stream. The word 'Challenge' suggests measurable results, and 'Blueprint' implies a structured, cost-effective approach. Option A feels too generic and vague - I don't have time for broad 'success' promises. Option B speaks to specific outcomes that could affect our bottom line, which is exactly what I need to evaluate for potential ROI.",
+      "created_at": "2026-03-01 04:04:14",
+      "being_a_content": "Master Callagy's Proven Tactics: 30 Days to Success",
+      "being_b_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
+      "winner_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
       "persona_name": "Karen Williams",
       "persona_category": "medical"
     },
     {
-      "id": 1199,
-      "being_a_id": 7,
-      "being_b_id": 16,
-      "winner_id": 16,
-      "scores_a": {
-        "curiosity": 4,
-        "relevance": 6,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 4
-      },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 5,
-        "urgency": 6,
-        "clarity": 6
-      },
-      "reasoning": "As Jennifer Rodriguez, I would open B because it speaks directly to outcomes that matter to my clients and their families - which is always my primary focus. While A feels like typical marketing manipulation that plays on attorney insecurities, B connects to the real impact of my work. The phrase 'for your family' resonates with my client-centered approach and high empathy. Given my time constraints, B's clearer value proposition about case outcomes is more compelling than A's vague promise that relies on exclusivity tactics. My moderate skepticism makes me wary of A's 'most attorneys won't read this' hook, while B feels more authentic and relevant to the tangible results I seek for my clients.",
-      "created_at": "2026-02-28 16:34:15",
-      "being_a_content": "Most attorneys won't read this. That's why they're stuck.",
-      "being_b_content": "What would 10X case value mean for your family?",
-      "winner_content": "What would 10X case value mean for your family?",
-      "persona_name": "Jennifer Rodriguez",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1198,
+      "id": 2392,
       "being_a_id": 35,
-      "being_b_id": 33,
-      "winner_id": 35,
-      "scores_a": {
-        "curiosity": 2,
-        "relevance": 1,
-        "credibility": 2,
-        "urgency": 3,
-        "clarity": 4
-      },
-      "scores_b": {
-        "curiosity": 2,
-        "relevance": 1,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "reasoning": "As Dr. Lisa Chang, I would delete both emails immediately without opening either. These look like generic business/marketing schemes that have absolutely nothing to do with patient care or family medicine. With my overwhelming patient load and severe inbox fatigue, I don't have time for what appears to be get-rich-quick schemes or business consulting pitches. The mention of '$1M formulas' and 'boosting firms' suggests these are targeting business owners or entrepreneurs, not physicians focused on patient care. I'm skeptical of unsolicited emails promising financial success, and neither sender appears credible or relevant to my medical practice. My time is better spent on patient-related communications.",
-      "created_at": "2026-02-28 16:34:09",
-      "being_a_content": "Master Sean Callagy's $1M Formula in 30 Days",
-      "being_b_content": "Unveiling Callagy's $1M Framework: Boost Your Firm Now",
-      "winner_content": "Master Sean Callagy's $1M Formula in 30 Days",
-      "persona_name": "Dr. Lisa Chang",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1197,
-      "being_a_id": 34,
-      "being_b_id": 28,
-      "winner_id": 28,
-      "scores_a": {
-        "curiosity": 3,
-        "relevance": 4,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "scores_b": {
-        "curiosity": 5,
-        "relevance": 6,
-        "credibility": 3,
-        "urgency": 4,
-        "clarity": 4
-      },
-      "reasoning": "As Marcus Chen, I would reluctantly open B because the statistic feels more relevant to my practice and triggers my concern about staying competitive. However, both feel like marketing BS. Option A screams 'guru worship' - I don't know who Callagy is and '30 days to success' sounds like snake oil. Option B at least acknowledges that most attorneys might be missing something, which resonates with my ROI focus, even though the 78% stat is probably made up. Neither inspires much confidence, but B feels slightly less like spam and more like it might contain actual industry insight I can't afford to miss.",
-      "created_at": "2026-02-28 16:34:03",
-      "being_a_content": "Master Callagy's Proven Tactics: 30 Days to Success",
-      "being_b_content": "78% of attorneys ignore this: Are you falling behind?",
-      "winner_content": "78% of attorneys ignore this: Are you falling behind?",
-      "persona_name": "Marcus Chen",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1196,
-      "being_a_id": 37,
-      "being_b_id": 18,
-      "winner_id": 37,
-      "scores_a": {
-        "curiosity": 6,
-        "relevance": 8,
-        "credibility": 4,
-        "urgency": 5,
-        "clarity": 8
-      },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 6,
-        "credibility": 3,
-        "urgency": 4,
-        "clarity": 3
-      },
-      "reasoning": "As Sarah Mitchell, I would open A because despite my skepticism about AI claims, the promise of '3x faster' directly addresses my time constraints and ROI focus. The subject line clearly communicates potential value - winning cases faster is exactly what I need to manage my heavy workload and deliver results for clients. While I'm skeptical of the '3x' claim, it's specific enough to warrant investigation. Option B is too vague and feels like clickbait - I don't have time to decode what 'borrowed from billion-dollar trial lawyers' actually means or offers my practice.",
-      "created_at": "2026-02-28 16:33:58",
-      "being_a_content": "Win 3x Cases Faster: Unlock AI Power",
-      "being_b_content": "Borrowed from billion-dollar trial lawyers",
-      "winner_content": "Win 3x Cases Faster: Unlock AI Power",
-      "persona_name": "Sarah Mitchell",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1195,
-      "being_a_id": 23,
-      "being_b_id": 36,
-      "winner_id": 23,
-      "scores_a": {
-        "curiosity": 7,
-        "relevance": 4,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 6
-      },
-      "scores_b": {
-        "curiosity": 5,
-        "relevance": 3,
-        "credibility": 4,
-        "urgency": 3,
-        "clarity": 7
-      },
-      "reasoning": "As David Park, I would open A because despite my skepticism about the sender's credibility, the specific dollar amount creates genuine curiosity about whether I'm missing something that could impact case outcomes. At an AmLaw 100 firm, even small inefficiencies matter for partnership track, and the provocative framing suggests this could be about a blind spot I should know about. Option B feels more like generic marketing despite being clearer - 'PI wins' and 'blueprint' sound like typical legal marketing speak that I'd normally ignore given my time constraints.",
-      "created_at": "2026-02-28 16:33:53",
-      "being_a_content": "Are you the $47K hurdle in your cases?",
-      "being_b_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
-      "winner_content": "Are you the $47K hurdle in your cases?",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1194,
-      "being_a_id": 23,
-      "being_b_id": 3,
-      "winner_id": 23,
-      "scores_a": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 4,
-        "urgency": 6,
-        "clarity": 8
-      },
-      "scores_b": {
-        "curiosity": 3,
-        "relevance": 4,
-        "credibility": 2,
-        "urgency": 3,
-        "clarity": 2
-      },
-      "reasoning": "As Sarah Mitchell, I would open A because the specific dollar amount ($47K) immediately signals potential ROI impact that I can quantify and evaluate. While I'm skeptical of the unknown sender, the concrete financial reference suggests this could relate to case efficiency or cost management - areas directly relevant to my role managing teams and firm profitability. Option B feels like generic marketing speak that wastes my limited time with vague competitive threats rather than actionable insights.",
-      "created_at": "2026-02-28 16:33:47",
-      "being_a_content": "Are you the $47K hurdle in your cases?",
-      "being_b_content": "Your competitors know something you don't",
-      "winner_content": "Are you the $47K hurdle in your cases?",
-      "persona_name": "Sarah Mitchell",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1193,
-      "being_a_id": 22,
-      "being_b_id": 37,
-      "winner_id": 22,
-      "scores_a": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 4,
-        "urgency": 6,
-        "clarity": 6
-      },
-      "scores_b": {
-        "curiosity": 5,
-        "relevance": 7,
-        "credibility": 3,
-        "urgency": 4,
-        "clarity": 7
-      },
-      "reasoning": "As Marcus Chen, I would reluctantly open A because the '$47K bottleneck' hits close to home - I know I'm probably leaving money on the table by being overwhelmed. The '3-second fix' appeals to my time poverty, though I'm deeply skeptical it's actually that simple. Option B screams generic AI marketing spam that I see 20 times a day. The 'Win 3x Cases Faster' feels like typical overpromising, and 'Unlock AI Power' is meaningless buzzword garbage. Neither sender has established credibility with me, but A at least acknowledges a real pain point rather than making grandiose claims about AI magic.",
-      "created_at": "2026-02-28 16:33:42",
-      "being_a_content": "3-second fix to stop being the $47K bottleneck",
-      "being_b_content": "Win 3x Cases Faster: Unlock AI Power",
-      "winner_content": "3-second fix to stop being the $47K bottleneck",
-      "persona_name": "Marcus Chen",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1192,
-      "being_a_id": 20,
-      "being_b_id": 16,
-      "winner_id": 16,
-      "scores_a": {
-        "curiosity": 4,
-        "relevance": 3,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 7,
-        "credibility": 3,
-        "urgency": 4,
-        "clarity": 6
-      },
-      "reasoning": "As David Park, I would open B because despite my skepticism about marketing emails, the subject line directly addresses something I care about - maximizing case value, which is crucial for my partnership track. The family angle resonates as I'm thinking about long-term financial security. Option A feels like generic legal marketing from someone I don't recognize, and with my time constraints, I need emails that clearly indicate immediate professional value. While both seem like promotional content, B at least promises concrete financial benefits that could impact my career trajectory.",
-      "created_at": "2026-02-28 16:33:37",
-      "being_a_content": "Sean Callagy's framework (finally released)",
-      "being_b_content": "What would 10X case value mean for your family?",
-      "winner_content": "What would 10X case value mean for your family?",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1191,
-      "being_a_id": 3,
-      "being_b_id": 24,
-      "winner_id": 24,
-      "scores_a": {
-        "curiosity": 6,
-        "relevance": 5,
-        "credibility": 3,
-        "urgency": 4,
-        "clarity": 2
-      },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 6,
-        "credibility": 4,
-        "urgency": 6,
-        "clarity": 6
-      },
-      "reasoning": "As Sarah Mitchell, I would open B because it's more specific and actionable. While both feel like marketing pitches, Option B at least tells me what I'm getting - a framework with a concrete value proposition ($1M). Option A is too vague and feels like clickbait, which wastes my time. I don't recognize Sean Callagy, but the specificity suggests there might be actual content rather than just fear-mongering. With my 95% time-poor rating, I need to know immediately what value I'm getting, and B delivers that clarity while A doesn't.",
-      "created_at": "2026-02-28 16:33:32",
-      "being_a_content": "Your competitors know something you don't",
-      "being_b_content": "Unlock Sean Callagy's $1M Framework Today",
-      "winner_content": "Unlock Sean Callagy's $1M Framework Today",
-      "persona_name": "Sarah Mitchell",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1190,
-      "being_a_id": 22,
-      "being_b_id": 20,
-      "winner_id": 22,
-      "scores_a": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 3,
-        "urgency": 6,
-        "clarity": 8
-      },
-      "scores_b": {
-        "curiosity": 2,
-        "relevance": 1,
-        "credibility": 2,
-        "urgency": 1,
-        "clarity": 2
-      },
-      "reasoning": "As Dr. Michael Torres, I would open A because it directly addresses efficiency and cost bottlenecks - core concerns for any surgeon managing a practice. The '$47K bottleneck' is specific enough to suggest real financial impact, and '3-second fix' appeals to my time constraints. Option B is completely unclear - I have no idea who Sean Callagy is or what framework this refers to, making it irrelevant noise in my already overwhelming inbox.",
-      "created_at": "2026-02-28 16:33:26",
-      "being_a_content": "3-second fix to stop being the $47K bottleneck",
-      "being_b_content": "Sean Callagy's framework (finally released)",
-      "winner_content": "3-second fix to stop being the $47K bottleneck",
-      "persona_name": "Dr. Michael Torres",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1189,
-      "being_a_id": 29,
-      "being_b_id": 9,
-      "winner_id": 29,
-      "scores_a": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 6,
-        "urgency": 3,
-        "clarity": 8
-      },
-      "scores_b": {
-        "curiosity": 4,
-        "relevance": 5,
-        "credibility": 3,
-        "urgency": 6,
-        "clarity": 4
-      },
-      "reasoning": "As Sarah Mitchell, I would open A because it speaks directly to my practice area with a specific, credible statistic that implies proven results. The 12% figure suggests data-driven insights about what separates successful PI attorneys from the rest - exactly the kind of competitive intelligence I need to stay ahead. Option B feels like typical marketing hyperbole with its '48 hours to transform' promise, which triggers my skepticism. I don't have time for vague transformation promises; I need concrete, actionable insights that can drive measurable improvements in my practice's performance.",
-      "created_at": "2026-02-28 16:33:22",
-      "being_a_content": "Why 12% of PI attorneys are thriving: Are you one?",
-      "being_b_content": "48 hours to transform your practice (or stay stuck)",
-      "winner_content": "Why 12% of PI attorneys are thriving: Are you one?",
-      "persona_name": "Sarah Mitchell",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1188,
-      "being_a_id": 7,
       "being_b_id": 20,
       "winner_id": 20,
       "scores_a": {
         "curiosity": 3,
-        "relevance": 4,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 1
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 7,
-        "credibility": 6,
-        "urgency": 4,
-        "clarity": 4
-      },
-      "reasoning": "As Marcus Chen, I would open B because Sean Callagy is a recognizable name in the legal industry with actual credibility and results. Option A screams generic marketing manipulation - I've seen that 'most people won't read this' hook a thousand times from every snake oil salesman. With my inbox fatigue at 0.9, I immediately delete obvious clickbait. Option B at least tells me what I'm getting (a framework) and from whom (Callagy), which respects my time. Still skeptical it's worth opening given my burnout, but if I had to pick one, it's B.",
-      "created_at": "2026-02-28 16:33:17",
-      "being_a_content": "Most attorneys won't read this. That's why they're stuck.",
-      "being_b_content": "Sean Callagy's framework (finally released)",
-      "winner_content": "Sean Callagy's framework (finally released)",
-      "persona_name": "Marcus Chen",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1187,
-      "being_a_id": 8,
-      "being_b_id": 24,
-      "winner_id": 24,
-      "scores_a": {
-        "curiosity": 3,
         "relevance": 2,
         "credibility": 2,
-        "urgency": 1,
-        "clarity": 1
-      },
-      "scores_b": {
-        "curiosity": 4,
-        "relevance": 3,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 6
-      },
-      "reasoning": "As Karen Williams, I would reluctantly open B because at least it's clear about offering a specific framework with a dollar value attached, which speaks to my results-driven nature. However, both emails trigger my high skepticism - A sounds like typical marketing fluff that wastes my time, and B feels like another get-rich-quick scheme. The '$1M Framework' at least gives me concrete information I can quickly evaluate and dismiss if it's not relevant to healthcare practice management. My gatekeeping instincts tell me both are likely spam, but B's clarity means I can make that determination faster and get back to real work.",
-      "created_at": "2026-02-28 16:33:12",
-      "being_a_content": "Your inbox is full of promises. This is different.",
-      "being_b_content": "Unlock Sean Callagy's $1M Framework Today",
-      "winner_content": "Unlock Sean Callagy's $1M Framework Today",
-      "persona_name": "Karen Williams",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1186,
-      "being_a_id": 15,
-      "being_b_id": 10,
-      "winner_id": 15,
-      "scores_a": {
-        "curiosity": 8,
-        "relevance": 9,
-        "credibility": 4,
-        "urgency": 6,
-        "clarity": 7
-      },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 3,
         "urgency": 4,
         "clarity": 6
       },
-      "reasoning": "As Sarah Mitchell, I would open A because it directly addresses my biggest pain point - being the bottleneck in my team operations. With my high delegation mindset (0.8) and time constraints (0.95), this hits exactly what I struggle with daily. While I'm skeptical of both senders since I don't recognize them, Option A feels more actionable and relevant to my immediate needs as a partner managing a team. Option B feels more like generic marketing fluff about 'top performers' - I need solutions, not aspirational content. The ROI potential is clearer with A since reducing bottlenecks directly impacts firm efficiency.",
-      "created_at": "2026-02-28 16:33:05",
-      "being_a_content": "Ready to stop being the bottleneck?",
-      "being_b_content": "What top 1% attorneys do differently (free breakdown)",
-      "winner_content": "Ready to stop being the bottleneck?",
-      "persona_name": "Sarah Mitchell",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1185,
-      "being_a_id": 36,
-      "being_b_id": 23,
-      "winner_id": 36,
-      "scores_a": {
-        "curiosity": 2,
-        "relevance": 1,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 4
-      },
       "scores_b": {
-        "curiosity": 3,
-        "relevance": 1,
-        "credibility": 2,
-        "urgency": 3,
-        "clarity": 2
-      },
-      "reasoning": "As Dr. Lisa Chang, I wouldn't open either of these emails. Both appear to be legal/PI (personal injury) related content that has zero relevance to my family medicine practice. With my overwhelming patient load and severe inbox fatigue, I immediately delete anything that doesn't directly relate to patient care or essential practice management. These look like generic legal marketing emails that somehow ended up in my inbox by mistake. I need emails about clinical updates, patient management tools, or urgent practice matters - not legal case strategies. My time is too precious to waste on irrelevant content when I have patients to care for.",
-      "created_at": "2026-02-28 16:33:00",
-      "being_a_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
-      "being_b_content": "Are you the $47K hurdle in your cases?",
-      "winner_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
-      "persona_name": "Dr. Lisa Chang",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1184,
-      "being_a_id": 20,
-      "being_b_id": 18,
-      "winner_id": 18,
-      "scores_a": {
-        "curiosity": 4,
-        "relevance": 3,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 4,
-        "urgency": 3,
-        "clarity": 6
-      },
-      "reasoning": "As David Park, I would open B because it directly references 'billion-dollar trial lawyers' which signals high-value legal strategies that could advance my career. While I'm skeptical of both subject lines due to their marketing tone, Option B feels more relevant to my practice and suggests concrete insights from successful practitioners. Option A mentions someone I don't recognize ('Sean Callagy') which raises credibility concerns, and the vague 'framework' language doesn't clearly communicate value. Given my time constraints and career focus, I need subject lines that immediately signal professional relevance - Option B does this better despite my general wariness of promotional emails.",
-      "created_at": "2026-02-28 16:32:55",
-      "being_a_content": "Sean Callagy's framework (finally released)",
-      "being_b_content": "Borrowed from billion-dollar trial lawyers",
-      "winner_content": "Borrowed from billion-dollar trial lawyers",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1183,
-      "being_a_id": 34,
-      "being_b_id": 13,
-      "winner_id": 13,
-      "scores_a": {
-        "curiosity": 3,
+        "curiosity": 5,
         "relevance": 4,
-        "credibility": 2,
+        "credibility": 4,
         "urgency": 3,
         "clarity": 4
       },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 5,
-        "urgency": 6,
-        "clarity": 6
-      },
-      "reasoning": "As David Park, I would open B because it speaks directly to my core concern as a 5th year associate - maximizing the value of my existing work and pipeline. The question format is intriguing without being overly salesy, and it suggests there might be untapped potential in cases I'm already working on, which could help my billables and career advancement. Option A feels like generic self-help marketing that could damage my reputation if colleagues saw it, and I'm skeptical of anyone promising '30 days to success' - that's not how BigLaw works. Option B feels more sophisticated and relevant to my actual practice.",
-      "created_at": "2026-02-28 16:32:49",
-      "being_a_content": "Master Callagy's Proven Tactics: 30 Days to Success",
-      "being_b_content": "What if your best cases are already in your pipeline?",
-      "winner_content": "What if your best cases are already in your pipeline?",
-      "persona_name": "David Park",
+      "reasoning": "As Jennifer Rodriguez, I would open B because while neither feels particularly relevant to family law practice, Option B feels more authentic and less like a get-rich-quick scheme. The '$1M Formula' language in Option A immediately raises red flags for me - it sounds like typical marketing hype that doesn't align with the ethical, client-focused practice I maintain. Option B's 'finally released' suggests there's been anticipation around this framework, which makes me curious about what Sean Callagy has developed. Given my high empathy and client focus, I'm more interested in frameworks that could genuinely help my practice serve families better, rather than promises of quick financial gains. My moderate skepticism makes me wary of Option A's bold claims, while Option B feels more measured and potentially substantive.",
+      "created_at": "2026-03-01 04:04:09",
+      "being_a_content": "Master Sean Callagy's $1M Formula in 30 Days",
+      "being_b_content": "Sean Callagy's framework (finally released)",
+      "winner_content": "Sean Callagy's framework (finally released)",
+      "persona_name": "Jennifer Rodriguez",
       "persona_category": "legal"
     },
     {
-      "id": 1182,
-      "being_a_id": 15,
-      "being_b_id": 22,
-      "winner_id": 22,
+      "id": 2391,
+      "being_a_id": 32,
+      "being_b_id": 8,
+      "winner_id": 32,
       "scores_a": {
-        "curiosity": 4,
-        "relevance": 6,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 4,
-        "urgency": 6,
-        "clarity": 7
-      },
-      "reasoning": "As David Park, I would open B because the specific dollar figure ($47K) immediately catches my attention as something that could impact my billable efficiency and partnership track. The '3-second fix' appeals to my time-poor reality, and the concrete metrics suggest this isn't just generic productivity spam. While I'm still skeptical about unknown senders, the specificity makes it feel more credible than vague language about being a 'bottleneck.' Option A feels too generic and doesn't give me enough information to justify the time investment of opening it.",
-      "created_at": "2026-02-28 16:32:44",
-      "being_a_content": "Ready to stop being the bottleneck?",
-      "being_b_content": "3-second fix to stop being the $47K bottleneck",
-      "winner_content": "3-second fix to stop being the $47K bottleneck",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1181,
-      "being_a_id": 29,
-      "being_b_id": 21,
-      "winner_id": 21,
-      "scores_a": {
-        "curiosity": 2,
-        "relevance": 1,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "scores_b": {
         "curiosity": 8,
         "relevance": 9,
         "credibility": 6,
         "urgency": 8,
         "clarity": 9
       },
-      "reasoning": "As Karen Williams, I would open B because it directly addresses my core concern - cost oversight that could be impacting my practice. The $47K figure is specific and alarming enough to demand immediate attention, especially given my cost-conscious nature. Option A is completely irrelevant since I'm not a PI attorney, and I don't have time for content that doesn't apply to healthcare practice administration. Option B speaks directly to potential financial waste, which is exactly what I'm paid to prevent and fix.",
-      "created_at": "2026-02-28 16:32:38",
-      "being_a_content": "Why 12% of PI attorneys are thriving: Are you one?",
-      "being_b_content": "Avoid the $47K oversight slowing your practice",
-      "winner_content": "Avoid the $47K oversight slowing your practice",
-      "persona_name": "Karen Williams",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1180,
-      "being_a_id": 18,
-      "being_b_id": 30,
-      "winner_id": 30,
-      "scores_a": {
-        "curiosity": 6,
-        "relevance": 7,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 4
-      },
       "scores_b": {
-        "curiosity": 8,
-        "relevance": 9,
-        "credibility": 4,
-        "urgency": 7,
-        "clarity": 6
-      },
-      "reasoning": "As David Park, I would open B because the '$47K oversight' immediately grabs my attention as a significant financial figure that could impact my practice or career advancement. The 'bottleneck' question feels personally relevant since efficiency and productivity are crucial for partnership track. While both subject lines lack clear sender credibility, Option B creates more urgency around a specific problem I might be facing. Option A feels too vague and marketing-heavy, which triggers my skepticism about unsolicited advice. Given my time constraints, I need subject lines that quickly communicate concrete value, and B does that better despite my general wariness of promotional emails.",
-      "created_at": "2026-02-28 16:32:34",
-      "being_a_content": "Borrowed from billion-dollar trial lawyers",
-      "being_b_content": "The $47K oversight: Are you the bottleneck?",
-      "winner_content": "The $47K oversight: Are you the bottleneck?",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1179,
-      "being_a_id": 21,
-      "being_b_id": 23,
-      "winner_id": 21,
-      "scores_a": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 4,
-        "urgency": 6,
-        "clarity": 8
-      },
-      "scores_b": {
-        "curiosity": 3,
-        "relevance": 5,
-        "credibility": 3,
-        "urgency": 4,
-        "clarity": 6
-      },
-      "reasoning": "As Dr. Michael Torres, I would open A because it directly addresses a practice inefficiency with a specific dollar amount that could impact my bottom line. The word 'oversight' suggests something I can fix quickly - exactly what I need with my time constraints. Option B feels like accusatory clickbait that wastes my time with blame rather than solutions. My skepticism is high on both, but A at least promises to identify a concrete problem I can address.",
-      "created_at": "2026-02-28 16:32:28",
-      "being_a_content": "Avoid the $47K oversight slowing your practice",
-      "being_b_content": "Are you the $47K hurdle in your cases?",
-      "winner_content": "Avoid the $47K oversight slowing your practice",
-      "persona_name": "Dr. Michael Torres",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1178,
-      "being_a_id": 36,
-      "being_b_id": 30,
-      "winner_id": 30,
-      "scores_a": {
-        "curiosity": 3,
-        "relevance": 2,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 4
-      },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 4,
-        "urgency": 6,
-        "clarity": 6
-      },
-      "reasoning": "As Dr. Michael Torres, I would open B because it directly addresses a potential financial oversight that could be costing me money - something I can't afford to ignore given my efficiency-driven nature. The '$47K oversight' is concrete and alarming enough to warrant 30 seconds of my time, while 'PI wins' and 'Callagy's Blueprint' sounds like generic marketing fluff that doesn't clearly relate to my orthopedic practice.",
-      "created_at": "2026-02-28 16:32:23",
-      "being_a_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
-      "being_b_content": "The $47K oversight: Are you the bottleneck?",
-      "winner_content": "The $47K oversight: Are you the bottleneck?",
-      "persona_name": "Dr. Michael Torres",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1177,
-      "being_a_id": 17,
-      "being_b_id": 5,
-      "winner_id": 5,
-      "scores_a": {
-        "curiosity": 3,
-        "relevance": 2,
-        "credibility": 2,
-        "urgency": 1,
-        "clarity": 4
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 7,
-        "credibility": 3,
-        "urgency": 5,
-        "clarity": 6
-      },
-      "reasoning": "As Karen Williams, I would open B because it directly addresses potential revenue loss in my practice, which triggers my cost-conscious nature. While I'm skeptical of both claims, Option A feels like generic marketing using an attorney case study that doesn't relate to healthcare administration. Option B speaks directly to money being left behind - something I need to investigate given my results-driven role. The phrase 'here's proof' suggests concrete data I can evaluate, though I remain highly skeptical until I see actual evidence. My gatekeeping instincts make me wary of both, but B at least promises relevant financial information for my practice.",
-      "created_at": "2026-02-28 15:31:47",
-      "being_a_content": "How [Attorney Name] 3X'd revenue in 90 days",
-      "being_b_content": "You're leaving money on the table. Here's proof.",
-      "winner_content": "You're leaving money on the table. Here's proof.",
-      "persona_name": "Karen Williams",
-      "persona_category": "medical"
-    },
-    {
-      "id": 1176,
-      "being_a_id": 28,
-      "being_b_id": 19,
-      "winner_id": 19,
-      "scores_a": {
-        "curiosity": 4,
-        "relevance": 6,
-        "credibility": 2,
-        "urgency": 3,
-        "clarity": 3
-      },
-      "scores_b": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 6,
-        "urgency": 5,
-        "clarity": 7
-      },
-      "reasoning": "As David Park, I would open B because it speaks directly to concrete legal success with 'Top 100 verdicts' - something highly relevant to my career advancement goals at an AmLaw 100 firm. Option A feels like clickbait with its '78% of attorneys ignore this' hook, which triggers my skepticism and concerns about sender credibility. Option B suggests substantive, actionable insights from proven winners, which aligns with my career-conscious mindset and need for efficient, valuable information given my time constraints.",
-      "created_at": "2026-02-28 15:31:42",
-      "being_a_content": "78% of attorneys ignore this: Are you falling behind?",
-      "being_b_content": "The method behind two Top 100 verdicts",
-      "winner_content": "The method behind two Top 100 verdicts",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1175,
-      "being_a_id": 18,
-      "being_b_id": 22,
-      "winner_id": 22,
-      "scores_a": {
-        "curiosity": 7,
-        "relevance": 6,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 4
-      },
-      "scores_b": {
-        "curiosity": 8,
-        "relevance": 9,
-        "credibility": 4,
-        "urgency": 7,
-        "clarity": 6
-      },
-      "reasoning": "As David Park, I would open B because it directly addresses my biggest fear - being seen as inefficient or a bottleneck in high-stakes work. The '$47K bottleneck' language suggests someone understands the economics of associate productivity, and '3-second fix' appeals to my time constraints. While I'm skeptical of both subject lines (they feel like marketing), Option B feels more targeted to my specific situation as a senior associate worried about advancement. Option A is too vague and the 'borrowed' language makes it sound like generic advice rather than actionable intelligence I can use to protect my reputation and career trajectory.",
-      "created_at": "2026-02-28 15:31:38",
-      "being_a_content": "Borrowed from billion-dollar trial lawyers",
-      "being_b_content": "3-second fix to stop being the $47K bottleneck",
-      "winner_content": "3-second fix to stop being the $47K bottleneck",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1174,
-      "being_a_id": 14,
-      "being_b_id": 38,
-      "winner_id": 38,
-      "scores_a": {
         "curiosity": 3,
         "relevance": 2,
         "credibility": 2,
         "urgency": 1,
         "clarity": 2
       },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 7,
-        "credibility": 3,
-        "urgency": 4,
-        "clarity": 6
-      },
-      "reasoning": "As David Park, I would open B because despite my skepticism about bold claims, 'case wins' directly relates to my career advancement goals as a 5th year associate. The AI angle is relevant to current legal tech trends I need to stay informed about for competitive advantage. Option A feels like generic spam with no clear legal relevance, while B at least addresses something concrete - winning cases - which is critical for making partner. Though I'm risk-averse about unproven methods, I can't afford to ignore potential competitive advantages in today's legal market, even if the 'triple your wins' claim seems exaggerated.",
-      "created_at": "2026-02-28 15:31:32",
-      "being_a_content": "Still doing it the hard way?",
-      "being_b_content": "Challenge AI: Triple Your Case Wins Now",
-      "winner_content": "Challenge AI: Triple Your Case Wins Now",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1173,
-      "being_a_id": 21,
-      "being_b_id": 25,
-      "winner_id": 21,
-      "scores_a": {
-        "curiosity": 7,
-        "relevance": 8,
-        "credibility": 4,
-        "urgency": 6,
-        "clarity": 6
-      },
-      "scores_b": {
-        "curiosity": 3,
-        "relevance": 2,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 4
-      },
-      "reasoning": "As Jennifer Rodriguez, I would open A because while I'm naturally skeptical of the specific dollar amount claim, the mention of an 'oversight slowing your practice' directly speaks to my time-poor reality and client-focused priorities. Any inefficiency that could impact my ability to serve families going through difficult times gets my attention. Option B feels completely irrelevant to my family law practice - PI (personal injury) success blueprints don't align with my work helping families navigate divorce, custody, and domestic relations. Given my high client focus and limited time, I need communications that directly relate to improving outcomes for the families I serve.",
-      "created_at": "2026-02-28 15:31:27",
-      "being_a_content": "Avoid the $47K oversight slowing your practice",
-      "being_b_content": "Master PI Success: Sean Callagy's Proven Blueprint",
-      "winner_content": "Avoid the $47K oversight slowing your practice",
-      "persona_name": "Jennifer Rodriguez",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1172,
-      "being_a_id": 36,
-      "being_b_id": 5,
-      "winner_id": 36,
-      "scores_a": {
-        "curiosity": 4,
-        "relevance": 7,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 6
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 5,
-        "credibility": 2,
-        "urgency": 3,
-        "clarity": 4
-      },
-      "reasoning": "As Marcus Chen, I would reluctantly open A because at least it mentions PI specifically and references what appears to be a law firm (Callagy), giving it slightly more credibility than the generic clickbait of option B. After 15 years and 100+ daily emails, I'm immediately suspicious of anyone claiming I'm 'leaving money on the table' without knowing my practice. Option A feels like actual legal industry content rather than another get-rich-quick scheme, though I'm still skeptical it's just another marketing pitch dressed up as a 'blueprint.'",
-      "created_at": "2026-02-28 15:31:22",
-      "being_a_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
-      "being_b_content": "You're leaving money on the table. Here's proof.",
-      "winner_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
-      "persona_name": "Marcus Chen",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1171,
-      "being_a_id": 33,
-      "being_b_id": 35,
-      "winner_id": 35,
-      "scores_a": {
-        "curiosity": 3,
-        "relevance": 2,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 4
-      },
-      "scores_b": {
-        "curiosity": 4,
-        "relevance": 3,
-        "credibility": 3,
-        "urgency": 5,
-        "clarity": 6
-      },
-      "reasoning": "As Karen Williams, I would reluctantly open B because the 30-day timeframe suggests a concrete, measurable approach that aligns with my results-driven nature. However, both emails trigger my skepticism - I don't know who Sean Callagy is, and '$1M framework' sounds like typical marketing hype. Option B at least gives me a clear timeline to evaluate ROI, which matters for my cost-conscious approach. That said, I'd be highly suspicious this is just another expensive consultant trying to sell services we don't need. I'd open it primarily to quickly assess if there's any legitimate cost-saving opportunity, then likely delete it within 10 seconds if it's the usual sales pitch.",
-      "created_at": "2026-02-28 15:31:17",
-      "being_a_content": "Unveiling Callagy's $1M Framework: Boost Your Firm Now",
-      "being_b_content": "Master Sean Callagy's $1M Formula in 30 Days",
-      "winner_content": "Master Sean Callagy's $1M Formula in 30 Days",
+      "reasoning": "As Karen Williams, I would open A because it directly addresses my core concerns - cost control ($47K loss) and operational efficiency (PI bottleneck). The specific dollar amount gets my attention as someone who's extremely cost-conscious, and 'bottleneck' suggests workflow issues I need to identify and fix. Option B sounds like generic marketing fluff that wastes my time - exactly the kind of vague promise I'm skeptical about. A gives me concrete information I can act on immediately.",
+      "created_at": "2026-03-01 04:04:04",
+      "being_a_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "being_b_content": "Your inbox is full of promises. This is different.",
+      "winner_content": "Stop losing $47K: Are you the PI bottleneck?",
       "persona_name": "Karen Williams",
       "persona_category": "medical"
     },
     {
-      "id": 1170,
-      "being_a_id": 12,
-      "being_b_id": 1,
-      "winner_id": 12,
+      "id": 2390,
+      "being_a_id": 32,
+      "being_b_id": 16,
+      "winner_id": 32,
       "scores_a": {
-        "curiosity": 6,
-        "relevance": 4,
-        "credibility": 3,
-        "urgency": 2,
-        "clarity": 4
-      },
-      "scores_b": {
-        "curiosity": 3,
-        "relevance": 2,
-        "credibility": 4,
-        "urgency": 6,
-        "clarity": 7
-      },
-      "reasoning": "As Jennifer Rodriguez, I would open A because despite my time constraints, the story-driven approach appeals to my empathy-driven nature and high emotional intelligence. While B is clearer about potential financial impact, it's targeting PI attorneys specifically, not family law practitioners like me. The '[Similar Attorney]' placeholder in A reduces credibility, but the promise of a transformative case story resonates with my client-focused approach - I'm always looking for insights that could help me better serve my families. My moderate skepticism makes me wary of both, but A's narrative format feels more authentic to how real legal breakthroughs happen in practice.",
-      "created_at": "2026-02-28 15:31:11",
-      "being_a_content": "The case that changed everything for [Similar Attorney]",
-      "being_b_content": "The 3-second mistake costing PI attorneys $47K per case",
-      "winner_content": "The case that changed everything for [Similar Attorney]",
-      "persona_name": "Jennifer Rodriguez",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1169,
-      "being_a_id": 27,
-      "being_b_id": 36,
-      "winner_id": 36,
-      "scores_a": {
-        "curiosity": 3,
-        "relevance": 4,
-        "credibility": 2,
-        "urgency": 5,
-        "clarity": 6
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 7,
-        "credibility": 6,
-        "urgency": 4,
-        "clarity": 7
-      },
-      "reasoning": "As Sarah Mitchell, I would open B because it demonstrates specific legal knowledge (PI = Personal Injury) and references a known firm name 'Callagy' which suggests credibility in our industry. While I'm naturally skeptical of 'double your success' promises in Option A - they sound like generic marketing fluff - Option B feels more targeted to someone in my position who handles PI cases. The 'Blueprint' language suggests a systematic approach with proven results, which aligns with my ROI focus. Though I'm time-poor and skeptical, Option B earns enough credibility points to warrant the 10 seconds it would take to scan.",
-      "created_at": "2026-02-28 15:31:05",
-      "being_a_content": "Double Your Case Success: Limited Time Offer",
-      "being_b_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
-      "winner_content": "Challenge: Boost Your PI Wins with Callagy's Blueprint",
-      "persona_name": "Sarah Mitchell",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1168,
-      "being_a_id": 11,
-      "being_b_id": 27,
-      "winner_id": 27,
-      "scores_a": {
-        "curiosity": 3,
-        "relevance": 4,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "scores_b": {
-        "curiosity": 6,
+        "curiosity": 7,
         "relevance": 8,
         "credibility": 4,
         "urgency": 6,
-        "clarity": 7
-      },
-      "reasoning": "As Sarah Mitchell, I would open B because it directly addresses measurable outcomes ('Double Your Case Success') which aligns with my ROI focus, and the specificity makes it feel relevant to my legal practice. While I'm naturally skeptical of 'limited time offers,' the concrete promise of improved case results is worth 30 seconds of my time to evaluate. Option A feels too vague and gimmicky - 'stop grinding' doesn't resonate with someone who values proven results and efficiency in a demanding partnership role.",
-      "created_at": "2026-02-28 15:30:59",
-      "being_a_content": "Stop grinding. Start winning.",
-      "being_b_content": "Double Your Case Success: Limited Time Offer",
-      "winner_content": "Double Your Case Success: Limited Time Offer",
-      "persona_name": "Sarah Mitchell",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1167,
-      "being_a_id": 4,
-      "being_b_id": 27,
-      "winner_id": 4,
-      "scores_a": {
-        "curiosity": 7,
-        "relevance": 4,
-        "credibility": 6,
-        "urgency": 3,
         "clarity": 8
       },
       "scores_b": {
+        "curiosity": 3,
+        "relevance": 5,
+        "credibility": 3,
+        "urgency": 2,
+        "clarity": 4
+      },
+      "reasoning": "As Dr. Michael Torres, I would open A because it directly addresses a concrete financial loss with a specific dollar amount that could impact my practice efficiency. The 'PI bottleneck' terminology suggests it understands my role as Principal Investigator in research, which is relevant to my work. While I'm skeptical of the sender's credibility, the clear value proposition of stopping a $47K loss is worth 30 seconds to evaluate. Option B feels like generic motivational fluff that wastes my time with vague promises.",
+      "created_at": "2026-03-01 04:03:59",
+      "being_a_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "being_b_content": "What would 10X case value mean for your family?",
+      "winner_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "persona_name": "Dr. Michael Torres",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2389,
+      "being_a_id": 11,
+      "being_b_id": 18,
+      "winner_id": 11,
+      "scores_a": {
         "curiosity": 2,
         "relevance": 3,
         "credibility": 2,
-        "urgency": 6,
-        "clarity": 4
-      },
-      "reasoning": "As David Park, I would open A because it presents concrete data analysis that could provide valuable insights for case strategy. The mention of '500 PI cases' suggests legitimate research rather than marketing fluff. While PI isn't my primary practice area, understanding winning patterns could be professionally useful. Option B screams spam with its 'double your success' promise and 'limited time' pressure tactics - exactly the kind of thing that damages credibility. Given my time constraints and reputation concerns, I need emails that offer genuine professional value, not sales pitches.",
-      "created_at": "2026-02-28 15:30:55",
-      "being_a_content": "I reviewed 500 PI cases. Here's what the winners had in common.",
-      "being_b_content": "Double Your Case Success: Limited Time Offer",
-      "winner_content": "I reviewed 500 PI cases. Here's what the winners had in common.",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1166,
-      "being_a_id": 33,
-      "being_b_id": 1,
-      "winner_id": 1,
-      "scores_a": {
-        "curiosity": 4,
-        "relevance": 3,
-        "credibility": 2,
-        "urgency": 2,
-        "clarity": 3
-      },
-      "scores_b": {
-        "curiosity": 6,
-        "relevance": 2,
-        "credibility": 3,
-        "urgency": 4,
-        "clarity": 6
-      },
-      "reasoning": "As David Park, I would open B because despite being irrelevant to my corporate practice, the specific dollar figure and clear value proposition makes it easier to quickly assess and dismiss. Option A feels like generic marketing spam that could waste more of my limited time trying to figure out what 'Callagy's framework' actually is. With my heavy caseload, I need to quickly triage emails - B's clarity lets me make a fast decision, even if that decision is to delete it after confirming it's not relevant to my practice area.",
-      "created_at": "2026-02-28 15:30:50",
-      "being_a_content": "Unveiling Callagy's $1M Framework: Boost Your Firm Now",
-      "being_b_content": "The 3-second mistake costing PI attorneys $47K per case",
-      "winner_content": "The 3-second mistake costing PI attorneys $47K per case",
-      "persona_name": "David Park",
-      "persona_category": "legal"
-    },
-    {
-      "id": 1165,
-      "being_a_id": 27,
-      "being_b_id": 31,
-      "winner_id": 27,
-      "scores_a": {
-        "curiosity": 6,
-        "relevance": 4,
-        "credibility": 3,
-        "urgency": 5,
-        "clarity": 6
+        "urgency": 1,
+        "clarity": 2
       },
       "scores_b": {
         "curiosity": 3,
         "relevance": 2,
-        "credibility": 2,
-        "urgency": 4,
-        "clarity": 5
+        "credibility": 3,
+        "urgency": 1,
+        "clarity": 1
       },
-      "reasoning": "As Jennifer Rodriguez, I would open A because while both emails feel like generic marketing pitches, Option A at least speaks to case success broadly which could apply to family law matters. Option B is clearly targeting personal injury attorneys, which isn't my practice area. However, both subject lines trigger my skepticism with their 'too good to be true' promises. Given my time constraints and client-focused priorities, I'd likely delete both after a quick scan, but if forced to choose, A has slightly more potential relevance to my family law practice, even though the 'limited time offer' language feels like typical sales pressure rather than genuine value.",
-      "created_at": "2026-02-28 15:30:45",
-      "being_a_content": "Double Your Case Success: Limited Time Offer",
-      "being_b_content": "3-second fix to boost your PI case value",
-      "winner_content": "Double Your Case Success: Limited Time Offer",
+      "reasoning": "As Dr. Michael Torres, I would delete both immediately because neither provides clear medical relevance or actionable value. Both sound like generic marketing spam that wastes my limited time. Option A feels like motivational nonsense, Option B is vague clickbait. With 60+ hour weeks, I need subject lines that immediately communicate medical urgency, patient care relevance, or clear professional value - not cryptic sales pitches.",
+      "created_at": "2026-03-01 04:03:54",
+      "being_a_content": "Stop grinding. Start winning.",
+      "being_b_content": "Borrowed from billion-dollar trial lawyers",
+      "winner_content": "Stop grinding. Start winning.",
+      "persona_name": "Dr. Michael Torres",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2388,
+      "being_a_id": 28,
+      "being_b_id": 34,
+      "winner_id": 28,
+      "scores_a": {
+        "curiosity": 6,
+        "relevance": 7,
+        "credibility": 3,
+        "urgency": 4,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 4,
+        "relevance": 5,
+        "credibility": 2,
+        "urgency": 3,
+        "clarity": 3
+      },
+      "reasoning": "As Jennifer Rodriguez, I would reluctantly open A because while both feel like generic marketing tactics, Option A at least addresses attorneys specifically and taps into a concern about staying current in my practice. However, my skepticism is high with both - they feel like clickbait rather than genuine professional development. Given my time constraints and client focus, I'd be more likely to delete both and prioritize client communications, but if forced to choose, A feels slightly more relevant to my professional concerns, even though the credibility is questionable without knowing the sender.",
+      "created_at": "2026-03-01 04:03:50",
+      "being_a_content": "78% of attorneys ignore this: Are you falling behind?",
+      "being_b_content": "Master Callagy's Proven Tactics: 30 Days to Success",
+      "winner_content": "78% of attorneys ignore this: Are you falling behind?",
       "persona_name": "Jennifer Rodriguez",
       "persona_category": "legal"
     },
     {
-      "id": 1164,
+      "id": 2387,
       "being_a_id": 26,
       "being_b_id": 24,
       "winner_id": 26,
@@ -1708,48 +682,831 @@
         "relevance": 1,
         "credibility": 2,
         "urgency": 3,
-        "clarity": 2
+        "clarity": 3
       },
-      "reasoning": "As Dr. Lisa Chang, I wouldn't open either of these emails. Both are clearly targeting lawyers, not physicians - 'Law Wins' and legal frameworks have absolutely nothing to do with family medicine or patient care. With my inbox constantly overflowing and barely having time to address patient-related communications, these obvious misdirected marketing emails would get immediately deleted. I'm skeptical of any email promising dramatic percentage increases or '$1M frameworks' - they scream spam. My time is better spent on actual patient care rather than sorting through irrelevant promotional content that somehow ended up in my inbox.",
-      "created_at": "2026-02-28 15:30:39",
+      "reasoning": "As Dr. Michael Torres, I would open neither A nor B because both are completely irrelevant to orthopedic surgery - they're clearly legal/business marketing spam. Option A at least has clearer metrics (30% increase) which I can process quickly, but 'law wins' has zero relevance to my medical practice. Option B mentions some unknown person's framework which means nothing to me as a surgeon. Both lack credibility as they're obviously mass-marketed pitches, not medical communications. With my 98% time poverty and 85% inbox fatigue, these get deleted immediately without opening.",
+      "created_at": "2026-03-01 04:03:44",
       "being_a_content": "Boost Your Law Wins: Proven 30% Increase Today",
       "being_b_content": "Unlock Sean Callagy's $1M Framework Today",
       "winner_content": "Boost Your Law Wins: Proven 30% Increase Today",
-      "persona_name": "Dr. Lisa Chang",
+      "persona_name": "Dr. Michael Torres",
       "persona_category": "medical"
     },
     {
-      "id": 1163,
-      "being_a_id": 19,
-      "being_b_id": 22,
-      "winner_id": 22,
+      "id": 2386,
+      "being_a_id": 33,
+      "being_b_id": 28,
+      "winner_id": 28,
       "scores_a": {
-        "curiosity": 3,
-        "relevance": 2,
-        "credibility": 4,
-        "urgency": 2,
-        "clarity": 3
+        "curiosity": 6,
+        "relevance": 4,
+        "credibility": 3,
+        "urgency": 5,
+        "clarity": 7
       },
       "scores_b": {
         "curiosity": 7,
         "relevance": 8,
-        "credibility": 5,
-        "urgency": 8,
+        "credibility": 2,
+        "urgency": 6,
+        "clarity": 4
+      },
+      "reasoning": "As David Park, I would open Option A because despite my skepticism about marketing claims, the specific mention of '$1M Framework' and 'Boost Your Firm' provides clearer value proposition that could potentially benefit my career advancement. While Option B creates more personal relevance with '78% of attorneys,' it feels too much like clickbait which triggers my risk-averse nature - I can't afford to waste time on low-credibility content or be associated with unprofessional communications. Option A, while still promotional, at least appears to offer concrete business insights that could be defensible if colleagues saw it in my reading history.",
+      "created_at": "2026-03-01 04:03:35",
+      "being_a_content": "Unveiling Callagy's $1M Framework: Boost Your Firm Now",
+      "being_b_content": "78% of attorneys ignore this: Are you falling behind?",
+      "winner_content": "78% of attorneys ignore this: Are you falling behind?",
+      "persona_name": "David Park",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2385,
+      "being_a_id": 13,
+      "being_b_id": 16,
+      "winner_id": 13,
+      "scores_a": {
+        "curiosity": 6,
+        "relevance": 8,
+        "credibility": 4,
+        "urgency": 3,
         "clarity": 7
       },
-      "reasoning": "As Dr. Lisa Chang, I would open B because it directly addresses my pain point - being overwhelmed and potentially creating bottlenecks in patient care. The '$47K bottleneck' suggests real financial impact, and '3-second fix' appeals to my desperate need for quick solutions given my time constraints. Option A feels like legal industry content that has nothing to do with my medical practice or patient care needs. With my inbox fatigue, I need emails that immediately show relevance to my daily struggles, and B does that while A doesn't.",
-      "created_at": "2026-02-28 15:30:34",
+      "scores_b": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 2,
+        "urgency": 2,
+        "clarity": 4
+      },
+      "reasoning": "As Karen Williams, I would open A because it speaks directly to practice operations and case management - something I deal with daily. The mention of 'pipeline' suggests concrete business processes I can evaluate and potentially optimize for cost savings. Option B feels like generic sales fluff about 'family' that doesn't address my professional responsibilities. While I'm skeptical of both (neither identifies the sender or provides clear credentials), A at least relates to measurable practice outcomes I can assess, whereas B sounds like typical marketing hyperbole that wastes my limited time.",
+      "created_at": "2026-03-01 04:03:29",
+      "being_a_content": "What if your best cases are already in your pipeline?",
+      "being_b_content": "What would 10X case value mean for your family?",
+      "winner_content": "What if your best cases are already in your pipeline?",
+      "persona_name": "Karen Williams",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2384,
+      "being_a_id": 25,
+      "being_b_id": 32,
+      "winner_id": 32,
+      "scores_a": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 3,
+        "urgency": 1,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 3,
+        "relevance": 1,
+        "credibility": 2,
+        "urgency": 2,
+        "clarity": 5
+      },
+      "reasoning": "As Dr. Lisa Chang, I wouldn't open either of these emails. Both appear to be about personal injury law or business consulting, which has zero relevance to my work as a family medicine physician. With my overwhelming patient load and severe inbox fatigue, I immediately delete anything that isn't directly related to patient care, medical education, or essential practice management. These look like generic business spam that somehow got past my filters. The 'PI' likely stands for Personal Injury or Private Investigator - neither of which applies to my medical practice. I need emails about patient protocols, medication updates, or practice efficiency - not legal or business 'blueprints.'",
+      "created_at": "2026-03-01 04:03:23",
+      "being_a_content": "Master PI Success: Sean Callagy's Proven Blueprint",
+      "being_b_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "winner_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "persona_name": "Dr. Lisa Chang",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2383,
+      "being_a_id": 25,
+      "being_b_id": 34,
+      "winner_id": 34,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 6,
+        "credibility": 4,
+        "urgency": 2,
+        "clarity": 5
+      },
+      "scores_b": {
+        "curiosity": 4,
+        "relevance": 6,
+        "credibility": 4,
+        "urgency": 5,
+        "clarity": 6
+      },
+      "reasoning": "As Marcus Chen, I would reluctantly open B because the 30-day timeframe gives me a concrete sense of what I'm potentially committing to, which matters when I'm drowning in emails and need quick ROI assessment. Both feel like typical marketing guru pitches that I'm inherently skeptical of, but at least B tells me the scope upfront. That said, I'd probably delete both after a quick scan - I've seen too many 'proven blueprint' promises that deliver generic advice I already know after 15 years in practice.",
+      "created_at": "2026-03-01 04:03:16",
+      "being_a_content": "Master PI Success: Sean Callagy's Proven Blueprint",
+      "being_b_content": "Master Callagy's Proven Tactics: 30 Days to Success",
+      "winner_content": "Master Callagy's Proven Tactics: 30 Days to Success",
+      "persona_name": "Marcus Chen",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2382,
+      "being_a_id": 19,
+      "being_b_id": 34,
+      "winner_id": 19,
+      "scores_a": {
+        "curiosity": 7,
+        "relevance": 8,
+        "credibility": 6,
+        "urgency": 3,
+        "clarity": 7
+      },
+      "scores_b": {
+        "curiosity": 3,
+        "relevance": 4,
+        "credibility": 2,
+        "urgency": 4,
+        "clarity": 4
+      },
+      "reasoning": "As Marcus Chen, I would open A because it's specific and results-focused - 'Top 100 verdicts' is concrete data I can verify, not marketing fluff. Option B screams generic sales pitch with 'Master' and '30 Days to Success' - sounds like every other get-rich-quick scheme in my inbox. After 15 years and 100+ daily emails, I can smell BS from the subject line. A at least promises actual methodology behind real results, which might contain actionable intelligence I can use.",
+      "created_at": "2026-03-01 04:03:09",
       "being_a_content": "The method behind two Top 100 verdicts",
+      "being_b_content": "Master Callagy's Proven Tactics: 30 Days to Success",
+      "winner_content": "The method behind two Top 100 verdicts",
+      "persona_name": "Marcus Chen",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2381,
+      "being_a_id": 24,
+      "being_b_id": 22,
+      "winner_id": 22,
+      "scores_a": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 2,
+        "urgency": 3,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 6,
+        "relevance": 7,
+        "credibility": 4,
+        "urgency": 6,
+        "clarity": 7
+      },
+      "reasoning": "As Dr. Lisa Chang, I would open B because it directly addresses my pain point - being overwhelmed and potentially the bottleneck in patient care. The '$47K bottleneck' resonates with the financial pressures in family medicine, and '3-second fix' appeals to my desperate need for quick solutions given my time constraints. Option A feels like generic business guru spam with someone I don't recognize, which my inbox fatigue makes me immediately want to delete. While I'm still skeptical of both, B at least acknowledges my reality as an overwhelmed physician rather than trying to sell me some entrepreneur's expensive framework.",
+      "created_at": "2026-03-01 04:03:03",
+      "being_a_content": "Unlock Sean Callagy's $1M Framework Today",
       "being_b_content": "3-second fix to stop being the $47K bottleneck",
       "winner_content": "3-second fix to stop being the $47K bottleneck",
       "persona_name": "Dr. Lisa Chang",
       "persona_category": "medical"
     },
     {
-      "id": 1162,
-      "being_a_id": 37,
+      "id": 2380,
+      "being_a_id": 17,
+      "being_b_id": 23,
+      "winner_id": 23,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 2,
+        "urgency": 2,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 7,
+        "relevance": 4,
+        "credibility": 3,
+        "urgency": 6,
+        "clarity": 6
+      },
+      "reasoning": "As Karen Williams, I would open B because it directly addresses a potential cost issue that I might be responsible for. The $47K figure immediately grabs my attention as a cost-conscious administrator - that's real money that could impact our bottom line. While I'm skeptical of both emails and neither seems directly relevant to healthcare practice management, Option B at least suggests I might be a financial obstacle that needs addressing. Option A feels like generic attorney marketing that has nothing to do with my role managing doctor access and practice costs. The urgency in B comes from the implication that I'm currently costing money, which demands immediate attention.",
+      "created_at": "2026-03-01 04:02:58",
+      "being_a_content": "How [Attorney Name] 3X'd revenue in 90 days",
+      "being_b_content": "Are you the $47K hurdle in your cases?",
+      "winner_content": "Are you the $47K hurdle in your cases?",
+      "persona_name": "Karen Williams",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2379,
+      "being_a_id": 12,
       "being_b_id": 24,
-      "winner_id": 37,
+      "winner_id": 12,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 3,
+        "urgency": 2,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 2,
+        "urgency": 3,
+        "clarity": 6
+      },
+      "reasoning": "As Dr. Michael Torres, I would open neither. Both emails appear to be marketing pitches from legal/business consultants that have zero relevance to orthopedic surgery. Option A is vague clickbait about some attorney's case, and Option B is clearly a sales pitch for some business framework. With my 98% time-poor rating and 85% inbox fatigue, I'd delete both immediately. Neither addresses medical issues, surgical techniques, patient care, or hospital administration - the only topics that would warrant my attention in a 60+ hour work week.",
+      "created_at": "2026-03-01 04:02:52",
+      "being_a_content": "The case that changed everything for [Similar Attorney]",
+      "being_b_content": "Unlock Sean Callagy's $1M Framework Today",
+      "winner_content": "The case that changed everything for [Similar Attorney]",
+      "persona_name": "Dr. Michael Torres",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2378,
+      "being_a_id": 11,
+      "being_b_id": 14,
+      "winner_id": 14,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 2,
+        "urgency": 1,
+        "clarity": 2
+      },
+      "scores_b": {
+        "curiosity": 4,
+        "relevance": 3,
+        "credibility": 2,
+        "urgency": 2,
+        "clarity": 3
+      },
+      "reasoning": "As Dr. Michael Torres, I would open B because it at least acknowledges I might be doing something inefficiently, which could relate to my surgical practice or workflow. Both emails scream generic marketing spam, but B has slightly more relevance to my efficiency-driven mindset. However, with my 98% time poverty and 85% inbox fatigue, I'd likely delete both without opening - these vague subject lines waste precious seconds I don't have.",
+      "created_at": "2026-03-01 04:02:46",
+      "being_a_content": "Stop grinding. Start winning.",
+      "being_b_content": "Still doing it the hard way?",
+      "winner_content": "Still doing it the hard way?",
+      "persona_name": "Dr. Michael Torres",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2377,
+      "being_a_id": 28,
+      "being_b_id": 13,
+      "winner_id": 13,
+      "scores_a": {
+        "curiosity": 4,
+        "relevance": 6,
+        "credibility": 2,
+        "urgency": 3,
+        "clarity": 3
+      },
+      "scores_b": {
+        "curiosity": 7,
+        "relevance": 8,
+        "credibility": 5,
+        "urgency": 4,
+        "clarity": 6
+      },
+      "reasoning": "As David Park, I would open B because it speaks directly to my work reality - identifying and developing strong cases is core to my success as a 5th year associate. While the statistic in A might be compelling, it screams 'marketing email' and feels like clickbait, which makes me skeptical given my cautious nature about reputation. Option B feels more like genuine professional insight that could actually help me advance my career, and as someone who's extremely time-poor, I need emails that offer clear, actionable value rather than fear-based tactics.",
+      "created_at": "2026-03-01 04:02:42",
+      "being_a_content": "78% of attorneys ignore this: Are you falling behind?",
+      "being_b_content": "What if your best cases are already in your pipeline?",
+      "winner_content": "What if your best cases are already in your pipeline?",
+      "persona_name": "David Park",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2376,
+      "being_a_id": 15,
+      "being_b_id": 6,
+      "winner_id": 15,
+      "scores_a": {
+        "curiosity": 7,
+        "relevance": 8,
+        "credibility": 3,
+        "urgency": 4,
+        "clarity": 6
+      },
+      "scores_b": {
+        "curiosity": 4,
+        "relevance": 2,
+        "credibility": 2,
+        "urgency": 2,
+        "clarity": 3
+      },
+      "reasoning": "As Dr. Lisa Chang, I would open A because even though I'm skeptical of sales pitches, the 'bottleneck' language hits home - I AM drowning and constantly behind. With my patient load crushing me, anything that might help workflow efficiency catches my attention despite my inbox fatigue. Option B feels like financial consulting spam that's completely irrelevant to my daily reality of trying to provide good patient care while buried under administrative tasks. I don't have time for vague 'uncomfortable truths' - I need practical solutions to my overwhelming workload.",
+      "created_at": "2026-03-01 04:02:37",
+      "being_a_content": "Ready to stop being the bottleneck?",
+      "being_b_content": "The uncomfortable truth about your case valuations",
+      "winner_content": "Ready to stop being the bottleneck?",
+      "persona_name": "Dr. Lisa Chang",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2375,
+      "being_a_id": 12,
+      "being_b_id": 30,
+      "winner_id": 30,
+      "scores_a": {
+        "curiosity": 7,
+        "relevance": 6,
+        "credibility": 4,
+        "urgency": 3,
+        "clarity": 5
+      },
+      "scores_b": {
+        "curiosity": 8,
+        "relevance": 7,
+        "credibility": 3,
+        "urgency": 6,
+        "clarity": 6
+      },
+      "reasoning": "As Jennifer Rodriguez, I would open B because despite my natural skepticism about sales-y language, the specific dollar amount and direct question about being a bottleneck hits close to home given my time-poor reality. While both subject lines feel somewhat generic and lack credibility without knowing the sender, Option B's implication that I might be inadvertently costing my practice money or hindering client service directly challenges my client-focused values. The urgency of potentially missing a $47K issue outweighs my skepticism, especially since improving efficiency would ultimately benefit my clients. Option A feels too vague and the placeholder '[Similar Attorney]' immediately signals mass marketing, which my moderate skepticism flags as less trustworthy.",
+      "created_at": "2026-03-01 04:02:32",
+      "being_a_content": "The case that changed everything for [Similar Attorney]",
+      "being_b_content": "The $47K oversight: Are you the bottleneck?",
+      "winner_content": "The $47K oversight: Are you the bottleneck?",
+      "persona_name": "Jennifer Rodriguez",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2374,
+      "being_a_id": 19,
+      "being_b_id": 7,
+      "winner_id": 19,
+      "scores_a": {
+        "curiosity": 7,
+        "relevance": 8,
+        "credibility": 6,
+        "urgency": 3,
+        "clarity": 7
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 3,
+        "credibility": 2,
+        "urgency": 2,
+        "clarity": 4
+      },
+      "reasoning": "As Marcus Chen, I would open A because it's specific and data-driven - 'Top 100 verdicts' suggests concrete results I can evaluate. After 15 years, I know what works and what doesn't, and this feels like it might contain actual methodology rather than fluff. Option B immediately triggers my BS detector - it's manipulative psychology ('most attorneys won't read this') that screams marketing gimmick. I've seen this reverse psychology tactic a thousand times. With my inbox fatigue and skepticism, I need substance over manipulation. A at least promises specific information about successful cases, which could potentially impact my ROI.",
+      "created_at": "2026-03-01 04:02:25",
+      "being_a_content": "The method behind two Top 100 verdicts",
+      "being_b_content": "Most attorneys won't read this. That's why they're stuck.",
+      "winner_content": "The method behind two Top 100 verdicts",
+      "persona_name": "Marcus Chen",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2373,
+      "being_a_id": 9,
+      "being_b_id": 1,
+      "winner_id": 9,
+      "scores_a": {
+        "curiosity": 6,
+        "relevance": 8,
+        "credibility": 3,
+        "urgency": 7,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 8,
+        "relevance": 4,
+        "credibility": 4,
+        "urgency": 5,
+        "clarity": 7
+      },
+      "reasoning": "As Karen Williams, I would open A because despite my high skepticism about the dramatic language ('transform' sounds like marketing fluff), it directly addresses my practice and the urgency appeals to my results-driven nature. The 48-hour timeframe creates pressure that I can't ignore, even though I don't trust the credibility. Option B mentions a specific dollar amount which catches my cost-conscious attention, but it's targeting PI attorneys, not medical practices, so it's not relevant to my role as a practice administrator. My gatekeeping instincts tell me A is more likely to contain information I need to evaluate for my practice, even if I approach it with heavy skepticism.",
+      "created_at": "2026-03-01 04:02:19",
+      "being_a_content": "48 hours to transform your practice (or stay stuck)",
+      "being_b_content": "The 3-second mistake costing PI attorneys $47K per case",
+      "winner_content": "48 hours to transform your practice (or stay stuck)",
+      "persona_name": "Karen Williams",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2372,
+      "being_a_id": 32,
+      "being_b_id": 18,
+      "winner_id": 32,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 2,
+        "urgency": 4,
+        "clarity": 3
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 1,
+        "urgency": 1,
+        "clarity": 1
+      },
+      "reasoning": "As Dr. Lisa Chang, I would reluctantly open A because at least it mentions something concrete ($47K loss) that could theoretically relate to practice efficiency, though 'PI bottleneck' is unclear and feels like business jargon. With my overwhelming patient load and inbox fatigue, both emails scream 'sales pitch' to me. Option B is completely vague and sounds like generic marketing fluff that has nothing to do with patient care. Neither feels trustworthy or specifically relevant to my daily struggles as a family medicine physician drowning in administrative tasks, but A at least attempts to quantify a potential problem, even if I'm skeptical it's legitimate.",
+      "created_at": "2026-03-01 04:02:14",
+      "being_a_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "being_b_content": "Borrowed from billion-dollar trial lawyers",
+      "winner_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "persona_name": "Dr. Lisa Chang",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2371,
+      "being_a_id": 31,
+      "being_b_id": 4,
+      "winner_id": 4,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 6,
+        "credibility": 2,
+        "urgency": 4,
+        "clarity": 5
+      },
+      "scores_b": {
+        "curiosity": 7,
+        "relevance": 8,
+        "credibility": 6,
+        "urgency": 3,
+        "clarity": 8
+      },
+      "reasoning": "As Marcus Chen, I would open B because after 15 years in PI work, I'm immediately skeptical of any '3-second fix' claims - that screams snake oil to me. Option B feels more credible because it references actual case analysis with a specific number (500 cases), which suggests real research rather than marketing fluff. The data-driven approach appeals to my ROI focus, and 'what winners had in common' directly addresses what I care about - successful case outcomes. While neither has urgent timing, B feels like it could contain actionable intelligence I could actually use, whereas A feels like another marketing gimmick that will waste my time.",
+      "created_at": "2026-03-01 04:02:08",
+      "being_a_content": "3-second fix to boost your PI case value",
+      "being_b_content": "I reviewed 500 PI cases. Here's what the winners had in common.",
+      "winner_content": "I reviewed 500 PI cases. Here's what the winners had in common.",
+      "persona_name": "Marcus Chen",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2370,
+      "being_a_id": 7,
+      "being_b_id": 32,
+      "winner_id": 7,
+      "scores_a": {
+        "curiosity": 4,
+        "relevance": 6,
+        "credibility": 3,
+        "urgency": 2,
+        "clarity": 3
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 2,
+        "credibility": 2,
+        "urgency": 3,
+        "clarity": 4
+      },
+      "reasoning": "As Jennifer Rodriguez, I would reluctantly open A because while both emails feel like generic marketing pitches, at least A speaks to attorneys generally. However, my moderate skepticism makes me wary of the manipulative 'most attorneys won't read this' hook - it feels like a cheap psychological trick. Option B is completely irrelevant to my family law practice since I don't handle personal injury cases, and the aggressive monetary claim without context damages its credibility. Given my time constraints and client-focused priorities, I'd likely delete both after a quick scan, but A at least acknowledges it's targeting legal professionals, even if the approach feels somewhat disingenuous.",
+      "created_at": "2026-03-01 04:02:02",
+      "being_a_content": "Most attorneys won't read this. That's why they're stuck.",
+      "being_b_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "winner_content": "Most attorneys won't read this. That's why they're stuck.",
+      "persona_name": "Jennifer Rodriguez",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2369,
+      "being_a_id": 10,
+      "being_b_id": 30,
+      "winner_id": 30,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 4,
+        "urgency": 2,
+        "clarity": 6
+      },
+      "scores_b": {
+        "curiosity": 8,
+        "relevance": 9,
+        "credibility": 6,
+        "urgency": 7,
+        "clarity": 8
+      },
+      "reasoning": "As Karen Williams, I would open B because it directly addresses my role as a potential bottleneck and mentions a specific dollar amount ($47K) which triggers my cost-conscious nature. The word 'oversight' suggests there might be a costly problem I'm missing, which aligns with my results-driven mindset. Option A about attorneys feels irrelevant to healthcare practice administration and doesn't address any immediate concern or cost issue I might have.",
+      "created_at": "2026-03-01 04:01:56",
+      "being_a_content": "What top 1% attorneys do differently (free breakdown)",
+      "being_b_content": "The $47K oversight: Are you the bottleneck?",
+      "winner_content": "The $47K oversight: Are you the bottleneck?",
+      "persona_name": "Karen Williams",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2368,
+      "being_a_id": 29,
+      "being_b_id": 35,
+      "winner_id": 29,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 4,
+        "urgency": 2,
+        "clarity": 6
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 3,
+        "urgency": 3,
+        "clarity": 4
+      },
+      "reasoning": "As Karen Williams, I would open A because while neither email is particularly relevant to my role as a practice administrator in healthcare, Option A at least uses a statistic-based approach that appeals to my results-driven nature. However, both emails appear to be targeting attorneys rather than healthcare administrators, so my gatekeeping instincts and high skepticism make me wary of both. Option A's mention of 'thriving' could potentially relate to practice efficiency or cost management, which are my primary concerns. Option B feels like a typical get-rich-quick scheme that I'd immediately dismiss as a waste of my limited time. Neither would be a priority given my time constraints and focus on healthcare practice management.",
+      "created_at": "2026-03-01 04:01:52",
+      "being_a_content": "Why 12% of PI attorneys are thriving: Are you one?",
+      "being_b_content": "Master Sean Callagy's $1M Formula in 30 Days",
+      "winner_content": "Why 12% of PI attorneys are thriving: Are you one?",
+      "persona_name": "Karen Williams",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2367,
+      "being_a_id": 17,
+      "being_b_id": 15,
+      "winner_id": 15,
+      "scores_a": {
+        "curiosity": 4,
+        "relevance": 3,
+        "credibility": 2,
+        "urgency": 2,
+        "clarity": 6
+      },
+      "scores_b": {
+        "curiosity": 6,
+        "relevance": 7,
+        "credibility": 3,
+        "urgency": 4,
+        "clarity": 4
+      },
+      "reasoning": "As David Park, I would open B because while both emails feel like marketing pitches that could hurt my reputation if I'm seen engaging with them, Option B hits closer to home. As a 5th year associate drowning in work and trying to manage up to partners while coordinating with junior associates, I definitely feel like a bottleneck sometimes. The subject line speaks to a real pain point in my daily experience. Option A feels too much like a get-rich-quick scheme - the '3X revenue in 90 days' claim triggers my skepticism and doesn't align with how legitimate legal business development actually works. I'd be more curious about B, though I'd still approach it cautiously given my concerns about professional image.",
+      "created_at": "2026-03-01 04:01:46",
+      "being_a_content": "How [Attorney Name] 3X'd revenue in 90 days",
+      "being_b_content": "Ready to stop being the bottleneck?",
+      "winner_content": "Ready to stop being the bottleneck?",
+      "persona_name": "David Park",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2366,
+      "being_a_id": 10,
+      "being_b_id": 29,
+      "winner_id": 10,
+      "scores_a": {
+        "curiosity": 7,
+        "relevance": 6,
+        "credibility": 4,
+        "urgency": 3,
+        "clarity": 8
+      },
+      "scores_b": {
+        "curiosity": 4,
+        "relevance": 3,
+        "credibility": 3,
+        "urgency": 5,
+        "clarity": 6
+      },
+      "reasoning": "As Jennifer Rodriguez, I would open A because while both feel like generic marketing emails, Option A at least speaks to professional development which could benefit my clients. The 'top 1%' language piques my curiosity about what successful strategies I might be missing that could improve my client service. Option B immediately loses me because I'm a family law attorney, not personal injury - it shows the sender doesn't know me at all. Given my time constraints, I'd be more likely to quickly scan A for any client-focused insights, though my skepticism tells me it's probably just another sales pitch. The 'free breakdown' in A also feels more accessible than B's vague questioning format.",
+      "created_at": "2026-03-01 04:01:38",
+      "being_a_content": "What top 1% attorneys do differently (free breakdown)",
+      "being_b_content": "Why 12% of PI attorneys are thriving: Are you one?",
+      "winner_content": "What top 1% attorneys do differently (free breakdown)",
+      "persona_name": "Jennifer Rodriguez",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2365,
+      "being_a_id": 1,
+      "being_b_id": 15,
+      "winner_id": 1,
+      "scores_a": {
+        "curiosity": 7,
+        "relevance": 3,
+        "credibility": 4,
+        "urgency": 6,
+        "clarity": 8
+      },
+      "scores_b": {
+        "curiosity": 5,
+        "relevance": 6,
+        "credibility": 3,
+        "urgency": 4,
+        "clarity": 4
+      },
+      "reasoning": "As David Park, I would open A because despite not being a PI attorney, the specific dollar figure and 'mistake' angle triggers my risk-averse nature - I want to understand what costly errors to avoid. The concrete numbers give it more credibility than the vague 'bottleneck' language in B. However, I'd be highly skeptical of both since they feel like sales pitches, and I'd likely delete after a quick scan unless the sender was clearly reputable. My time constraints mean I need immediate clarity on value, which A provides better than B's unclear promise.",
+      "created_at": "2026-03-01 04:01:32",
+      "being_a_content": "The 3-second mistake costing PI attorneys $47K per case",
+      "being_b_content": "Ready to stop being the bottleneck?",
+      "winner_content": "The 3-second mistake costing PI attorneys $47K per case",
+      "persona_name": "David Park",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2364,
+      "being_a_id": 32,
+      "being_b_id": 20,
+      "winner_id": 32,
+      "scores_a": {
+        "curiosity": 7,
+        "relevance": 8,
+        "credibility": 4,
+        "urgency": 6,
+        "clarity": 8
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 3,
+        "credibility": 3,
+        "urgency": 2,
+        "clarity": 2
+      },
+      "reasoning": "As Dr. Michael Torres, I would open A because the financial impact ($47K) and PI (Principal Investigator) reference suggests this could relate to my research activities or department efficiency - both directly relevant to my work. The specific dollar amount makes it concrete and actionable. Option B is vague marketing speak about some unknown person's 'framework' - complete waste of my limited time with zero clear value proposition.",
+      "created_at": "2026-03-01 04:01:26",
+      "being_a_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "being_b_content": "Sean Callagy's framework (finally released)",
+      "winner_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "persona_name": "Dr. Michael Torres",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2363,
+      "being_a_id": 27,
+      "being_b_id": 34,
+      "winner_id": 34,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 4,
+        "credibility": 2,
+        "urgency": 4,
+        "clarity": 3
+      },
+      "scores_b": {
+        "curiosity": 6,
+        "relevance": 7,
+        "credibility": 5,
+        "urgency": 6,
+        "clarity": 6
+      },
+      "reasoning": "As David Park, I would open B because it references specific legal tactics from what appears to be a known legal professional (Callagy), making it more credible and relevant to my practice. While both subject lines feel somewhat promotional, Option B provides clearer value proposition with a defined timeframe that appeals to my time-poor schedule. Option A's 'double your success' claim feels too good to be true and raises red flags given my risk-averse nature and concern for reputation. The specificity in Option B suggests legitimate legal education content rather than a generic sales pitch.",
+      "created_at": "2026-03-01 04:01:22",
+      "being_a_content": "Double Your Case Success: Limited Time Offer",
+      "being_b_content": "Master Callagy's Proven Tactics: 30 Days to Success",
+      "winner_content": "Master Callagy's Proven Tactics: 30 Days to Success",
+      "persona_name": "David Park",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2362,
+      "being_a_id": 9,
+      "being_b_id": 4,
+      "winner_id": 4,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 4,
+        "credibility": 2,
+        "urgency": 6,
+        "clarity": 3
+      },
+      "scores_b": {
+        "curiosity": 8,
+        "relevance": 7,
+        "credibility": 6,
+        "urgency": 4,
+        "clarity": 8
+      },
+      "reasoning": "As Sarah Mitchell, I would open B because it presents concrete data (500 cases reviewed) which appeals to my ROI-focused mindset and need for proven results. The specificity around PI cases suggests relevance to legal practice, and the promise of identifying success patterns aligns with my efficiency values. Option A feels like typical marketing hyperbole with artificial urgency - exactly the kind of unsubstantiated claims my skepticism flags as potentially wasteful of my extremely limited time.",
+      "created_at": "2026-03-01 04:01:17",
+      "being_a_content": "48 hours to transform your practice (or stay stuck)",
+      "being_b_content": "I reviewed 500 PI cases. Here's what the winners had in common.",
+      "winner_content": "I reviewed 500 PI cases. Here's what the winners had in common.",
+      "persona_name": "Sarah Mitchell",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2361,
+      "being_a_id": 22,
+      "being_b_id": 6,
+      "winner_id": 22,
+      "scores_a": {
+        "curiosity": 8,
+        "relevance": 9,
+        "credibility": 4,
+        "urgency": 7,
+        "clarity": 8
+      },
+      "scores_b": {
+        "curiosity": 6,
+        "relevance": 8,
+        "credibility": 5,
+        "urgency": 4,
+        "clarity": 6
+      },
+      "reasoning": "As Sarah Mitchell, I would open A because despite my skepticism about the '3-second fix' claim, the $47K bottleneck figure is specific enough to grab my attention and directly addresses my delegation challenges. With my extreme time constraints and ROI focus, anything promising to eliminate a bottleneck that costly deserves 30 seconds of investigation. Option B feels too vague and theoretical - I don't have time for uncomfortable truths unless they come with actionable solutions and clear financial impact.",
+      "created_at": "2026-03-01 04:01:12",
+      "being_a_content": "3-second fix to stop being the $47K bottleneck",
+      "being_b_content": "The uncomfortable truth about your case valuations",
+      "winner_content": "3-second fix to stop being the $47K bottleneck",
+      "persona_name": "Sarah Mitchell",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2360,
+      "being_a_id": 38,
+      "being_b_id": 27,
+      "winner_id": 27,
+      "scores_a": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 2,
+        "urgency": 3,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 2,
+        "urgency": 4,
+        "clarity": 4
+      },
+      "reasoning": "As Dr. Lisa Chang, I would delete both emails immediately without opening either. Both sound like generic marketing spam that has nothing to do with family medicine or patient care. 'Case wins' suggests legal services, which isn't relevant to my practice. With my overwhelming patient load and severe inbox fatigue, I don't have time for what appears to be poorly targeted sales pitches. Neither sender seems to understand what I actually do as a family physician, which makes me skeptical of their credibility. I need emails that help me care for my patients better, not vague promises about 'winning cases.'",
+      "created_at": "2026-03-01 04:01:07",
+      "being_a_content": "Challenge AI: Triple Your Case Wins Now",
+      "being_b_content": "Double Your Case Success: Limited Time Offer",
+      "winner_content": "Double Your Case Success: Limited Time Offer",
+      "persona_name": "Dr. Lisa Chang",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2359,
+      "being_a_id": 30,
+      "being_b_id": 3,
+      "winner_id": 30,
+      "scores_a": {
+        "curiosity": 8,
+        "relevance": 9,
+        "credibility": 6,
+        "urgency": 7,
+        "clarity": 8
+      },
+      "scores_b": {
+        "curiosity": 4,
+        "relevance": 3,
+        "credibility": 3,
+        "urgency": 5,
+        "clarity": 2
+      },
+      "reasoning": "As Sarah Mitchell, I would open A because it directly addresses a specific financial impact ($47K) and challenges me personally as a potential bottleneck - both highly relevant to my role managing teams and focusing on ROI. The concrete dollar amount suggests measurable oversight I need to investigate. Option B feels like generic marketing speak that could apply to anyone in any industry, lacks specificity, and doesn't give me enough information to determine if it's worth my extremely limited time. My skepticism is triggered by B's vague fear-mongering approach, while A presents a quantifiable business issue I can quickly assess and potentially delegate if needed.",
+      "created_at": "2026-03-01 04:01:02",
+      "being_a_content": "The $47K oversight: Are you the bottleneck?",
+      "being_b_content": "Your competitors know something you don't",
+      "winner_content": "The $47K oversight: Are you the bottleneck?",
+      "persona_name": "Sarah Mitchell",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2358,
+      "being_a_id": 20,
+      "being_b_id": 19,
+      "winner_id": 19,
+      "scores_a": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 2,
+        "urgency": 1,
+        "clarity": 3
+      },
+      "scores_b": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 3,
+        "urgency": 1,
+        "clarity": 4
+      },
+      "reasoning": "As Dr. Michael Torres, I would delete both immediately. Neither relates to orthopedic surgery, patient care, or medical practice efficiency. 'Sean Callagy's framework' means nothing to me - sounds like generic business spam. 'Top 100 verdicts' might be legal-related but still irrelevant to my surgical practice. With 60+ hour weeks and massive inbox fatigue, I have zero time for vague marketing emails that don't clearly address orthopedic medicine. Both are going straight to trash without opening.",
+      "created_at": "2026-03-01 04:00:56",
+      "being_a_content": "Sean Callagy's framework (finally released)",
+      "being_b_content": "The method behind two Top 100 verdicts",
+      "winner_content": "The method behind two Top 100 verdicts",
+      "persona_name": "Dr. Michael Torres",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2357,
+      "being_a_id": 34,
+      "being_b_id": 7,
+      "winner_id": 7,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 4,
+        "urgency": 3,
+        "clarity": 5
+      },
+      "scores_b": {
+        "curiosity": 6,
+        "relevance": 3,
+        "credibility": 3,
+        "urgency": 4,
+        "clarity": 4
+      },
+      "reasoning": "As Karen Williams, I would open B because while both emails seem to be targeting attorneys (which I'm not), Option B's contrarian approach catches my attention and suggests there might be valuable insights that others are missing. However, my high skepticism makes me wary of both - they feel like generic marketing pitches rather than something specifically relevant to healthcare practice administration. Option A sounds like typical guru marketing with vague promises, while Option B at least acknowledges that most people ignore these messages, which resonates with my gatekeeping instincts. Neither would likely get more than a quick glance before deletion since they don't clearly address my core concerns around cost management, efficiency, or practice operations.",
+      "created_at": "2026-03-01 04:00:51",
+      "being_a_content": "Master Callagy's Proven Tactics: 30 Days to Success",
+      "being_b_content": "Most attorneys won't read this. That's why they're stuck.",
+      "winner_content": "Most attorneys won't read this. That's why they're stuck.",
+      "persona_name": "Karen Williams",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2356,
+      "being_a_id": 6,
+      "being_b_id": 8,
+      "winner_id": 6,
       "scores_a": {
         "curiosity": 7,
         "relevance": 8,
@@ -1761,49 +1518,211 @@
         "curiosity": 3,
         "relevance": 2,
         "credibility": 2,
-        "urgency": 5,
-        "clarity": 3
+        "urgency": 2,
+        "clarity": 2
       },
-      "reasoning": "As David Park, I would open A because despite my skepticism about AI marketing claims, the promise of winning cases faster directly addresses my core need as a 5th year associate trying to advance my career. Option B feels like generic sales spam - I don't know who Sean Callagy is, and '$1M Framework' sounds like typical marketing hyperbole that could damage my reputation if I engaged with it. While I'm cautious about both, Option A at least speaks to legitimate legal practice efficiency, which is crucial given my time constraints and career goals.",
-      "created_at": "2026-02-28 15:30:29",
-      "being_a_content": "Win 3x Cases Faster: Unlock AI Power",
-      "being_b_content": "Unlock Sean Callagy's $1M Framework Today",
-      "winner_content": "Win 3x Cases Faster: Unlock AI Power",
-      "persona_name": "David Park",
+      "reasoning": "As Jennifer Rodriguez, I would open A because despite my moderate skepticism, the phrase 'uncomfortable truth about case valuations' directly speaks to a core challenge in family law practice - accurately valuing assets during divorce proceedings. This feels relevant to my daily work helping clients navigate complex financial situations. While I'm cautious about the dramatic language (hence lower credibility score), my client-focused nature means I need to stay informed about anything that could impact how I serve my clients. Option B feels like generic marketing speak that wastes my limited time - exactly the kind of vague promise I see too often in my inbox.",
+      "created_at": "2026-03-01 04:00:45",
+      "being_a_content": "The uncomfortable truth about your case valuations",
+      "being_b_content": "Your inbox is full of promises. This is different.",
+      "winner_content": "The uncomfortable truth about your case valuations",
+      "persona_name": "Jennifer Rodriguez",
       "persona_category": "legal"
     },
     {
-      "id": 1161,
-      "being_a_id": 3,
-      "being_b_id": 18,
-      "winner_id": 3,
+      "id": 2355,
+      "being_a_id": 32,
+      "being_b_id": 5,
+      "winner_id": 32,
       "scores_a": {
         "curiosity": 3,
         "relevance": 2,
         "credibility": 2,
-        "urgency": 2,
-        "clarity": 2
+        "urgency": 4,
+        "clarity": 3
       },
       "scores_b": {
         "curiosity": 2,
         "relevance": 1,
         "credibility": 1,
-        "urgency": 1,
-        "clarity": 1
+        "urgency": 2,
+        "clarity": 2
       },
-      "reasoning": "As Dr. Lisa Chang, I would delete both emails without opening them. With my inbox constantly flooded and barely any time between patients, these subject lines scream 'marketing spam' to me. 'Your competitors know something you don't' feels manipulative and vague - what competitors? I'm focused on patient care, not competition. 'Borrowed from billion-dollar trial lawyers' is even worse - completely irrelevant to family medicine and sounds like some get-rich-quick scheme. Neither tells me anything concrete that would help my patients or my practice. I need emails that clearly state their medical relevance upfront, not clickbait that wastes my precious time.",
-      "created_at": "2026-02-28 15:30:24",
-      "being_a_content": "Your competitors know something you don't",
-      "being_b_content": "Borrowed from billion-dollar trial lawyers",
-      "winner_content": "Your competitors know something you don't",
+      "reasoning": "As Dr. Lisa Chang, I would reluctantly open A because at least it's specific about the dollar amount and mentions 'PI' which could relate to quality improvement or patient initiatives in my practice. But honestly, both feel like sales pitches when I'm drowning in patient care responsibilities. The $47K figure in A catches my attention slightly more than the vague 'leaving money on the table' in B, but I'm skeptical of both. Neither feels like it understands my real challenges - I need solutions for patient care efficiency, not get-rich-quick schemes. With my inbox fatigue, I'd probably delete both after a quick glance unless A actually relates to clinical workflow improvements.",
+      "created_at": "2026-03-01 04:00:40",
+      "being_a_content": "Stop losing $47K: Are you the PI bottleneck?",
+      "being_b_content": "You're leaving money on the table. Here's proof.",
+      "winner_content": "Stop losing $47K: Are you the PI bottleneck?",
       "persona_name": "Dr. Lisa Chang",
       "persona_category": "medical"
     },
     {
-      "id": 1160,
-      "being_a_id": 16,
-      "being_b_id": 17,
-      "winner_id": 17,
+      "id": 2354,
+      "being_a_id": 33,
+      "being_b_id": 35,
+      "winner_id": 35,
+      "scores_a": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 2,
+        "urgency": 3,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 2,
+        "urgency": 4,
+        "clarity": 5
+      },
+      "reasoning": "As Dr. Michael Torres, I would delete both immediately. These are clearly business/legal marketing emails targeting law firms, not medical practice. I don't know who Sean Callagy is, and 'boost your firm' screams generic spam. With 60+ hour weeks and massive inbox fatigue, I have zero time for irrelevant marketing pitches that have nothing to do with orthopedic surgery. Neither would get opened - straight to trash in under 3 seconds.",
+      "created_at": "2026-03-01 04:00:34",
+      "being_a_content": "Unveiling Callagy's $1M Framework: Boost Your Firm Now",
+      "being_b_content": "Master Sean Callagy's $1M Formula in 30 Days",
+      "winner_content": "Master Sean Callagy's $1M Formula in 30 Days",
+      "persona_name": "Dr. Michael Torres",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2353,
+      "being_a_id": 12,
+      "being_b_id": 29,
+      "winner_id": 12,
+      "scores_a": {
+        "curiosity": 6,
+        "relevance": 4,
+        "credibility": 3,
+        "urgency": 2,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 3,
+        "relevance": 2,
+        "credibility": 3,
+        "urgency": 3,
+        "clarity": 6
+      },
+      "reasoning": "As Jennifer Rodriguez, I would open A because despite its vague nature, the storytelling approach appeals to my empathy-driven nature and I'm curious about transformative cases that could help my clients. However, both emails feel somewhat irrelevant since I practice family law, not PI law, and neither appears to be from a trusted sender. The '[Similar Attorney]' placeholder in A actually hurts credibility, but the promise of a case story that 'changed everything' resonates with my client-focused mindset - I'm always looking for insights that could better serve families going through difficult times. Option B feels too much like generic marketing statistics that don't speak to my specific practice area or client needs.",
+      "created_at": "2026-03-01 04:00:19",
+      "being_a_content": "The case that changed everything for [Similar Attorney]",
+      "being_b_content": "Why 12% of PI attorneys are thriving: Are you one?",
+      "winner_content": "The case that changed everything for [Similar Attorney]",
+      "persona_name": "Jennifer Rodriguez",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2352,
+      "being_a_id": 28,
+      "being_b_id": 10,
+      "winner_id": 10,
+      "scores_a": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 2,
+        "urgency": 3,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 3,
+        "urgency": 2,
+        "clarity": 5
+      },
+      "reasoning": "As Dr. Lisa Chang, I wouldn't open either of these emails. Both are clearly targeted at attorneys, not physicians, so they have zero relevance to my practice or patient care needs. With my overwhelming patient load and severe inbox fatigue, I immediately delete emails that aren't directly related to medicine, patient care, or essential practice management. These look like generic marketing emails that somehow ended up in the wrong inbox - probably due to a mailing list error. I don't have time for content meant for lawyers when I have patients to care for and a mountain of medically relevant emails to get through.",
+      "created_at": "2026-03-01 04:00:13",
+      "being_a_content": "78% of attorneys ignore this: Are you falling behind?",
+      "being_b_content": "What top 1% attorneys do differently (free breakdown)",
+      "winner_content": "What top 1% attorneys do differently (free breakdown)",
+      "persona_name": "Dr. Lisa Chang",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2351,
+      "being_a_id": 5,
+      "being_b_id": 22,
+      "winner_id": 22,
+      "scores_a": {
+        "curiosity": 6,
+        "relevance": 7,
+        "credibility": 3,
+        "urgency": 4,
+        "clarity": 4
+      },
+      "scores_b": {
+        "curiosity": 8,
+        "relevance": 9,
+        "credibility": 4,
+        "urgency": 7,
+        "clarity": 8
+      },
+      "reasoning": "As Karen Williams, I would open B because it speaks directly to my role as a potential bottleneck and quantifies the cost impact ($47K) which aligns with my cost-conscious nature. The '3-second fix' appeals to my time-poor reality, and the specificity makes it feel relevant to practice administration. While I'm skeptical of both claims, Option B at least acknowledges efficiency concerns and provides concrete numbers I can evaluate, whereas Option A feels like generic sales speak without clear actionable value.",
+      "created_at": "2026-03-01 04:00:08",
+      "being_a_content": "You're leaving money on the table. Here's proof.",
+      "being_b_content": "3-second fix to stop being the $47K bottleneck",
+      "winner_content": "3-second fix to stop being the $47K bottleneck",
+      "persona_name": "Karen Williams",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2350,
+      "being_a_id": 11,
+      "being_b_id": 33,
+      "winner_id": 11,
+      "scores_a": {
+        "curiosity": 3,
+        "relevance": 4,
+        "credibility": 2,
+        "urgency": 2,
+        "clarity": 3
+      },
+      "scores_b": {
+        "curiosity": 2,
+        "relevance": 1,
+        "credibility": 3,
+        "urgency": 2,
+        "clarity": 4
+      },
+      "reasoning": "As Dr. Lisa Chang, I would reluctantly open A because while both emails feel like business/marketing spam that don't relate to my medical practice, at least A speaks to my burnout with 'stop grinding' - though I'm highly skeptical it has any real solution for physician overwhelm. Option B is clearly about law firms which is completely irrelevant to me. With my inbox fatigue at maximum, I'd probably delete both, but if forced to choose, A at least acknowledges the grinding reality of my workload, even if I don't trust it will deliver anything meaningful.",
+      "created_at": "2026-03-01 04:00:03",
+      "being_a_content": "Stop grinding. Start winning.",
+      "being_b_content": "Unveiling Callagy's $1M Framework: Boost Your Firm Now",
+      "winner_content": "Stop grinding. Start winning.",
+      "persona_name": "Dr. Lisa Chang",
+      "persona_category": "medical"
+    },
+    {
+      "id": 2349,
+      "being_a_id": 10,
+      "being_b_id": 18,
+      "winner_id": 10,
+      "scores_a": {
+        "curiosity": 7,
+        "relevance": 8,
+        "credibility": 4,
+        "urgency": 3,
+        "clarity": 7
+      },
+      "scores_b": {
+        "curiosity": 5,
+        "relevance": 6,
+        "credibility": 3,
+        "urgency": 2,
+        "clarity": 4
+      },
+      "reasoning": "As David Park, I would reluctantly open A because as a 5th year associate gunning for partnership, I'm always looking for competitive advantages and insights into what separates top performers. The 'top 1%' language directly appeals to my career ambitions, and 'free breakdown' suggests actionable content I can quickly consume despite my time constraints. However, my skepticism makes me wary of the sender's credibility - this feels like marketing copy. Option B is too vague and gimmicky for my risk-averse nature, and 'borrowed' suggests potentially questionable practices that could harm my reputation. While neither email inspires confidence, A at least promises concrete professional development insights that could benefit my partnership track.",
+      "created_at": "2026-03-01 03:59:57",
+      "being_a_content": "What top 1% attorneys do differently (free breakdown)",
+      "being_b_content": "Borrowed from billion-dollar trial lawyers",
+      "winner_content": "What top 1% attorneys do differently (free breakdown)",
+      "persona_name": "David Park",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2348,
+      "being_a_id": 11,
+      "being_b_id": 18,
+      "winner_id": 18,
       "scores_a": {
         "curiosity": 3,
         "relevance": 4,
@@ -1815,41 +1734,122 @@
         "curiosity": 7,
         "relevance": 8,
         "credibility": 6,
-        "urgency": 6,
-        "clarity": 8
+        "urgency": 5,
+        "clarity": 6
       },
-      "reasoning": "As Sarah Mitchell, I would open B because it provides concrete, measurable results (3X revenue in 90 days) which aligns with my ROI focus. The specificity makes it credible and relevant to my role managing a team that needs to deliver results. Option A feels like generic sales copy trying to manipulate emotions around family - I don't have time for vague promises. Option B suggests proven methodology I could potentially delegate or implement, while A lacks the specificity and professional focus I need to justify spending my limited time.",
-      "created_at": "2026-02-28 15:30:19",
-      "being_a_content": "What would 10X case value mean for your family?",
-      "being_b_content": "How [Attorney Name] 3X'd revenue in 90 days",
-      "winner_content": "How [Attorney Name] 3X'd revenue in 90 days",
+      "reasoning": "As Sarah Mitchell, I would open B because it specifically references 'billion-dollar trial lawyers' which signals proven results at the highest level of legal practice. While I'm naturally skeptical, the reference to successful trial lawyers suggests concrete strategies I could potentially apply to my firm's operations. Option A feels like generic motivational fluff that wastes my time - I don't need platitudes about 'grinding,' I need actionable insights that drive ROI. Option B implies there are specific, tested methodologies from top-tier legal practices that I could potentially delegate or implement.",
+      "created_at": "2026-03-01 03:59:51",
+      "being_a_content": "Stop grinding. Start winning.",
+      "being_b_content": "Borrowed from billion-dollar trial lawyers",
+      "winner_content": "Borrowed from billion-dollar trial lawyers",
       "persona_name": "Sarah Mitchell",
       "persona_category": "legal"
     },
     {
-      "id": 1159,
-      "being_a_id": 9,
-      "being_b_id": 27,
-      "winner_id": 9,
+      "id": 2347,
+      "being_a_id": 31,
+      "being_b_id": 26,
+      "winner_id": 31,
       "scores_a": {
+        "curiosity": 6,
+        "relevance": 8,
+        "credibility": 4,
+        "urgency": 5,
+        "clarity": 7
+      },
+      "scores_b": {
+        "curiosity": 3,
+        "relevance": 5,
+        "credibility": 2,
+        "urgency": 4,
+        "clarity": 4
+      },
+      "reasoning": "As Sarah Mitchell, I would open A because it's specific to PI cases which is directly relevant to my practice, and the '3-second fix' appeals to my time constraints. While I'm skeptical of the 'fix' claim, the specificity makes it feel less like generic spam. Option B feels like typical marketing fluff with vague promises and no clear value proposition - exactly the kind of email I delete immediately given my time constraints and high skepticism of unproven claims.",
+      "created_at": "2026-03-01 03:59:46",
+      "being_a_content": "3-second fix to boost your PI case value",
+      "being_b_content": "Boost Your Law Wins: Proven 30% Increase Today",
+      "winner_content": "3-second fix to boost your PI case value",
+      "persona_name": "Sarah Mitchell",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2346,
+      "being_a_id": 2,
+      "being_b_id": 26,
+      "winner_id": 2,
+      "scores_a": {
+        "curiosity": 8,
+        "relevance": 9,
+        "credibility": 6,
+        "urgency": 4,
+        "clarity": 8
+      },
+      "scores_b": {
         "curiosity": 3,
         "relevance": 4,
         "credibility": 2,
         "urgency": 6,
-        "clarity": 3
+        "clarity": 4
+      },
+      "reasoning": "As Jennifer Rodriguez, I would open A because it directly addresses a real concern I see in our profession - lawyer satisfaction and wellbeing, which ultimately affects how we serve our clients. The statistic feels believable and the promise of solutions resonates with my client-focused values. While I'm skeptical of the exact percentage, the core message about lawyer dissatisfaction rings true from my experience. Option B feels like generic marketing spam with vague promises and no clear connection to family law or meaningful client service improvements. Given my time constraints, I need emails that offer genuine value, and A appears more likely to provide insights that could help me better serve my clients by addressing systemic issues in legal practice.",
+      "created_at": "2026-03-01 03:59:42",
+      "being_a_content": "Why 73% of lawyers hate their practice (and how to fix it)",
+      "being_b_content": "Boost Your Law Wins: Proven 30% Increase Today",
+      "winner_content": "Why 73% of lawyers hate their practice (and how to fix it)",
+      "persona_name": "Jennifer Rodriguez",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2345,
+      "being_a_id": 23,
+      "being_b_id": 25,
+      "winner_id": 23,
+      "scores_a": {
+        "curiosity": 8,
+        "relevance": 9,
+        "credibility": 6,
+        "urgency": 4,
+        "clarity": 7
       },
       "scores_b": {
+        "curiosity": 3,
+        "relevance": 6,
+        "credibility": 4,
+        "urgency": 2,
+        "clarity": 4
+      },
+      "reasoning": "As Marcus Chen, I would open A because that $47K figure hits me right in the gut - it's specific enough to make me wonder if I'm actually costing myself real money somehow. After 15 years, I know exactly what kind of numbers matter in PI cases, and that's a meaningful settlement difference. Option B screams generic marketing guru nonsense - 'Master Success' and 'Proven Blueprint' are the kind of buzzwords that make my eyes roll. I get dozens of these 'expert reveals secrets' emails daily. Option A at least poses a direct challenge about my own performance with a concrete dollar amount, which is ROI-focused enough to warrant 30 seconds of my time.",
+      "created_at": "2026-03-01 03:59:36",
+      "being_a_content": "Are you the $47K hurdle in your cases?",
+      "being_b_content": "Master PI Success: Sean Callagy's Proven Blueprint",
+      "winner_content": "Are you the $47K hurdle in your cases?",
+      "persona_name": "Marcus Chen",
+      "persona_category": "legal"
+    },
+    {
+      "id": 2344,
+      "being_a_id": 11,
+      "being_b_id": 23,
+      "winner_id": 23,
+      "scores_a": {
         "curiosity": 2,
-        "relevance": 2,
+        "relevance": 3,
         "credibility": 2,
-        "urgency": 5,
+        "urgency": 1,
         "clarity": 2
       },
-      "reasoning": "As Dr. Lisa Chang, I would reluctantly open A because at least it mentions 'practice' which feels somewhat relevant to my work, even though both emails scream 'sales pitch' and I'm deeply skeptical of any promise to 'transform' anything in 48 hours. With my inbox constantly overflowing and having seen countless similar promises that never deliver real value for patient care, I'd probably delete both without opening, but if forced to choose, A at least acknowledges I might have practice challenges. Option B feels like it's targeting lawyers or consultants with 'case success' - completely irrelevant to family medicine where my 'success' is measured in patient outcomes, not cases won.",
-      "created_at": "2026-02-28 15:30:15",
-      "being_a_content": "48 hours to transform your practice (or stay stuck)",
-      "being_b_content": "Double Your Case Success: Limited Time Offer",
-      "winner_content": "48 hours to transform your practice (or stay stuck)",
+      "scores_b": {
+        "curiosity": 6,
+        "relevance": 7,
+        "credibility": 4,
+        "urgency": 5,
+        "clarity": 4
+      },
+      "reasoning": "As Dr. Lisa Chang, I would open B because it speaks directly to a financial concern that could impact patient care. The '$47K' figure is specific enough to make me wonder if this relates to malpractice costs, coding issues, or case management inefficiencies - all real problems I face. Option A sounds like generic motivational spam that wastes my limited time. While I'm skeptical of both, B at least addresses something concrete that could affect my practice and patients, whereas A feels like another productivity guru trying to sell me something I don't need.",
+      "created_at": "2026-03-01 03:59:30",
+      "being_a_content": "Stop grinding. Start winning.",
+      "being_b_content": "Are you the $47K hurdle in your cases?",
+      "winner_content": "Are you the $47K hurdle in your cases?",
       "persona_name": "Dr. Lisa Chang",
       "persona_category": "medical"
     }
