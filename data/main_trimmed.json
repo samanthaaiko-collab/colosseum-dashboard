@@ -1,10 +1,10 @@
 {
   "stats": {
-    "total_beings": 27025,
+    "total_beings": 27045,
     "total_battles": 5000,
     "total_domains": 11,
     "max_generation": 726,
-    "generated_at": "2026-03-01T14:23:33.814657+00:00"
+    "generated_at": "2026-03-01T14:58:46.838935+00:00"
   },
   "domains": [
     {
@@ -18,27 +18,27 @@
     },
     {
       "name": "strategy",
-      "beings_count": 1806,
-      "generation_depth": 85,
-      "avg_score": 8.322,
+      "beings_count": 1816,
+      "generation_depth": 86,
+      "avg_score": 8.202,
       "battle_count": 500,
-      "champion_name": "Optionality Maximizer-Nova",
+      "champion_name": "Network Effects Designer-Nova",
       "champion_score": 9.8
     },
     {
       "name": "marketing",
       "beings_count": 1810,
       "generation_depth": 85,
-      "avg_score": 8.295,
+      "avg_score": 8.211,
       "battle_count": 500,
       "champion_name": "Funnel Architect-Alpha",
       "champion_score": 9.8
     },
     {
       "name": "sales",
-      "beings_count": 1810,
-      "generation_depth": 85,
-      "avg_score": 8.238,
+      "beings_count": 1820,
+      "generation_depth": 86,
+      "avg_score": 8.13,
       "battle_count": 500,
       "champion_name": "Value Quantifier-X",
       "champion_score": 10.0
@@ -47,7 +47,7 @@
       "name": "tech",
       "beings_count": 1780,
       "generation_depth": 82,
-      "avg_score": 8.332,
+      "avg_score": 8.272,
       "battle_count": 500,
       "champion_name": "Test Strategist",
       "champion_score": 9.8
@@ -56,7 +56,7 @@
       "name": "ops",
       "beings_count": 1760,
       "generation_depth": 80,
-      "avg_score": 8.308,
+      "avg_score": 8.277,
       "battle_count": 500,
       "champion_name": "Process Designer-II",
       "champion_score": 9.8
@@ -65,16 +65,16 @@
       "name": "cs",
       "beings_count": 1720,
       "generation_depth": 76,
-      "avg_score": 8.28,
+      "avg_score": 8.239,
       "battle_count": 500,
-      "champion_name": "Training Designer-III-G7-G30-G50-G59",
-      "champion_score": 10.0
+      "champion_name": "Community Guardian-Elite",
+      "champion_score": 9.8
     },
     {
       "name": "finance",
       "beings_count": 1822,
       "generation_depth": 86,
-      "avg_score": 8.251,
+      "avg_score": 8.196,
       "battle_count": 500,
       "champion_name": "Board Reporting-Nova-G7-G12",
       "champion_score": 10.0
@@ -83,25 +83,25 @@
       "name": "hr",
       "beings_count": 1850,
       "generation_depth": 89,
-      "avg_score": 8.234,
+      "avg_score": 8.173,
       "battle_count": 500,
-      "champion_name": "People",
+      "champion_name": "Recognition Program Designer-Elite",
       "champion_score": 9.8
     },
     {
       "name": "legal",
       "beings_count": 1858,
       "generation_depth": 90,
-      "avg_score": 8.249,
+      "avg_score": 8.194,
       "battle_count": 500,
-      "champion_name": "Insurance Analyst-Elite",
+      "champion_name": "Commercial Contract-X",
       "champion_score": 9.8
     },
     {
       "name": "product",
       "beings_count": 1690,
       "generation_depth": 73,
-      "avg_score": 8.237,
+      "avg_score": 8.203,
       "battle_count": 500,
       "champion_name": "Performance Advocate-III",
       "champion_score": 10.0
