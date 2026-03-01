@@ -1,10 +1,10 @@
 {
   "stats": {
-    "total_beings": 27355,
+    "total_beings": 27395,
     "total_battles": 5000,
     "total_domains": 11,
     "max_generation": 726,
-    "generated_at": "2026-03-01T21:59:22.717710+00:00"
+    "generated_at": "2026-03-01T22:36:37.699755+00:00"
   },
   "domains": [
     {
@@ -20,16 +20,16 @@
       "name": "strategy",
       "beings_count": 1846,
       "generation_depth": 89,
-      "avg_score": 7.803,
+      "avg_score": 7.781,
       "battle_count": 500,
-      "champion_name": "Market Intelligence-Omega",
+      "champion_name": "Business Model Architect-Alpha-G10-G18-G23-G37",
       "champion_score": 10.0
     },
     {
       "name": "marketing",
       "beings_count": 1840,
       "generation_depth": 88,
-      "avg_score": 7.757,
+      "avg_score": 7.727,
       "battle_count": 500,
       "champion_name": "Specificity Champion-Prime-G9-G17-G22-G30-G43",
       "champion_score": 10.0
@@ -38,25 +38,25 @@
       "name": "sales",
       "beings_count": 1880,
       "generation_depth": 92,
-      "avg_score": 7.676,
+      "avg_score": 7.668,
       "battle_count": 500,
-      "champion_name": "Handoff Coordinator-III",
+      "champion_name": "Revenue-Prime",
       "champion_score": 9.8
     },
     {
       "name": "tech",
       "beings_count": 1780,
       "generation_depth": 82,
-      "avg_score": 7.866,
+      "avg_score": 7.823,
       "battle_count": 500,
       "champion_name": "Test Strategist-X-G6-G14",
       "champion_score": 10.0
     },
     {
       "name": "ops",
-      "beings_count": 1780,
-      "generation_depth": 82,
-      "avg_score": 7.778,
+      "beings_count": 1790,
+      "generation_depth": 83,
+      "avg_score": 7.717,
       "battle_count": 500,
       "champion_name": "Decision Process Designer-Alpha",
       "champion_score": 9.8
@@ -65,16 +65,16 @@
       "name": "cs",
       "beings_count": 1740,
       "generation_depth": 78,
-      "avg_score": 7.749,
+      "avg_score": 7.745,
       "battle_count": 500,
       "champion_name": "Relationship Deepener-Omega",
       "champion_score": 9.8
     },
     {
       "name": "finance",
-      "beings_count": 1882,
-      "generation_depth": 92,
-      "avg_score": 7.66,
+      "beings_count": 1892,
+      "generation_depth": 93,
+      "avg_score": 7.626,
       "battle_count": 500,
       "champion_name": "Board Reporting-Nova",
       "champion_score": 9.8
@@ -83,25 +83,25 @@
       "name": "hr",
       "beings_count": 1900,
       "generation_depth": 94,
-      "avg_score": 7.609,
+      "avg_score": 7.616,
       "battle_count": 500,
       "champion_name": "Onboarding Journey Creator-Alpha",
       "champion_score": 9.8
     },
     {
       "name": "legal",
-      "beings_count": 1878,
-      "generation_depth": 92,
-      "avg_score": 7.819,
+      "beings_count": 1888,
+      "generation_depth": 93,
+      "avg_score": 7.778,
       "battle_count": 500,
       "champion_name": "Real Estate-Omega",
       "champion_score": 9.9
     },
     {
       "name": "product",
-      "beings_count": 1710,
-      "generation_depth": 75,
-      "avg_score": 7.807,
+      "beings_count": 1720,
+      "generation_depth": 76,
+      "avg_score": 7.748,
       "battle_count": 500,
       "champion_name": "Roadmap Strategist-II",
       "champion_score": 9.9
