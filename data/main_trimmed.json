@@ -1,10 +1,10 @@
 {
   "stats": {
-    "total_beings": 27165,
+    "total_beings": 27185,
     "total_battles": 5000,
     "total_domains": 11,
     "max_generation": 726,
-    "generated_at": "2026-03-01T18:13:56.174152+00:00"
+    "generated_at": "2026-03-01T18:43:56.239951+00:00"
   },
   "domains": [
     {
@@ -20,16 +20,16 @@
       "name": "strategy",
       "beings_count": 1816,
       "generation_depth": 86,
-      "avg_score": 8.025,
+      "avg_score": 7.984,
       "battle_count": 500,
       "champion_name": "Market Intelligence-Omega",
       "champion_score": 10.0
     },
     {
       "name": "marketing",
-      "beings_count": 1830,
-      "generation_depth": 87,
-      "avg_score": 7.962,
+      "beings_count": 1840,
+      "generation_depth": 88,
+      "avg_score": 7.928,
       "battle_count": 500,
       "champion_name": "Conversion Optimizer-Alpha",
       "champion_score": 9.8
@@ -38,7 +38,7 @@
       "name": "sales",
       "beings_count": 1840,
       "generation_depth": 88,
-      "avg_score": 7.917,
+      "avg_score": 7.882,
       "battle_count": 500,
       "champion_name": "Expansion Scout-Prime",
       "champion_score": 9.8
@@ -47,7 +47,7 @@
       "name": "tech",
       "beings_count": 1780,
       "generation_depth": 82,
-      "avg_score": 8.028,
+      "avg_score": 8.032,
       "battle_count": 500,
       "champion_name": "Queue Designer-III",
       "champion_score": 9.8
@@ -56,7 +56,7 @@
       "name": "ops",
       "beings_count": 1780,
       "generation_depth": 82,
-      "avg_score": 8.002,
+      "avg_score": 7.985,
       "battle_count": 500,
       "champion_name": "Process Designer-II",
       "champion_score": 9.8
@@ -65,25 +65,25 @@
       "name": "cs",
       "beings_count": 1730,
       "generation_depth": 77,
-      "avg_score": 7.919,
+      "avg_score": 7.886,
       "battle_count": 500,
       "champion_name": "Reference Developer-II",
       "champion_score": 9.8
     },
     {
       "name": "finance",
-      "beings_count": 1842,
-      "generation_depth": 88,
-      "avg_score": 7.856,
+      "beings_count": 1852,
+      "generation_depth": 89,
+      "avg_score": 7.809,
       "battle_count": 500,
-      "champion_name": "Board Reporting-Nova",
+      "champion_name": "Tax",
       "champion_score": 9.8
     },
     {
       "name": "hr",
       "beings_count": 1870,
       "generation_depth": 91,
-      "avg_score": 7.877,
+      "avg_score": 7.891,
       "battle_count": 500,
       "champion_name": "Recognition Program Designer-Elite",
       "champion_score": 9.8
@@ -92,19 +92,19 @@
       "name": "legal",
       "beings_count": 1858,
       "generation_depth": 90,
-      "avg_score": 8.038,
+      "avg_score": 8.012,
       "battle_count": 500,
-      "champion_name": "IP Guardian-X",
-      "champion_score": 9.8
+      "champion_name": "Negotiation Strategist-II-G10-G27-G41-G48-G71-G82",
+      "champion_score": 10.0
     },
     {
       "name": "product",
       "beings_count": 1700,
       "generation_depth": 74,
-      "avg_score": 7.966,
+      "avg_score": 7.933,
       "battle_count": 500,
-      "champion_name": "Performance Advocate-III",
-      "champion_score": 10.0
+      "champion_name": "Beta Program Manager-II",
+      "champion_score": 9.8
     }
   ]
 }
