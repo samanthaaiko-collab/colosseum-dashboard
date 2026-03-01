@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-02-28T23:45:00",
+  "source": "colosseum-dashboard/data/email_colosseum.json",
+  "stats": {
+    "total_battles": 1208,
+    "total_beings": 45,
+    "sequences": 7,
+    "sequences_battles": 0,
+    "subject_lines": 38,
+    "avg_wr": 68
+  },
+  "top_10": [
+    {"id": 30, "type": "subject_line", "snippet": "The $47K oversight: Are you the bottleneck?", "wins": 19, "losses": 2, "wr": 90.5, "parent_id": null},
+    {"id": 21, "type": "subject_line", "snippet": "Avoid the $47K oversight slowing your practice", "wins": 47, "losses": 9, "wr": 83.9, "parent_id": null},
+    {"id": 22, "type": "subject_line", "snippet": "3-second fix to stop being the $47K bottleneck", "wins": 32, "losses": 7, "wr": 82.1, "parent_id": null},
+    {"id": 1, "type": "subject_line", "snippet": "The 3-second mistake costing PI attorneys $47K per case", "wins": 81, "losses": 22, "wr": 78.6, "parent_id": null},
+    {"id": 6, "type": "subject_line", "snippet": "The uncomfortable truth about your case valuations", "wins": 56, "losses": 15, "wr": 78.9, "parent_id": null},
+    {"id": 15, "type": "subject_line", "snippet": "Ready to stop being the bottleneck?", "wins": 66, "losses": 23, "wr": 74.2, "parent_id": null},
+    {"id": 13, "type": "subject_line", "snippet": "What if your best cases are already in your pipeline?", "wins": 61, "losses": 26, "wr": 70.1, "parent_id": null},
+    {"id": 9, "type": "subject_line", "snippet": "48 hours to transform your practice (or stay stuck)", "wins": 56, "losses": 25, "wr": 69.1, "parent_id": null},
+    {"id": 23, "type": "subject_line", "snippet": "Are you the $47K hurdle in your cases?", "wins": 35, "losses": 16, "wr": 68.6, "parent_id": null},
+    {"id": 37, "type": "subject_line", "snippet": "Win 3x Cases Faster: Unlock AI Power", "wins": 12, "losses": 7, "wr": 63.2, "parent_id": null}
+  ],
+  "bottom_10": [
+    {"id": 20, "type": "subject_line", "snippet": "Sean Callagy's framework (finally released)", "wins": 11, "losses": 93, "wr": 10.6, "parent_id": null},
+    {"id": 24, "type": "subject_line", "snippet": "Unlock Sean Callagy's $1M Framework Today", "wins": 10, "losses": 49, "wr": 16.9, "parent_id": null},
+    {"id": 34, "type": "subject_line", "snippet": "Master Callagy's Proven Tactics: 30 Days to Success", "wins": 2, "losses": 12, "wr": 14.3, "parent_id": null},
+    {"id": 38, "type": "subject_line", "snippet": "Challenge AI: Triple Your Case Wins Now", "wins": 4, "losses": 11, "wr": 26.7, "parent_id": null},
+    {"id": 35, "type": "subject_line", "snippet": "Master Sean Callagy's $1M Formula in 30 Days", "wins": 4, "losses": 9, "wr": 30.8, "parent_id": null},
+    {"id": 7, "type": "subject_line", "snippet": "Most attorneys won't read this. That's why they're stuck.", "wins": 21, "losses": 62, "wr": 25.3, "parent_id": null},
+    {"id": 11, "type": "subject_line", "snippet": "Stop grinding. Start winning.", "wins": 19, "losses": 66, "wr": 22.4, "parent_id": null},
+    {"id": 8, "type": "subject_line", "snippet": "Your inbox is full of promises. This is different.", "wins": 22, "losses": 73, "wr": 23.2, "parent_id": null},
+    {"id": 16, "type": "subject_line", "snippet": "What would 10X case value mean for your family?", "wins": 31, "losses": 57, "wr": 35.2, "parent_id": null},
+    {"id": 18, "type": "subject_line", "snippet": "Borrowed from billion-dollar trial lawyers", "wins": 39, "losses": 72, "wr": 35.1, "parent_id": null}
+  ],
+  "sequences": [
+    {"id": 39, "content": "Step1: Rapport - \"Dr. Smith, I see you're doing 20 consults/week...\" | Step2: Pain - \"But that K/case leak...\" | Step3: Hero - \"Recover it with our proven system.\" | Step4: Agreement - \"Ready to activate?\" | Step5: CTA - \"Reply YES\"", "wins": 0, "losses": 0, "wr": 0},
+    {"id": 40, "content": "Step1: Rapport - \"Dr. Jones, specialist caseload crushing you...\" | Step2: Pain - \"Lost revenue from PI referrals...\" | Step3: Hero - \"Unlock K hidden recovery.\" | Step4: Agreement - \"Our attorneys handle it.\" | Step5: CTA - \"Schedule call.\"", "wins": 0, "losses": 0, "wr": 0},
+    {"id": 41, "content": "Step1: Rapport - \"PT clinics, you know the referral pain...\" | Step2: Pain - \"Missed PI cases costing K/month.\" | Step3: Hero - \"Partner with us for seamless recovery.\" | Step4: Agreement - \"Zero risk.\" | Step5: CTA - \"Start today.\"", "wins": 0, "losses": 0, "wr": 0},
+    {"id": 42, "content": "Step1: Rapport - \"Chiro, your PI cases deserve full value...\" | Step2: Pain - \"Insurance lowballs killing margins.\" | Step3: Hero - \"We fight for max settlement.\" | Step4: Agreement - \"Share your cases.\" | Step5: CTA - \"Connect now.\"", "wins": 0, "losses": 0, "wr": 0},
+    {"id": 43, "content": "Step1: Rapport - \"Therapists, PI trauma cases untapped...\" | Step2: Pain - \"Billing delays starving cashflow.\" | Step3: Hero - \"Fast recovery partnership.\" | Step4: Agreement - \"Ethical, compliant.\" | Step5: CTA - \"Join network.\"", "wins": 0, "losses": 0, "wr": 0},
+    {"id": 44, "content": "Step1: Rapport - \"Busy PI attorney...\" | Step2: Pain - \"K/case leak.\" | Step3: Hero - \"Recover it.\" | Step4: Agreement - \"Partner up.\" | Step5: CTA - \"YES.\"", "wins": 0, "losses": 0, "wr": 0},
+    {"id": 45, "content": "Step1: Rapport - \"High-volume PI practice...\" | Step2: Pain - \"Pipeline bottlenecks.\" | Step3: Hero - \"Scale with our system.\" | Step4: Agreement - \"Proven ROI.\" | Step5: CTA - \"Activate.\"", "wins": 0, "losses": 0, "wr": 0}
+  ]
+}
