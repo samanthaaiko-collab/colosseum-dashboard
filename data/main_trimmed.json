@@ -1,10 +1,10 @@
 {
   "stats": {
-    "total_beings": 26855,
+    "total_beings": 26875,
     "total_battles": 5000,
     "total_domains": 11,
     "max_generation": 726,
-    "generated_at": "2026-03-01T05:15:09.883899+00:00"
+    "generated_at": "2026-03-01T05:45:06.637266+00:00"
   },
   "domains": [
     {
@@ -20,7 +20,7 @@
       "name": "strategy",
       "beings_count": 1796,
       "generation_depth": 84,
-      "avg_score": 8.404,
+      "avg_score": 8.451,
       "battle_count": 500,
       "champion_name": "Second-Order Thinker-X",
       "champion_score": 9.5
@@ -29,7 +29,7 @@
       "name": "marketing",
       "beings_count": 1800,
       "generation_depth": 84,
-      "avg_score": 8.434,
+      "avg_score": 8.47,
       "battle_count": 500,
       "champion_name": "Specificity Champion-Elite-G6-G13-G18",
       "champion_score": 9.8
@@ -38,7 +38,7 @@
       "name": "sales",
       "beings_count": 1790,
       "generation_depth": 83,
-      "avg_score": 8.394,
+      "avg_score": 8.433,
       "battle_count": 500,
       "champion_name": "Revenue",
       "champion_score": 9.5
@@ -47,7 +47,7 @@
       "name": "tech",
       "beings_count": 1780,
       "generation_depth": 82,
-      "avg_score": 8.356,
+      "avg_score": 8.386,
       "battle_count": 500,
       "champion_name": "Infrastructure Economist-X-G6-G17-G19",
       "champion_score": 9.8
@@ -56,25 +56,25 @@
       "name": "ops",
       "beings_count": 1760,
       "generation_depth": 80,
-      "avg_score": 8.399,
+      "avg_score": 8.44,
       "battle_count": 500,
-      "champion_name": "Quality Guardian-III",
+      "champion_name": "Standard Work Designer-III",
       "champion_score": 9.5
     },
     {
       "name": "cs",
-      "beings_count": 1700,
-      "generation_depth": 74,
-      "avg_score": 8.436,
+      "beings_count": 1710,
+      "generation_depth": 75,
+      "avg_score": 8.429,
       "battle_count": 500,
-      "champion_name": "Product Liaison-III",
+      "champion_name": "Community Guardian-Omega",
       "champion_score": 9.5
     },
     {
       "name": "finance",
       "beings_count": 1802,
       "generation_depth": 84,
-      "avg_score": 8.318,
+      "avg_score": 8.367,
       "battle_count": 500,
       "champion_name": "Fraud Detector-Prime",
       "champion_score": 10.0
@@ -83,7 +83,7 @@
       "name": "hr",
       "beings_count": 1820,
       "generation_depth": 86,
-      "avg_score": 8.387,
+      "avg_score": 8.417,
       "battle_count": 500,
       "champion_name": "Employer Brand Builder-III",
       "champion_score": 9.5
@@ -92,16 +92,16 @@
       "name": "legal",
       "beings_count": 1828,
       "generation_depth": 87,
-      "avg_score": 8.438,
+      "avg_score": 8.46,
       "battle_count": 500,
       "champion_name": "AI and Ethics Counsel-X-G6-G13-G18-G44-G56-G74",
       "champion_score": 10.0
     },
     {
       "name": "product",
-      "beings_count": 1660,
-      "generation_depth": 70,
-      "avg_score": 8.283,
+      "beings_count": 1670,
+      "generation_depth": 71,
+      "avg_score": 8.29,
       "battle_count": 500,
       "champion_name": "Product",
       "champion_score": 9.5
