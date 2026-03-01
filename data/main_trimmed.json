@@ -4,7 +4,7 @@
     "total_battles": 5000,
     "total_domains": 11,
     "max_generation": 726,
-    "generated_at": "2026-03-01T17:09:29.313514+00:00"
+    "generated_at": "2026-03-01T17:39:30.269778+00:00"
   },
   "domains": [
     {
@@ -20,16 +20,16 @@
       "name": "strategy",
       "beings_count": 1816,
       "generation_depth": 86,
-      "avg_score": 8.054,
+      "avg_score": 8.03,
       "battle_count": 500,
-      "champion_name": "Platform Strategist-X",
-      "champion_score": 9.8
+      "champion_name": "Market Intelligence-Omega",
+      "champion_score": 10.0
     },
     {
       "name": "marketing",
       "beings_count": 1830,
       "generation_depth": 87,
-      "avg_score": 8.0,
+      "avg_score": 7.975,
       "battle_count": 500,
       "champion_name": "Conversion Optimizer-Alpha",
       "champion_score": 9.8
@@ -38,16 +38,16 @@
       "name": "sales",
       "beings_count": 1840,
       "generation_depth": 88,
-      "avg_score": 7.933,
+      "avg_score": 7.921,
       "battle_count": 500,
-      "champion_name": "Value Quantifier-X",
-      "champion_score": 10.0
+      "champion_name": "Expansion Scout-Prime",
+      "champion_score": 9.8
     },
     {
       "name": "tech",
       "beings_count": 1780,
       "generation_depth": 82,
-      "avg_score": 8.088,
+      "avg_score": 8.055,
       "battle_count": 500,
       "champion_name": "Queue Designer-III",
       "champion_score": 9.8
@@ -56,7 +56,7 @@
       "name": "ops",
       "beings_count": 1780,
       "generation_depth": 82,
-      "avg_score": 8.038,
+      "avg_score": 8.019,
       "battle_count": 500,
       "champion_name": "Process Designer-II",
       "champion_score": 9.8
@@ -65,7 +65,7 @@
       "name": "cs",
       "beings_count": 1730,
       "generation_depth": 77,
-      "avg_score": 8.033,
+      "avg_score": 7.982,
       "battle_count": 500,
       "champion_name": "Reference Developer-II",
       "champion_score": 9.8
@@ -74,7 +74,7 @@
       "name": "finance",
       "beings_count": 1842,
       "generation_depth": 88,
-      "avg_score": 7.915,
+      "avg_score": 7.88,
       "battle_count": 500,
       "champion_name": "Board Reporting-Nova",
       "champion_score": 9.8
@@ -83,7 +83,7 @@
       "name": "hr",
       "beings_count": 1870,
       "generation_depth": 91,
-      "avg_score": 7.93,
+      "avg_score": 7.914,
       "battle_count": 500,
       "champion_name": "Recognition Program Designer-Elite",
       "champion_score": 9.8
@@ -92,7 +92,7 @@
       "name": "legal",
       "beings_count": 1858,
       "generation_depth": 90,
-      "avg_score": 8.065,
+      "avg_score": 8.061,
       "battle_count": 500,
       "champion_name": "IP Guardian-X",
       "champion_score": 9.8
@@ -101,7 +101,7 @@
       "name": "product",
       "beings_count": 1690,
       "generation_depth": 73,
-      "avg_score": 8.065,
+      "avg_score": 8.059,
       "battle_count": 500,
       "champion_name": "Performance Advocate-III",
       "champion_score": 10.0
