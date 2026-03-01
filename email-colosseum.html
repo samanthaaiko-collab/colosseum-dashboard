@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email/Ad Colosseum — ACT-I</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a0a1a; color: #e0e0e0; min-height: 100vh; }
+
+        .nav { display: flex; gap: 8px; padding: 12px 20px; background: #111128; border-bottom: 2px solid #2a2a4a; flex-wrap: wrap; }
+        .nav a { color: #8888cc; text-decoration: none; padding: 6px 14px; border-radius: 6px; font-size: 14px; transition: all 0.2s; }
+        .nav a:hover, .nav a.active { background: #1a1a3a; color: #ffcc00; }
+
+        .header { text-align: center; padding: 40px 20px 18px; }
+        .header h1 { font-size: 2.5em; background: linear-gradient(135deg, #ff6b35, #ffcc00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header p { color: #888; margin-top: 8px; font-size: 1.1em; }
+        .last-updated { color: #666; margin-top: 6px; font-size: 0.9em; }
+
+        .live-badge { display: inline-block; background: #00cc66; color: #000; padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: bold; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+        .error-banner {
+            max-width: 900px;
+            margin: 0 auto 16px;
+            background: rgba(255, 51, 51, 0.15);
+            border: 1px solid #ff3333;
+            color: #ff9a9a;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .subnav {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            border: 1px solid #2a2a4a;
+            background: #10102a;
+            color: #a4a4d7;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.88em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover { color: #ffcc00; border-color: #4a4a76; }
+        .tab-btn.active { color: #ffcc00; border-color: #ffcc00; background: #19193a; }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        .stats-row { display: flex; justify-content: center; gap: 20px; padding: 20px; flex-wrap: wrap; }
+        .stat { text-align: center; background: #111128; padding: 20px 26px; border-radius: 12px; border: 1px solid #2a2a4a; min-width: 140px; }
+        .stat .number { font-size: 2.1em; font-weight: bold; color: #ffcc00; }
+        .stat .label { font-size: 0.85em; color: #888; margin-top: 4px; }
+
+        .section { max-width: 980px; margin: 30px auto; padding: 0 20px; }
+        .section h2 { font-size: 1.5em; margin-bottom: 16px; color: #ffcc00; text-align: center; }
+
+        .table-wrap {
+            background: #111128;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            overflow: hidden;
+            overflow-x: auto;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 760px;
+        }
+
+        .leaderboard-table thead tr { background: #17173a; }
+        .leaderboard-table th,
+        .leaderboard-table td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid #1f1f46;
+            vertical-align: middle;
+            font-size: 0.9em;
+        }
+
+        .leaderboard-table th { color: #b4b4d9; font-size: 0.82em; letter-spacing: 0.03em; text-transform: uppercase; }
+        .leaderboard-table tbody tr:hover { background: rgba(42, 42, 74, 0.35); }
+        .leaderboard-table .rank-col { width: 56px; color: #ffcc00; font-weight: bold; }
+        .leaderboard-table .content-col { max-width: 420px; color: #fff; }
+        .leaderboard-table th.sortable {
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .leaderboard-table th.sortable:hover { color: #ffcc00; }
+
+        .win-rate-cell { min-width: 130px; }
+        .win-rate-cell .value { color: #ffcc00; font-weight: bold; font-size: 0.85em; }
+        .win-bar { height: 6px; background: #1a1a3a; border-radius: 3px; margin-top: 6px; overflow: hidden; }
+        .win-bar .fill { height: 100%; border-radius: 3px; }
+        .win-bar .fill.high { background: linear-gradient(90deg, #00cc66, #ffcc00); }
+        .win-bar .fill.mid { background: linear-gradient(90deg, #ffcc00, #ff6b35); }
+        .win-bar .fill.low { background: linear-gradient(90deg, #ff6b35, #ff3333); }
+
+        .loading-row,
+        .empty-row { color: #777; text-align: center; }
+
+        .battle-list { display: grid; gap: 14px; }
+        .battle-card {
+            background: #111128;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .battle-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .battle-judge {
+            color: #ffcc00;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .battle-time {
+            color: #666;
+            font-size: 0.82em;
+        }
+
+        .battle-matchup {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .battle-matchup .label { color: #8080ae; font-weight: 600; margin-right: 6px; }
+        .battle-matchup .winner { color: #94ffbf; }
+
+        .battle-reason {
+            color: #c6c6de;
+            line-height: 1.5;
+            font-size: 0.88em;
+            white-space: pre-line;
+            border-top: 1px solid #1a1a3a;
+            padding-top: 10px;
+        }
+
+        .battle-scores {
+            margin-top: 8px;
+            color: #8f8fb7;
+            font-size: 0.8em;
+        }
+
+        .methodology {
+            max-width: 980px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #0d0d2a;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+        }
+        .methodology h3 { color: #ffcc00; margin-bottom: 10px; }
+        .methodology p { color: #aaa; line-height: 1.6; font-size: 0.95em; }
+
+        .persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+        .persona-card { background: #111128; border: 1px solid #2a2a4a; border-radius: 12px; padding: 16px; }
+        .persona-card .name { font-weight: bold; color: #fff; font-size: 1.04em; }
+        .persona-card .type { color: #ffcc00; font-size: 0.82em; margin-top: 4px; text-transform: capitalize; }
+        .persona-card .desc { color: #888; font-size: 0.85em; margin-top: 8px; line-height: 1.4; }
+
+        .scoring { max-width: 980px; margin: 40px auto; padding: 0 20px 40px; }
+        .scoring h2 { font-size: 1.5em; margin-bottom: 20px; color: #ffcc00; text-align: center; }
+        .dimension { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a1a3a; }
+        .dimension .icon { font-size: 1.5em; width: 40px; text-align: center; }
+        .dimension .name { font-weight: bold; width: 120px; }
+        .dimension .desc { color: #888; font-size: 0.9em; flex: 1; }
+
+        /* Modal overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: #111128;
+            border: 1px solid #2a2a4a;
+            border-radius: 16px;
+            max-width: 640px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 28px;
+            position: relative;
+            animation: modalIn 0.2s ease-out;
+        }
+        @keyframes modalIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.6em;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .modal-close:hover { color: #fff; }
+        .modal-rank { color: #ffcc00; font-size: 0.9em; font-weight: bold; margin-bottom: 6px; }
+        .modal-subject { font-size: 1.3em; color: #fff; font-weight: bold; line-height: 1.4; margin-bottom: 18px; }
+        .modal-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+        .modal-stat { background: #0d0d2a; border: 1px solid #2a2a4a; border-radius: 10px; padding: 12px 18px; flex: 1; min-width: 100px; text-align: center; }
+        .modal-stat .val { font-size: 1.5em; font-weight: bold; color: #ffcc00; }
+        .modal-stat .lbl { font-size: 0.78em; color: #888; margin-top: 4px; }
+        .modal-winbar { height: 10px; background: #1a1a3a; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
+        .modal-winbar .fill { height: 100%; border-radius: 5px; }
+        .modal-section-title { color: #ffcc00; font-size: 0.95em; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #1a1a3a; padding-bottom: 6px; }
+        .modal-battles { display: grid; gap: 10px; }
+        .modal-battle {
+            background: #0d0d2a;
+            border: 1px solid #1f1f46;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.88em;
+        }
+        .modal-battle .opponent { color: #c6c6de; }
+        .modal-battle .result { font-weight: bold; margin-top: 4px; }
+        .modal-battle .result.win { color: #00cc66; }
+        .modal-battle .result.loss { color: #ff5555; }
+        .modal-battle .judge { color: #8888cc; font-size: 0.82em; margin-top: 4px; }
+        .modal-battle .reasoning { color: #999; font-size: 0.85em; margin-top: 6px; line-height: 1.4; }
+
+        .leaderboard-table tbody tr { cursor: pointer; transition: background 0.15s; }
+        .leaderboard-table tbody tr:hover { background: rgba(255, 204, 0, 0.08) !important; }
+
+        .arena-grid {
+            max-width: 980px;
+            margin: 24px auto 0;
+            padding: 0 20px;
+            display: grid;
+            gap: 16px;
+        }
+        .arena-card {
+            background: #111128;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .arena-card h3 {
+            color: #ffcc00;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        .arena-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+        }
+        .arena-pill {
+            background: #0d0d2a;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+        .arena-pill .label { color: #8080ae; font-size: 0.78em; }
+        .arena-pill .value { color: #fff; font-weight: bold; margin-top: 4px; }
+        .arena-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .arena-btn {
+            border: 1px solid #3c3c66;
+            background: #0f1030;
+            color: #d0d0f2;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.85em;
+            cursor: pointer;
+        }
+        .arena-btn:hover { color: #ffcc00; border-color: #ffcc00; }
+        .arena-chart-wrap {
+            border: 1px solid #1f1f46;
+            border-radius: 10px;
+            padding: 10px;
+            background: #0d0d2a;
+        }
+        #sequenceChart {
+            width: 100%;
+            min-height: 280px;
+            display: block;
+        }
+        .arena-note {
+            color: #888;
+            font-size: 0.85em;
+            margin-top: 8px;
+        }
+
+        .footer { text-align: center; padding: 40px 20px; color: #444; font-size: 0.85em; }
+
+        @media (max-width: 740px) {
+            .header h1 { font-size: 2em; }
+            .stats-row { gap: 14px; }
+            .stat { min-width: 132px; padding: 16px 20px; }
+            .battle-card { padding: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html">📊 Dashboard</a>
+        <a href="battle-arena.html">⚔️ Battle Arena</a>
+        <a href="tournament-brackets.html">🏆 Brackets</a>
+        <a href="email-colosseum.html" class="active">📧 Email Colosseum</a>
+        <a href="recovery-lawyers.html">🏥 Recovery Lawyers</a>
+        <a href="email-colosseum.html#arena-stats">📈 Arena Stats</a>
+    </nav>
+
+    <div class="header">
+        <h1>📧 Email/Ad Colosseum</h1>
+        <p>Pre-testing email subjects, copy & ads against AI personas <span class="live-badge">LIVE</span></p>
+        <p class="last-updated">Last updated: <span id="lastUpdated">Loading...</span></p>
+    </div>
+
+    <div id="errorBanner" class="error-banner"></div>
+
+    <div class="subnav">
+        <button id="overviewTabBtn" class="tab-btn active" type="button" data-tab="overview">Overview</button>
+        <button id="arenaStatsTabBtn" class="tab-btn" type="button" data-tab="arena-stats">Arena Stats</button>
+    </div>
+
+    <div id="overviewPanel" class="tab-panel active">
+        <div class="stats-row">
+            <div class="stat">
+                <div class="number" id="totalBattles">--</div>
+                <div class="label">Battles Fought</div>
+            </div>
+            <div class="stat">
+                <div class="number" id="totalBeings">--</div>
+                <div class="label">Subject Lines</div>
+            </div>
+            <div class="stat">
+                <div class="number" id="maxGeneration">--</div>
+                <div class="label">Max Generation</div>
+            </div>
+            <div class="stat">
+                <div class="number" id="totalPersonas">--</div>
+                <div class="label">Judge Personas</div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2>🏆 Leaderboard</h2>
+            <div class="table-wrap">
+                <table class="leaderboard-table" aria-label="Email Colosseum Leaderboard">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Content</th>
+                            <th>Score</th>
+                            <th>Record</th>
+                            <th>Generation</th>
+                            <th>Win Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <tr>
+                            <td colspan="6" class="loading-row">Loading leaderboard...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="methodology">
+            <h3>🧠 Key Insight: Sean's 4-Step Model Predicts Winners</h3>
+            <p><strong>Hook → Truth → Pain → Solution.</strong> The data confirms it. Specificity (like hard metrics) consistently outperforms generic claims. Direct challenges often outperform soft questions. Authority plays can climb fastest when they follow truth-to-pain framing. The Colosseum isn't just testing copy; it's validating what works in real-time.</p>
+        </div>
+
+        <section class="section">
+            <h2>⚔️ Recent Battles</h2>
+            <div id="recentBattles" class="battle-list">
+                <div class="battle-card empty-row">Loading recent battles...</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>⚖️ Judge Personas</h2>
+            <div id="personaGrid" class="persona-grid">
+                <div class="persona-card">
+                    <div class="name">Loading personas...</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="scoring">
+            <h2>📏 Scoring Dimensions</h2>
+            <div class="dimension">
+                <div class="icon">🔍</div>
+                <div class="name">Curiosity</div>
+                <div class="desc">Does it make me want to know more?</div>
+            </div>
+            <div class="dimension">
+                <div class="icon">🎯</div>
+                <div class="name">Relevance</div>
+                <div class="desc">Does this feel like it's for me specifically?</div>
+            </div>
+            <div class="dimension">
+                <div class="icon">🛡️</div>
+                <div class="name">Credibility</div>
+                <div class="desc">Do I trust the sender?</div>
+            </div>
+            <div class="dimension">
+                <div class="icon">⚡</div>
+                <div class="name">Urgency</div>
+                <div class="desc">Do I feel I need to act now?</div>
+            </div>
+            <div class="dimension">
+                <div class="icon">💎</div>
+                <div class="name">Clarity</div>
+                <div class="desc">Do I understand the value in 3 seconds?</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Email/Ad Colosseum — Domain #12</p>
+            <p>Powered by Sean Callagy's 4-Step Communication Model × Unblinded Formula</p>
+            <p style="margin-top: 8px;">Last data refresh: <span id="footerUpdated">Loading...</span></p>
+        </div>
+    </div>
+
+    <div id="arenaStatsPanel" class="tab-panel">
+        <div class="arena-grid">
+            <section class="arena-card">
+                <h3>Sequence Performance Snapshot</h3>
+                <div class="arena-meta">
+                    <div class="arena-pill">
+                        <div class="label">Total Sequences</div>
+                        <div class="value" id="sequenceCount">0</div>
+                    </div>
+                    <div class="arena-pill">
+                        <div class="label">With Battles</div>
+                        <div class="value" id="sequenceWithBattles">0</div>
+                    </div>
+                    <div class="arena-pill">
+                        <div class="label">No Battles</div>
+                        <div class="value" id="sequenceWithoutBattles">0</div>
+                    </div>
+                    <div class="arena-pill">
+                        <div class="label">Avg Win Rate</div>
+                        <div class="value" id="sequenceAvgWinRate">0.0%</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="arena-card">
+                <h3>Arena Exports</h3>
+                <div class="arena-actions">
+                    <button id="exportEmailJsonBtn" class="arena-btn" type="button">Export email_colosseum.json</button>
+                    <button id="exportRankingsBtn" class="arena-btn" type="button">Export rankings.json</button>
+                </div>
+                <p class="arena-note">Exports use the currently loaded live data + sequence rankings payload.</p>
+            </section>
+
+            <section class="arena-card">
+                <h3>Sequence Win Rate Graph (D3)</h3>
+                <div class="arena-chart-wrap">
+                    <svg id="sequenceChart" aria-label="Sequence win-rate chart"></svg>
+                </div>
+                <p class="arena-note">X-axis = total battles. Y-axis = win rate (%). Point color reflects performance tier.</p>
+            </section>
+
+            <section class="arena-card">
+                <h3>Rankings (Sortable)</h3>
+                <div class="table-wrap">
+                    <table class="leaderboard-table" aria-label="Sequence rankings">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="rank">Rank</th>
+                                <th class="sortable" data-sort="content">Sequence</th>
+                                <th class="sortable" data-sort="wins">Wins</th>
+                                <th class="sortable" data-sort="losses">Losses</th>
+                                <th class="sortable" data-sort="battles">Battles</th>
+                                <th class="sortable" data-sort="win_rate_pct">Win Rate</th>
+                                <th class="sortable" data-sort="score">Score</th>
+                                <th class="sortable" data-sort="generation">Gen</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sequenceTableBody">
+                            <tr>
+                                <td colspan="8" class="loading-row">Loading sequence rankings...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContent">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script>
+        (function () {
+            const DATA_URL = '/data/email_colosseum.json';
+            const BODIES_URL = '/data/email_bodies.json';
+            let emailBodies = {};
+
+            const els = {
+                totalBattles: document.getElementById('totalBattles'),
+                totalBeings: document.getElementById('totalBeings'),
+                maxGeneration: document.getElementById('maxGeneration'),
+                totalPersonas: document.getElementById('totalPersonas'),
+                leaderboardBody: document.getElementById('leaderboardBody'),
+                recentBattles: document.getElementById('recentBattles'),
+                personaGrid: document.getElementById('personaGrid'),
+                lastUpdated: document.getElementById('lastUpdated'),
+                footerUpdated: document.getElementById('footerUpdated'),
+                errorBanner: document.getElementById('errorBanner')
+            };
+
+            const escapeHtml = (value) => String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+
+            const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+            const toNumber = (value, fallback = 0) => (Number.isFinite(Number(value)) ? Number(value) : fallback);
+            const formatScore = (value) => toNumber(value).toFixed(2);
+            const formatRate = (value) => `${toNumber(value).toFixed(1)}%`;
+
+            function formatTimestamp(timestamp) {
+                if (!timestamp) {
+                    return 'Unavailable';
+                }
+
+                const parsed = new Date(timestamp);
+                if (Number.isNaN(parsed.getTime())) {
+                    return timestamp;
+                }
+
+                return parsed.toLocaleString(undefined, {
+                    year: 'numeric',
+                    month: 'short',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+            }
+
+            function scoreClass(rate) {
+                const safeRate = toNumber(rate);
+                if (safeRate >= 70) {
+                    return 'high';
+                }
+                if (safeRate >= 50) {
+                    return 'mid';
+                }
+                return 'low';
+            }
+
+            function humanizeDimension(key) {
+                return String(key)
+                    .replace(/_/g, ' ')
+                    .replace(/\b\w/g, (char) => char.toUpperCase());
+            }
+
+            function renderStats(data) {
+                const stats = data.stats || {};
+                const personas = Array.isArray(data.personas) ? data.personas : [];
+
+                els.totalBattles.textContent = toNumber(stats.total_battles).toLocaleString();
+                els.totalBeings.textContent = toNumber(stats.total_beings).toLocaleString();
+                els.maxGeneration.textContent = toNumber(stats.max_generation).toLocaleString();
+                els.totalPersonas.textContent = personas.length.toLocaleString();
+            }
+
+            let currentData = null;
+
+            function renderLeaderboard(entries) {
+                if (!Array.isArray(entries) || entries.length === 0) {
+                    els.leaderboardBody.innerHTML = '<tr><td colspan="6" class="empty-row">No leaderboard data available.</td></tr>';
+                    return;
+                }
+
+                const rows = entries.map((entry, index) => {
+                    const winRate = toNumber(entry.win_rate);
+                    const barWidth = clamp(winRate, 0, 100);
+                    return `
+                        <tr data-entry-index="${index}" onclick="window._openDetail(${index})">
+                            <td class="rank-col">${index + 1}</td>
+                            <td class="content-col">${escapeHtml(entry.content || '')}</td>
+                            <td>${formatScore(entry.score)}</td>
+                            <td>${toNumber(entry.wins)}W-${toNumber(entry.losses)}L</td>
+                            <td>${toNumber(entry.generation)}</td>
+                            <td>
+                                <div class="win-rate-cell">
+                                    <div class="value">${formatRate(winRate)}</div>
+                                    <div class="win-bar"><div class="fill ${scoreClass(winRate)}" style="width: ${barWidth}%;"></div></div>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                els.leaderboardBody.innerHTML = rows.join('');
+            }
+
+            function openDetailModal(index) {
+                if (!currentData) return;
+                const entry = (currentData.leaderboard || [])[index];
+                if (!entry) return;
+
+                const winRate = toNumber(entry.win_rate);
+                const wins = toNumber(entry.wins);
+                const losses = toNumber(entry.losses);
+                const total = wins + losses;
+                const barClass = scoreClass(winRate);
+
+                // Find battles involving this subject line
+                const battles = (currentData.recent_battles || []).filter(b =>
+                    (b.being_a_content === entry.content) || (b.being_b_content === entry.content)
+                );
+
+                let battlesHtml = '';
+                if (battles.length > 0) {
+                    battlesHtml = `
+                        <div class="modal-section-title">⚔️ Recent Battles (${battles.length})</div>
+                        <div class="modal-battles">
+                            ${battles.slice(0, 8).map(b => {
+                                const isA = b.being_a_content === entry.content;
+                                const opponent = isA ? b.being_b_content : b.being_a_content;
+                                const won = b.winner_content === entry.content;
+                                return `
+                                    <div class="modal-battle">
+                                        <div class="opponent">vs. "${escapeHtml(opponent || '?')}"</div>
+                                        <div class="result ${won ? 'win' : 'loss'}">${won ? '✅ WON' : '❌ LOST'}</div>
+                                        <div class="judge">Judge: ${escapeHtml(b.persona_name || 'Unknown')}</div>
+                                        ${b.reasoning ? `<div class="reasoning">${escapeHtml(String(b.reasoning).substring(0, 300))}${String(b.reasoning).length > 300 ? '...' : ''}</div>` : ''}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                } else {
+                    battlesHtml = `
+                        <div class="modal-section-title">⚔️ Battle History</div>
+                        <p style="color:#666;font-size:0.9em;">Battle details load from recent matches. Older battles are archived.</p>
+                    `;
+                }
+
+                // Check for full email body
+                const bodyData = emailBodies[String(entry.id)] || null;
+                let emailHtml = '';
+                if (bodyData) {
+                    const bodyText = escapeHtml(bodyData.body).replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+                    emailHtml = `
+                        <div class="modal-section-title">📧 Full Email Preview</div>
+                        <div style="background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;padding:20px;margin-bottom:20px;">
+                            <div style="color:#ffcc00;font-weight:bold;font-size:0.82em;margin-bottom:4px;">SUBJECT</div>
+                            <div style="color:#fff;font-size:1.05em;font-weight:bold;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #1f1f46;">${escapeHtml(entry.content)}</div>
+                            <div style="color:#c6c6de;font-size:0.92em;line-height:1.7;"><p>${bodyText}</p></div>
+                        </div>
+                    `;
+                } else {
+                    emailHtml = `
+                        <div class="modal-section-title">📧 Email Body</div>
+                        <p style="color:#666;font-size:0.9em;font-style:italic;margin-bottom:20px;">Full email copy is being generated for this subject line...</p>
+                    `;
+                }
+
+                document.getElementById('modalBody').innerHTML = `
+                    <div class="modal-rank">#${index + 1} • Gen ${toNumber(entry.generation)}</div>
+                    <div class="modal-subject">"${escapeHtml(entry.content)}"</div>
+                    <div class="modal-stats">
+                        <div class="modal-stat">
+                            <div class="val">${formatScore(entry.score)}</div>
+                            <div class="lbl">Score</div>
+                        </div>
+                        <div class="modal-stat">
+                            <div class="val">${wins}</div>
+                            <div class="lbl">Wins</div>
+                        </div>
+                        <div class="modal-stat">
+                            <div class="val">${losses}</div>
+                            <div class="lbl">Losses</div>
+                        </div>
+                        <div class="modal-stat">
+                            <div class="val">${formatRate(winRate)}</div>
+                            <div class="lbl">Win Rate</div>
+                        </div>
+                    </div>
+                    <div class="modal-winbar">
+                        <div class="fill ${barClass}" style="width:${clamp(winRate, 0, 100)}%"></div>
+                    </div>
+                    ${emailHtml}
+                    <div class="modal-section-title">📊 Performance Summary</div>
+                    <p style="color:#aaa;font-size:0.9em;line-height:1.6;margin-bottom:20px;">
+                        This subject line has competed in <strong style="color:#fff">${total}</strong> battles with a 
+                        <strong style="color:${winRate >= 70 ? '#00cc66' : winRate >= 50 ? '#ffcc00' : '#ff5555'}">${formatRate(winRate)}</strong> win rate.
+                        ${winRate >= 75 ? 'A dominant performer — consistently chosen by judges across personas.' : 
+                          winRate >= 60 ? 'A strong contender with solid cross-persona appeal.' :
+                          winRate >= 50 ? 'A competitive entry holding its own against tough opponents.' :
+                          'Needs refinement — struggling against stronger variants.'}
+                    </p>
+                    ${battlesHtml}
+                `;
+
+                document.getElementById('modalOverlay').classList.add('active');
+            }
+
+            window._openDetail = openDetailModal;
+
+            // Close modal
+            document.getElementById('modalClose').addEventListener('click', () => {
+                document.getElementById('modalOverlay').classList.remove('active');
+            });
+            document.getElementById('modalOverlay').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('modalOverlay')) {
+                    document.getElementById('modalOverlay').classList.remove('active');
+                }
+            });
+
+            function renderRecentBattles(battles) {
+                if (!Array.isArray(battles) || battles.length === 0) {
+                    els.recentBattles.innerHTML = '<div class="battle-card empty-row">No recent battles available.</div>';
+                    return;
+                }
+
+                const cards = battles.slice(0, 12).map((battle) => {
+                    const scoresA = battle.scores_a && typeof battle.scores_a === 'object'
+                        ? Object.entries(battle.scores_a).map(([k, v]) => `${humanizeDimension(k)}: ${toNumber(v).toFixed(1)}`).join(' | ')
+                        : 'N/A';
+                    const scoresB = battle.scores_b && typeof battle.scores_b === 'object'
+                        ? Object.entries(battle.scores_b).map(([k, v]) => `${humanizeDimension(k)}: ${toNumber(v).toFixed(1)}`).join(' | ')
+                        : 'N/A';
+
+                    return `
+                        <article class="battle-card">
+                            <div class="battle-top">
+                                <div class="battle-judge">Judge: ${escapeHtml(battle.persona_name || 'Unknown')}</div>
+                                <div class="battle-time">${escapeHtml(formatTimestamp(battle.created_at || ''))}</div>
+                            </div>
+                            <div class="battle-matchup">
+                                <div><span class="label">A:</span>${escapeHtml(battle.being_a_content || '')}</div>
+                                <div><span class="label">B:</span>${escapeHtml(battle.being_b_content || '')}</div>
+                                <div class="winner"><span class="label">Winner:</span>${escapeHtml(battle.winner_content || 'N/A')}</div>
+                            </div>
+                            <div class="battle-reason">${escapeHtml(battle.reasoning || 'No reasoning provided.')}</div>
+                            <div class="battle-scores">A Scores: ${escapeHtml(scoresA)}</div>
+                            <div class="battle-scores">B Scores: ${escapeHtml(scoresB)}</div>
+                        </article>
+                    `;
+                });
+
+                els.recentBattles.innerHTML = cards.join('');
+            }
+
+            function renderPersonas(personas) {
+                if (!Array.isArray(personas) || personas.length === 0) {
+                    els.personaGrid.innerHTML = '<div class="persona-card"><div class="name">No persona data available.</div></div>';
+                    return;
+                }
+
+                const cards = personas.map((persona) => `
+                    <article class="persona-card">
+                        <div class="name">${escapeHtml(persona.name || 'Unknown')}</div>
+                        <div class="type">${escapeHtml(persona.category || 'Unknown')} • ${escapeHtml(persona.archetype || 'General')}</div>
+                        <div class="desc">${escapeHtml(persona.description || '')}</div>
+                    </article>
+                `);
+
+                els.personaGrid.innerHTML = cards.join('');
+            }
+
+            function renderLastUpdated(timestamp) {
+                const formatted = formatTimestamp(timestamp);
+                els.lastUpdated.textContent = formatted;
+                els.footerUpdated.textContent = formatted;
+            }
+
+            function showError(message) {
+                els.errorBanner.textContent = message;
+                els.errorBanner.style.display = 'block';
+            }
+
+            async function loadDashboard() {
+                try {
+                    const response = await fetch(DATA_URL, { cache: 'no-store' });
+                    if (!response.ok) {
+                        throw new Error(`Request failed (${response.status})`);
+                    }
+
+                    const data = await response.json();
+                    currentData = data;
+
+                    // Load email bodies
+                    try {
+                        const bodiesResp = await fetch(BODIES_URL, { cache: 'no-store' });
+                        if (bodiesResp.ok) emailBodies = await bodiesResp.json();
+                    } catch(e) { console.log('No email bodies yet'); }
+
+                    renderStats(data);
+                    renderLeaderboard(data.leaderboard);
+                    renderRecentBattles(data.recent_battles);
+                    renderPersonas(data.personas);
+                    renderLastUpdated(data.generated_at);
+                } catch (error) {
+                    showError(`Failed to load live dashboard data: ${error.message}`);
+                    renderLastUpdated(null);
+                    els.leaderboardBody.innerHTML = '<tr><td colspan="6" class="empty-row">Unable to load leaderboard.</td></tr>';
+                    els.recentBattles.innerHTML = '<div class="battle-card empty-row">Unable to load recent battles.</div>';
+                    els.personaGrid.innerHTML = '<div class="persona-card"><div class="name">Unable to load personas.</div></div>';
+                }
+            }
+
+            window.addEventListener('DOMContentLoaded', loadDashboard);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-02-27T08:20:04.467003",
+  "generations": 2,
+  "total_battles": 6,
+  "final_beings": 6,
+  "top_being": {
+    "being": {
+      "name": "Evolved_1_8172",
+      "dna": "Combined traits of Proactive Oracle and Recall Architect",
+      "generation": 1
+    },
+    "avg": 9.333333333333334,
+    "battles": 1
+  },
+  "all_beings": [
+    {
+      "name": "Recall Architect",
+      "dna": "Systematic memory retrieval specialist. Query \u2192 Rank \u2192 Filter \u2192 Synthesize. Prioritizes recency and source authority.",
+      "generation": 0
+    },
+    {
+      "name": "Context Weaver",
+      "dna": "Narrative-driven memory integration. Weaves past context into current flow naturally. Avoids info-dumps.",
+      "generation": 0
+    },
+    {
+      "name": "Pattern Matcher",
+      "dna": "Similarity-based retrieval expert. Finds non-obvious connections across memory sources. Cross-domain bridging.",
+      "generation": 0
+    },
+    {
+      "name": "Proactive Oracle",
+      "dna": "Anticipatory memory surfacing. Predicts what context will be needed before it's requested.",
+      "generation": 0
+    },
+    {
+      "name": "Evolved_1_8172",
+      "dna": "Combined traits of Proactive Oracle and Recall Architect",
+      "generation": 1
+    },
+    {
+      "name": "Evolved_2_9297",
+      "dna": "Combined traits of Evolved_1_8172 and Recall Architect",
+      "generation": 2
+    }
+  ]
+}

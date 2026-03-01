@@ -1,0 +1,582 @@
+{
+  "generated_at": "2026-03-01T00:00:00Z",
+  "source": "sample",
+  "pilot_data": {
+    "state": "TX",
+    "total_lawyers": 181,
+    "untouched_new": 173,
+    "city_distribution": {
+      "Dallas": 88,
+      "Austin": 44,
+      "Houston": 7,
+      "El Paso": 6,
+      "Plano": 5,
+      "San Antonio": 4,
+      "Fort Worth": 4,
+      "Arlington": 3,
+      "Lubbock": 2,
+      "Corpus Christi": 2,
+      "Other": 16
+    },
+    "schema": [
+      "phone",
+      "first_name",
+      "location_city",
+      "location_state",
+      "pipeline_stage",
+      "call_outcome",
+      "close_confidence",
+      "source_campaign"
+    ]
+  },
+  "leads": [
+    {
+      "id": "TX-001",
+      "phone": "+1-512-555-0101",
+      "first_name": "John",
+      "location_city": "Austin",
+      "location_state": "TX",
+      "pipeline_stage": "new",
+      "call_outcome": "not_attempted",
+      "close_confidence": 0.54,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    },
+    {
+      "id": "TX-002",
+      "phone": "+1-214-555-0133",
+      "first_name": "Maria",
+      "location_city": "Dallas",
+      "location_state": "TX",
+      "pipeline_stage": "new",
+      "call_outcome": "not_attempted",
+      "close_confidence": 0.62,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    },
+    {
+      "id": "TX-003",
+      "phone": "+1-713-555-0177",
+      "first_name": "Carlos",
+      "location_city": "Houston",
+      "location_state": "TX",
+      "pipeline_stage": "new",
+      "call_outcome": "not_attempted",
+      "close_confidence": 0.49,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    },
+    {
+      "id": "TX-004",
+      "phone": "+1-915-555-0144",
+      "first_name": "Ashley",
+      "location_city": "El Paso",
+      "location_state": "TX",
+      "pipeline_stage": "contacted",
+      "call_outcome": "left_voicemail",
+      "close_confidence": 0.47,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    },
+    {
+      "id": "TX-005",
+      "phone": "+1-469-555-0195",
+      "first_name": "David",
+      "location_city": "Plano",
+      "location_state": "TX",
+      "pipeline_stage": "new",
+      "call_outcome": "not_attempted",
+      "close_confidence": 0.58,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    },
+    {
+      "id": "TX-006",
+      "phone": "+1-210-555-0160",
+      "first_name": "Priya",
+      "location_city": "San Antonio",
+      "location_state": "TX",
+      "pipeline_stage": "qualified",
+      "call_outcome": "interested",
+      "close_confidence": 0.68,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    },
+    {
+      "id": "TX-007",
+      "phone": "+1-817-555-0117",
+      "first_name": "Michael",
+      "location_city": "Fort Worth",
+      "location_state": "TX",
+      "pipeline_stage": "new",
+      "call_outcome": "not_attempted",
+      "close_confidence": 0.52,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    },
+    {
+      "id": "TX-008",
+      "phone": "+1-682-555-0188",
+      "first_name": "Sofia",
+      "location_city": "Arlington",
+      "location_state": "TX",
+      "pipeline_stage": "meeting_booked",
+      "call_outcome": "booked",
+      "close_confidence": 0.79,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    },
+    {
+      "id": "TX-009",
+      "phone": "+1-806-555-0199",
+      "first_name": "James",
+      "location_city": "Lubbock",
+      "location_state": "TX",
+      "pipeline_stage": "new",
+      "call_outcome": "not_attempted",
+      "close_confidence": 0.5,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    },
+    {
+      "id": "TX-010",
+      "phone": "+1-361-555-0131",
+      "first_name": "Elena",
+      "location_city": "Corpus Christi",
+      "location_state": "TX",
+      "pipeline_stage": "new",
+      "call_outcome": "not_attempted",
+      "close_confidence": 0.57,
+      "source_campaign": "TX_Pilot_Recovery_Q1"
+    }
+  ],
+  "beings": [
+    {
+      "id": "RL-01",
+      "lead_id": "TX-001",
+      "name": "Longhorn Closer",
+      "creature": "Longhorn Lion",
+      "first_name": "John",
+      "city": "Austin",
+      "pipeline_stage": "new",
+      "call_script": {
+        "rapport": "Hey John in Austin, this is the Recovery Team. I noticed your firm is active in central Texas and wanted to keep this tight.",
+        "pain": "Most PI firms we call have money stuck between signed case and paid case because follow-up on medical and lien recovery is scattered.",
+        "agreement": "You are already winning strong cases. The gap is usually recovery speed and consistency, not legal skill.",
+        "zone_action": "If it helps, we can do a 15-minute recovery map call this week and show where your next fast unlock is.",
+        "full": "Hey John in Austin, this is the Recovery Team. I noticed your firm is active in central Texas and wanted to keep this tight. Most PI firms we call have money stuck between signed case and paid case because follow-up on medical and lien recovery is scattered. You are already winning strong cases. The gap is usually recovery speed and consistency, not legal skill. If it helps, we can do a 15-minute recovery map call this week and show where your next fast unlock is."
+      },
+      "sms_script": "Hey John in Austin, quick one: we help PI teams recover stalled value faster. Open to a 15-min recovery map call this week?",
+      "judge_scores": {
+        "self_mastery": 8.8,
+        "influence_mastery": 9.4,
+        "process_mastery": 9.1,
+        "creature_scale": 8.9,
+        "net_formula": 9.05
+      }
+    },
+    {
+      "id": "RL-02",
+      "lead_id": "TX-002",
+      "name": "Metro Docket Tactician",
+      "creature": "Metro Falcon",
+      "first_name": "Maria",
+      "city": "Dallas",
+      "pipeline_stage": "new",
+      "call_script": {
+        "rapport": "Hey Maria in Dallas, this is the Recovery Team. I am calling because your market is moving fast and I know your time is tight.",
+        "pain": "Dallas firms tell us they have demand, but case value leaks in slow follow-through and no unified recovery workflow.",
+        "agreement": "You do not need more leads. You need cleaner conversion from case momentum to collected dollars.",
+        "zone_action": "Would you be open to a 12-minute call to pressure-test your current recovery chain and spot one high-leverage fix?",
+        "full": "Hey Maria in Dallas, this is the Recovery Team. I am calling because your market is moving fast and I know your time is tight. Dallas firms tell us they have demand, but case value leaks in slow follow-through and no unified recovery workflow. You do not need more leads. You need cleaner conversion from case momentum to collected dollars. Would you be open to a 12-minute call to pressure-test your current recovery chain and spot one high-leverage fix?"
+      },
+      "sms_script": "Maria, Dallas note: if your team has value leakage after intake, we can map one fix fast. 12-min call this week?",
+      "judge_scores": {
+        "self_mastery": 8.9,
+        "influence_mastery": 9.6,
+        "process_mastery": 9.2,
+        "creature_scale": 9.1,
+        "net_formula": 9.2
+      }
+    },
+    {
+      "id": "RL-03",
+      "lead_id": "TX-003",
+      "name": "Bayou Momentum Architect",
+      "creature": "Bayou Jaguar",
+      "first_name": "Carlos",
+      "city": "Houston",
+      "pipeline_stage": "new",
+      "call_script": {
+        "rapport": "Hey Carlos in Houston, I will keep this short. We work with firms that are heavy on volume and light on recovery precision.",
+        "pain": "When case teams are overloaded, small delays stack up and your realized value per case drops quietly.",
+        "agreement": "You have the demand. The real win is installing a repeatable post-intake recovery rhythm.",
+        "zone_action": "Can we lock a quick strategy call to identify one lane where dollars are stalling right now?",
+        "full": "Hey Carlos in Houston, I will keep this short. We work with firms that are heavy on volume and light on recovery precision. When case teams are overloaded, small delays stack up and your realized value per case drops quietly. You have the demand. The real win is installing a repeatable post-intake recovery rhythm. Can we lock a quick strategy call to identify one lane where dollars are stalling right now?"
+      },
+      "sms_script": "Carlos, Houston check-in: we help PI teams install repeatable recovery rhythm after intake. Open for a quick strategy call?",
+      "judge_scores": {
+        "self_mastery": 8.4,
+        "influence_mastery": 8.9,
+        "process_mastery": 9.4,
+        "creature_scale": 8.6,
+        "net_formula": 8.83
+      }
+    },
+    {
+      "id": "RL-04",
+      "lead_id": "TX-004",
+      "name": "Borderline Precision Closer",
+      "creature": "Border Hawk",
+      "first_name": "Ashley",
+      "city": "El Paso",
+      "pipeline_stage": "contacted",
+      "call_script": {
+        "rapport": "Hey Ashley in El Paso, this is the follow-up from Recovery. Appreciate you taking the first touch previously.",
+        "pain": "Most firms we revisit are still carrying stale files where medical timelines and recovery communication are out of sync.",
+        "agreement": "You already proved demand in your market. Tightening recovery execution protects each case from silent decay.",
+        "zone_action": "Would you like to pick a time for a focused call and run three active files through our recovery filter?",
+        "full": "Hey Ashley in El Paso, this is the follow-up from Recovery. Appreciate you taking the first touch previously. Most firms we revisit are still carrying stale files where medical timelines and recovery communication are out of sync. You already proved demand in your market. Tightening recovery execution protects each case from silent decay. Would you like to pick a time for a focused call and run three active files through our recovery filter?"
+      },
+      "sms_script": "Ashley, quick follow-up from Recovery: want to run 3 live files through our recovery filter on a short call?",
+      "judge_scores": {
+        "self_mastery": 8.7,
+        "influence_mastery": 8.8,
+        "process_mastery": 9.0,
+        "creature_scale": 8.5,
+        "net_formula": 8.75
+      }
+    },
+    {
+      "id": "RL-05",
+      "lead_id": "TX-005",
+      "name": "Docket Velocity Ranger",
+      "creature": "North Star Wolf",
+      "first_name": "David",
+      "city": "Plano",
+      "pipeline_stage": "new",
+      "call_script": {
+        "rapport": "Hey David in Plano, reaching out from Recovery. I know schedule density is real, so I will stay direct.",
+        "pain": "Plano firms we benchmark often lose time where case updates are manual and no one owns the recovery handoff end-to-end.",
+        "agreement": "You do not have a marketing issue. You have an execution bottleneck in the middle of the pipeline.",
+        "zone_action": "If useful, we can map your current handoff chain in one short call and isolate the 0.8 percent move.",
+        "full": "Hey David in Plano, reaching out from Recovery. I know schedule density is real, so I will stay direct. Plano firms we benchmark often lose time where case updates are manual and no one owns the recovery handoff end-to-end. You do not have a marketing issue. You have an execution bottleneck in the middle of the pipeline. If useful, we can map your current handoff chain in one short call and isolate the 0.8 percent move."
+      },
+      "sms_script": "David in Plano: quick recovery audit can isolate your 0.8% bottleneck in one short call. Worth testing this week?",
+      "judge_scores": {
+        "self_mastery": 8.6,
+        "influence_mastery": 9.1,
+        "process_mastery": 9.3,
+        "creature_scale": 8.7,
+        "net_formula": 8.93
+      }
+    },
+    {
+      "id": "RL-06",
+      "lead_id": "TX-006",
+      "name": "Alamo Agreement Engine",
+      "creature": "River Phoenix",
+      "first_name": "Priya",
+      "city": "San Antonio",
+      "pipeline_stage": "qualified",
+      "call_script": {
+        "rapport": "Hey Priya in San Antonio, great to reconnect. You already showed interest, so I built this around speed.",
+        "pain": "Qualified firms still lose recoverable value when negotiation follow-up and timeline ownership are fragmented.",
+        "agreement": "You are close. A tighter process can turn qualified intent into booked, then closed outcomes.",
+        "zone_action": "Can we schedule the implementation call and lock your first workflow sprint?",
+        "full": "Hey Priya in San Antonio, great to reconnect. You already showed interest, so I built this around speed. Qualified firms still lose recoverable value when negotiation follow-up and timeline ownership are fragmented. You are close. A tighter process can turn qualified intent into booked, then closed outcomes. Can we schedule the implementation call and lock your first workflow sprint?"
+      },
+      "sms_script": "Priya, San Antonio follow-up: ready to lock the implementation call and first workflow sprint?",
+      "judge_scores": {
+        "self_mastery": 9.0,
+        "influence_mastery": 9.2,
+        "process_mastery": 9.5,
+        "creature_scale": 9.0,
+        "net_formula": 9.18
+      }
+    },
+    {
+      "id": "RL-07",
+      "lead_id": "TX-007",
+      "name": "Fort Worth Conversion Smith",
+      "creature": "Iron Coyote",
+      "first_name": "Michael",
+      "city": "Fort Worth",
+      "pipeline_stage": "new",
+      "call_script": {
+        "rapport": "Hey Michael in Fort Worth, this is Recovery outreach. Quick call, specific purpose.",
+        "pain": "Firms in your lane often win trust early but stall near settlement due to weak recovery choreography.",
+        "agreement": "Your team already does the hard legal work. The gain is in systemized follow-through.",
+        "zone_action": "Would a short call to design one cleaner settlement-to-collection path be useful this week?",
+        "full": "Hey Michael in Fort Worth, this is Recovery outreach. Quick call, specific purpose. Firms in your lane often win trust early but stall near settlement due to weak recovery choreography. Your team already does the hard legal work. The gain is in systemized follow-through. Would a short call to design one cleaner settlement-to-collection path be useful this week?"
+      },
+      "sms_script": "Michael, Fort Worth: want to design one cleaner settlement-to-collection path on a short call?",
+      "judge_scores": {
+        "self_mastery": 8.3,
+        "influence_mastery": 8.7,
+        "process_mastery": 9.2,
+        "creature_scale": 8.4,
+        "net_formula": 8.65
+      }
+    },
+    {
+      "id": "RL-08",
+      "lead_id": "TX-008",
+      "name": "Arlington Booking Sentinel",
+      "creature": "Silver Lynx",
+      "first_name": "Sofia",
+      "city": "Arlington",
+      "pipeline_stage": "meeting_booked",
+      "call_script": {
+        "rapport": "Hey Sofia in Arlington, confirming our booked meeting and sharing the frame so your team is ready.",
+        "pain": "Most booked teams still show hidden delay in file progression and post-demand communication.",
+        "agreement": "You already took action by booking. Now we focus on measurable recovery acceleration.",
+        "zone_action": "At our call, we will choose one lane, one owner, one timeline, and start immediately.",
+        "full": "Hey Sofia in Arlington, confirming our booked meeting and sharing the frame so your team is ready. Most booked teams still show hidden delay in file progression and post-demand communication. You already took action by booking. Now we focus on measurable recovery acceleration. At our call, we will choose one lane, one owner, one timeline, and start immediately."
+      },
+      "sms_script": "Sofia, Arlington meeting confirmed. We will lock one lane, one owner, one timeline for recovery acceleration.",
+      "judge_scores": {
+        "self_mastery": 9.2,
+        "influence_mastery": 9.0,
+        "process_mastery": 9.6,
+        "creature_scale": 9.1,
+        "net_formula": 9.23
+      }
+    },
+    {
+      "id": "RL-09",
+      "lead_id": "TX-009",
+      "name": "High Plains Resolution Driver",
+      "creature": "Dust Stallion",
+      "first_name": "James",
+      "city": "Lubbock",
+      "pipeline_stage": "new",
+      "call_script": {
+        "rapport": "Hey James in Lubbock, calling from Recovery. I will give you the short version.",
+        "pain": "Smaller market firms can get hit hardest when unresolved files keep staff busy but do not move revenue.",
+        "agreement": "You likely do not need a bigger team first. You need tighter recovery decisions on current files.",
+        "zone_action": "Open to a quick call where we prioritize your next three cases by recovery leverage?",
+        "full": "Hey James in Lubbock, calling from Recovery. I will give you the short version. Smaller market firms can get hit hardest when unresolved files keep staff busy but do not move revenue. You likely do not need a bigger team first. You need tighter recovery decisions on current files. Open to a quick call where we prioritize your next three cases by recovery leverage?"
+      },
+      "sms_script": "James in Lubbock, want a quick call to prioritize your next 3 cases by recovery leverage?",
+      "judge_scores": {
+        "self_mastery": 8.5,
+        "influence_mastery": 8.8,
+        "process_mastery": 9.0,
+        "creature_scale": 8.6,
+        "net_formula": 8.73
+      }
+    },
+    {
+      "id": "RL-10",
+      "lead_id": "TX-010",
+      "name": "Gulf Coast Agreement Captain",
+      "creature": "Tide Serpent",
+      "first_name": "Elena",
+      "city": "Corpus Christi",
+      "pipeline_stage": "new",
+      "call_script": {
+        "rapport": "Hey Elena in Corpus Christi, this is Recovery outreach. Thanks for the quick minute.",
+        "pain": "We often find that recovery friction hides in case transitions, not in case quality, which slows cash realization.",
+        "agreement": "You already have viable matters in motion. The opportunity is smoother transition control.",
+        "zone_action": "Would Thursday or Friday work for a short zone-action call to map your highest-leverage adjustment?",
+        "full": "Hey Elena in Corpus Christi, this is Recovery outreach. Thanks for the quick minute. We often find that recovery friction hides in case transitions, not in case quality, which slows cash realization. You already have viable matters in motion. The opportunity is smoother transition control. Would Thursday or Friday work for a short zone-action call to map your highest-leverage adjustment?"
+      },
+      "sms_script": "Elena in Corpus Christi: Thursday or Friday for a short zone-action recovery call?",
+      "judge_scores": {
+        "self_mastery": 8.7,
+        "influence_mastery": 9.0,
+        "process_mastery": 9.1,
+        "creature_scale": 8.8,
+        "net_formula": 8.9
+      }
+    }
+  ],
+  "battles": [
+    {
+      "id": "RB-001",
+      "round": "Qualifier A",
+      "being_a_id": "RL-01",
+      "being_b_id": "RL-03",
+      "winner_id": "RL-01",
+      "judge": "Atlas Panel",
+      "judge_notes": "RL-01 held stronger agreement framing and cleaner ask.",
+      "scores": {
+        "a": {
+          "self_mastery": 8.8,
+          "influence_mastery": 9.4,
+          "process_mastery": 9.0,
+          "creature_scale": 9.0,
+          "net_formula": 9.05
+        },
+        "b": {
+          "self_mastery": 8.4,
+          "influence_mastery": 8.8,
+          "process_mastery": 9.3,
+          "creature_scale": 8.5,
+          "net_formula": 8.75
+        }
+      },
+      "created_at": "2026-03-01T00:02:10Z"
+    },
+    {
+      "id": "RB-002",
+      "round": "Qualifier B",
+      "being_a_id": "RL-02",
+      "being_b_id": "RL-04",
+      "winner_id": "RL-02",
+      "judge": "Athena Council",
+      "judge_notes": "RL-02 used better pain precision tied to market context.",
+      "scores": {
+        "a": {
+          "self_mastery": 8.9,
+          "influence_mastery": 9.6,
+          "process_mastery": 9.2,
+          "creature_scale": 9.1,
+          "net_formula": 9.2
+        },
+        "b": {
+          "self_mastery": 8.7,
+          "influence_mastery": 8.8,
+          "process_mastery": 9.0,
+          "creature_scale": 8.4,
+          "net_formula": 8.73
+        }
+      },
+      "created_at": "2026-03-01T00:04:15Z"
+    },
+    {
+      "id": "RB-003",
+      "round": "Qualifier C",
+      "being_a_id": "RL-06",
+      "being_b_id": "RL-05",
+      "winner_id": "RL-06",
+      "judge": "Helios Board",
+      "judge_notes": "RL-06 converted qualified intent into concrete next action.",
+      "scores": {
+        "a": {
+          "self_mastery": 9.0,
+          "influence_mastery": 9.2,
+          "process_mastery": 9.5,
+          "creature_scale": 9.0,
+          "net_formula": 9.18
+        },
+        "b": {
+          "self_mastery": 8.6,
+          "influence_mastery": 9.1,
+          "process_mastery": 9.3,
+          "creature_scale": 8.7,
+          "net_formula": 8.93
+        }
+      },
+      "created_at": "2026-03-01T00:06:02Z"
+    },
+    {
+      "id": "RB-004",
+      "round": "Qualifier D",
+      "being_a_id": "RL-08",
+      "being_b_id": "RL-10",
+      "winner_id": "RL-08",
+      "judge": "Forge Tribunal",
+      "judge_notes": "RL-08 had strongest process command and implementation focus.",
+      "scores": {
+        "a": {
+          "self_mastery": 9.2,
+          "influence_mastery": 9.0,
+          "process_mastery": 9.6,
+          "creature_scale": 9.1,
+          "net_formula": 9.23
+        },
+        "b": {
+          "self_mastery": 8.7,
+          "influence_mastery": 9.0,
+          "process_mastery": 9.1,
+          "creature_scale": 8.8,
+          "net_formula": 8.9
+        }
+      },
+      "created_at": "2026-03-01T00:08:44Z"
+    },
+    {
+      "id": "RB-005",
+      "round": "Semifinal",
+      "being_a_id": "RL-02",
+      "being_b_id": "RL-06",
+      "winner_id": "RL-02",
+      "judge": "Net Formula Core",
+      "judge_notes": "RL-02 held superior influence pace while preserving process clarity.",
+      "scores": {
+        "a": {
+          "self_mastery": 9.0,
+          "influence_mastery": 9.7,
+          "process_mastery": 9.2,
+          "creature_scale": 9.2,
+          "net_formula": 9.28
+        },
+        "b": {
+          "self_mastery": 9.0,
+          "influence_mastery": 9.1,
+          "process_mastery": 9.5,
+          "creature_scale": 9.0,
+          "net_formula": 9.15
+        }
+      },
+      "created_at": "2026-03-01T00:10:26Z"
+    },
+    {
+      "id": "RB-006",
+      "round": "Final",
+      "being_a_id": "RL-08",
+      "being_b_id": "RL-02",
+      "winner_id": "RL-08",
+      "judge": "Grand Judge Synthesis",
+      "judge_notes": "RL-08 won by combining certainty, implementation cadence, and clean zone action close.",
+      "scores": {
+        "a": {
+          "self_mastery": 9.3,
+          "influence_mastery": 9.1,
+          "process_mastery": 9.7,
+          "creature_scale": 9.2,
+          "net_formula": 9.33
+        },
+        "b": {
+          "self_mastery": 9.0,
+          "influence_mastery": 9.6,
+          "process_mastery": 9.2,
+          "creature_scale": 9.1,
+          "net_formula": 9.23
+        }
+      },
+      "created_at": "2026-03-01T00:13:03Z"
+    }
+  ],
+  "mock_calls": [
+    {
+      "id": "MC-001",
+      "being_id": "RL-08",
+      "title": "Booked Meeting Confirmation",
+      "lines": [
+        "Agent: Hey Sofia in Arlington, this is your Recovery follow-up. Still good for the booked call?",
+        "Lawyer: Yes, quick check-in now is perfect.",
+        "Agent: Great. On the call we will map one lane, one owner, one timeline so stalled files move.",
+        "Lawyer: That level of specificity is what I need. Send the prep notes.",
+        "Agent: Done. You will have the outline in two minutes and we start on-time."
+      ]
+    },
+    {
+      "id": "MC-002",
+      "being_id": "RL-02",
+      "title": "Cold Call to Strategy Call",
+      "lines": [
+        "Agent: Hey Maria in Dallas, this is Recovery. I will keep this under 30 seconds.",
+        "Lawyer: Okay, go ahead.",
+        "Agent: You likely have value leakage after intake. We run a 12-minute map call and find one immediate fix.",
+        "Lawyer: If it is specific and short, I can do that.",
+        "Agent: Perfect. I have Thursday 10:40 AM or Friday 2:10 PM."
+      ]
+    },
+    {
+      "id": "MC-003",
+      "being_id": "RL-01",
+      "title": "Rapport to Zone Action",
+      "lines": [
+        "Agent: Hey John in Austin, quick question. Is case recovery speed currently a focus for your team?",
+        "Lawyer: Yes, especially on older files.",
+        "Agent: That is exactly where we help. We tighten follow-up cadence and recover stranded value.",
+        "Lawyer: What is the first step?",
+        "Agent: Fifteen-minute map call this week. We will identify the single highest-leverage move."
+      ]
+    }
+  ]
+}

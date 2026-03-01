@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Valuation Challenge | Come Get Me — ACT-I</title>
+  <meta name="description" content="Think you can out-value AI? The average PI attorney leaves $47K on the table per case. Take the 3-minute Case Valuation Challenge and find out where you rank.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a1a;
+      color: #e0e0e8;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Utility ──────────────────────────────────────────── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .accent  { color: #ffcc00; }
+    .orange  { color: #ff6b35; }
+    .mono    { font-family: 'JetBrains Mono', monospace; }
+
+    /* ── Animated grain overlay ───────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    /* ── Navigation ───────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      backdrop-filter: blur(20px);
+      background: rgba(10,10,26,0.8);
+      border-bottom: 1px solid rgba(255,204,0,0.08);
+      transition: background 0.3s;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: #ffcc00; }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 22px;
+      background: #ffcc00;
+      color: #0a0a1a;
+      font-weight: 700; font-size: 0.85rem;
+      border-radius: 8px;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 24px rgba(255,204,0,0.35);
+    }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 140px 24px 100px;
+      overflow: hidden;
+    }
+    /* Radial glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 900px; height: 900px;
+      top: -200px; left: 50%; transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(255,204,0,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Grid lines */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,204,0,0.03) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,204,0,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 820px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255,107,53,0.1);
+      border: 1px solid rgba(255,107,53,0.25);
+      border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600;
+      color: #ff6b35;
+      margin-bottom: 32px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .hero-badge .pulse {
+      width: 8px; height: 8px;
+      background: #ff6b35;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .hero h1 .line-break { display: block; }
+
+    .hero-stat {
+      display: inline-flex; align-items: baseline; gap: 10px;
+      margin-bottom: 28px;
+    }
+    .hero-stat .number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 700;
+      color: #ffcc00;
+      line-height: 1;
+      text-shadow: 0 0 60px rgba(255,204,0,0.3);
+    }
+    .hero-stat .label {
+      font-size: 1.1rem;
+      color: #a0a0b8;
+      font-weight: 500;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #9898b0;
+      max-width: 600px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
+    }
+
+    .cta-group { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .cta-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 18px 44px;
+      background: linear-gradient(135deg, #ffcc00, #ffb800);
+      color: #0a0a1a;
+      font-weight: 800; font-size: 1.1rem;
+      border-radius: 12px;
+      border: none; cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 30px rgba(255,204,0,0.25);
+    }
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(255,204,0,0.4);
+    }
+    .cta-primary svg { width: 20px; height: 20px; }
+    .cta-note {
+      font-size: 0.82rem;
+      color: #6a6a80;
+    }
+    .cta-note strong { color: #9898b0; font-weight: 600; }
+
+    /* ── Pain Point Section ───────────────────────────────── */
+    .pain {
+      padding: 100px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .pain-card {
+      position: relative;
+      padding: 36px 28px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pain-card:hover {
+      border-color: rgba(255,204,0,0.2);
+      transform: translateY(-4px);
+    }
+    .pain-icon {
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,107,53,0.1);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    .pain-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .pain-card p {
+      font-size: 0.92rem;
+      color: #8888a0;
+      line-height: 1.6;
+    }
+    .pain-card .stat-highlight {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ff6b35;
+      display: block;
+      margin-top: 12px;
+    }
+
+    /* ── How It Works ─────────────────────────────────────── */
+    .how {
+      padding: 100px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #ffcc00;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 60px;
+      line-height: 1.15;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+    /* Connecting line */
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 40px; left: 16.66%; right: 16.66%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,204,0,0.15), rgba(255,107,53,0.15));
+    }
+    .step {
+      text-align: center;
+      position: relative;
+    }
+    .step-number {
+      width: 80px; height: 80px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      background: rgba(255,204,0,0.06);
+      border: 2px solid rgba(255,204,0,0.15);
+      border-radius: 50%;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffcc00;
+      position: relative;
+      z-index: 2;
+    }
+    .step h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .step p {
+      font-size: 0.9rem;
+      color: #8888a0;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    .step .time-badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 4px 12px;
+      background: rgba(255,107,53,0.1);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #ff6b35;
+    }
+
+    /* ── Leaderboard ──────────────────────────────────────── */
+    .leaderboard {
+      padding: 100px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .leaderboard-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .lb-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .lb-live {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #ff6b35;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .lb-live .dot {
+      width: 6px; height: 6px;
+      background: #ff6b35;
+      border-radius: 50%;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    .lb-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 6px;
+    }
+    .lb-table th {
+      text-align: left;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #5a5a70;
+      padding: 8px 16px;
+      font-weight: 600;
+    }
+    .lb-table th:last-child { text-align: right; }
+    .lb-table td {
+      padding: 16px;
+      background: rgba(255,255,255,0.025);
+      font-size: 0.92rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .lb-table tr td:first-child {
+      border-left: 1px solid rgba(255,255,255,0.04);
+      border-radius: 10px 0 0 10px;
+    }
+    .lb-table tr td:last-child {
+      border-right: 1px solid rgba(255,255,255,0.04);
+      border-radius: 0 10px 10px 0;
+      text-align: right;
+    }
+    .lb-table tbody tr:hover td {
+      background: rgba(255,204,0,0.04);
+      border-color: rgba(255,204,0,0.1);
+    }
+    .lb-rank {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #ffcc00;
+      width: 40px;
+    }
+    .lb-rank.top { color: #ffcc00; font-size: 1.1rem; }
+    .lb-name { color: #c8c8d8; font-weight: 500; }
+    .lb-name .anon { color: #5a5a70; }
+    .lb-score {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+    }
+    .lb-score.high { color: #4ade80; }
+    .lb-score.mid  { color: #ffcc00; }
+    .lb-score.low  { color: #ff6b35; }
+    .lb-you {
+      background: rgba(255,204,0,0.06) !important;
+      border-color: rgba(255,204,0,0.15) !important;
+    }
+    .lb-you td { font-weight: 600; }
+    .lb-you .lb-name { color: #ffcc00; }
+
+    .lb-footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 0.85rem;
+      color: #5a5a70;
+    }
+
+    /* ── Social Proof ─────────────────────────────────────── */
+    .social-proof {
+      padding: 80px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .proof-item .proof-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #ffcc00;
+      margin-bottom: 6px;
+    }
+    .proof-item .proof-label {
+      font-size: 0.85rem;
+      color: #6a6a80;
+      font-weight: 500;
+    }
+
+    /* ── Final CTA ────────────────────────────────────────── */
+    .final-cta {
+      padding: 100px 0 120px;
+      text-align: center;
+      position: relative;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      bottom: -100px; left: 50%; transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(255,107,53,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .final-cta .section-title { margin-bottom: 20px; }
+    .final-cta .sub {
+      font-size: 1.05rem;
+      color: #8888a0;
+      margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #5a5a70;
+    }
+    .footer-brand span { color: #ffcc00; }
+    .footer-legal {
+      font-size: 0.78rem;
+      color: #3a3a50;
+    }
+    .footer-tagline {
+      font-size: 0.78rem;
+      color: #4a4a60;
+      font-style: italic;
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .pain-grid, .steps, .proof-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps::before { display: none; }
+      .hero { padding: 120px 20px 80px; min-height: auto; }
+      .hero h1 { font-size: 2rem; }
+      .hero-stat .number { font-size: 2.4rem; }
+      .cta-primary { padding: 16px 36px; font-size: 1rem; width: 100%; justify-content: center; }
+      .nav-cta { padding: 8px 16px; font-size: 0.8rem; }
+      .lb-table { font-size: 0.82rem; }
+      .lb-table td, .lb-table th { padding: 12px 10px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .section-title { font-size: 1.6rem; }
+      .pain, .how, .leaderboard, .social-proof, .final-cta { padding: 60px 0; }
+    }
+
+    /* ── Animations ───────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .fade-up.d1 { animation-delay: 0.1s; }
+    .fade-up.d2 { animation-delay: 0.25s; }
+    .fade-up.d3 { animation-delay: 0.4s; }
+    .fade-up.d4 { animation-delay: 0.55s; }
+    .fade-up.d5 { animation-delay: 0.7s; }
+
+    /* Scroll-triggered fade */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="nav-logo"><span>ACT-I</span> · Come Get Me</div>
+      <a href="#challenge" class="nav-cta">Take the Challenge →</a>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ───────────────────────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="hero-content">
+      <div class="hero-badge fade-up d1">
+        <div class="pulse"></div>
+        Live Challenge · PI Attorneys Only
+      </div>
+      <h1 class="fade-up d2">
+        How accurate are<span class="line-break"> your case valuations?</span>
+      </h1>
+      <div class="hero-stat fade-up d3">
+        <span class="number">$47K</span>
+        <span class="label">left on the table — per case, on average</span>
+      </div>
+      <p class="hero-sub fade-up d4">
+        Most PI attorneys over-value or under-value their cases by tens of thousands.
+        Take the 3-minute Case Valuation Challenge and find out exactly where you stand.
+      </p>
+      <div class="cta-group fade-up d5">
+        <a href="#challenge" class="cta-primary" id="hero-cta">
+          Take the Challenge
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+        <p class="cta-note"><strong>3 minutes.</strong> Anonymous. No email required to start.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Pain Point Cards ───────────────────────────────── -->
+  <section class="pain">
+    <div class="container">
+      <div class="pain-grid">
+        <div class="pain-card reveal">
+          <div class="pain-icon">💰</div>
+          <h3>The Valuation Gap</h3>
+          <p>Studies show PI attorneys routinely miss the real value of their cases — costing clients and firms alike.</p>
+          <span class="stat-highlight">$47,000</span>
+        </div>
+        <div class="pain-card reveal">
+          <div class="pain-icon">⚖️</div>
+          <h3>Gut Feel ≠ Precision</h3>
+          <p>Experience matters. But cognitive bias, anchoring, and pattern-matching errors compound silently across every case.</p>
+          <span class="stat-highlight">73%</span>
+        </div>
+        <div class="pain-card reveal">
+          <div class="pain-icon">🔍</div>
+          <h3>Blind Spots Are Expensive</h3>
+          <p>Under-valuing loses revenue. Over-valuing damages credibility. Both cost you — and your clients never know.</p>
+          <span class="stat-highlight">Silent</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How It Works ───────────────────────────────────── -->
+  <section class="how" id="challenge">
+    <div class="container">
+      <p class="section-label reveal">How It Works</p>
+      <h2 class="section-title reveal">3 minutes. 5 scenarios.<br>The truth about your valuations.</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-number">01</div>
+          <h3>Review the Case</h3>
+          <p>You receive a condensed PI case profile — injuries, liability factors, jurisdiction, insurance details.</p>
+          <span class="time-badge">~30 sec each</span>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">02</div>
+          <h3>Submit Your Valuation</h3>
+          <p>Give your honest settlement valuation. No second-guessing. No looking anything up. Pure instinct + experience.</p>
+          <span class="time-badge">Your call</span>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">03</div>
+          <h3>See Where You Rank</h3>
+          <p>Your accuracy is scored against actual outcomes and AI-benchmarked valuations. Anonymous leaderboard placement.</p>
+          <span class="time-badge">Instant</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Leaderboard Preview ────────────────────────────── -->
+  <section class="leaderboard">
+    <div class="container">
+      <div class="leaderboard-wrapper">
+        <p class="section-label reveal">Anonymous Leaderboard</p>
+        <h2 class="section-title reveal" style="margin-bottom:32px;">Where will you land?</h2>
+        <div class="lb-header reveal">
+          <span style="font-size:0.85rem;color:#6a6a80;">Top Performers — February 2026</span>
+          <span class="lb-live"><span class="dot"></span> Live</span>
+        </div>
+        <table class="lb-table reveal">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Attorney</th>
+              <th>Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="lb-rank top">1</td>
+              <td class="lb-name">Razor_J <span class="anon">· NJ</span></td>
+              <td class="lb-score high">96.4%</td>
+            </tr>
+            <tr>
+              <td class="lb-rank top">2</td>
+              <td class="lb-name">TrialHawk <span class="anon">· FL</span></td>
+              <td class="lb-score high">94.1%</td>
+            </tr>
+            <tr>
+              <td class="lb-rank top">3</td>
+              <td class="lb-name">CaseKing22 <span class="anon">· TX</span></td>
+              <td class="lb-score high">91.8%</td>
+            </tr>
+            <tr>
+              <td class="lb-rank">4</td>
+              <td class="lb-name">VerdictQ <span class="anon">· CA</span></td>
+              <td class="lb-score mid">87.3%</td>
+            </tr>
+            <tr>
+              <td class="lb-rank">5</td>
+              <td class="lb-name">Ironclad_PI <span class="anon">· NY</span></td>
+              <td class="lb-score mid">85.9%</td>
+            </tr>
+            <tr class="lb-you">
+              <td class="lb-rank">?</td>
+              <td class="lb-name">You <span class="anon">· ???</span></td>
+              <td class="lb-score" style="color:#ffcc00;">— — —</td>
+            </tr>
+            <tr>
+              <td class="lb-rank">6</td>
+              <td class="lb-name">SettleOrNot <span class="anon">· IL</span></td>
+              <td class="lb-score low">78.2%</td>
+            </tr>
+            <tr>
+              <td class="lb-rank">7</td>
+              <td class="lb-name">DocketRider <span class="anon">· PA</span></td>
+              <td class="lb-score low">74.6%</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="lb-footer reveal">All rankings are anonymous. Only you see your score breakdown.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Social Proof ───────────────────────────────────── -->
+  <section class="social-proof">
+    <div class="container">
+      <div class="proof-grid reveal">
+        <div class="proof-item">
+          <div class="proof-number">26,000+</div>
+          <div class="proof-label">AI beings trained on legal mastery</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-number">$2.1B+</div>
+          <div class="proof-label">in case outcomes analyzed</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-number">Top 100</div>
+          <div class="proof-label">National Jury Verdicts · Twice</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Final CTA ──────────────────────────────────────── -->
+  <section class="final-cta">
+    <div class="container" style="position:relative;z-index:2;">
+      <p class="section-label reveal">Ready?</p>
+      <h2 class="section-title reveal">Prove it's not just gut feel.</h2>
+      <p class="sub reveal">
+        The best PI attorneys in the country are already on this leaderboard.
+        If you belong there — come get us.
+      </p>
+      <div class="cta-group reveal">
+        <a href="#challenge" class="cta-primary">
+          Take the Challenge
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+        <p class="cta-note">3 minutes · Anonymous · Free</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><span>ACT-I</span> · Actualized Intelligence</div>
+      <div class="footer-tagline">Built on the Unblinded Formula — integrity-first AI for legal mastery.</div>
+      <div class="footer-legal">© 2026 ACT-I. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- ─── Scroll Reveal Script ───────────────────────────── -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(el => observer.observe(el));
+    });
+  </script>
+
+</body>
+</html>

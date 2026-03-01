@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery Lawyers Colosseum - ACT-I</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+            background:
+                radial-gradient(1300px circle at 0% -20%, rgba(42, 99, 204, 0.26), transparent 48%),
+                radial-gradient(1200px circle at 95% 0%, rgba(242, 169, 0, 0.18), transparent 45%),
+                #070d19;
+            color: #e4edff;
+            min-height: 100vh;
+        }
+
+        .nav {
+            display: flex;
+            gap: 8px;
+            padding: 12px 20px;
+            background: rgba(12, 20, 36, 0.92);
+            border-bottom: 1px solid #20365f;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            backdrop-filter: blur(6px);
+        }
+        .nav a {
+            color: #8fb4ff;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.16s ease;
+        }
+        .nav a:hover,
+        .nav a.active {
+            color: #ffd15d;
+            border-color: #ffd15d;
+            background: rgba(255, 209, 93, 0.1);
+        }
+
+        .header {
+            max-width: 1120px;
+            margin: 26px auto 0;
+            padding: 0 20px;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            line-height: 1.2;
+            background: linear-gradient(120deg, #ffd15d, #86b1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header p {
+            margin-top: 9px;
+            color: #b0c5ea;
+            max-width: 900px;
+            line-height: 1.55;
+        }
+
+        .controls {
+            max-width: 1120px;
+            margin: 16px auto 0;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            border: 1px solid #264576;
+            color: #d4e3ff;
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: 0.83rem;
+            background: rgba(20, 33, 57, 0.75);
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: 1px solid #355a94;
+            background: #10203b;
+            color: #d7e5ff;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.86rem;
+            cursor: pointer;
+        }
+        .btn:hover { border-color: #ffd15d; color: #ffd15d; }
+
+        .stats-row {
+            max-width: 1120px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .stat {
+            background: linear-gradient(155deg, rgba(15, 26, 47, 0.96), rgba(11, 19, 34, 0.96));
+            border: 1px solid #25416d;
+            border-radius: 12px;
+            padding: 12px;
+        }
+        .stat .label {
+            font-size: 0.74rem;
+            color: #92add8;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .stat .value {
+            margin-top: 6px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #f7fbff;
+        }
+
+        .section {
+            max-width: 1120px;
+            margin: 22px auto;
+            padding: 0 20px;
+        }
+
+        .panel {
+            background: linear-gradient(155deg, rgba(16, 27, 49, 0.95), rgba(10, 17, 32, 0.97));
+            border: 1px solid #203a62;
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .panel h2 {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #ffd15d;
+        }
+
+        .table-wrap { overflow-x: auto; }
+
+        .leaderboard {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        .leaderboard th,
+        .leaderboard td {
+            text-align: left;
+            padding: 10px 8px;
+            border-bottom: 1px solid rgba(40, 66, 106, 0.6);
+            vertical-align: top;
+            font-size: 0.86rem;
+        }
+
+        .leaderboard th {
+            color: #9db7de;
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .rank {
+            color: #ffd15d;
+            font-weight: 700;
+            width: 46px;
+        }
+
+        .script-snippet {
+            color: #b7c8e6;
+            max-width: 260px;
+            line-height: 1.4;
+        }
+
+        .tag {
+            display: inline-flex;
+            padding: 3px 8px;
+            font-size: 0.72rem;
+            border-radius: 999px;
+            border: 1px solid #31558b;
+            color: #d5e4ff;
+            background: rgba(42, 73, 120, 0.25);
+        }
+
+        .tag.warn {
+            border-color: #826628;
+            color: #ffe1a3;
+            background: rgba(131, 100, 29, 0.25);
+        }
+
+        .battle-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .battle-card {
+            border: 1px solid #264576;
+            border-radius: 10px;
+            background: rgba(9, 16, 29, 0.9);
+            padding: 11px;
+            display: grid;
+            gap: 6px;
+        }
+
+        .battle-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+            color: #98b4de;
+            font-size: 0.78rem;
+        }
+
+        .battle-title {
+            font-weight: 700;
+            color: #eef5ff;
+            font-size: 0.92rem;
+        }
+
+        .winner {
+            color: #9cf2b4;
+            font-weight: 600;
+            font-size: 0.86rem;
+        }
+
+        .battle-note {
+            color: #b9cae8;
+            font-size: 0.84rem;
+            line-height: 1.4;
+        }
+
+        .mock-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .mock-card {
+            border: 1px solid #264576;
+            border-radius: 10px;
+            background: rgba(9, 16, 29, 0.9);
+            padding: 12px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .mock-card h3 {
+            font-size: 0.92rem;
+            color: #ffd15d;
+        }
+
+        .mock-lines {
+            display: grid;
+            gap: 6px;
+            max-height: 190px;
+            overflow: auto;
+            padding-right: 4px;
+        }
+
+        .mock-line {
+            color: #c4d4ef;
+            font-size: 0.84rem;
+            line-height: 1.4;
+            border-left: 2px solid #31558b;
+            padding-left: 7px;
+        }
+
+        .footer {
+            max-width: 1120px;
+            margin: 26px auto 0;
+            padding: 0 20px 28px;
+            color: #8ca7cf;
+            font-size: 0.82rem;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 1000px) {
+            .stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .battle-grid { grid-template-columns: 1fr; }
+            .mock-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.72rem; }
+            .controls { flex-direction: column; align-items: stretch; }
+            .actions { justify-content: stretch; }
+            .btn { width: 100%; }
+            .stats-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html">Dashboard</a>
+        <a href="battle-arena.html">Battle Arena</a>
+        <a href="tournament-brackets.html">Brackets</a>
+        <a href="email-colosseum.html">Email Colosseum</a>
+        <a href="recovery-lawyers.html" class="active">Recovery Lawyers</a>
+    </nav>
+
+    <header class="header">
+        <h1>Recovery Lawyer Outreach Colosseum</h1>
+        <p>TX pilot battle-testing cold call + SMS scripts using the Unblinded 4-Step pattern: Rapport, Pain, Agreement, Zone Action. Judges score Net Formula performance (Self, Influence, Process) plus creature scale.</p>
+    </header>
+
+    <div class="controls">
+        <div class="pill" id="sourcePill">Source: loading...</div>
+        <div class="actions">
+            <button class="btn" type="button" id="refreshBtn">Refresh</button>
+            <button class="btn" type="button" id="supabaseBtn">Pull Supabase Live</button>
+            <button class="btn" type="button" id="stopVoiceBtn">Stop TTS</button>
+        </div>
+    </div>
+
+    <section class="stats-row" id="statsRow"></section>
+
+    <section class="section">
+        <article class="panel">
+            <h2>Top Scripts</h2>
+            <div class="table-wrap">
+                <table class="leaderboard">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Being</th>
+                            <th>Lead</th>
+                            <th>Net Formula</th>
+                            <th>Self</th>
+                            <th>Influence</th>
+                            <th>Process</th>
+                            <th>Creature</th>
+                            <th>Pipeline</th>
+                            <th>Script Preview</th>
+                            <th>Mock TTS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scriptsBody">
+                        <tr><td colspan="11">Loading scripts...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+    </section>
+
+    <section class="section">
+        <article class="panel">
+            <h2>Battles</h2>
+            <div class="battle-grid" id="battlesGrid"></div>
+        </article>
+    </section>
+
+    <section class="section">
+        <article class="panel">
+            <h2>Mock Calls (TTS)</h2>
+            <div class="mock-grid" id="mockGrid"></div>
+        </article>
+    </section>
+
+    <footer class="footer">
+        <p>Supabase integration is intentionally a stub: if backend env vars are configured, this page can request live TX leads and regenerate beings at runtime. Otherwise it uses static sample JSON for local and Vercel preview compatibility.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const API_URL = '/api/recovery-lawyers/export';
+            const FALLBACK_URL = '/data/recovery_lawyers_colosseum.json';
+
+            const els = {
+                sourcePill: document.getElementById('sourcePill'),
+                statsRow: document.getElementById('statsRow'),
+                scriptsBody: document.getElementById('scriptsBody'),
+                battlesGrid: document.getElementById('battlesGrid'),
+                mockGrid: document.getElementById('mockGrid'),
+                refreshBtn: document.getElementById('refreshBtn'),
+                supabaseBtn: document.getElementById('supabaseBtn'),
+                stopVoiceBtn: document.getElementById('stopVoiceBtn')
+            };
+
+            let state = null;
+
+            const escapeHtml = (value) => String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+
+            const toNum = (value, fallback = 0) => {
+                const n = Number(value);
+                return Number.isFinite(n) ? n : fallback;
+            };
+
+            function fmtDate(ts) {
+                if (!ts) return 'n/a';
+                const d = new Date(ts);
+                if (Number.isNaN(d.getTime())) return String(ts);
+                return d.toLocaleString();
+            }
+
+            function speak(text) {
+                if (!('speechSynthesis' in window) || !text) {
+                    return;
+                }
+
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 0.95;
+                utterance.pitch = 0.96;
+
+                const voices = window.speechSynthesis.getVoices();
+                const preferred = voices.find((v) => /en-US/i.test(v.lang)) || voices[0];
+                if (preferred) {
+                    utterance.voice = preferred;
+                }
+
+                window.speechSynthesis.speak(utterance);
+            }
+
+            function stopTts() {
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                }
+            }
+
+            function getBeingMap(data) {
+                const map = new Map();
+                for (const being of (data.beings || [])) {
+                    map.set(being.id, being);
+                }
+                return map;
+            }
+
+            function rankBeings(beings) {
+                return [...(beings || [])].sort((a, b) => {
+                    const aScore = toNum(a.judge_scores && a.judge_scores.net_formula);
+                    const bScore = toNum(b.judge_scores && b.judge_scores.net_formula);
+                    return bScore - aScore;
+                });
+            }
+
+            function renderStats(data) {
+                const pilot = data.pilot_data || {};
+                const cityCount = Object.keys(pilot.city_distribution || {}).length;
+                const stageCounts = (data.leads || []).reduce((acc, lead) => {
+                    const key = lead.pipeline_stage || 'unknown';
+                    acc[key] = (acc[key] || 0) + 1;
+                    return acc;
+                }, {});
+
+                const items = [
+                    { label: 'TX Lawyers', value: toNum(pilot.total_lawyers).toLocaleString() },
+                    { label: 'Untouched New', value: toNum(pilot.untouched_new).toLocaleString() },
+                    { label: 'Cities', value: cityCount.toLocaleString() },
+                    { label: 'Beings', value: (data.beings || []).length.toLocaleString() },
+                    { label: 'Stage Mix', value: `${stageCounts.new || 0} new / ${(stageCounts.qualified || 0) + (stageCounts.meeting_booked || 0)} active` }
+                ];
+
+                els.statsRow.innerHTML = items.map((item) => `
+                    <article class="stat">
+                        <div class="label">${escapeHtml(item.label)}</div>
+                        <div class="value">${escapeHtml(item.value)}</div>
+                    </article>
+                `).join('');
+            }
+
+            function renderScripts(data) {
+                const rows = rankBeings(data.beings);
+                if (!rows.length) {
+                    els.scriptsBody.innerHTML = '<tr><td colspan="11">No beings available.</td></tr>';
+                    return;
+                }
+
+                els.scriptsBody.innerHTML = rows.map((being, idx) => {
+                    const scores = being.judge_scores || {};
+                    const preview = being.call_script && being.call_script.full
+                        ? String(being.call_script.full).slice(0, 160)
+                        : '';
+                    const pipeline = String(being.pipeline_stage || 'new');
+                    const stageClass = pipeline === 'new' ? 'tag warn' : 'tag';
+                    return `
+                        <tr>
+                            <td class="rank">${idx + 1}</td>
+                            <td>
+                                <div><strong>${escapeHtml(being.name || being.id)}</strong></div>
+                                <div style="margin-top:4px;color:#8fb4df;font-size:0.77rem;">${escapeHtml(being.creature || '')}</div>
+                            </td>
+                            <td>${escapeHtml(being.first_name || '')} in ${escapeHtml(being.city || '')}</td>
+                            <td><strong>${toNum(scores.net_formula).toFixed(2)}</strong></td>
+                            <td>${toNum(scores.self_mastery).toFixed(1)}</td>
+                            <td>${toNum(scores.influence_mastery).toFixed(1)}</td>
+                            <td>${toNum(scores.process_mastery).toFixed(1)}</td>
+                            <td>${toNum(scores.creature_scale).toFixed(1)}</td>
+                            <td><span class="${stageClass}">${escapeHtml(pipeline)}</span></td>
+                            <td class="script-snippet">${escapeHtml(preview)}...</td>
+                            <td>
+                                <button class="btn" type="button" data-action="call" data-being-id="${escapeHtml(being.id)}">Play Call</button>
+                                <button class="btn" type="button" data-action="sms" data-being-id="${escapeHtml(being.id)}" style="margin-top:6px;">Play SMS</button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            function renderBattles(data) {
+                const map = getBeingMap(data);
+                const battles = data.battles || [];
+                if (!battles.length) {
+                    els.battlesGrid.innerHTML = '<div class="battle-card">No battle records available.</div>';
+                    return;
+                }
+
+                els.battlesGrid.innerHTML = battles.map((battle) => {
+                    const a = map.get(battle.being_a_id) || { name: battle.being_a_id };
+                    const b = map.get(battle.being_b_id) || { name: battle.being_b_id };
+                    const winner = map.get(battle.winner_id) || { name: battle.winner_id };
+                    return `
+                        <article class="battle-card">
+                            <div class="battle-meta">
+                                <span>${escapeHtml(battle.round || '')}</span>
+                                <span>${escapeHtml(fmtDate(battle.created_at))}</span>
+                            </div>
+                            <div class="battle-title">${escapeHtml(a.name || '')} vs ${escapeHtml(b.name || '')}</div>
+                            <div class="winner">Winner: ${escapeHtml(winner.name || 'Unknown')}</div>
+                            <div class="battle-note">${escapeHtml(battle.judge || 'Judge')} - ${escapeHtml(battle.judge_notes || 'No judge note')}</div>
+                            <div class="battle-meta">
+                                <span>Net A: ${toNum(battle.scores && battle.scores.a && battle.scores.a.net_formula).toFixed(2)}</span>
+                                <span>Net B: ${toNum(battle.scores && battle.scores.b && battle.scores.b.net_formula).toFixed(2)}</span>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+            }
+
+            function renderMocks(data) {
+                const map = getBeingMap(data);
+                const mocks = data.mock_calls || [];
+                if (!mocks.length) {
+                    els.mockGrid.innerHTML = '<div class="mock-card">No mock calls available.</div>';
+                    return;
+                }
+
+                els.mockGrid.innerHTML = mocks.map((mock) => {
+                    const being = map.get(mock.being_id) || {};
+                    const linesHtml = (mock.lines || []).map((line) => `<div class="mock-line">${escapeHtml(line)}</div>`).join('');
+                    return `
+                        <article class="mock-card">
+                            <h3>${escapeHtml(mock.title || 'Mock Call')}</h3>
+                            <div style="color:#9cb7dc;font-size:0.8rem;">${escapeHtml(being.name || mock.being_id || '')}</div>
+                            <button class="btn" type="button" data-action="mock" data-mock-id="${escapeHtml(mock.id)}">Play Mock Call</button>
+                            <div class="mock-lines">${linesHtml}</div>
+                        </article>
+                    `;
+                }).join('');
+            }
+
+            function wireActions() {
+                document.body.addEventListener('click', (event) => {
+                    const button = event.target.closest('[data-action]');
+                    if (!button || !state) return;
+
+                    const action = button.getAttribute('data-action');
+                    if (action === 'call' || action === 'sms') {
+                        const beingId = button.getAttribute('data-being-id');
+                        const being = (state.beings || []).find((item) => item.id === beingId);
+                        if (!being) return;
+
+                        if (action === 'call') {
+                            const script = being.call_script && being.call_script.full ? being.call_script.full : '';
+                            speak(script);
+                        } else {
+                            speak(being.sms_script || '');
+                        }
+                    }
+
+                    if (action === 'mock') {
+                        const mockId = button.getAttribute('data-mock-id');
+                        const mock = (state.mock_calls || []).find((item) => item.id === mockId);
+                        if (!mock) return;
+                        speak((mock.lines || []).join(' '));
+                    }
+                });
+
+                els.stopVoiceBtn.addEventListener('click', stopTts);
+            }
+
+            async function fetchJson(url) {
+                const response = await fetch(url, { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                return response.json();
+            }
+
+            async function loadData(preferSupabase) {
+                let data = null;
+                let source = 'sample';
+
+                if (preferSupabase) {
+                    try {
+                        data = await fetchJson(`${API_URL}?source=supabase`);
+                        source = data.source || 'supabase';
+                    } catch (error) {
+                        source = 'sample (fallback)';
+                    }
+                }
+
+                if (!data) {
+                    try {
+                        data = await fetchJson(API_URL);
+                        source = data.source || source;
+                    } catch (error) {
+                        data = await fetchJson(FALLBACK_URL);
+                        source = `${data.source || 'sample'} (static file)`;
+                    }
+                }
+
+                state = data;
+                els.sourcePill.textContent = `Source: ${source} | Updated: ${fmtDate(data.generated_at)}`;
+
+                renderStats(data);
+                renderScripts(data);
+                renderBattles(data);
+                renderMocks(data);
+            }
+
+            els.refreshBtn.addEventListener('click', () => loadData(false));
+            els.supabaseBtn.addEventListener('click', () => loadData(true));
+
+            wireActions();
+            loadData(false);
+
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.getVoices();
+            }
+        })();
+    </script>
+</body>
+</html>
