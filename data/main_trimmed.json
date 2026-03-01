@@ -1,10 +1,10 @@
 {
   "stats": {
-    "total_beings": 27305,
+    "total_beings": 27355,
     "total_battles": 5000,
     "total_domains": 11,
     "max_generation": 726,
-    "generated_at": "2026-03-01T20:52:50.174279+00:00"
+    "generated_at": "2026-03-01T21:29:22.434790+00:00"
   },
   "domains": [
     {
@@ -20,7 +20,7 @@
       "name": "strategy",
       "beings_count": 1846,
       "generation_depth": 89,
-      "avg_score": 7.825,
+      "avg_score": 7.819,
       "battle_count": 500,
       "champion_name": "Market Intelligence-Omega",
       "champion_score": 10.0
@@ -29,16 +29,16 @@
       "name": "marketing",
       "beings_count": 1840,
       "generation_depth": 88,
-      "avg_score": 7.82,
+      "avg_score": 7.776,
       "battle_count": 500,
-      "champion_name": "Specificity Champion-Prime-G9-G17-G21-G25-G36-G44",
+      "champion_name": "Specificity Champion-Prime-G9-G17-G22-G30-G43",
       "champion_score": 10.0
     },
     {
       "name": "sales",
-      "beings_count": 1860,
-      "generation_depth": 90,
-      "avg_score": 7.761,
+      "beings_count": 1880,
+      "generation_depth": 92,
+      "avg_score": 7.672,
       "battle_count": 500,
       "champion_name": "Value Quantifier-Elite",
       "champion_score": 9.8
@@ -47,7 +47,7 @@
       "name": "tech",
       "beings_count": 1780,
       "generation_depth": 82,
-      "avg_score": 7.924,
+      "avg_score": 7.899,
       "battle_count": 500,
       "champion_name": "Test Strategist-X-G6-G14",
       "champion_score": 10.0
@@ -56,7 +56,7 @@
       "name": "ops",
       "beings_count": 1780,
       "generation_depth": 82,
-      "avg_score": 7.845,
+      "avg_score": 7.796,
       "battle_count": 500,
       "champion_name": "Decision Process Designer-Alpha",
       "champion_score": 9.8
@@ -65,34 +65,34 @@
       "name": "cs",
       "beings_count": 1740,
       "generation_depth": 78,
-      "avg_score": 7.793,
+      "avg_score": 7.77,
       "battle_count": 500,
-      "champion_name": "Customer-Elite",
+      "champion_name": "Segmentation Strategist-III",
       "champion_score": 9.8
     },
     {
       "name": "finance",
-      "beings_count": 1872,
-      "generation_depth": 91,
-      "avg_score": 7.727,
+      "beings_count": 1882,
+      "generation_depth": 92,
+      "avg_score": 7.666,
       "battle_count": 500,
       "champion_name": "Board Reporting-Nova",
       "champion_score": 9.8
     },
     {
       "name": "hr",
-      "beings_count": 1890,
-      "generation_depth": 93,
-      "avg_score": 7.703,
+      "beings_count": 1900,
+      "generation_depth": 94,
+      "avg_score": 7.621,
       "battle_count": 500,
       "champion_name": "Onboarding Journey Creator-Alpha",
       "champion_score": 9.8
     },
     {
       "name": "legal",
-      "beings_count": 1868,
-      "generation_depth": 91,
-      "avg_score": 7.87,
+      "beings_count": 1878,
+      "generation_depth": 92,
+      "avg_score": 7.822,
       "battle_count": 500,
       "champion_name": "Commercial Contract-X",
       "champion_score": 9.8
@@ -101,7 +101,7 @@
       "name": "product",
       "beings_count": 1710,
       "generation_depth": 75,
-      "avg_score": 7.838,
+      "avg_score": 7.825,
       "battle_count": 500,
       "champion_name": "Roadmap Strategist-II",
       "champion_score": 9.9
