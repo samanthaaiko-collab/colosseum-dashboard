@@ -1,16 +1,16 @@
 {
   "stats": {
-    "total_beings": 25957,
+    "total_beings": 26040,
     "total_battles": 5000,
     "total_domains": 11,
-    "max_generation": 695,
-    "generated_at": "2026-03-01T01:06:26.265961+00:00"
+    "max_generation": 702,
+    "generated_at": "2026-03-01T01:36:25.762346+00:00"
   },
   "domains": [
     {
       "name": "main",
-      "beings_count": 8821,
-      "generation_depth": 695,
+      "beings_count": 8884,
+      "generation_depth": 702,
       "avg_score": 0.0,
       "battle_count": 0,
       "champion_name": "Sage",
@@ -20,16 +20,16 @@
       "name": "strategy",
       "beings_count": 1736,
       "generation_depth": 78,
-      "avg_score": 8.309,
+      "avg_score": 8.372,
       "battle_count": 500,
       "champion_name": "Business Model Analyst",
       "champion_score": 9.5
     },
     {
       "name": "marketing",
-      "beings_count": 1730,
-      "generation_depth": 77,
-      "avg_score": 8.413,
+      "beings_count": 1740,
+      "generation_depth": 78,
+      "avg_score": 8.418,
       "battle_count": 500,
       "champion_name": "Specificity Champion-Elite-G6-G13-G18",
       "champion_score": 9.8
@@ -38,9 +38,9 @@
       "name": "sales",
       "beings_count": 1730,
       "generation_depth": 77,
-      "avg_score": 8.368,
+      "avg_score": 8.388,
       "battle_count": 500,
-      "champion_name": "Executive Communicator-Omega",
+      "champion_name": "Revenue",
       "champion_score": 9.5
     },
     {
@@ -56,16 +56,16 @@
       "name": "ops",
       "beings_count": 1720,
       "generation_depth": 76,
-      "avg_score": 8.452,
+      "avg_score": 8.478,
       "battle_count": 500,
-      "champion_name": "Resource Scheduler-III",
-      "champion_score": 9.8
+      "champion_name": "Decision Process Designer-Elite-G6-G13-G26-G36-G44",
+      "champion_score": 10.0
     },
     {
       "name": "cs",
       "beings_count": 1650,
       "generation_depth": 69,
-      "avg_score": 8.314,
+      "avg_score": 8.364,
       "battle_count": 500,
       "champion_name": "Renewal",
       "champion_score": 9.5
@@ -74,16 +74,16 @@
       "name": "finance",
       "beings_count": 1712,
       "generation_depth": 75,
-      "avg_score": 8.398,
+      "avg_score": 8.432,
       "battle_count": 500,
       "champion_name": "Debt Structure Designer-Nova",
       "champion_score": 10.0
     },
     {
       "name": "hr",
-      "beings_count": 1780,
-      "generation_depth": 82,
-      "avg_score": 8.318,
+      "beings_count": 1790,
+      "generation_depth": 83,
+      "avg_score": 8.32,
       "battle_count": 500,
       "champion_name": "People",
       "champion_score": 9.5
@@ -92,7 +92,7 @@
       "name": "legal",
       "beings_count": 1798,
       "generation_depth": 84,
-      "avg_score": 8.374,
+      "avg_score": 8.385,
       "battle_count": 500,
       "champion_name": "Legal-III",
       "champion_score": 10.0
@@ -101,7 +101,7 @@
       "name": "product",
       "beings_count": 1560,
       "generation_depth": 60,
-      "avg_score": 8.488,
+      "avg_score": 8.511,
       "battle_count": 500,
       "champion_name": "Product",
       "champion_score": 9.5
