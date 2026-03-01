@@ -615,6 +615,105 @@ class ColosseumData:
             row["scoring_weights"] = self._safe_json(row.get("scoring_weights")) or {}
         return personas
 
+    def load_email_sequence_rankings(self, limit: int = 10) -> Dict[str, Any]:
+        with self._connect(self.email_db) as conn:
+            if not self._table_exists(conn, "beings"):
+                return {
+                    "generated_at": datetime.now(timezone.utc).isoformat(),
+                    "type": "sequence",
+                    "limit": limit,
+                    "count": 0,
+                    "summary": {
+                        "total_sequences": 0,
+                        "with_battles": 0,
+                        "without_battles": 0,
+                        "avg_win_rate": 0.0,
+                    },
+                    "top": [],
+                    "bottom": [],
+                    "rankings": [],
+                }
+
+            rows = conn.execute(
+                """
+                SELECT
+                    id,
+                    type,
+                    content,
+                    score,
+                    wins,
+                    losses,
+                    generation,
+                    created_at,
+                    metadata,
+                    (COALESCE(wins, 0) + COALESCE(losses, 0)) AS battles,
+                    CASE
+                        WHEN (COALESCE(wins, 0) + COALESCE(losses, 0)) > 0
+                        THEN (1.0 * COALESCE(wins, 0)) / (COALESCE(wins, 0) + COALESCE(losses, 0))
+                        ELSE 0.0
+                    END AS win_rate
+                FROM beings
+                WHERE type = 'sequence'
+                """
+            ).fetchall()
+
+        rankings = [dict(r) for r in rows]
+        for row in rankings:
+            row["score"] = float(row["score"] or 0.0)
+            row["wins"] = int(row["wins"] or 0)
+            row["losses"] = int(row["losses"] or 0)
+            row["generation"] = int(row["generation"] or 0)
+            row["battles"] = int(row["battles"] or 0)
+            row["created_at"] = self._coerce_timestamp(row.get("created_at"))
+            row["metadata"] = self._safe_json(row.get("metadata"))
+            row["win_rate"] = round(float(row.get("win_rate") or 0.0), 6)
+            row["win_rate_pct"] = round(row["win_rate"] * 100.0, 2)
+
+        rankings_sorted = sorted(
+            rankings,
+            key=lambda row: (
+                row.get("win_rate", 0.0),
+                row.get("battles", 0),
+                row.get("wins", 0),
+                row.get("score", 0.0),
+            ),
+            reverse=True,
+        )
+
+        top = rankings_sorted[:limit]
+        bottom = sorted(
+            rankings,
+            key=lambda row: (
+                row.get("win_rate", 0.0),
+                -(row.get("battles", 0)),
+                row.get("losses", 0),
+                row.get("score", 0.0),
+            ),
+        )[:limit]
+
+        with_battles = [row for row in rankings if row.get("battles", 0) > 0]
+        avg_win_rate = (
+            round(sum(row["win_rate"] for row in with_battles) / len(with_battles), 6)
+            if with_battles
+            else 0.0
+        )
+
+        return {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "type": "sequence",
+            "limit": limit,
+            "count": len(rankings),
+            "summary": {
+                "total_sequences": len(rankings),
+                "with_battles": len(with_battles),
+                "without_battles": len(rankings) - len(with_battles),
+                "avg_win_rate": avg_win_rate,
+            },
+            "top": top,
+            "bottom": bottom,
+            "rankings": rankings_sorted,
+        }
+
     def export_email_snapshot(
         self,
         leaderboard_limit: int = 100,
@@ -645,6 +744,7 @@ class ColosseumData:
             ),
             "battles": self.load_email_battles(limit=battles_limit, battle_type=battle_type),
             "personas": self.load_email_personas(limit=500),
+            "sequences": self.load_email_sequence_rankings(limit=10),
         }
 
 
@@ -830,6 +930,16 @@ def api_email_export() -> Any:
             battles_limit=battles_limit,
             battle_type=battle_type,
         )
+    except FileNotFoundError:
+        return jsonify({"error": "Email arena DB not available", "db_path": data.email_db}), 503
+    return jsonify(payload)
+
+
+@app.get("/api/sequences")
+def api_sequences() -> Any:
+    limit = min(max(int(request.args.get("limit", 10)), 1), 200)
+    try:
+        payload = data.load_email_sequence_rankings(limit=limit)
     except FileNotFoundError:
         return jsonify({"error": "Email arena DB not available", "db_path": data.email_db}), 503
     return jsonify(payload)

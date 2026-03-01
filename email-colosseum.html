@@ -32,6 +32,30 @@
             display: none;
         }
 
+        .subnav {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            border: 1px solid #2a2a4a;
+            background: #10102a;
+            color: #a4a4d7;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.88em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover { color: #ffcc00; border-color: #4a4a76; }
+        .tab-btn.active { color: #ffcc00; border-color: #ffcc00; background: #19193a; }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
         .stats-row { display: flex; justify-content: center; gap: 20px; padding: 20px; flex-wrap: wrap; }
         .stat { text-align: center; background: #111128; padding: 20px 26px; border-radius: 12px; border: 1px solid #2a2a4a; min-width: 140px; }
         .stat .number { font-size: 2.1em; font-weight: bold; color: #ffcc00; }
@@ -68,6 +92,12 @@
         .leaderboard-table tbody tr:hover { background: rgba(42, 42, 74, 0.35); }
         .leaderboard-table .rank-col { width: 56px; color: #ffcc00; font-weight: bold; }
         .leaderboard-table .content-col { max-width: 420px; color: #fff; }
+        .leaderboard-table th.sortable {
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .leaderboard-table th.sortable:hover { color: #ffcc00; }
 
         .win-rate-cell { min-width: 130px; }
         .win-rate-cell .value { color: #ffcc00; font-weight: bold; font-size: 0.85em; }
@@ -221,6 +251,69 @@
         .leaderboard-table tbody tr { cursor: pointer; transition: background 0.15s; }
         .leaderboard-table tbody tr:hover { background: rgba(255, 204, 0, 0.08) !important; }
 
+        .arena-grid {
+            max-width: 980px;
+            margin: 24px auto 0;
+            padding: 0 20px;
+            display: grid;
+            gap: 16px;
+        }
+        .arena-card {
+            background: #111128;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .arena-card h3 {
+            color: #ffcc00;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        .arena-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+        }
+        .arena-pill {
+            background: #0d0d2a;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+        .arena-pill .label { color: #8080ae; font-size: 0.78em; }
+        .arena-pill .value { color: #fff; font-weight: bold; margin-top: 4px; }
+        .arena-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .arena-btn {
+            border: 1px solid #3c3c66;
+            background: #0f1030;
+            color: #d0d0f2;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.85em;
+            cursor: pointer;
+        }
+        .arena-btn:hover { color: #ffcc00; border-color: #ffcc00; }
+        .arena-chart-wrap {
+            border: 1px solid #1f1f46;
+            border-radius: 10px;
+            padding: 10px;
+            background: #0d0d2a;
+        }
+        #sequenceChart {
+            width: 100%;
+            min-height: 280px;
+            display: block;
+        }
+        .arena-note {
+            color: #888;
+            font-size: 0.85em;
+            margin-top: 8px;
+        }
+
         .footer { text-align: center; padding: 40px 20px; color: #444; font-size: 0.85em; }
 
         @media (max-width: 740px) {
@@ -237,6 +330,7 @@
         <a href="battle-arena.html">⚔️ Battle Arena</a>
         <a href="tournament-brackets.html">🏆 Brackets</a>
         <a href="email-colosseum.html" class="active">📧 Email Colosseum</a>
+        <a href="email-colosseum.html#arena-stats">📈 Arena Stats</a>
     </nav>
 
     <div class="header">
@@ -247,102 +341,177 @@
 
     <div id="errorBanner" class="error-banner"></div>
 
-    <div class="stats-row">
-        <div class="stat">
-            <div class="number" id="totalBattles">--</div>
-            <div class="label">Battles Fought</div>
-        </div>
-        <div class="stat">
-            <div class="number" id="totalBeings">--</div>
-            <div class="label">Subject Lines</div>
-        </div>
-        <div class="stat">
-            <div class="number" id="maxGeneration">--</div>
-            <div class="label">Max Generation</div>
-        </div>
-        <div class="stat">
-            <div class="number" id="totalPersonas">--</div>
-            <div class="label">Judge Personas</div>
-        </div>
+    <div class="subnav">
+        <button id="overviewTabBtn" class="tab-btn active" type="button" data-tab="overview">Overview</button>
+        <button id="arenaStatsTabBtn" class="tab-btn" type="button" data-tab="arena-stats">Arena Stats</button>
     </div>
 
-    <section class="section">
-        <h2>🏆 Leaderboard</h2>
-        <div class="table-wrap">
-            <table class="leaderboard-table" aria-label="Email Colosseum Leaderboard">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Content</th>
-                        <th>Score</th>
-                        <th>Record</th>
-                        <th>Generation</th>
-                        <th>Win Rate</th>
-                    </tr>
-                </thead>
-                <tbody id="leaderboardBody">
-                    <tr>
-                        <td colspan="6" class="loading-row">Loading leaderboard...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <div class="methodology">
-        <h3>🧠 Key Insight: Sean's 4-Step Model Predicts Winners</h3>
-        <p><strong>Hook → Truth → Pain → Solution.</strong> The data confirms it. Specificity (like hard metrics) consistently outperforms generic claims. Direct challenges often outperform soft questions. Authority plays can climb fastest when they follow truth-to-pain framing. The Colosseum isn't just testing copy; it's validating what works in real-time.</p>
-    </div>
-
-    <section class="section">
-        <h2>⚔️ Recent Battles</h2>
-        <div id="recentBattles" class="battle-list">
-            <div class="battle-card empty-row">Loading recent battles...</div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>⚖️ Judge Personas</h2>
-        <div id="personaGrid" class="persona-grid">
-            <div class="persona-card">
-                <div class="name">Loading personas...</div>
+    <div id="overviewPanel" class="tab-panel active">
+        <div class="stats-row">
+            <div class="stat">
+                <div class="number" id="totalBattles">--</div>
+                <div class="label">Battles Fought</div>
+            </div>
+            <div class="stat">
+                <div class="number" id="totalBeings">--</div>
+                <div class="label">Subject Lines</div>
+            </div>
+            <div class="stat">
+                <div class="number" id="maxGeneration">--</div>
+                <div class="label">Max Generation</div>
+            </div>
+            <div class="stat">
+                <div class="number" id="totalPersonas">--</div>
+                <div class="label">Judge Personas</div>
             </div>
         </div>
-    </section>
 
-    <div class="scoring">
-        <h2>📏 Scoring Dimensions</h2>
-        <div class="dimension">
-            <div class="icon">🔍</div>
-            <div class="name">Curiosity</div>
-            <div class="desc">Does it make me want to know more?</div>
+        <section class="section">
+            <h2>🏆 Leaderboard</h2>
+            <div class="table-wrap">
+                <table class="leaderboard-table" aria-label="Email Colosseum Leaderboard">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Content</th>
+                            <th>Score</th>
+                            <th>Record</th>
+                            <th>Generation</th>
+                            <th>Win Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <tr>
+                            <td colspan="6" class="loading-row">Loading leaderboard...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="methodology">
+            <h3>🧠 Key Insight: Sean's 4-Step Model Predicts Winners</h3>
+            <p><strong>Hook → Truth → Pain → Solution.</strong> The data confirms it. Specificity (like hard metrics) consistently outperforms generic claims. Direct challenges often outperform soft questions. Authority plays can climb fastest when they follow truth-to-pain framing. The Colosseum isn't just testing copy; it's validating what works in real-time.</p>
         </div>
-        <div class="dimension">
-            <div class="icon">🎯</div>
-            <div class="name">Relevance</div>
-            <div class="desc">Does this feel like it's for me specifically?</div>
+
+        <section class="section">
+            <h2>⚔️ Recent Battles</h2>
+            <div id="recentBattles" class="battle-list">
+                <div class="battle-card empty-row">Loading recent battles...</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>⚖️ Judge Personas</h2>
+            <div id="personaGrid" class="persona-grid">
+                <div class="persona-card">
+                    <div class="name">Loading personas...</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="scoring">
+            <h2>📏 Scoring Dimensions</h2>
+            <div class="dimension">
+                <div class="icon">🔍</div>
+                <div class="name">Curiosity</div>
+                <div class="desc">Does it make me want to know more?</div>
+            </div>
+            <div class="dimension">
+                <div class="icon">🎯</div>
+                <div class="name">Relevance</div>
+                <div class="desc">Does this feel like it's for me specifically?</div>
+            </div>
+            <div class="dimension">
+                <div class="icon">🛡️</div>
+                <div class="name">Credibility</div>
+                <div class="desc">Do I trust the sender?</div>
+            </div>
+            <div class="dimension">
+                <div class="icon">⚡</div>
+                <div class="name">Urgency</div>
+                <div class="desc">Do I feel I need to act now?</div>
+            </div>
+            <div class="dimension">
+                <div class="icon">💎</div>
+                <div class="name">Clarity</div>
+                <div class="desc">Do I understand the value in 3 seconds?</div>
+            </div>
         </div>
-        <div class="dimension">
-            <div class="icon">🛡️</div>
-            <div class="name">Credibility</div>
-            <div class="desc">Do I trust the sender?</div>
-        </div>
-        <div class="dimension">
-            <div class="icon">⚡</div>
-            <div class="name">Urgency</div>
-            <div class="desc">Do I feel I need to act now?</div>
-        </div>
-        <div class="dimension">
-            <div class="icon">💎</div>
-            <div class="name">Clarity</div>
-            <div class="desc">Do I understand the value in 3 seconds?</div>
+
+        <div class="footer">
+            <p>Email/Ad Colosseum — Domain #12</p>
+            <p>Powered by Sean Callagy's 4-Step Communication Model × Unblinded Formula</p>
+            <p style="margin-top: 8px;">Last data refresh: <span id="footerUpdated">Loading...</span></p>
         </div>
     </div>
 
-    <div class="footer">
-        <p>Email/Ad Colosseum — Domain #12</p>
-        <p>Powered by Sean Callagy's 4-Step Communication Model × Unblinded Formula</p>
-        <p style="margin-top: 8px;">Last data refresh: <span id="footerUpdated">Loading...</span></p>
+    <div id="arenaStatsPanel" class="tab-panel">
+        <div class="arena-grid">
+            <section class="arena-card">
+                <h3>Sequence Performance Snapshot</h3>
+                <div class="arena-meta">
+                    <div class="arena-pill">
+                        <div class="label">Total Sequences</div>
+                        <div class="value" id="sequenceCount">0</div>
+                    </div>
+                    <div class="arena-pill">
+                        <div class="label">With Battles</div>
+                        <div class="value" id="sequenceWithBattles">0</div>
+                    </div>
+                    <div class="arena-pill">
+                        <div class="label">No Battles</div>
+                        <div class="value" id="sequenceWithoutBattles">0</div>
+                    </div>
+                    <div class="arena-pill">
+                        <div class="label">Avg Win Rate</div>
+                        <div class="value" id="sequenceAvgWinRate">0.0%</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="arena-card">
+                <h3>Arena Exports</h3>
+                <div class="arena-actions">
+                    <button id="exportEmailJsonBtn" class="arena-btn" type="button">Export email_colosseum.json</button>
+                    <button id="exportRankingsBtn" class="arena-btn" type="button">Export rankings.json</button>
+                </div>
+                <p class="arena-note">Exports use the currently loaded live data + sequence rankings payload.</p>
+            </section>
+
+            <section class="arena-card">
+                <h3>Sequence Win Rate Graph (D3)</h3>
+                <div class="arena-chart-wrap">
+                    <svg id="sequenceChart" aria-label="Sequence win-rate chart"></svg>
+                </div>
+                <p class="arena-note">X-axis = total battles. Y-axis = win rate (%). Point color reflects performance tier.</p>
+            </section>
+
+            <section class="arena-card">
+                <h3>Rankings (Sortable)</h3>
+                <div class="table-wrap">
+                    <table class="leaderboard-table" aria-label="Sequence rankings">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="rank">Rank</th>
+                                <th class="sortable" data-sort="content">Sequence</th>
+                                <th class="sortable" data-sort="wins">Wins</th>
+                                <th class="sortable" data-sort="losses">Losses</th>
+                                <th class="sortable" data-sort="battles">Battles</th>
+                                <th class="sortable" data-sort="win_rate_pct">Win Rate</th>
+                                <th class="sortable" data-sort="score">Score</th>
+                                <th class="sortable" data-sort="generation">Gen</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sequenceTableBody">
+                            <tr>
+                                <td colspan="8" class="loading-row">Loading sequence rankings...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
     </div>
 
     <!-- Detail Modal -->
@@ -353,6 +522,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script>
         (function () {
             const DATA_URL = '/data/email_colosseum.json';
