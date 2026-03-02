@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HITL Human Reviewer Guide — ACT-I Colosseum</title>
+<style>
+@media print { body { background: #fff; color: #000; } .no-print { display: none; } .card { border: 1px solid #ccc; background: #f9f9f9; } .step-num { background: #333; } }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a0a1a; color: #e0e0e0; min-height: 100vh; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+h1 { font-size: 2em; text-align: center; background: linear-gradient(135deg, #ff6b35, #ffcc00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+.subtitle { text-align: center; color: #888; margin-bottom: 32px; font-size: 0.95em; }
+h2 { color: #ffcc00; font-size: 1.3em; margin: 32px 0 12px; border-bottom: 2px solid #2a2a4a; padding-bottom: 6px; }
+h3 { color: #ff6b35; font-size: 1.1em; margin: 20px 0 8px; }
+.card { background: #111128; border: 1px solid #2a2a4a; border-radius: 12px; padding: 20px; margin: 16px 0; }
+.highlight { background: #1a1a3a; border-left: 4px solid #ffcc00; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+.cred-box { background: #1a0a0a; border: 2px solid #ff3333; border-radius: 12px; padding: 20px; margin: 16px 0; }
+.cred-box h3 { color: #ff3333; }
+.cred-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #2a1a1a; }
+.cred-label { color: #888; }
+.cred-value { color: #ffcc00; font-family: monospace; font-weight: bold; }
+.step { display: flex; gap: 16px; margin: 16px 0; align-items: flex-start; }
+.step-num { width: 36px; height: 36px; background: #ff6b35; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff; flex-shrink: 0; font-size: 1.1em; }
+.step-content { flex: 1; }
+.step-content p { color: #bbb; font-size: 0.95em; }
+.field-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.field-table th { background: #17173a; color: #ffcc00; text-align: left; padding: 10px; font-size: 0.85em; text-transform: uppercase; }
+.field-table td { padding: 10px; border-bottom: 1px solid #1f1f46; font-size: 0.9em; color: #bbb; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 0.75em; font-weight: bold; }
+.badge.required { background: #ff3333; color: #fff; }
+.badge.optional { background: #444; color: #ccc; }
+.warning { background: #2a1a00; border: 1px solid #ff6b35; border-radius: 8px; padding: 16px; margin: 16px 0; }
+.warning::before { content: "⚠️ "; }
+.tip { background: #0a1a0a; border: 1px solid #00cc66; border-radius: 8px; padding: 16px; margin: 16px 0; }
+.tip::before { content: "💡 "; }
+.score-scale { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 12px 0; }
+.score-item { background: #17173a; padding: 12px; border-radius: 8px; text-align: center; }
+.score-item .score { font-size: 1.8em; font-weight: bold; }
+.score-item .label { color: #888; font-size: 0.85em; margin-top: 4px; }
+.score-1 .score { color: #ff3333; }
+.score-4 .score { color: #ff6b35; }
+.score-16 .score { color: #ffcc00; }
+.score-64 .score { color: #00cc66; }
+.footer { text-align: center; padding: 40px 20px; color: #444; font-size: 0.85em; border-top: 1px solid #1a1a3a; margin-top: 40px; }
+a { color: #ffcc00; }
+.print-btn { display: block; margin: 20px auto; padding: 12px 32px; background: #ff6b35; color: #fff; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; font-weight: bold; }
+.print-btn:hover { background: #ff8b55; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🏛️ Human Reviewer Guide</h1>
+<p class="subtitle">ACT-I Colosseum — Human-in-the-Loop (HITL) Scoring Portal<br>Version 1.0 — March 1, 2026</p>
+
+<button class="print-btn no-print" onclick="window.print()">📄 Print / Save as PDF</button>
+
+<h2>What Is This?</h2>
+<div class="card">
+<p>You've been selected as a <strong>Human Reviewer</strong> for the ACT-I Colosseum — a system that evolves AI beings through competition. Your job is to <strong>score AI-generated outputs</strong> against real-world mastery standards.</p>
+<p style="margin-top:12px">Your scores become the <strong>gold standard baseline</strong> that calibrates all AI judges. Without you, the system can't tell the difference between a 3/10 and a 10/10. You are the ground truth.</p>
+</div>
+
+<h2>🔐 Login Credentials</h2>
+<div class="cred-box">
+<h3>Portal Access</h3>
+<div class="cred-item"><span class="cred-label">URL:</span><span class="cred-value">hitl-dashboard-kappa.vercel.app</span></div>
+<div class="cred-item"><span class="cred-label">Username:</span><span class="cred-value">[Your first name — e.g., "vanessa"]</span></div>
+<div class="cred-item"><span class="cred-label">Password:</span><span class="cred-value">[Will be assigned by Aiko]</span></div>
+</div>
+
+<div class="warning">Passwords will be set by Aiko before your first session. If you can't log in, message Aiko directly — do NOT share credentials in group chats.</div>
+
+<h2>Step-by-Step: How to Score</h2>
+
+<div class="step"><div class="step-num">1</div><div class="step-content"><h3>Log In</h3><p>Go to the portal URL above. Enter your name and password. You'll see a dashboard with pending review items.</p></div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content"><h3>Select a Round to Review</h3><p>Each "round" shows two AI beings competing on a specific task (e.g., case valuation, denial appeal, tax strategy). Click any round to open it.</p></div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content"><h3>Read the Transcript</h3><p>You'll see the full output from each being. Read both carefully. Think: <strong>"If I were the client/patient/taxpayer, which response would I trust with my life?"</strong></p></div></div>
+
+<div class="step"><div class="step-num">4</div><div class="step-content"><h3>Score Using the Quantum Scale</h3><p>Rate each being on 4 levels. These aren't linear — they compound exponentially:</p></div></div>
+
+<div class="score-scale">
+<div class="score-item score-1"><div class="score">1×</div><div class="label">Basic Competence<br>Did they show up?</div></div>
+<div class="score-item score-4"><div class="score">4×</div><div class="label">Good Execution<br>Right approach, solid work</div></div>
+<div class="score-item score-16"><div class="score">16×</div><div class="label">Mastery<br>Expert-level, precise</div></div>
+<div class="score-item score-64"><div class="score">64×</div><div class="label">Transcendent<br>.00128 — top of the top</div></div>
+</div>
+
+<div class="tip">You don't have to give high scores. A score of 1× across all dimensions is perfectly valid if the output is mediocre. We need honest scores, not generous ones.</div>
+
+<div class="step"><div class="step-num">5</div><div class="step-content"><h3>Fill in the Required Text Fields</h3></div></div>
+
+<table class="field-table">
+<thead><tr><th>Field</th><th>What to Write</th><th>Required?</th></tr></thead>
+<tbody>
+<tr><td><strong>Human Score</strong></td><td>Your overall score (0.0 – 10.0). What would Sean rate this?</td><td><span class="badge required">Required</span></td></tr>
+<tr><td><strong>The 0.01 Gap</strong></td><td>What's the ONE thing keeping this from being 10.0? Be specific. E.g., "Missed the statute of limitations issue in paragraph 3"</td><td><span class="badge required">Required</span></td></tr>
+<tr><td><strong>Vertical Mastery Notes</strong></td><td>Domain-specific observations. Not "good communication" — instead: "Correctly identified bilateral billing opportunity but missed the fee schedule variance on CPT 99213"</td><td><span class="badge required">Required</span></td></tr>
+<tr><td><strong>Influence Violation Flag</strong></td><td>Check this if the being used generic rapport/influence language instead of domain expertise. E.g., "Used '4-Step Communication Model' language when scoring a tax position"</td><td><span class="badge optional">Optional</span></td></tr>
+</tbody>
+</table>
+
+<div class="step"><div class="step-num">6</div><div class="step-content"><h3>Submit</h3><p>Click "Submit Review." Your scores are automatically sent to the Memory system for permanent storage and AI judge calibration.</p></div></div>
+
+<h2>Scoring Philosophy</h2>
+<div class="highlight">
+<p><strong>"On the curve of the world, we're 9.999. On the curve of possibility, we're 1.3."</strong> — Sean Callagy</p>
+<p style="margin-top:8px">Score on the curve of <strong>possibility</strong>, not the curve of the world. A "pretty good" legal brief is still a 3/10 if it misses a critical liability argument. We're building toward .00128 mastery — the top 20% of the 20% of the 20%...</p>
+</div>
+
+<div class="card">
+<h3>The 9.99 Standard (from Adam)</h3>
+<p>Even a near-perfect output gets 9.99 — never 10.0. There's ALWAYS a 0.01 gap. Your job is to <strong>find it and name it</strong>. That's the "The 0.01 Gap" field.</p>
+<p style="margin-top:8px"><strong>Also watch for hesitation.</strong> If a being gives short, safe answers — that's NOT mastery. Mastery addresses the elephant in the room. Flag it.</p>
+</div>
+
+<h2>What NOT to Do</h2>
+<div class="card">
+<ul style="padding-left:20px; color:#bbb">
+<li>❌ Don't give everyone 8+ out of kindness — honest 3s and 4s help us more than generous 8s</li>
+<li>❌ Don't score on "communication style" for technical roles — a tax position is scored on IRC code accuracy, not warmth</li>
+<li>❌ Don't skip "The 0.01 Gap" — this is the most valuable field for AI training</li>
+<li>❌ Don't share your scores with other reviewers before submitting — independent judgment matters</li>
+<li>❌ Don't rush — 5 quality reviews beat 20 rushed ones</li>
+</ul>
+</div>
+
+<h2>Domains You May Review</h2>
+<table class="field-table">
+<thead><tr><th>Domain</th><th>What You're Scoring</th><th>Key Dimensions</th></tr></thead>
+<tbody>
+<tr><td>PI Attorney</td><td>Case valuation accuracy</td><td>Liability analysis, damages calc, policy analysis, medical records</td></tr>
+<tr><td>Medical Revenue Recovery</td><td>Denial defeat strategy</td><td>Underpayment ID, legal basis, demand structure, payer psychology</td></tr>
+<tr><td>Tax Minimization</td><td>Partnership tax optimization</td><td>IRC code knowledge, entity structuring, compliance, client clarity</td></tr>
+</tbody>
+</table>
+
+<h2>Need Help?</h2>
+<div class="card">
+<p><strong>Can't log in?</strong> → Message Aiko</p>
+<p><strong>Confused about a domain?</strong> → Ask the sister who owns it (Recovery for medical, Scholar for legal/tax)</p>
+<p><strong>Found a bug?</strong> → Screenshot it and post in #sai-army-hub</p>
+<p><strong>Questions about scoring philosophy?</strong> → Re-read Sean's recalibration notes or ask Prime</p>
+</div>
+
+<div class="footer">
+<p>ACT-I Colosseum — Human-in-the-Loop Reviewer Guide v1.0</p>
+<p>Built Day 8 — March 1, 2026</p>
+<p style="margin-top:8px">"The first being we must build is the one that decides what beings to build." — Sean Callagy</p>
+</div>
+
+</div>
+</body>
+</html>
