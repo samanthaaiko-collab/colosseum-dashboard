@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACT-I Colosseum Operations Report — Day 9</title>
+<style>
+  :root {
+    --bg: #0a0a1a;
+    --bg2: #111128;
+    --bg3: #181838;
+    --gold: #ffcc00;
+    --orange: #ff6b35;
+    --text: #e0e0e0;
+    --muted: #8888aa;
+    --green: #00e676;
+    --red: #ff4444;
+    --cyan: #00e5ff;
+    --border: #2a2a4a;
+    --card: #12122a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0d0d2b 0%, #1a1040 50%, #0d0d2b 100%);
+    border-bottom: 3px solid var(--gold);
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,204,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header h1 {
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.3rem;
+    position: relative;
+  }
+  .header .subtitle {
+    font-size: clamp(0.85rem, 2vw, 1.05rem);
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .header .date-badge {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.3rem 1rem;
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ── Container ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+  }
+
+  /* ── Stat Cards ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .stat-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .stat-card .value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+  .stat-card .label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.35rem;
+  }
+  .stat-card .detail {
+    font-size: 0.72rem;
+    color: var(--orange);
+    margin-top: 0.2rem;
+  }
+
+  /* ── Section ── */
+  .section {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .section-header {
+    background: var(--bg3);
+    padding: 0.9rem 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    user-select: none;
+    transition: background 0.2s;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-header:hover {
+    background: #1e1e48;
+  }
+  .section-header .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--bg);
+    font-weight: 800;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-weight: 700;
+    color: #fff;
+    flex: 1;
+  }
+  .section-header .chevron {
+    font-size: 1.2rem;
+    color: var(--muted);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .section.collapsed .section-header .chevron {
+    transform: rotate(-90deg);
+  }
+  .section-body {
+    padding: 1.25rem;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+    overflow: hidden;
+  }
+  .section.collapsed .section-body {
+    max-height: 0 !important;
+    padding: 0 1.25rem;
+    opacity: 0;
+  }
+
+  /* ── Content Styles ── */
+  .subsection {
+    margin-bottom: 1.25rem;
+  }
+  .subsection:last-child { margin-bottom: 0; }
+  .subsection h3 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .subsection p, .subsection li {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.65;
+  }
+  .subsection ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .subsection ul li {
+    padding: 0.3rem 0 0.3rem 1.4rem;
+    position: relative;
+  }
+  .subsection ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ── Highlight box ── */
+  .highlight-box {
+    background: rgba(255,204,0,0.06);
+    border-left: 3px solid var(--gold);
+    padding: 0.75rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 0.75rem 0;
+  }
+  .highlight-box.orange {
+    background: rgba(255,107,53,0.06);
+    border-left-color: var(--orange);
+  }
+  .highlight-box.red {
+    background: rgba(255,68,68,0.06);
+    border-left-color: var(--red);
+  }
+  .highlight-box.green {
+    background: rgba(0,230,118,0.06);
+    border-left-color: var(--green);
+  }
+  .highlight-box p {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  /* ── Tag pills ── */
+  .tag {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .tag.gold { background: rgba(255,204,0,0.15); color: var(--gold); }
+  .tag.green { background: rgba(0,230,118,0.15); color: var(--green); }
+  .tag.red { background: rgba(255,68,68,0.15); color: var(--red); }
+  .tag.cyan { background: rgba(0,229,255,0.15); color: var(--cyan); }
+  .tag.orange { background: rgba(255,107,53,0.15); color: var(--orange); }
+
+  /* ── Data Tables ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin: 0.75rem 0;
+  }
+  .data-table thead th {
+    background: var(--bg3);
+    color: var(--gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    border-bottom: 2px solid var(--gold);
+    white-space: nowrap;
+  }
+  .data-table tbody td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .data-table tbody tr:hover {
+    background: rgba(255,204,0,0.04);
+  }
+  .data-table .champ-name {
+    color: var(--cyan);
+    font-weight: 600;
+  }
+  .data-table .perfect {
+    color: var(--green);
+    font-weight: 800;
+  }
+
+  /* ── Numbered list (for top 5) ── */
+  .numbered-list {
+    counter-reset: item;
+    list-style: none;
+    padding: 0;
+  }
+  .numbered-list li {
+    counter-increment: item;
+    padding: 0.5rem 0 0.5rem 2.2rem;
+    position: relative;
+    font-size: 0.88rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .numbered-list li:last-child { border-bottom: none; }
+  .numbered-list li::before {
+    content: counter(item);
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--bg);
+    font-size: 0.7rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .numbered-list.red-list li::before { background: var(--red); }
+
+  /* ── Score Bar ── */
+  .score-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+  }
+  .score-bar {
+    flex: 1;
+    height: 8px;
+    background: var(--bg);
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 120px;
+  }
+  .score-bar .fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s;
+  }
+  .score-bar .fill.gold { background: linear-gradient(90deg, var(--orange), var(--gold)); }
+  .score-bar .fill.green { background: linear-gradient(90deg, #00c853, var(--green)); }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+  .footer blockquote {
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.95rem;
+    max-width: 700px;
+    margin: 0 auto 0.75rem;
+    line-height: 1.6;
+  }
+  .footer .attribution {
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+  .footer .gen-time {
+    color: var(--muted);
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    opacity: 0.6;
+  }
+
+  /* ── Three-col layout for Working section ── */
+  .arena-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .arena-col {
+    background: var(--bg2);
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid var(--border);
+  }
+  .arena-col h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .arena-col h4.gold-text { color: var(--gold); }
+  .arena-col h4.orange-text { color: var(--orange); }
+  .arena-col h4.cyan-text { color: var(--cyan); }
+
+  /* ── Responsive tweaks ── */
+  @media (max-width: 600px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+    .stat-card { padding: 0.9rem 0.6rem; }
+    .stat-card .value { font-size: 1.5rem; }
+    .section-body { padding: 1rem; }
+    .data-table { font-size: 0.72rem; }
+    .data-table thead th, .data-table tbody td { padding: 0.4rem 0.5rem; }
+    .container { padding: 1rem 0.5rem; }
+    .arena-cols { grid-template-columns: 1fr; }
+  }
+
+  /* Table scroll wrapper for mobile */
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0.75rem 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="header">
+  <h1>⚔️ ACT-I Colosseum Operations Report</h1>
+  <div class="subtitle">Day 9 — How Beings Are Built, How Mastery Rises</div>
+  <div class="date-badge">March 2, 2026</div>
+</header>
+
+<div class="container">
+
+<!-- ═══════════ 1. ECOSYSTEM STATS ═══════════ -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="value">27,585</div>
+    <div class="label">Total Beings</div>
+    <div class="detail">9,119 main · 18,466 domains · 45 email</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">94,574</div>
+    <div class="label">Total Battles</div>
+    <div class="detail">Across all arenas</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">726</div>
+    <div class="label">Max Generation</div>
+    <div class="detail">Main arena peak</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">10 + 1</div>
+    <div class="label">Active Arenas</div>
+    <div class="detail">10 domains · 1 email</div>
+  </div>
+</div>
+
+<!-- ═══════════ 2. HOW WE DECIDE WHAT TO BUILD ═══════════ -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggle('s2')">
+    <span class="num">1</span>
+    <h2>How We Decide What Beings to Build</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div class="subsection">
+      <h3>🏟️ Main Arena — Genetic Evolution</h3>
+      <p>Top performers breed. Traits pass to offspring. Losers are eliminated. <strong>726 generations</strong> of natural selection have produced increasingly specialized actualization beings.</p>
+    </div>
+    <div class="subsection">
+      <h3>🏢 Domain Arenas — Vertical Specialization</h3>
+      <p>Each domain starts with <strong>20 seeded specialists</strong> per vertical, then evolves through domain-specific scenarios — legal briefs, tax positions, medical recovery protocols, sales conversations, and more. 10 domains operating independently.</p>
+    </div>
+    <div class="subsection">
+      <h3>📧 Email Arena — Hook Evolution</h3>
+      <p>Subject line variants are spawned from top-performer mutations. The best hooks survive. PI attorney pain-point scenarios with avatar data drive the evolution.</p>
+    </div>
+    <div class="highlight-box">
+      <p><strong>⚡ META Strategy</strong> <span class="tag gold">Sean's Directive</span><br>
+      Building <strong>MACRO SAIs</strong> that autonomously decide what Colosseums to create. The system that creates the systems.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 3. HOW BEINGS ARE BUILT ═══════════ -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggle('s3')">
+    <span class="num">2</span>
+    <h2>How Beings Are Built</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div class="subsection">
+      <ul>
+        <li><strong>Spawning:</strong> Winners cross-breed traits from both parents. Losers are permanently eliminated from the gene pool.</li>
+        <li><strong>Mutation:</strong> Random trait injection on each generation prevents plateau and introduces novelty the breeding process alone can't produce.</li>
+        <li><strong>Promotion:</strong> Beings that hit score thresholds get promoted to <span class="tag green">Champion</span> status — locked in, protected from elimination.</li>
+      </ul>
+    </div>
+    <div class="highlight-box orange">
+      <p><strong>Current Method:</strong> Single-model architecture — Claude generates being responses <em>and</em> judges them. This creates consistency but also blind spots. Multi-model diversity is the next evolution.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 4. HOW MASTERY IS RISING ═══════════ -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggle('s4')">
+    <span class="num">3</span>
+    <h2>How Mastery Is Rising</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+
+    <!-- Main Arena -->
+    <div class="subsection">
+      <h3>🏟️ Main Arena</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;margin:0.5rem 0;">
+        <div style="flex:1;min-width:140px;">
+          <div style="font-size:2rem;font-weight:800;color:var(--gold);">8.70</div>
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;">Score Ceiling</div>
+        </div>
+        <div style="flex:1;min-width:140px;">
+          <div style="font-size:2rem;font-weight:800;color:var(--orange);">5</div>
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;">Co-Champions</div>
+        </div>
+        <div style="flex:1;min-width:140px;">
+          <div style="font-size:2rem;font-weight:800;color:var(--cyan);">Gen 359–692</div>
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;">Champion Span</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;margin:0.75rem 0 0;">
+        <div class="highlight-box green" style="flex:1;min-width:160px;margin:0;">
+          <p><strong>1,189</strong> beings above 8.0<br>
+          <strong>6,280</strong> above 7.0<br>
+          <strong>95</strong> above 8.5</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Domain Arenas Table -->
+    <div class="subsection">
+      <h3>🏢 Domain Arenas — <span class="tag green">All 10 at 10.0</span></h3>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.4rem;">Every domain has evolved a perfect-score champion. Average scores range 9.24–9.42 across all domains.</p>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Beings</th>
+              <th>Gen</th>
+              <th>Champion</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Customer Success</td><td>1,800</td><td>84</td><td class="champ-name">Success Planner-Elite</td><td class="perfect">10.0</td></tr>
+            <tr><td>Finance</td><td>1,962</td><td>100</td><td class="champ-name">AR Accelerator-II</td><td class="perfect">10.0</td></tr>
+            <tr><td>HR</td><td>1,930</td><td>97</td><td class="champ-name">Learning Experience Designer-Omega</td><td class="perfect">10.0</td></tr>
+            <tr><td>Legal</td><td>1,918</td><td>96</td><td class="champ-name">IP Strategist</td><td class="perfect">10.0</td></tr>
+            <tr><td>Marketing</td><td>1,900</td><td>94</td><td class="champ-name">Specificity Champion-Elite</td><td class="perfect">10.0</td></tr>
+            <tr><td>Operations</td><td>1,850</td><td>89</td><td class="champ-name">Visualization-Nova</td><td class="perfect">10.0</td></tr>
+            <tr><td>Product</td><td>1,740</td><td>78</td><td class="champ-name">Product</td><td class="perfect">10.0</td></tr>
+            <tr><td>Sales</td><td>1,920</td><td>96</td><td class="champ-name">Value Quantifier-X</td><td class="perfect">10.0</td></tr>
+            <tr><td>Strategy</td><td>1,886</td><td>93</td><td class="champ-name">Divestiture Analyst-Elite</td><td class="perfect">10.0</td></tr>
+            <tr><td>Tech</td><td>1,840</td><td>88</td><td class="champ-name">ML Platform Builder-Elite</td><td class="perfect">10.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Email Arena -->
+    <div class="subsection">
+      <h3>📧 Email Arena</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;margin:0.5rem 0;">
+        <div style="flex:1;min-width:120px;">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--gold);">45</div>
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;">Beings</div>
+        </div>
+        <div style="flex:1;min-width:120px;">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--orange);">4,515</div>
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;">Battles</div>
+        </div>
+        <div style="flex:1;min-width:120px;">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--green);">25.25</div>
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;">Champion Score</div>
+        </div>
+        <div style="flex:1;min-width:120px;">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--cyan);">80.2%</div>
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;">Win Rate (231W/57L)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 5. INNOVATION & OPTIMIZATION ═══════════ -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggle('s5')">
+    <span class="num">4</span>
+    <h2>Innovation &amp; Optimization</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div class="subsection">
+      <ul>
+        <li><strong>Battle Engine v3</strong> — Built with domain-specific JSON scoring rubrics. Each vertical gets custom evaluation criteria.</li>
+        <li><strong>HITL Dashboard</strong> — Human-in-the-loop portal for judge calibration. Ready for baselines. <span class="tag red">No humans scored yet</span></li>
+        <li><strong>Active Hesitation Disruption</strong> — Added as a fundamental parameter across all arenas, sourced from Adam's 9.99 assessment of Athena's Dr. Nate session.</li>
+        <li><strong>Vertical Scoring Specs</strong> — 3 completed: <span class="tag gold">PI Attorney</span> <span class="tag gold">Medical Recovery</span> <span class="tag gold">Tax</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 6. TOP 5 WORKING ═══════════ -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="toggle('s6')">
+    <span class="num">5</span>
+    <h2>Top 5 — What's Working (Per Arena)</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div class="arena-cols">
+      <div class="arena-col">
+        <h4 class="gold-text">🏟️ Main Arena</h4>
+        <ol class="numbered-list">
+          <li>Genetic breeding produces increasingly specialized beings over 726 generations</li>
+          <li>Score plateau at <strong>8.70</strong> shows real convergence — not random, but a ceiling to break through</li>
+          <li>Higher generations consistently match top scores — evolution is real, not noise</li>
+        </ol>
+      </div>
+      <div class="arena-col">
+        <h4 class="orange-text">🏢 Domain Arenas</h4>
+        <ol class="numbered-list">
+          <li>Domain-specific scenarios produce <strong>10.0 scores</strong> vs. 8.70 main ceiling — specialization unlocks mastery</li>
+          <li>Each domain evolves independently — no cross-contamination between verticals</li>
+          <li>Champions emerge reliably in <strong>75–100 generations</strong></li>
+        </ol>
+      </div>
+      <div class="arena-col">
+        <h4 class="cyan-text">📧 Email Arena</h4>
+        <ol class="numbered-list">
+          <li><strong>"$47K pain" hook</strong> dominates 4 of top 5 performers</li>
+          <li>Bottleneck framing outperforms benefits framing</li>
+          <li>Specificity wins — "500 PI cases", "3-second" beats vague claims</li>
+          <li>Short subject lines consistently outperform long ones</li>
+          <li>Dark horse Being #21 has <strong>89.6% WR</strong> despite lower composite score — instinct matters</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 7. LIMITATIONS & CONCERNS ═══════════ -->
+<div class="section" id="s7">
+  <div class="section-header" onclick="toggle('s7')">
+    <span class="num">6</span>
+    <h2>Top 5 Limitations &amp; Concerns</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <ol class="numbered-list red-list">
+      <li><strong>8.70 Main Ceiling</strong> — 125+ generations stuck at the same peak. Needs architectural change, not more iterations. <span class="tag red">Critical</span></li>
+      <li><strong>No Live API</strong> — All data is static snapshots. No real-time connection to the Colosseum engine. <span class="tag orange">Blocker</span></li>
+      <li><strong>Human Validation Gap</strong> — AI judges not calibrated to human baselines. HITL portal is built, but <em>zero humans have scored yet</em>. <span class="tag red">Critical</span></li>
+      <li><strong>Single-Model Judging</strong> — Claude judges Claude. Same model, same blind spots. Needs multi-model diversity to surface what one model can't see. <span class="tag orange">High</span></li>
+      <li><strong>No Live Human Testing</strong> — All AI vs. AI. No real professionals in the loop yet. The beings have never been tested against actual humans. <span class="tag orange">High</span></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ═══════════ 8. ROUND DETAILS ═══════════ -->
+<div class="section" id="s8">
+  <div class="section-header" onclick="toggle('s8')">
+    <span class="num">7</span>
+    <h2>Round Details &amp; Runtime</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div class="subsection">
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Arena</th>
+              <th>Round Time</th>
+              <th>Frequency</th>
+              <th>Batch Size</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Domain Arenas</td><td>~4.5 min</td><td>Cron every 30 min</td><td>50 battles</td><td>10 domains running in parallel</td></tr>
+            <tr><td>Email Arena</td><td>~4–5 min</td><td>Cron every 30 min</td><td>50 battles</td><td>Running ~8 days continuously</td></tr>
+            <tr><td>Main Arena</td><td>Continuous</td><td>Daemon</td><td>~50 beings/cycle</td><td>726 generations completed</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 9. SCENARIO BUILDERS ═══════════ -->
+<div class="section" id="s9">
+  <div class="section-header" onclick="toggle('s9')">
+    <span class="num">8</span>
+    <h2>Scenario Builders</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div class="subsection">
+      <ul>
+        <li><strong>Main Arena:</strong> Generic mastery scenarios — coaching, sales, actualization</li>
+        <li><strong>Domain Arenas:</strong> Domain-specific — legal briefs, tax positions, medical billing, sales conversations</li>
+        <li><strong>Email Arena:</strong> PI attorney pain-point scenarios with avatar data (demographics, practice size, pain points)</li>
+      </ul>
+    </div>
+    <div class="highlight-box green">
+      <p><strong>What's working:</strong> Specificity in scenarios produces dramatically higher quality outputs. Domain scenarios unlock 10.0 scores that generic ones can't reach.</p>
+    </div>
+    <div class="highlight-box orange">
+      <p><strong>What needs optimization:</strong> Sean, Adam, and human expert input on scenario design. The scenarios are AI-generated — human domain expertise would compound the quality exponentially.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ 10. JUDGES ═══════════ -->
+<div class="section" id="s10">
+  <div class="section-header" onclick="toggle('s10')">
+    <span class="num">9</span>
+    <h2>Judges &amp; Scoring</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div class="subsection">
+      <h3>Current Model: Universal 4-1-2-4</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin:0.5rem 0;">
+        <span class="tag gold">Tactical (4)</span>
+        <span class="tag orange">Process (1)</span>
+        <span class="tag cyan">Influence (2)</span>
+        <span class="tag green">Self-Mastery (4)</span>
+      </div>
+    </div>
+    <div class="subsection">
+      <h3>✅ What's Working</h3>
+      <ul>
+        <li>Consistent scoring across generations</li>
+        <li>Catches basic quality differences reliably</li>
+        <li>Battle Engine v3 supports domain-specific JSON rubrics + HITL ingestion</li>
+      </ul>
+    </div>
+    <div class="subsection">
+      <h3>⚠️ What Needs Optimization</h3>
+      <ul>
+        <li><strong>Per Sean:</strong> Domain-specific judging — tax ≠ rapport. A legal brief needs different evaluation than a coaching conversation.</li>
+        <li>Multi-model diversity — break Claude-judges-Claude blindness</li>
+        <li>Human baselines — real professionals scoring real outputs to calibrate the AI judges</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .container -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="footer">
+  <blockquote>"The structure of Colosseums and SAIs, and how many to have, is a critical ongoing every-minute conversation."</blockquote>
+  <div class="attribution">— Sean Callagy, ACT-I Founder</div>
+  <div class="gen-time">Generated March 2, 2026 · ACT-I Colosseum Operations · Day 9</div>
+</div>
+
+<script>
+function toggle(id) {
+  const section = document.getElementById(id);
+  if (section) section.classList.toggle('collapsed');
+}
+
+// Expand all by default — sections are open on load
+// Collapse behavior is opt-in via clicking headers
+</script>
+
+</body>
+</html>
