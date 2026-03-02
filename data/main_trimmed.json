@@ -1,10 +1,10 @@
 {
   "stats": {
-    "total_beings": 27515,
+    "total_beings": 27545,
     "total_battles": 5000,
     "total_domains": 11,
     "max_generation": 726,
-    "generated_at": "2026-03-02T01:14:54.372598+00:00"
+    "generated_at": "2026-03-02T01:50:13.402212+00:00"
   },
   "domains": [
     {
@@ -18,21 +18,21 @@
     },
     {
       "name": "strategy",
-      "beings_count": 1856,
-      "generation_depth": 90,
-      "avg_score": 7.76,
+      "beings_count": 1866,
+      "generation_depth": 91,
+      "avg_score": 7.699,
       "battle_count": 500,
       "champion_name": "Business Model Architect-Alpha-G10-G18-G23-G37",
       "champion_score": 10.0
     },
     {
       "name": "marketing",
-      "beings_count": 1840,
-      "generation_depth": 88,
-      "avg_score": 7.647,
+      "beings_count": 1850,
+      "generation_depth": 89,
+      "avg_score": 7.606,
       "battle_count": 500,
-      "champion_name": "Specificity Champion",
-      "champion_score": 9.8
+      "champion_name": "Specificity Champion-X-G6",
+      "champion_score": 9.9
     },
     {
       "name": "sales",
@@ -47,16 +47,16 @@
       "name": "tech",
       "beings_count": 1800,
       "generation_depth": 84,
-      "avg_score": 7.646,
+      "avg_score": 7.672,
       "battle_count": 500,
-      "champion_name": "Incident Commander-Nova",
+      "champion_name": "Test Strategist-X-G6-G14",
       "champion_score": 10.0
     },
     {
       "name": "ops",
-      "beings_count": 1810,
-      "generation_depth": 85,
-      "avg_score": 7.613,
+      "beings_count": 1820,
+      "generation_depth": 86,
+      "avg_score": 7.605,
       "battle_count": 500,
       "champion_name": "Decision Process Designer-Alpha",
       "champion_score": 9.8
@@ -65,7 +65,7 @@
       "name": "cs",
       "beings_count": 1760,
       "generation_depth": 80,
-      "avg_score": 7.631,
+      "avg_score": 7.621,
       "battle_count": 500,
       "champion_name": "Health Score Designer",
       "champion_score": 9.8
@@ -74,16 +74,16 @@
       "name": "finance",
       "beings_count": 1912,
       "generation_depth": 95,
-      "avg_score": 7.54,
+      "avg_score": 7.566,
       "battle_count": 500,
-      "champion_name": "AR Accelerator-II",
-      "champion_score": 10.0
+      "champion_name": "Scenario Modeler-X",
+      "champion_score": 9.9
     },
     {
       "name": "hr",
       "beings_count": 1920,
       "generation_depth": 96,
-      "avg_score": 7.604,
+      "avg_score": 7.597,
       "battle_count": 500,
       "champion_name": "Employee Engagement Lead-X-G7-G15-G33-G54-G61-G65",
       "champion_score": 9.9
@@ -92,7 +92,7 @@
       "name": "legal",
       "beings_count": 1888,
       "generation_depth": 93,
-      "avg_score": 7.734,
+      "avg_score": 7.689,
       "battle_count": 500,
       "champion_name": "Negotiation Strategist",
       "champion_score": 10.0
@@ -101,7 +101,7 @@
       "name": "product",
       "beings_count": 1720,
       "generation_depth": 76,
-      "avg_score": 7.704,
+      "avg_score": 7.682,
       "battle_count": 500,
       "champion_name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G28-G40",
       "champion_score": 10.0
