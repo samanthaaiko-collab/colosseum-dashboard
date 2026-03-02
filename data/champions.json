@@ -1,72 +1,182 @@
 [
   {
+    "id": "B-0a14f013",
     "name": "Ash",
     "generation": 359,
     "best_score": 8.7,
+    "avg_score": 7.859999999999999,
     "wins": 4,
     "losses": 1
   },
   {
+    "id": "B-01712daf",
     "name": "Flint",
     "generation": 563,
     "best_score": 8.7,
+    "avg_score": 7.416666666666665,
     "wins": 4,
     "losses": 8
   },
   {
+    "id": "B-d37eb055",
     "name": "Helios",
     "generation": 652,
     "best_score": 8.7,
+    "avg_score": 7.757142857142857,
     "wins": 4,
     "losses": 3
   },
   {
+    "id": "B-9fdbbf89",
     "name": "Briar",
     "generation": 709,
     "best_score": 8.7,
+    "avg_score": 7.749999999999999,
     "wins": 4,
     "losses": 2
   },
   {
+    "id": "B-32533de1",
     "name": "Ridge",
     "generation": 501,
     "best_score": 8.7,
+    "avg_score": 7.6,
     "wins": 2,
     "losses": 3
   },
   {
+    "id": "B-9e80b884",
     "name": "Rhea",
     "generation": 692,
     "best_score": 8.7,
+    "avg_score": 8.2,
     "wins": 2,
     "losses": 1
   },
   {
+    "id": "B-1150d3d3",
     "name": "Spark",
     "generation": 701,
     "best_score": 8.7,
+    "avg_score": 7.660000000000001,
     "wins": 2,
     "losses": 3
   },
   {
+    "id": "B-53343215",
     "name": "Wren",
     "generation": 603,
     "best_score": 8.6,
+    "avg_score": 7.75,
     "wins": 4,
     "losses": 2
   },
   {
+    "id": "B-67c02994",
     "name": "Sage",
     "generation": 33,
     "best_score": 8.5,
+    "avg_score": 7.509523809523809,
     "wins": 18,
     "losses": 3
   },
   {
+    "id": "B-c51b7516",
     "name": "Atlas",
     "generation": 116,
     "best_score": 8.5,
+    "avg_score": 7.661538461538462,
     "wins": 10,
     "losses": 3
+  },
+  {
+    "id": "B-8901db95",
+    "name": "Ash",
+    "generation": 119,
+    "best_score": 8.5,
+    "avg_score": 7.64,
+    "wins": 10,
+    "losses": 5
+  },
+  {
+    "id": "B-83023fed",
+    "name": "Rain",
+    "generation": 127,
+    "best_score": 8.5,
+    "avg_score": 7.688888888888889,
+    "wins": 9,
+    "losses": 0
+  },
+  {
+    "id": "B-bf59995d",
+    "name": "Atlas",
+    "generation": 538,
+    "best_score": 8.5,
+    "avg_score": 7.6000000000000005,
+    "wins": 9,
+    "losses": 5
+  },
+  {
+    "id": "B-962c980e",
+    "name": "Selene",
+    "generation": 120,
+    "best_score": 8.5,
+    "avg_score": 7.490909090909091,
+    "wins": 8,
+    "losses": 3
+  },
+  {
+    "id": "B-04ef6322",
+    "name": "Coral",
+    "generation": 611,
+    "best_score": 8.5,
+    "avg_score": 7.5307692307692315,
+    "wins": 8,
+    "losses": 5
+  },
+  {
+    "id": "B-dcb5cca5",
+    "name": "Prometheus",
+    "generation": 6,
+    "best_score": 8.5,
+    "avg_score": 7.536363636363637,
+    "wins": 7,
+    "losses": 4
+  },
+  {
+    "id": "B-c3c71a4b",
+    "name": "Onyx",
+    "generation": 302,
+    "best_score": 8.5,
+    "avg_score": 7.642857142857143,
+    "wins": 7,
+    "losses": 0
+  },
+  {
+    "id": "B-7f12f7bd",
+    "name": "Orion",
+    "generation": 653,
+    "best_score": 8.5,
+    "avg_score": 7.691666666666666,
+    "wins": 7,
+    "losses": 5
+  },
+  {
+    "id": "B-d206ebf3",
+    "name": "River",
+    "generation": 190,
+    "best_score": 8.5,
+    "avg_score": 7.675000000000001,
+    "wins": 6,
+    "losses": 2
+  },
+  {
+    "id": "B-4669e4c0",
+    "name": "Prometheus",
+    "generation": 201,
+    "best_score": 8.5,
+    "avg_score": 7.900000000000001,
+    "wins": 6,
+    "losses": 0
   }
 ]

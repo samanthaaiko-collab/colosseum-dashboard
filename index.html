@@ -840,13 +840,14 @@
 
         els.globalLeaderboard.innerHTML = champs.map((c, idx) => {
           const medal = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}`;
+          const winRate = (c.wins + c.losses) > 0 ? ((c.wins / (c.wins + c.losses)) * 100).toFixed(1) : "0";
           return `
-            <tr>
+            <tr style="cursor:pointer;" onclick="openBeingProfile(${JSON.stringify(c).replace(/"/g,'&quot;')})">
               <td>${medal}</td>
               <td><strong>${escapeHtml(c.name)}</strong></td>
               <td>Gen ${numberFmt(c.generation)}</td>
               <td class="${scoreClass(c.best_score)}">${(c.best_score || 0).toFixed(2)}</td>
-              <td>${c.wins || 0}/${c.losses || 0}</td>
+              <td>${c.wins || 0}/${c.losses || 0} (${winRate}%)</td>
             </tr>
           `;
         }).join("");
@@ -997,6 +998,46 @@
         els.modal.setAttribute("aria-hidden", "true");
         state.selectedDomain = null;
         renderDomainSidebar();
+      }
+
+      /* ───────── Being Profile Modal ───────── */
+      function openBeingProfile(being) {
+        const b = typeof being === 'string' ? JSON.parse(being) : being;
+        const winRate = (b.wins + b.losses) > 0 ? ((b.wins / (b.wins + b.losses)) * 100).toFixed(1) : "0";
+        
+        els.modalTitle.textContent = `⚔️ ${b.name}`;
+        els.modalMeta.textContent = `Generation ${b.generation} · Best Score: ${(b.best_score || 0).toFixed(2)} · Win Rate: ${winRate}%`;
+        els.modalChampCount.textContent = "Profile";
+        
+        let html = `
+          <tr><td colspan="5" style="padding:16px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+              <div style="background:rgba(255,204,0,0.08); padding:12px; border-radius:8px; text-align:center;">
+                <div style="font-size:2em; font-weight:800; color:#ffcc00;">${(b.best_score || 0).toFixed(2)}</div>
+                <div class="muted">Best Score</div>
+              </div>
+              <div style="background:rgba(0,204,102,0.08); padding:12px; border-radius:8px; text-align:center;">
+                <div style="font-size:2em; font-weight:800; color:#00cc66;">${winRate}%</div>
+                <div class="muted">Win Rate</div>
+              </div>
+              <div style="background:rgba(255,107,53,0.08); padding:12px; border-radius:8px; text-align:center;">
+                <div style="font-size:1.5em; font-weight:700; color:#ff6b35;">${b.wins || 0}W / ${b.losses || 0}L</div>
+                <div class="muted">Record</div>
+              </div>
+              <div style="background:rgba(136,136,255,0.08); padding:12px; border-radius:8px; text-align:center;">
+                <div style="font-size:1.5em; font-weight:700; color:#88f;">Gen ${b.generation}</div>
+                <div class="muted">Generation</div>
+              </div>
+            </div>
+            ${b.avg_score ? `<div class="muted" style="margin-bottom:8px;">Average Score: ${b.avg_score.toFixed(2)}</div>` : ''}
+            ${b.lineage ? `<div class="muted" style="margin-bottom:8px;">Lineage: ${escapeHtml(b.lineage)}</div>` : ''}
+            ${b.parents && b.parents !== '[]' ? `<div class="muted">Parents: ${escapeHtml(b.parents)}</div>` : '<div class="muted">Origin being (no parents)</div>'}
+          </td></tr>
+        `;
+        
+        els.modalChampRows.innerHTML = html;
+        els.modal.classList.add("open");
+        els.modal.setAttribute("aria-hidden", "false");
       }
 
       /* ───────── Footer Timestamp ───────── */

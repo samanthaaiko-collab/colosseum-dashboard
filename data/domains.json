@@ -3,9 +3,10 @@
     "name": "cs",
     "beings": 1770,
     "generation": 81,
-    "battles": 9004,
+    "battles": 9017,
     "champions": [
       {
+        "id": "B-dc4e3ee6",
         "name": "Success Planner-Elite",
         "best_score": 10.0,
         "wins": 53,
@@ -13,6 +14,7 @@
         "generation": 2
       },
       {
+        "id": "B-08fd4b70",
         "name": "Training Designer-III-G7-G30-G50-G59",
         "best_score": 10.0,
         "wins": 2,
@@ -20,25 +22,39 @@
         "generation": 59
       },
       {
+        "id": "9b4b49ae-de6e-4e30-b9ff-5c25b30a9620",
         "name": "Onboarding",
         "best_score": 9.8,
         "wins": 66,
         "losses": 167,
         "generation": 0
+      },
+      {
+        "id": "B-f46242e3",
+        "name": "Milestone Celebrator-Omega",
+        "best_score": 9.8,
+        "wins": 55,
+        "losses": 182,
+        "generation": 3
+      },
+      {
+        "id": "B-6f4b53dd",
+        "name": "Issue Resolver-Prime",
+        "best_score": 9.8,
+        "wins": 48,
+        "losses": 182,
+        "generation": 0
       }
     ]
-  },
-  {
-    "name": "executive",
-    "error": "no such table: beings"
   },
   {
     "name": "finance",
     "beings": 1912,
     "generation": 95,
-    "battles": 8946,
+    "battles": 8957,
     "champions": [
       {
+        "id": "B-e96df423",
         "name": "AR Accelerator-II",
         "best_score": 10.0,
         "wins": 46,
@@ -46,6 +62,7 @@
         "generation": 3
       },
       {
+        "id": "B-21368903",
         "name": "Covenant Monitor-II",
         "best_score": 10.0,
         "wins": 46,
@@ -53,10 +70,27 @@
         "generation": 2
       },
       {
+        "id": "B-cca252e3",
         "name": "Fraud Detector-Prime",
         "best_score": 10.0,
         "wins": 48,
         "losses": 174,
+        "generation": 5
+      },
+      {
+        "id": "B-ced0b535",
+        "name": "Financial-Omega",
+        "best_score": 10.0,
+        "wins": 57,
+        "losses": 177,
+        "generation": 0
+      },
+      {
+        "id": "B-ffc9a70f",
+        "name": "Scenario Modeler-Elite",
+        "best_score": 10.0,
+        "wins": 65,
+        "losses": 164,
         "generation": 5
       }
     ]
@@ -65,9 +99,10 @@
     "name": "hr",
     "beings": 1920,
     "generation": 96,
-    "battles": 9073,
+    "battles": 9083,
     "champions": [
       {
+        "id": "B-3a2c6296",
         "name": "Learning Experience Designer-Omega",
         "best_score": 10.0,
         "wins": 47,
@@ -75,18 +110,36 @@
         "generation": 1
       },
       {
+        "id": "B-eef0d1e4",
         "name": "Career Path Designer-Alpha",
         "best_score": 10.0,
         "wins": 52,
-        "losses": 147,
+        "losses": 148,
         "generation": 4
       },
       {
+        "id": "B-2225978f",
         "name": "Employee Engagement Lead-X-G7-G15-G33-G54-G61-G65",
         "best_score": 9.9,
         "wins": 1,
         "losses": 4,
         "generation": 65
+      },
+      {
+        "id": "54ceccb9-e9f8-48ad-9102-e03de9d62728",
+        "name": "People",
+        "best_score": 9.8,
+        "wins": 73,
+        "losses": 157,
+        "generation": 0
+      },
+      {
+        "id": "B-e7abc6d2",
+        "name": "Compensation Strategist-II",
+        "best_score": 9.8,
+        "wins": 48,
+        "losses": 166,
+        "generation": 2
       }
     ]
   },
@@ -94,9 +147,10 @@
     "name": "legal",
     "beings": 1888,
     "generation": 93,
-    "battles": 9062,
+    "battles": 9072,
     "champions": [
       {
+        "id": "b374cdde-7197-4bce-8d60-cca47a3e617a",
         "name": "IP Strategist",
         "best_score": 10.0,
         "wins": 78,
@@ -104,6 +158,7 @@
         "generation": 0
       },
       {
+        "id": "B-d496d15e",
         "name": "Patent Portfolio Manager-II",
         "best_score": 10.0,
         "wins": 50,
@@ -111,10 +166,27 @@
         "generation": 3
       },
       {
+        "id": "B-081a9dd5",
         "name": "Term Sheet Designer-Nova",
         "best_score": 10.0,
         "wins": 46,
         "losses": 142,
+        "generation": 4
+      },
+      {
+        "id": "B-6092421a",
+        "name": "Negotiation Strategist",
+        "best_score": 10.0,
+        "wins": 77,
+        "losses": 163,
+        "generation": 0
+      },
+      {
+        "id": "B-33610cc5",
+        "name": "AI and Ethics Counsel-X",
+        "best_score": 10.0,
+        "wins": 68,
+        "losses": 165,
         "generation": 4
       }
     ]
@@ -123,9 +195,10 @@
     "name": "marketing",
     "beings": 1870,
     "generation": 91,
-    "battles": 8956,
+    "battles": 8970,
     "champions": [
       {
+        "id": "B-6df77472",
         "name": "Specificity Champion-Prime-G9-G17-G22-G30-G43",
         "best_score": 10.0,
         "wins": 3,
@@ -133,6 +206,7 @@
         "generation": 43
       },
       {
+        "id": "B-bcf997f1",
         "name": "Specificity Champion-Prime-G9-G17-G21-G25-G36-G44",
         "best_score": 10.0,
         "wins": 6,
@@ -140,11 +214,28 @@
         "generation": 44
       },
       {
+        "id": "B-ce21483a",
         "name": "Specificity Champion-X-G6",
         "best_score": 9.9,
         "wins": 13,
         "losses": 26,
         "generation": 6
+      },
+      {
+        "id": "ac65a993-2285-4e55-b2c3-9bceec05539e",
+        "name": "Technical Marketer",
+        "best_score": 9.8,
+        "wins": 66,
+        "losses": 167,
+        "generation": 0
+      },
+      {
+        "id": "B-3bc73c8b",
+        "name": "Conversion Optimizer-Elite",
+        "best_score": 9.8,
+        "wins": 49,
+        "losses": 176,
+        "generation": 1
       }
     ]
   },
@@ -152,9 +243,10 @@
     "name": "ops",
     "beings": 1830,
     "generation": 87,
-    "battles": 9027,
+    "battles": 9040,
     "champions": [
       {
+        "id": "B-54c87216",
         "name": "Pull System Designer-X-G10",
         "best_score": 10.0,
         "wins": 11,
@@ -162,6 +254,7 @@
         "generation": 10
       },
       {
+        "id": "B-1b97c1e1",
         "name": "Decision Process Designer-Elite-G6-G13-G26-G36-G44",
         "best_score": 10.0,
         "wins": 8,
@@ -169,11 +262,28 @@
         "generation": 44
       },
       {
+        "id": "B-c2d5790b",
         "name": "Handoff Optimizer-Omega",
         "best_score": 9.8,
         "wins": 52,
         "losses": 171,
         "generation": 4
+      },
+      {
+        "id": "B-e4d7cded",
+        "name": "Risk Mitigator",
+        "best_score": 9.8,
+        "wins": 56,
+        "losses": 146,
+        "generation": 1
+      },
+      {
+        "id": "B-772e45e0",
+        "name": "Waste Eliminator-Nova",
+        "best_score": 9.8,
+        "wins": 60,
+        "losses": 155,
+        "generation": 1
       }
     ]
   },
@@ -181,9 +291,10 @@
     "name": "product",
     "beings": 1720,
     "generation": 76,
-    "battles": 9073,
+    "battles": 9087,
     "champions": [
       {
+        "id": "b294725e-e0a1-453b-a90f-940aa304adf4",
         "name": "Product",
         "best_score": 10.0,
         "wins": 75,
@@ -191,6 +302,7 @@
         "generation": 0
       },
       {
+        "id": "B-dd7d98f6",
         "name": "Performance Advocate-III",
         "best_score": 10.0,
         "wins": 44,
@@ -198,11 +310,28 @@
         "generation": 5
       },
       {
+        "id": "B-0d7ae431",
         "name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G28-G40",
         "best_score": 10.0,
         "wins": 8,
         "losses": 10,
         "generation": 40
+      },
+      {
+        "id": "B-57da70c5",
+        "name": "Prioritization-II",
+        "best_score": 9.9,
+        "wins": 58,
+        "losses": 178,
+        "generation": 0
+      },
+      {
+        "id": "B-00255ea7",
+        "name": "Roadmap Strategist-II",
+        "best_score": 9.9,
+        "wins": 77,
+        "losses": 134,
+        "generation": 4
       }
     ]
   },
@@ -210,9 +339,10 @@
     "name": "sales",
     "beings": 1890,
     "generation": 93,
-    "battles": 9090,
+    "battles": 9099,
     "champions": [
       {
+        "id": "B-6a7379da",
         "name": "Value Quantifier-X",
         "best_score": 10.0,
         "wins": 61,
@@ -220,6 +350,7 @@
         "generation": 0
       },
       {
+        "id": "B-29bf0c49",
         "name": "Executive Communicator-Alpha-G9",
         "best_score": 10.0,
         "wins": 11,
@@ -227,11 +358,28 @@
         "generation": 9
       },
       {
+        "id": "B-b74b5639",
         "name": "Executive Communicator-III-G12",
         "best_score": 10.0,
         "wins": 6,
         "losses": 23,
         "generation": 12
+      },
+      {
+        "id": "B-0e43832f",
+        "name": "Executive Communicator-Elite-G12-G19-G37-G56",
+        "best_score": 10.0,
+        "wins": 5,
+        "losses": 8,
+        "generation": 56
+      },
+      {
+        "id": "6bc608b0-7c19-4cf3-bc82-f97e0fb9de77",
+        "name": "Discovery",
+        "best_score": 9.8,
+        "wins": 69,
+        "losses": 165,
+        "generation": 0
       }
     ]
   },
@@ -239,9 +387,10 @@
     "name": "strategy",
     "beings": 1866,
     "generation": 91,
-    "battles": 9136,
+    "battles": 9148,
     "champions": [
       {
+        "id": "B-e55348ce",
         "name": "Divestiture Analyst-Elite",
         "best_score": 10.0,
         "wins": 61,
@@ -249,6 +398,7 @@
         "generation": 0
       },
       {
+        "id": "B-ee1ef3ac",
         "name": "Market Intelligence-Omega",
         "best_score": 10.0,
         "wins": 62,
@@ -256,11 +406,28 @@
         "generation": 2
       },
       {
+        "id": "B-2f619933",
         "name": "Business Model Architect-G8-G22-G32",
         "best_score": 10.0,
         "wins": 5,
         "losses": 9,
         "generation": 32
+      },
+      {
+        "id": "B-99197919",
+        "name": "Business Model Architect-Alpha-G10-G18-G23-G37",
+        "best_score": 10.0,
+        "wins": 7,
+        "losses": 13,
+        "generation": 37
+      },
+      {
+        "id": "B-21e9124d",
+        "name": "Business Model Architect-G9-G14-G18-G25-G37",
+        "best_score": 10.0,
+        "wins": 6,
+        "losses": 13,
+        "generation": 37
       }
     ]
   },
@@ -268,9 +435,10 @@
     "name": "tech",
     "beings": 1800,
     "generation": 84,
-    "battles": 9091,
+    "battles": 9101,
     "champions": [
       {
+        "id": "B-6a7ea38f",
         "name": "ML Platform Builder-Elite",
         "best_score": 10.0,
         "wins": 53,
@@ -278,6 +446,7 @@
         "generation": 5
       },
       {
+        "id": "B-c1992451",
         "name": "AI Integration-Prime",
         "best_score": 10.0,
         "wins": 51,
@@ -285,11 +454,28 @@
         "generation": 5
       },
       {
+        "id": "B-cc53dc50",
         "name": "Incident Commander-Nova",
         "best_score": 10.0,
         "wins": 49,
         "losses": 158,
         "generation": 2
+      },
+      {
+        "id": "B-55cdde3e",
+        "name": "DevOps Wizard-II",
+        "best_score": 10.0,
+        "wins": 53,
+        "losses": 177,
+        "generation": 0
+      },
+      {
+        "id": "B-98047214",
+        "name": "Search Engineer-Nova",
+        "best_score": 10.0,
+        "wins": 50,
+        "losses": 146,
+        "generation": 1
       }
     ]
   }

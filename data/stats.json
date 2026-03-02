@@ -1,6 +1,9 @@
 {
-  "total_beings": 9119,
-  "total_battles": 0,
+  "total_beings": 27585,
+  "main_beings": 9119,
+  "domain_beings": 18466,
+  "total_battles": 90574,
   "max_generation": 726,
-  "last_updated": "2026-03-01T22:20:00-05:00"
+  "active_domains": 10,
+  "last_updated": "2026-03-01T22:30:00-05:00"
 }
