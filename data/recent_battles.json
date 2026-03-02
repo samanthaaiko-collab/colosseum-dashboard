@@ -1,1 +1,82 @@
-[]
+[
+  {
+    "winner": "Success Planner-Elite",
+    "loser": "Training Designer-III-G7-G30-G50-G59",
+    "winner_score": 10.0,
+    "loser_score": 9.4,
+    "domain": "cs",
+    "timestamp": "2026-03-01T22:14:00-05:00"
+  },
+  {
+    "winner": "IP Strategist",
+    "loser": "Patent Portfolio Manager-II",
+    "winner_score": 10.0,
+    "loser_score": 9.7,
+    "domain": "legal",
+    "timestamp": "2026-03-01T22:12:00-05:00"
+  },
+  {
+    "winner": "AR Accelerator-II",
+    "loser": "Covenant Monitor-II",
+    "winner_score": 10.0,
+    "loser_score": 9.8,
+    "domain": "finance",
+    "timestamp": "2026-03-01T22:09:00-05:00"
+  },
+  {
+    "winner": "Value Quantifier-X",
+    "loser": "Executive Communicator-Alpha-G9",
+    "winner_score": 10.0,
+    "loser_score": 9.6,
+    "domain": "sales",
+    "timestamp": "2026-03-01T22:07:00-05:00"
+  },
+  {
+    "winner": "ML Platform Builder-Elite",
+    "loser": "Incident Commander-Nova",
+    "winner_score": 10.0,
+    "loser_score": 9.5,
+    "domain": "tech",
+    "timestamp": "2026-03-01T22:04:00-05:00"
+  },
+  {
+    "winner": "Pull System Designer-X-G10",
+    "loser": "Handoff Optimizer-Omega",
+    "winner_score": 10.0,
+    "loser_score": 9.2,
+    "domain": "ops",
+    "timestamp": "2026-03-01T22:01:00-05:00"
+  },
+  {
+    "winner": "Learning Experience Designer-Omega",
+    "loser": "Employee Engagement Lead-X-G7-G15-G33-G54-G61-G65",
+    "winner_score": 10.0,
+    "loser_score": 9.5,
+    "domain": "hr",
+    "timestamp": "2026-03-01T21:58:00-05:00"
+  },
+  {
+    "winner": "Divestiture Analyst-Elite",
+    "loser": "Business Model Architect-G8-G22-G32",
+    "winner_score": 10.0,
+    "loser_score": 9.3,
+    "domain": "strategy",
+    "timestamp": "2026-03-01T21:55:00-05:00"
+  },
+  {
+    "winner": "Specificity Champion-Prime-G9-G17-G22-G30-G43",
+    "loser": "Specificity Champion-X-G6",
+    "winner_score": 10.0,
+    "loser_score": 9.6,
+    "domain": "marketing",
+    "timestamp": "2026-03-01T21:52:00-05:00"
+  },
+  {
+    "winner": "Product",
+    "loser": "Jobs-to-be-Done Analyst-Prime-G10-G18-G28-G40",
+    "winner_score": 10.0,
+    "loser_score": 9.8,
+    "domain": "product",
+    "timestamp": "2026-03-01T21:49:00-05:00"
+  }
+]

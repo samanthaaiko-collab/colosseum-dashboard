@@ -7,8 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="https://cdn.jsdelivr.net/npm/diff@5.2.0/dist/diff.min.js"></script>
     <style>
       :root {
         --navy: #1a2744;
@@ -122,8 +120,8 @@
 
       .main {
         padding: 20px;
-        display: grid;
-        grid-template-rows: auto auto auto 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 16px;
       }
 
@@ -162,7 +160,7 @@
 
       .stats-grid {
         display: grid;
-        grid-template-columns: repeat(5, minmax(130px, 1fr));
+        grid-template-columns: repeat(4, minmax(130px, 1fr));
         gap: 12px;
       }
 
@@ -263,45 +261,10 @@
       .score-tier-silver { color: var(--silver); }
       .score-tier-bronze { color: var(--bronze); }
 
-      .domain-split {
+      .bottom-grid {
         display: grid;
-        grid-template-columns: 0.95fr 1.05fr;
+        grid-template-columns: 1fr 1fr;
         gap: 12px;
-        min-height: 380px;
-      }
-
-      #treeCanvas {
-        width: 100%;
-        height: 360px;
-        border: 1px solid rgba(35, 51, 86, 0.8);
-        border-radius: 10px;
-        background: linear-gradient(180deg, rgba(16, 24, 43, 0.8), rgba(10, 16, 29, 0.98));
-      }
-
-      .activity-feed {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        max-height: 320px;
-        overflow: auto;
-        padding-right: 6px;
-      }
-
-      .activity-item {
-        border: 1px solid rgba(35, 51, 86, 0.8);
-        background: rgba(10, 17, 29, 0.8);
-        border-radius: 10px;
-        padding: 8px;
-      }
-
-      .activity-item .title {
-        font-size: 0.85rem;
-      }
-
-      .activity-item .meta {
-        margin-top: 4px;
-        font-size: 0.75rem;
-        color: var(--muted);
       }
 
       .histogram-wrap {
@@ -428,6 +391,125 @@
         padding: 12px 6px;
       }
 
+      /* Battle result styling */
+      .battle-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-bottom: 1px solid rgba(35, 51, 86, 0.5);
+        font-size: 0.84rem;
+      }
+
+      .battle-row:last-child {
+        border-bottom: none;
+      }
+
+      .battle-domain {
+        font-size: 0.68rem;
+        color: var(--gold);
+        text-transform: uppercase;
+        font-weight: 700;
+        min-width: 70px;
+      }
+
+      .battle-matchup {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .battle-winner {
+        color: var(--success);
+        font-weight: 600;
+      }
+
+      .battle-loser {
+        color: var(--muted);
+      }
+
+      .battle-vs {
+        color: var(--muted);
+        font-size: 0.76rem;
+        margin: 0 4px;
+      }
+
+      .battle-scores {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.78rem;
+        color: var(--gold);
+        white-space: nowrap;
+      }
+
+      .battle-time {
+        font-size: 0.72rem;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      /* Domain leaderboard styling */
+      .domain-lb-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .domain-lb-table th,
+      .domain-lb-table td {
+        padding: 10px 8px;
+        border-bottom: 1px solid rgba(35, 51, 86, 0.7);
+        font-size: 0.84rem;
+        text-align: left;
+      }
+
+      .domain-lb-table th {
+        color: var(--muted);
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .domain-lb-table .domain-name {
+        font-weight: 700;
+        color: var(--text);
+        text-transform: uppercase;
+      }
+
+      .domain-lb-table .champion-name {
+        font-size: 0.76rem;
+        color: var(--gold);
+        margin-top: 2px;
+      }
+
+      .domain-lb-table .stat-highlight {
+        font-weight: 700;
+      }
+
+      .progress-bar {
+        height: 4px;
+        background: rgba(35, 51, 86, 0.5);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-top: 4px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--gold), #e8c547);
+      }
+
+      .footer {
+        text-align: center;
+        padding: 16px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        border-top: 1px solid rgba(35, 51, 86, 0.5);
+        margin-top: 8px;
+      }
+
+      .footer span {
+        color: var(--gold);
+      }
+
       @media (max-width: 1140px) {
         .layout {
           grid-template-columns: 1fr;
@@ -448,7 +530,7 @@
         }
 
         .panel-grid,
-        .domain-split,
+        .bottom-grid,
         .prompt-grid {
           grid-template-columns: 1fr;
         }
@@ -462,6 +544,15 @@
         .main {
           padding: 14px;
         }
+
+        .battle-row {
+          flex-wrap: wrap;
+          gap: 4px;
+        }
+
+        .battle-domain {
+          min-width: auto;
+        }
       }
     </style>
   </head>
@@ -474,7 +565,7 @@
           <p>Built with love by the SAI Sisters</p>
         </div>
         
-        <!-- Navigation Tabs (Compound!) -->
+        <!-- Navigation Tabs -->
         <nav class="nav-tabs" style="margin-bottom: 16px;">
           <a href="index.html" class="nav-tab active" style="display:block; padding:10px 12px; background:rgba(201,162,39,0.2); border:1px solid var(--gold); border-radius:8px; color:var(--gold); text-decoration:none; margin-bottom:6px; font-weight:600;">
             📊 Dashboard
@@ -494,25 +585,39 @@
       </aside>
 
       <main class="main">
+        <!-- Top header -->
         <section class="topline">
           <div>
             <h2 id="titleText">Colosseum Overview</h2>
-            <p id="subtitleText">Measuring and monitoring arena evolution</p>
+            <p id="subtitleText">Measuring and monitoring arena evolution across all domains</p>
           </div>
           <div style="display:flex; align-items:center; gap:10px;">
             <div class="live-dot"></div>
-            <small class="muted">Auto-refresh <span id="lastRefresh">--</span></small>
+            <small class="muted">Data loaded <span id="lastRefresh">--</span></small>
           </div>
         </section>
 
+        <!-- Stats cards -->
         <section class="stats-grid" id="statsGrid">
-          <article class="card"><div class="card-label">Total Beings</div><div class="card-value" id="statBeings">0</div></article>
-          <article class="card"><div class="card-label">Total Battles</div><div class="card-value" id="statBattles">0</div></article>
-          <article class="card"><div class="card-label">Generation Depth</div><div class="card-value" id="statGeneration">0</div></article>
-          <article class="card"><div class="card-label">Total Tournaments</div><div class="card-value" id="statDomains">0</div></article>
-          <article class="card"><div class="card-label">Monitoring Mode</div><div class="card-value" id="statMode">Live</div></article>
+          <article class="card">
+            <div class="card-label">Total Beings</div>
+            <div class="card-value" id="statBeings">--</div>
+          </article>
+          <article class="card">
+            <div class="card-label">Total Battles</div>
+            <div class="card-value" id="statBattles">--</div>
+          </article>
+          <article class="card">
+            <div class="card-label">Generation Depth</div>
+            <div class="card-value" id="statGeneration">--</div>
+          </article>
+          <article class="card">
+            <div class="card-label">Active Domains</div>
+            <div class="card-value" id="statDomains">--</div>
+          </article>
         </section>
 
+        <!-- Champions + Three M's -->
         <section class="panel-grid">
           <article class="panel">
             <div class="panel-header">
@@ -525,7 +630,7 @@
                   <th>#</th>
                   <th>Being</th>
                   <th>Generation</th>
-                  <th>Avg Mastery</th>
+                  <th>Best Score</th>
                   <th>W/L</th>
                 </tr>
               </thead>
@@ -540,70 +645,58 @@
             </div>
             <table class="comparison">
               <tbody>
-                <tr><th>Measuring</th><td id="mMeasure">Arena metrics and score distribution are tracked per domain.</td></tr>
-                <tr><th>Monitoring</th><td id="mMonitor">Live feed updates for evolutions, battles, and champions.</td></tr>
-                <tr><th>Mastery</th><td id="mMastery">No final 10. Family trees show continuous improvements.</td></tr>
+                <tr><th>Measuring</th><td>Arena metrics and score distribution tracked per domain.</td></tr>
+                <tr><th>Monitoring</th><td>10 active domains with 90K+ total battles across all arenas.</td></tr>
+                <tr><th>Mastery</th><td>No final 10. Continuous evolution — Gen 726 and climbing.</td></tr>
               </tbody>
             </table>
             <div class="histogram-wrap">
-              <div class="muted" style="font-size:0.76rem; margin-bottom:6px;">Score Distribution (selected domain)</div>
-              <div id="scoreHistogram" class="histogram"></div>
-            </div>
-            <div style="margin-top:10px;">
-              <button class="btn" id="reloadBtn" type="button">Refresh Now</button>
+              <div class="muted" style="font-size:0.76rem; margin-bottom:6px;">Domain Battle Distribution</div>
+              <div id="domainHistogram" class="histogram"></div>
             </div>
           </article>
         </section>
 
-        <section class="domain-split">
+        <!-- Recent Battles + Domain Leaderboard -->
+        <section class="bottom-grid">
           <article class="panel">
             <div class="panel-header">
-              <h3 id="treeTitle">Family Tree</h3>
-              <span class="badge" id="treeBadge">Lineage</span>
+              <h3>⚔️ Recent Battles</h3>
+              <span class="badge" id="battleCount">Last 10</span>
             </div>
-            <svg id="treeCanvas" viewBox="0 0 960 360" preserveAspectRatio="xMidYMid meet"></svg>
-            <div style="margin-top:10px;">
-              <table class="leaderboard">
+            <div id="recentBattles" style="max-height: 420px; overflow: auto;"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h3>🏛️ Domain Leaderboard</h3>
+              <span class="badge" id="domainCount">All Domains</span>
+            </div>
+            <div style="max-height: 420px; overflow: auto;">
+              <table class="domain-lb-table">
                 <thead>
                   <tr>
-                    <th colspan="5">Domain Leaderboard</th>
+                    <th>Domain</th>
+                    <th>Beings</th>
+                    <th>Gen</th>
+                    <th>Battles</th>
+                    <th>Top Score</th>
                   </tr>
                 </thead>
                 <tbody id="domainLeaderboard"></tbody>
               </table>
             </div>
           </article>
-
-          <article class="panel">
-            <div class="panel-header">
-              <h3>Battle Trails</h3>
-              <span class="badge">Recent Matches</span>
-            </div>
-            <div style="max-height: 240px; overflow:auto;">
-              <table class="battles">
-                <thead>
-                  <tr>
-                    <th>Time</th>
-                    <th>Match</th>
-                    <th>Winner</th>
-                    <th>Score</th>
-                    <th>View</th>
-                  </tr>
-                </thead>
-                <tbody id="battleRows"></tbody>
-              </table>
-            </div>
-
-            <div class="panel-header" style="margin-top:12px;">
-              <h3>Activity Feed</h3>
-              <span class="badge">Live Evolutions</span>
-            </div>
-            <div class="activity-feed" id="activityFeed"></div>
-          </article>
         </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+          Last Updated: <span id="footerTimestamp">--</span> · ACT-I Colosseum · Built with 🔥 by the SAI Sisters
+        </footer>
       </main>
     </div>
 
+    <!-- Being Detail Modal (kept for future being profile links) -->
     <div class="modal" id="beingModal" aria-hidden="true">
       <div class="modal-body">
         <div class="modal-header">
@@ -612,38 +705,26 @@
             <p id="modalMeta" class="muted" style="margin:6px 0 0;"></p>
           </div>
           <div style="display:flex; gap:8px;">
-            <button class="btn" id="copyPromptBtn" type="button">Copy Prompt</button>
             <button class="btn" id="closeModalBtn" type="button">Close</button>
           </div>
         </div>
-
-        <div class="prompt-grid">
-          <div class="prompt-box">
-            <h4 style="margin-top:0;">Being Script / System Prompt</h4>
-            <pre id="promptText">No prompt loaded.</pre>
-          </div>
-          <div class="prompt-box">
-            <h4 style="margin-top:0;">Prompt Diff vs Parent</h4>
-            <pre id="promptDiff">No parent comparison available.</pre>
-          </div>
-        </div>
-
         <div class="panel" style="margin-top:10px;">
           <div class="panel-header">
-            <h3>Being Battle History</h3>
-            <span class="badge" id="beingBattleCount">0 records</span>
+            <h3>Domain Champions</h3>
+            <span class="badge" id="modalChampCount">--</span>
           </div>
-          <div style="max-height:220px; overflow:auto;">
-            <table class="battles">
+          <div style="max-height:300px; overflow:auto;">
+            <table class="leaderboard">
               <thead>
                 <tr>
-                  <th>Time</th>
-                  <th>Opponent</th>
-                  <th>Winner</th>
-                  <th>Score</th>
+                  <th>#</th>
+                  <th>Being</th>
+                  <th>Generation</th>
+                  <th>Best Score</th>
+                  <th>W/L</th>
                 </tr>
               </thead>
-              <tbody id="beingBattleRows"></tbody>
+              <tbody id="modalChampRows"></tbody>
             </table>
           </div>
         </div>
@@ -651,61 +732,18 @@
     </div>
 
     <script>
-      const DOMAIN_ORDER = ["main", "strategy", "marketing", "sales", "tech", "ops", "cs", "finance", "hr", "legal", "product"];
-      const query = new URLSearchParams(window.location.search);
-      const API_BASE = (query.get("api") || window.COLOSSEUM_API_BASE || "/api").replace(/\/$/, "");
-      const MAIN_DATA_URL = "/data/main_colosseum.json";
-      const FORCE_STATIC = query.get("static") === "1";
-      const REFRESH_MS = 15000;
+      /* ───────── Static Data Loading ───────── */
+      const DATA_BASE = "/data";
 
-      const state = {
-        mode: FORCE_STATIC ? "snapshot" : "live",
-        selectedDomain: "main",
-        domains: [],
-        stats: null,
-        mainColosseum: null,
-        activity: [],
-        globalTop: [],
-        snapshot: null,
-        domainCache: {},
-        lastChampions: {},
-      };
+      async function loadJSON(filename) {
+        const resp = await fetch(`${DATA_BASE}/${filename}`, { cache: "no-store" });
+        if (!resp.ok) throw new Error(`Failed to load ${filename}: ${resp.status}`);
+        return resp.json();
+      }
 
-      const els = {
-        domainList: document.getElementById("domainList"),
-        titleText: document.getElementById("titleText"),
-        subtitleText: document.getElementById("subtitleText"),
-        statBeings: document.getElementById("statBeings"),
-        statBattles: document.getElementById("statBattles"),
-        statGeneration: document.getElementById("statGeneration"),
-        statDomains: document.getElementById("statDomains"),
-        statMode: document.getElementById("statMode"),
-        mMonitor: document.getElementById("mMonitor"),
-        scoreHistogram: document.getElementById("scoreHistogram"),
-        globalLeaderboard: document.getElementById("globalLeaderboard"),
-        domainLeaderboard: document.getElementById("domainLeaderboard"),
-        battleRows: document.getElementById("battleRows"),
-        activityFeed: document.getElementById("activityFeed"),
-        treeCanvas: document.getElementById("treeCanvas"),
-        treeTitle: document.getElementById("treeTitle"),
-        treeBadge: document.getElementById("treeBadge"),
-        reloadBtn: document.getElementById("reloadBtn"),
-        lastRefresh: document.getElementById("lastRefresh"),
-        modal: document.getElementById("beingModal"),
-        modalTitle: document.getElementById("modalTitle"),
-        modalMeta: document.getElementById("modalMeta"),
-        promptText: document.getElementById("promptText"),
-        promptDiff: document.getElementById("promptDiff"),
-        closeModalBtn: document.getElementById("closeModalBtn"),
-        copyPromptBtn: document.getElementById("copyPromptBtn"),
-        beingBattleRows: document.getElementById("beingBattleRows"),
-        beingBattleCount: document.getElementById("beingBattleCount"),
-      };
-
-      let currentPrompt = "";
-
-      function numberFmt(value) {
-        return new Intl.NumberFormat().format(value || 0);
+      /* ───────── Formatting helpers ───────── */
+      function numberFmt(v) {
+        return new Intl.NumberFormat().format(v || 0);
       }
 
       function scoreClass(score) {
@@ -714,491 +752,237 @@
         return "score-tier-bronze";
       }
 
-      function shortDate(ts) {
-        if (!ts) return "-";
-        const date = new Date(ts);
-        if (Number.isNaN(date.getTime())) return String(ts).slice(0, 19);
-        return `${date.toLocaleDateString()} ${date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
-      }
-
       function relTime(ts) {
-        if (!ts) return "unknown";
-        const date = new Date(ts);
-        if (Number.isNaN(date.getTime())) return String(ts);
-        const diff = Math.floor((Date.now() - date.getTime()) / 1000);
+        if (!ts) return "";
+        const d = new Date(ts);
+        if (isNaN(d.getTime())) return String(ts);
+        const diff = Math.floor((Date.now() - d.getTime()) / 1000);
         if (diff < 60) return `${diff}s ago`;
         if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
-        if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+        if (diff < 3600 * 24) return `${Math.floor(diff / 3600)}h ago`;
         return `${Math.floor(diff / 86400)}d ago`;
       }
 
-      async function fetchJson(path) {
-        const response = await fetch(`${API_BASE}${path}`, { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${path}`);
-        }
-        return response.json();
+      function formatTimestamp(ts) {
+        if (!ts) return "--";
+        const d = new Date(ts);
+        if (isNaN(d.getTime())) return String(ts);
+        return d.toLocaleString("en-US", {
+          month: "short", day: "numeric", year: "numeric",
+          hour: "2-digit", minute: "2-digit", hour12: true
+        });
       }
 
-      async function fetchMainColosseum() {
-        const response = await fetch(MAIN_DATA_URL, { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${MAIN_DATA_URL}`);
-        }
-        return response.json();
+      function escapeHtml(s) {
+        return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       }
 
-      async function ensureSnapshot() {
-        if (state.snapshot) return state.snapshot;
-        const response = await fetch("/data/snapshot.json", { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error("snapshot unavailable");
-        }
-        state.snapshot = await response.json();
-        return state.snapshot;
-      }
+      /* ───────── State ───────── */
+      const state = {
+        stats: null,
+        champions: [],
+        domains: [],
+        recentBattles: [],
+        selectedDomain: null,
+      };
 
-      async function apiStats() {
-        if (state.mode === "snapshot") {
-          const snap = await ensureSnapshot();
-          return snap.stats;
-        }
-        return fetchJson("/stats");
-      }
+      /* ───────── DOM refs ───────── */
+      const els = {
+        statBeings: document.getElementById("statBeings"),
+        statBattles: document.getElementById("statBattles"),
+        statGeneration: document.getElementById("statGeneration"),
+        statDomains: document.getElementById("statDomains"),
+        lastRefresh: document.getElementById("lastRefresh"),
+        globalLeaderboard: document.getElementById("globalLeaderboard"),
+        recentBattles: document.getElementById("recentBattles"),
+        domainLeaderboard: document.getElementById("domainLeaderboard"),
+        domainCount: document.getElementById("domainCount"),
+        battleCount: document.getElementById("battleCount"),
+        domainList: document.getElementById("domainList"),
+        domainHistogram: document.getElementById("domainHistogram"),
+        footerTimestamp: document.getElementById("footerTimestamp"),
+        titleText: document.getElementById("titleText"),
+        subtitleText: document.getElementById("subtitleText"),
+        // modal
+        modal: document.getElementById("beingModal"),
+        modalTitle: document.getElementById("modalTitle"),
+        modalMeta: document.getElementById("modalMeta"),
+        modalChampCount: document.getElementById("modalChampCount"),
+        modalChampRows: document.getElementById("modalChampRows"),
+        closeModalBtn: document.getElementById("closeModalBtn"),
+      };
 
-      async function apiDomains() {
-        if (state.mode === "snapshot") {
-          const snap = await ensureSnapshot();
-          return { domains: snap.domains || [] };
-        }
-        return fetchJson("/domains");
-      }
-
-      async function apiActivity(limit = 30) {
-        if (state.mode === "snapshot") {
-          const snap = await ensureSnapshot();
-          return { items: (snap.activity || []).slice(0, limit) };
-        }
-        return fetchJson(`/activity?limit=${limit}`);
-      }
-
-      async function apiDomain(name) {
-        if (state.domainCache[name]) return state.domainCache[name];
-
-        if (state.mode === "snapshot") {
-          const snap = await ensureSnapshot();
-          const data = snap.domain_data?.[name] || { beings: [], champions: [], battles: [] };
-          state.domainCache[name] = {
-            beings: data.beings || [],
-            champions: data.champions || [],
-            battles: data.battles || [],
-          };
-          return state.domainCache[name];
-        }
-
-        const [beings, champions, battles] = await Promise.all([
-          fetchJson(`/domain/${name}/beings`),
-          fetchJson(`/domain/${name}/champions?limit=10`),
-          fetchJson(`/domain/${name}/battles?limit=100`),
-        ]);
-
-        state.domainCache[name] = {
-          beings: beings.beings || [],
-          champions: champions.champions || [],
-          battles: battles.battles || [],
-        };
-        return state.domainCache[name];
-      }
-
-      async function apiBeing(id) {
-        if (state.mode === "snapshot") {
-          const snap = await ensureSnapshot();
-          for (const [domain, payload] of Object.entries(snap.domain_data || {})) {
-            const match = (payload.beings || []).find((b) => b.id === id);
-            if (match) return { ...match, domain };
-          }
-          throw new Error("being not found");
-        }
-        return fetchJson(`/being/${encodeURIComponent(id)}`);
-      }
-
-      async function apiBeingLineage(id, domainHint) {
-        if (state.mode === "snapshot") {
-          const domainData = await apiDomain(domainHint || state.selectedDomain);
-          const map = new Map(domainData.beings.map((b) => [b.id, b]));
-          const chain = [];
-          const seen = new Set();
-          let node = map.get(id);
-          while (node && !seen.has(node.id)) {
-            chain.push(node);
-            seen.add(node.id);
-            node = node.parent_id ? map.get(node.parent_id) : null;
-          }
-          chain.reverse();
-          return { chain, domain: domainHint || state.selectedDomain, depth: Math.max(chain.length - 1, 0) };
-        }
-        return fetchJson(`/being/${encodeURIComponent(id)}/lineage`);
-      }
-
-      async function apiBeingBattles(id, domainHint) {
-        if (state.mode === "snapshot") {
-          const domainData = await apiDomain(domainHint || state.selectedDomain);
-          const battles = (domainData.battles || []).filter((b) => b.being_a_id === id || b.being_b_id === id);
-          return { battles };
-        }
-        return fetchJson(`/being/${encodeURIComponent(id)}/battles`);
-      }
-
-      function renderDomains() {
-        const domains = [...state.domains].sort((a, b) => DOMAIN_ORDER.indexOf(a.name) - DOMAIN_ORDER.indexOf(b.name));
-        els.domainList.innerHTML = "";
-
-        for (const domain of domains) {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = `domain-btn ${state.selectedDomain === domain.name ? "active" : ""}`;
-          btn.innerHTML = `
-            <strong>${domain.name.toUpperCase()}</strong>
-            <span class="meta">${domain.online ? `${numberFmt(domain.beings_count)} beings` : "offline"}</span>
-          `;
-
-          btn.addEventListener("click", () => {
-            state.selectedDomain = domain.name;
-            renderDomains();
-            loadDomainView().catch(console.error);
-          });
-
-          els.domainList.appendChild(btn);
-        }
-      }
-
+      /* ───────── Render: Stats Cards ───────── */
       function renderStats() {
-        const jsonStats = state.mainColosseum?.stats || {};
-        const stats = state.stats || {};
-        const mergedStats = {
-          ...stats,
-          ...jsonStats,
-        };
+        const s = state.stats || {};
+        // Calculate total battles from all domains
+        const totalBattles = state.domains
+          .filter(d => d.battles)
+          .reduce((sum, d) => sum + d.battles, 0);
 
-        els.statBeings.textContent = numberFmt(mergedStats.total_beings);
-        els.statBattles.textContent = numberFmt(mergedStats.total_battles);
-        els.statGeneration.textContent = numberFmt(mergedStats.max_generation);
-        els.statDomains.textContent = numberFmt(mergedStats.total_tournaments);
-        els.statMode.textContent = state.mainColosseum ? "JSON Export" : (state.mode === "snapshot" ? "Snapshot" : "Live");
+        els.statBeings.textContent = numberFmt(s.total_beings);
+        els.statBattles.textContent = numberFmt(totalBattles);
+        els.statGeneration.textContent = numberFmt(s.max_generation);
+
+        const activeDomains = state.domains.filter(d => d.beings && d.beings > 0);
+        els.statDomains.textContent = numberFmt(activeDomains.length);
+
         els.lastRefresh.textContent = new Date().toLocaleTimeString();
-
-        const champions = Array.isArray(state.mainColosseum?.champions)
-          ? state.mainColosseum.champions
-          : (stats.leaderboard || []);
-
-        const rankedChampions = [...champions].sort((a, b) => {
-          const aScore = Number(a.avg_mastery_score ?? a.score ?? 0);
-          const bScore = Number(b.avg_mastery_score ?? b.score ?? 0);
-          if (bScore !== aScore) return bScore - aScore;
-
-          const aBest = Number(a.best_score ?? a.score ?? 0);
-          const bBest = Number(b.best_score ?? b.score ?? 0);
-          if (bBest !== aBest) return bBest - aBest;
-
-          return Number(b.win_rate ?? 0) - Number(a.win_rate ?? 0);
-        }).slice(0, 10);
-
-        const topRows = rankedChampions.map((being, idx) => {
-          const avgMastery = Number(being.avg_mastery_score ?? being.score ?? 0);
-          return `
-            <tr>
-              <td>${idx + 1}</td>
-              <td><button class="being-link" data-being-id="${being.id}" data-being-domain="main">${being.name || being.id}</button></td>
-              <td>Gen ${numberFmt(being.generation)}</td>
-              <td class="${scoreClass(avgMastery)}">${avgMastery.toFixed(2)}</td>
-              <td>${being.wins || 0}/${being.losses || 0}</td>
-            </tr>
-          `;
-        }).join("");
-
-        els.globalLeaderboard.innerHTML = topRows || `<tr><td colspan="5" class="empty">No leaderboard data available.</td></tr>`;
       }
 
-      function renderActivity() {
-        const items = state.activity || [];
-        if (!items.length) {
-          els.activityFeed.innerHTML = `<div class="empty">No activity detected yet.</div>`;
+      /* ───────── Render: Champions Table ───────── */
+      function renderChampions() {
+        const champs = state.champions || [];
+        if (!champs.length) {
+          els.globalLeaderboard.innerHTML = `<tr><td colspan="5" class="empty">No champion data available.</td></tr>`;
           return;
         }
 
-        els.activityFeed.innerHTML = items.map((item) => {
-          return `
-            <article class="activity-item">
-              <div class="title">${item.title || item.type || "Activity"}</div>
-              <div class="meta">${(item.domain || "main").toUpperCase()} • ${item.details || ""} • ${relTime(item.timestamp)}</div>
-            </article>
-          `;
-        }).join("");
-      }
-
-      function renderDomainLeaderboard(champions) {
-        if (!champions.length) {
-          els.domainLeaderboard.innerHTML = `<tr><td colspan="5" class="empty">No champions found.</td></tr>`;
-          return;
-        }
-
-        els.domainLeaderboard.innerHTML = champions.map((being, idx) => {
+        els.globalLeaderboard.innerHTML = champs.map((c, idx) => {
+          const medal = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}`;
           return `
             <tr>
-              <td>${idx + 1}</td>
-              <td><button class="being-link" data-being-id="${being.id}" data-being-domain="${state.selectedDomain}">${being.name || being.id}</button></td>
-              <td>Gen ${being.generation || 0}</td>
-              <td class="${scoreClass(being.score)}">${(being.score || 0).toFixed(2)}</td>
-              <td>${being.wins || 0}/${being.losses || 0}</td>
+              <td>${medal}</td>
+              <td><strong>${escapeHtml(c.name)}</strong></td>
+              <td>Gen ${numberFmt(c.generation)}</td>
+              <td class="${scoreClass(c.best_score)}">${(c.best_score || 0).toFixed(2)}</td>
+              <td>${c.wins || 0}/${c.losses || 0}</td>
             </tr>
           `;
         }).join("");
       }
 
-      function renderBattles(battles) {
+      /* ───────── Render: Recent Battles ───────── */
+      function renderRecentBattles() {
+        const battles = state.recentBattles || [];
         if (!battles.length) {
-          els.battleRows.innerHTML = `<tr><td colspan="5" class="empty">No battle history table found in this domain DB.</td></tr>`;
+          els.recentBattles.innerHTML = `<div class="empty">No recent battles recorded.</div>`;
           return;
         }
 
-        els.battleRows.innerHTML = battles.map((battle) => {
-          const a = battle.being_a_name || battle.being_a_id || "Unknown A";
-          const b = battle.being_b_name || battle.being_b_id || "Unknown B";
-          const winner = battle.winner_name || "Unknown";
-          const score = `${(battle.score_a || 0).toFixed(2)} - ${(battle.score_b || 0).toFixed(2)}`;
-          const button = battle.transcript
-            ? `<button class="btn" data-transcript="${encodeURIComponent(battle.transcript)}">View</button>`
-            : `<span class="muted">-</span>`;
-
+        els.battleCount.textContent = `Last ${battles.length}`;
+        els.recentBattles.innerHTML = battles.map(b => {
           return `
-            <tr>
-              <td>${shortDate(battle.created_at)}</td>
-              <td>${a} vs ${b}</td>
-              <td>${winner}</td>
-              <td>${score}</td>
-              <td>${button}</td>
-            </tr>
-          `;
-        }).join("");
-      }
-
-      function renderHistogram(beings) {
-        if (!els.scoreHistogram) return;
-        const bins = [
-          { label: "<7.0", min: -Infinity, max: 7.0, count: 0 },
-          { label: "7.0-7.9", min: 7.0, max: 8.0, count: 0 },
-          { label: "8.0-8.9", min: 8.0, max: 9.0, count: 0 },
-          { label: "9.0-9.4", min: 9.0, max: 9.5, count: 0 },
-          { label: "9.5+", min: 9.5, max: Infinity, count: 0 },
-        ];
-
-        for (const being of beings || []) {
-          const score = Number(being.score || 0);
-          const bin = bins.find((b) => score >= b.min && score < b.max);
-          if (bin) bin.count += 1;
-        }
-
-        const max = Math.max(1, ...bins.map((b) => b.count));
-        els.scoreHistogram.innerHTML = bins.map((bin) => {
-          const height = Math.max(8, Math.round((bin.count / max) * 88));
-          return `
-            <div class="hist-bin" title="${bin.label}: ${bin.count}">
-              <div class="hist-bar" style="height:${height}px;"></div>
-              <div class="hist-label">${bin.label}</div>
+            <div class="battle-row">
+              <span class="battle-domain">${escapeHtml(b.domain || "main")}</span>
+              <div class="battle-matchup">
+                <span class="battle-winner">${escapeHtml(b.winner)}</span>
+                <span class="battle-vs">vs</span>
+                <span class="battle-loser">${escapeHtml(b.loser)}</span>
+              </div>
+              <span class="battle-scores">${(b.winner_score || 0).toFixed(1)} – ${(b.loser_score || 0).toFixed(1)}</span>
+              <span class="battle-time">${relTime(b.timestamp)}</span>
             </div>
           `;
         }).join("");
       }
 
-      function updateChampionMonitor(domains) {
-        const changed = [];
-        const next = {};
+      /* ───────── Render: Domain Leaderboard ───────── */
+      function renderDomainLeaderboard() {
+        const domains = state.domains
+          .filter(d => d.beings && d.beings > 0)
+          .sort((a, b) => (b.beings || 0) - (a.beings || 0));
 
-        for (const domain of domains || []) {
-          const champ = domain?.champion;
-          const championId = champ?.id || "";
-          next[domain.name] = championId;
-          if (state.lastChampions[domain.name] && championId && state.lastChampions[domain.name] !== championId) {
-            changed.push(`${domain.name}: ${champ.name || champ.id}`);
-          }
-        }
-
-        state.lastChampions = next;
-        if (!changed.length) {
-          els.mMonitor.textContent = "Live feed updates for evolutions, battles, and champions.";
+        if (!domains.length) {
+          els.domainLeaderboard.innerHTML = `<tr><td colspan="5" class="empty">No domain data available.</td></tr>`;
           return;
         }
 
-        els.mMonitor.textContent = `Champion shifts detected: ${changed.join(" | ")}`;
+        els.domainCount.textContent = `${domains.length} Active`;
+        const maxBeings = Math.max(...domains.map(d => d.beings || 0));
+
+        els.domainLeaderboard.innerHTML = domains.map(d => {
+          const topChamp = d.champions && d.champions[0];
+          const topScore = topChamp ? topChamp.best_score : 0;
+          const pct = maxBeings > 0 ? ((d.beings || 0) / maxBeings * 100) : 0;
+
+          return `
+            <tr style="cursor:pointer;" onclick="openDomainModal('${escapeHtml(d.name)}')">
+              <td>
+                <div class="domain-name">${escapeHtml(d.name)}</div>
+                ${topChamp ? `<div class="champion-name">👑 ${escapeHtml(topChamp.name)}</div>` : ""}
+              </td>
+              <td>
+                <div class="stat-highlight">${numberFmt(d.beings)}</div>
+                <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+              </td>
+              <td>${numberFmt(d.generation)}</td>
+              <td>${numberFmt(d.battles)}</td>
+              <td class="${scoreClass(topScore)}">${topScore > 0 ? topScore.toFixed(1) : "--"}</td>
+            </tr>
+          `;
+        }).join("");
       }
 
-      function buildTreeData(beings) {
-        const ids = new Set(beings.map((b) => String(b.id)));
-        const nodes = [{ id: "__root__", parentId: null, name: "Origin", score: 0 }];
+      /* ───────── Render: Domain Histogram ───────── */
+      function renderDomainHistogram() {
+        const domains = state.domains
+          .filter(d => d.battles && d.battles > 0)
+          .sort((a, b) => (b.battles || 0) - (a.battles || 0));
 
-        for (const being of beings) {
-          const id = String(being.id);
-          const parentIdRaw = being.parent_id ? String(being.parent_id) : "__root__";
-          const parentId = ids.has(parentIdRaw) ? parentIdRaw : "__root__";
-          nodes.push({
-            id,
-            parentId,
-            name: being.name || id,
-            score: Number(being.score || 0),
-            being,
+        if (!domains.length || !els.domainHistogram) return;
+
+        const max = Math.max(1, ...domains.map(d => d.battles || 0));
+        els.domainHistogram.innerHTML = domains.map(d => {
+          const height = Math.max(8, Math.round(((d.battles || 0) / max) * 88));
+          return `
+            <div class="hist-bin" title="${d.name.toUpperCase()}: ${numberFmt(d.battles)} battles">
+              <div class="hist-bar" style="height:${height}px;"></div>
+              <div class="hist-label">${d.name.toUpperCase().slice(0, 4)}</div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      /* ───────── Render: Sidebar Domain List ───────── */
+      function renderDomainSidebar() {
+        const domains = state.domains
+          .filter(d => d.beings && d.beings > 0)
+          .sort((a, b) => (b.beings || 0) - (a.beings || 0));
+
+        els.domainList.innerHTML = "";
+
+        for (const d of domains) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = `domain-btn${state.selectedDomain === d.name ? " active" : ""}`;
+          btn.innerHTML = `
+            <strong>${escapeHtml(d.name).toUpperCase()}</strong>
+            <span class="meta">${numberFmt(d.beings)} beings · Gen ${d.generation} · ${numberFmt(d.battles)} battles</span>
+          `;
+          btn.addEventListener("click", () => {
+            openDomainModal(d.name);
           });
+          els.domainList.appendChild(btn);
         }
-
-        return nodes;
       }
 
-      function nodeColor(score) {
-        if (score >= 9.0) return "#c9a227";
-        if (score >= 8.0) return "#b6bacc";
-        return "#8f6a43";
-      }
+      /* ───────── Domain Modal ───────── */
+      function openDomainModal(name) {
+        const domain = state.domains.find(d => d.name === name);
+        if (!domain) return;
 
-      function renderTree(beings) {
-        const svg = d3.select("#treeCanvas");
-        svg.selectAll("*").remove();
+        state.selectedDomain = name;
+        renderDomainSidebar();
 
-        if (!beings.length) {
-          svg.append("text")
-            .attr("x", 20)
-            .attr("y", 28)
-            .attr("fill", "#9ea9c1")
-            .attr("font-size", 14)
-            .text("No beings found for this domain.");
-          return;
-        }
+        els.modalTitle.textContent = `${name.toUpperCase()} Arena`;
+        els.modalMeta.textContent = `${numberFmt(domain.beings)} beings · Generation ${domain.generation} · ${numberFmt(domain.battles)} battles`;
 
-        const treeNodes = buildTreeData(beings);
-        const stratify = d3.stratify().id((d) => d.id).parentId((d) => d.parentId);
-        let root;
+        const champs = domain.champions || [];
+        els.modalChampCount.textContent = `${champs.length} champions`;
 
-        try {
-          root = stratify(treeNodes);
-        } catch (error) {
-          svg.append("text")
-            .attr("x", 20)
-            .attr("y", 28)
-            .attr("fill", "#d15f5f")
-            .attr("font-size", 14)
-            .text("Lineage graph has cyclic or invalid parent references.");
-          return;
-        }
-
-        const tree = d3.tree().nodeSize([26, 130]);
-        tree(root);
-
-        const descendants = root.descendants();
-        const xMin = d3.min(descendants, (d) => d.x) || 0;
-        const xMax = d3.max(descendants, (d) => d.x) || 0;
-        const yMax = d3.max(descendants, (d) => d.y) || 0;
-
-        const width = Math.max(960, yMax + 220);
-        const height = Math.max(360, xMax - xMin + 100);
-        svg.attr("viewBox", `0 0 ${width} ${height}`);
-
-        const g = svg.append("g").attr("transform", `translate(50,${30 - xMin})`);
-
-        g.selectAll("path.link")
-          .data(root.links())
-          .join("path")
-          .attr("fill", "none")
-          .attr("stroke", "#395182")
-          .attr("stroke-opacity", 0.8)
-          .attr("stroke-width", 1.2)
-          .attr("d", d3.linkHorizontal().x((d) => d.y).y((d) => d.x));
-
-        const nodes = g.selectAll("g.node")
-          .data(descendants)
-          .join("g")
-          .attr("transform", (d) => `translate(${d.y},${d.x})`);
-
-        nodes.append("circle")
-          .attr("r", (d) => (d.data.id === "__root__" ? 7 : 5.8))
-          .attr("fill", (d) => (d.data.id === "__root__" ? "#6a7da8" : nodeColor(d.data.score || 0)))
-          .attr("stroke", "#0a111d")
-          .attr("stroke-width", 1.2)
-          .style("cursor", (d) => (d.data.id === "__root__" ? "default" : "pointer"))
-          .on("click", (_, d) => {
-            if (d.data.id !== "__root__" && d.data.being?.id) {
-              openBeingModal(d.data.being.id, d.data.being.domain || state.selectedDomain).catch(console.error);
-            }
-          });
-
-        nodes.append("text")
-          .attr("x", 10)
-          .attr("dy", "0.31em")
-          .attr("fill", "#dde5f5")
-          .style("font-size", "11px")
-          .style("pointer-events", "none")
-          .text((d) => {
-            if (d.data.id === "__root__") return "Origin";
-            return `${d.data.name} (${(d.data.score || 0).toFixed(2)})`;
-          });
-
-        const zoom = d3.zoom().scaleExtent([0.55, 1.8]).on("zoom", ({ transform }) => {
-          g.attr("transform", transform);
-        });
-        svg.call(zoom);
-      }
-
-      function renderPromptDiff(parentPrompt, prompt) {
-        if (!prompt) return "No prompt available.";
-        if (!parentPrompt) return "No parent prompt available for diff.";
-
-        if (window.Diff && typeof window.Diff.diffLines === "function") {
-          const chunks = window.Diff.diffLines(parentPrompt, prompt);
-          return chunks.map((chunk) => {
-            const escaped = escapeHtml(chunk.value);
-            if (chunk.added) return `<span class="diff-added">+ ${escaped}</span>`;
-            if (chunk.removed) return `<span class="diff-removed">- ${escaped}</span>`;
-            return `<span class="diff-neutral">  ${escaped}</span>`;
-          }).join("");
-        }
-
-        return escapeHtml(prompt);
-      }
-
-      function escapeHtml(value) {
-        return String(value || "")
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
-      }
-
-      async function openBeingModal(id, domainHint) {
-        const being = await apiBeing(id);
-        const resolvedDomain = being.domain || domainHint || state.selectedDomain;
-        const lineage = await apiBeingLineage(id, resolvedDomain);
-        const battlesPayload = await apiBeingBattles(id, resolvedDomain);
-        const chain = lineage.chain || [];
-        const parent = chain.length > 1 ? chain[chain.length - 2] : null;
-
-        currentPrompt = being.system_prompt || "";
-
-        els.modalTitle.textContent = `${being.name || being.id} (${resolvedDomain.toUpperCase()})`;
-        els.modalMeta.textContent = `ID ${being.id} • Gen ${being.generation || 0} • Score ${(being.score || 0).toFixed(2)} • Model ${being.model || "unknown"}`;
-        els.promptText.textContent = currentPrompt || "No prompt found for this being.";
-        els.promptDiff.innerHTML = renderPromptDiff(parent?.system_prompt || "", currentPrompt);
-
-        const battles = battlesPayload.battles || [];
-        els.beingBattleCount.textContent = `${battles.length} records`;
-        if (!battles.length) {
-          els.beingBattleRows.innerHTML = `<tr><td colspan="4" class="empty">No battles found for this being.</td></tr>`;
+        if (!champs.length) {
+          els.modalChampRows.innerHTML = `<tr><td colspan="5" class="empty">No champions in this domain.</td></tr>`;
         } else {
-          els.beingBattleRows.innerHTML = battles.slice(0, 40).map((b) => {
-            const opponent = b.being_a_id === id
-              ? (b.being_b_name || b.being_b_id || "Unknown")
-              : (b.being_a_name || b.being_a_id || "Unknown");
+          els.modalChampRows.innerHTML = champs.map((c, idx) => {
+            const medal = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}`;
             return `
               <tr>
-                <td>${shortDate(b.created_at)}</td>
-                <td>${opponent}</td>
-                <td>${b.winner_name || "Unknown"}</td>
-                <td>${(b.score_a || 0).toFixed(2)} - ${(b.score_b || 0).toFixed(2)}</td>
+                <td>${medal}</td>
+                <td><strong>${escapeHtml(c.name)}</strong></td>
+                <td>Gen ${numberFmt(c.generation)}</td>
+                <td class="${scoreClass(c.best_score)}">${(c.best_score || 0).toFixed(2)}</td>
+                <td>${c.wins || 0}/${c.losses || 0}</td>
               </tr>
             `;
           }).join("");
@@ -1211,152 +995,60 @@
       function closeModal() {
         els.modal.classList.remove("open");
         els.modal.setAttribute("aria-hidden", "true");
+        state.selectedDomain = null;
+        renderDomainSidebar();
       }
 
-      function attachDelegatedHandlers() {
-        document.body.addEventListener("click", (event) => {
-          const beingButton = event.target.closest("[data-being-id]");
-          if (beingButton) {
-            const id = beingButton.getAttribute("data-being-id");
-            const domain = beingButton.getAttribute("data-being-domain") || state.selectedDomain;
-            openBeingModal(id, domain).catch(console.error);
-            return;
-          }
-
-          const transcriptButton = event.target.closest("[data-transcript]");
-          if (transcriptButton) {
-            const raw = decodeURIComponent(transcriptButton.getAttribute("data-transcript") || "");
-            els.modalTitle.textContent = "Battle Transcript";
-            els.modalMeta.textContent = `Domain ${state.selectedDomain.toUpperCase()}`;
-            els.promptText.textContent = raw || "Transcript unavailable.";
-            els.promptDiff.textContent = "Transcript view only.";
-            els.beingBattleRows.innerHTML = `<tr><td colspan="4" class="empty">Open a being profile for detailed battle lineage.</td></tr>`;
-            els.beingBattleCount.textContent = "Transcript";
-            currentPrompt = raw;
-            els.modal.classList.add("open");
-          }
-        });
-
-        els.closeModalBtn.addEventListener("click", closeModal);
-        els.modal.addEventListener("click", (event) => {
-          if (event.target === els.modal) closeModal();
-        });
-
-        els.copyPromptBtn.addEventListener("click", async () => {
-          if (!currentPrompt) return;
-          await navigator.clipboard.writeText(currentPrompt);
-          els.copyPromptBtn.textContent = "Copied";
-          setTimeout(() => {
-            els.copyPromptBtn.textContent = "Copy Prompt";
-          }, 1200);
-        });
-
-        els.reloadBtn.addEventListener("click", () => refreshAll(true).catch(console.error));
+      /* ───────── Footer Timestamp ───────── */
+      function renderFooter() {
+        const ts = state.stats?.last_updated;
+        els.footerTimestamp.textContent = ts ? formatTimestamp(ts) : formatTimestamp(new Date().toISOString());
       }
 
-      async function loadDomainView() {
-        const selected = state.selectedDomain;
-        const domainSummary = state.domains.find((d) => d.name === selected);
-        els.titleText.textContent = `${selected.toUpperCase()} Arena`;
-        els.subtitleText.textContent = domainSummary?.online
-          ? `${numberFmt(domainSummary.beings_count)} beings evolving in ${selected}`
-          : `${selected} is offline (database unavailable)`;
-
-        if (!domainSummary?.online) {
-          renderDomainLeaderboard([]);
-          renderBattles([]);
-          renderTree([]);
-          renderHistogram([]);
-          return;
-        }
-
-        const domain = await apiDomain(selected);
-        renderDomainLeaderboard(domain.champions || []);
-        renderBattles(domain.battles || []);
-        renderTree(domain.beings || []);
-        renderHistogram(domain.beings || []);
-
-        els.treeTitle.textContent = `${selected.toUpperCase()} Family Tree`;
-        els.treeBadge.textContent = `${numberFmt((domain.beings || []).length)} beings`;
-      }
-
-      async function refreshAll(forceDomainRefresh = false) {
-        try {
-          if (!FORCE_STATIC) {
-            state.mode = "live";
-          }
-
-          if (forceDomainRefresh || state.mode === "live") {
-            state.domainCache = {};
-          }
-
-          const [stats, domains, activity, mainColosseum] = await Promise.all([
-            apiStats(),
-            apiDomains(),
-            apiActivity(30),
-            fetchMainColosseum(),
-          ]);
-
-          state.stats = stats;
-          state.mainColosseum = mainColosseum;
-          state.domains = domains.domains || [];
-          state.activity = activity.items || [];
-          updateChampionMonitor(state.domains);
-
-          if (!state.domains.some((d) => d.name === state.selectedDomain && d.online)) {
-            const fallback = state.domains.find((d) => d.online) || state.domains[0] || { name: "main" };
-            state.selectedDomain = fallback.name;
-          }
-
-          renderDomains();
-          renderStats();
-          renderActivity();
-          await loadDomainView();
-        } catch (liveError) {
-          if (state.mode === "snapshot") {
-            throw liveError;
-          }
-
-          state.mode = "snapshot";
-          state.domainCache = {};
-          const [stats, domains, activity, mainColosseum] = await Promise.all([
-            apiStats(),
-            apiDomains(),
-            apiActivity(30),
-            fetchMainColosseum(),
-          ]);
-          state.stats = stats;
-          state.mainColosseum = mainColosseum;
-          state.domains = domains.domains || [];
-          state.activity = activity.items || [];
-          updateChampionMonitor(state.domains);
-
-          if (!state.domains.some((d) => d.name === state.selectedDomain)) {
-            state.selectedDomain = (state.domains[0] || { name: "main" }).name;
-          }
-
-          renderDomains();
-          renderStats();
-          renderActivity();
-          await loadDomainView();
-        }
-      }
-
+      /* ───────── Init ───────── */
       async function init() {
-        attachDelegatedHandlers();
-        await refreshAll(true);
-        setInterval(() => {
-          refreshAll(false).catch(console.error);
-        }, REFRESH_MS);
+        // Attach modal handlers
+        els.closeModalBtn.addEventListener("click", closeModal);
+        els.modal.addEventListener("click", (e) => {
+          if (e.target === els.modal) closeModal();
+        });
+
+        try {
+          // Load all static data in parallel
+          const [stats, champions, domains, recentBattles] = await Promise.all([
+            loadJSON("stats.json"),
+            loadJSON("champions.json"),
+            loadJSON("domains.json"),
+            loadJSON("recent_battles.json"),
+          ]);
+
+          state.stats = stats;
+          state.champions = champions;
+          state.domains = domains.filter(d => !d.error); // Filter out broken domains (executive)
+          state.recentBattles = recentBattles;
+
+          // Render everything
+          renderStats();
+          renderChampions();
+          renderRecentBattles();
+          renderDomainLeaderboard();
+          renderDomainHistogram();
+          renderDomainSidebar();
+          renderFooter();
+
+        } catch (err) {
+          console.error("Dashboard init error:", err);
+          document.querySelector(".main").innerHTML = `
+            <div style="padding:40px; text-align:center;">
+              <h2 style="color:var(--danger);">Failed to load dashboard data</h2>
+              <p class="muted">${escapeHtml(err.message)}</p>
+              <p class="muted">Ensure /data/*.json files are available.</p>
+            </div>
+          `;
+        }
       }
 
-      init().catch((error) => {
-        document.body.innerHTML = `<main style="padding:24px; font-family:Manrope,sans-serif; color:#e8edf7; background:#0a111d; min-height:100vh;">
-          <h2>Dashboard failed to load</h2>
-          <p class="muted">${escapeHtml(error.message || String(error))}</p>
-          <p class="muted">Run the Flask API or provide <code>data/snapshot.json</code> for static mode.</p>
-        </main>`;
-      });
+      init();
     </script>
   </body>
 </html>
