@@ -1,10 +1,10 @@
 {
   "stats": {
-    "total_beings": 27765,
+    "total_beings": 27795,
     "total_battles": 5000,
     "total_domains": 11,
     "max_generation": 726,
-    "generated_at": "2026-03-02T08:39:12.508752+00:00"
+    "generated_at": "2026-03-02T09:11:27.734546+00:00"
   },
   "domains": [
     {
@@ -20,7 +20,7 @@
       "name": "strategy",
       "beings_count": 1886,
       "generation_depth": 93,
-      "avg_score": 7.622,
+      "avg_score": 7.634,
       "battle_count": 500,
       "champion_name": "Business Model Architect-Alpha-G10-G18-G23-G37",
       "champion_score": 10.0
@@ -29,10 +29,10 @@
       "name": "marketing",
       "beings_count": 1890,
       "generation_depth": 93,
-      "avg_score": 7.534,
+      "avg_score": 7.543,
       "battle_count": 500,
-      "champion_name": "Specificity Champion-Elite-G6-G16",
-      "champion_score": 10.0
+      "champion_name": "Marketing",
+      "champion_score": 9.8
     },
     {
       "name": "sales",
@@ -40,14 +40,14 @@
       "generation_depth": 94,
       "avg_score": 7.62,
       "battle_count": 500,
-      "champion_name": "Executive Communicator-Elite-G12-G19-G37-G56",
-      "champion_score": 10.0
+      "champion_name": "Executive Communicator-Elite",
+      "champion_score": 9.8
     },
     {
       "name": "tech",
-      "beings_count": 1820,
-      "generation_depth": 86,
-      "avg_score": 7.702,
+      "beings_count": 1830,
+      "generation_depth": 87,
+      "avg_score": 7.653,
       "battle_count": 500,
       "champion_name": "ML Platform Builder-Elite",
       "champion_score": 10.0
@@ -56,25 +56,25 @@
       "name": "ops",
       "beings_count": 1840,
       "generation_depth": 88,
-      "avg_score": 7.649,
+      "avg_score": 7.641,
       "battle_count": 500,
       "champion_name": "Standard Work Designer-X",
       "champion_score": 9.8
     },
     {
       "name": "cs",
-      "beings_count": 1790,
-      "generation_depth": 83,
-      "avg_score": 7.547,
+      "beings_count": 1800,
+      "generation_depth": 84,
+      "avg_score": 7.512,
       "battle_count": 500,
       "champion_name": "Community",
       "champion_score": 9.8
     },
     {
       "name": "finance",
-      "beings_count": 1942,
-      "generation_depth": 98,
-      "avg_score": 7.489,
+      "beings_count": 1952,
+      "generation_depth": 99,
+      "avg_score": 7.434,
       "battle_count": 500,
       "champion_name": "AP Strategist-III",
       "champion_score": 10.0
@@ -83,7 +83,7 @@
       "name": "hr",
       "beings_count": 1930,
       "generation_depth": 97,
-      "avg_score": 7.555,
+      "avg_score": 7.554,
       "battle_count": 500,
       "champion_name": "Learning Experience Designer-X",
       "champion_score": 9.8
@@ -92,7 +92,7 @@
       "name": "legal",
       "beings_count": 1908,
       "generation_depth": 95,
-      "avg_score": 7.626,
+      "avg_score": 7.625,
       "battle_count": 500,
       "champion_name": "Settlement Negotiator",
       "champion_score": 10.0
@@ -101,7 +101,7 @@
       "name": "product",
       "beings_count": 1740,
       "generation_depth": 78,
-      "avg_score": 7.663,
+      "avg_score": 7.646,
       "battle_count": 500,
       "champion_name": "Jobs-to-be-Done Analyst-Prime-G10-G18-G28-G40",
       "champion_score": 10.0
