@@ -4,7 +4,7 @@
     "total_battles": 5000,
     "total_domains": 11,
     "max_generation": 726,
-    "generated_at": "2026-03-02T12:27:34.313670+00:00"
+    "generated_at": "2026-03-02T12:57:36.404217+00:00"
   },
   "domains": [
     {
@@ -20,7 +20,7 @@
       "name": "strategy",
       "beings_count": 1886,
       "generation_depth": 93,
-      "avg_score": 7.642,
+      "avg_score": 7.647,
       "battle_count": 500,
       "champion_name": "Business Model Architect-Alpha-G10-G18-G23-G37",
       "champion_score": 10.0
@@ -29,7 +29,7 @@
       "name": "marketing",
       "beings_count": 1900,
       "generation_depth": 94,
-      "avg_score": 7.501,
+      "avg_score": 7.496,
       "battle_count": 500,
       "champion_name": "Marketing",
       "champion_score": 9.8
@@ -38,7 +38,7 @@
       "name": "sales",
       "beings_count": 1920,
       "generation_depth": 96,
-      "avg_score": 7.568,
+      "avg_score": 7.564,
       "battle_count": 500,
       "champion_name": "Executive Communicator-Elite",
       "champion_score": 9.8
@@ -47,7 +47,7 @@
       "name": "tech",
       "beings_count": 1850,
       "generation_depth": 89,
-      "avg_score": 7.536,
+      "avg_score": 7.532,
       "battle_count": 500,
       "champion_name": "ML Platform Builder-Elite",
       "champion_score": 10.0
@@ -56,7 +56,7 @@
       "name": "ops",
       "beings_count": 1860,
       "generation_depth": 90,
-      "avg_score": 7.568,
+      "avg_score": 7.553,
       "battle_count": 500,
       "champion_name": "Standard Work Designer",
       "champion_score": 9.8
@@ -65,7 +65,7 @@
       "name": "cs",
       "beings_count": 1820,
       "generation_depth": 86,
-      "avg_score": 7.48,
+      "avg_score": 7.478,
       "battle_count": 500,
       "champion_name": "Community Manager-Alpha",
       "champion_score": 10.0
@@ -74,7 +74,7 @@
       "name": "finance",
       "beings_count": 1962,
       "generation_depth": 100,
-      "avg_score": 7.493,
+      "avg_score": 7.506,
       "battle_count": 500,
       "champion_name": "AP Strategist-III",
       "champion_score": 10.0
@@ -83,7 +83,7 @@
       "name": "hr",
       "beings_count": 1930,
       "generation_depth": 97,
-      "avg_score": 7.573,
+      "avg_score": 7.572,
       "battle_count": 500,
       "champion_name": "Compliance Coordinator",
       "champion_score": 10.0
@@ -92,7 +92,7 @@
       "name": "legal",
       "beings_count": 1918,
       "generation_depth": 96,
-      "avg_score": 7.561,
+      "avg_score": 7.565,
       "battle_count": 500,
       "champion_name": "Partnership Lawyer",
       "champion_score": 10.0
@@ -101,7 +101,7 @@
       "name": "product",
       "beings_count": 1740,
       "generation_depth": 78,
-      "avg_score": 7.671,
+      "avg_score": 7.678,
       "battle_count": 500,
       "champion_name": "Beta Program Manager-III-G7-G22-G27",
       "champion_score": 10.0
