@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Ash",
+    "generation": 359,
+    "best_score": 8.7,
+    "wins": 4,
+    "losses": 1
+  },
+  {
+    "name": "Flint",
+    "generation": 563,
+    "best_score": 8.7,
+    "wins": 4,
+    "losses": 8
+  },
+  {
+    "name": "Helios",
+    "generation": 652,
+    "best_score": 8.7,
+    "wins": 4,
+    "losses": 3
+  },
+  {
+    "name": "Briar",
+    "generation": 709,
+    "best_score": 8.7,
+    "wins": 4,
+    "losses": 2
+  },
+  {
+    "name": "Ridge",
+    "generation": 501,
+    "best_score": 8.7,
+    "wins": 2,
+    "losses": 3
+  },
+  {
+    "name": "Rhea",
+    "generation": 692,
+    "best_score": 8.7,
+    "wins": 2,
+    "losses": 1
+  },
+  {
+    "name": "Spark",
+    "generation": 701,
+    "best_score": 8.7,
+    "wins": 2,
+    "losses": 3
+  },
+  {
+    "name": "Wren",
+    "generation": 603,
+    "best_score": 8.6,
+    "wins": 4,
+    "losses": 2
+  },
+  {
+    "name": "Sage",
+    "generation": 33,
+    "best_score": 8.5,
+    "wins": 18,
+    "losses": 3
+  },
+  {
+    "name": "Atlas",
+    "generation": 116,
+    "best_score": 8.5,
+    "wins": 10,
+    "losses": 3
+  }
+]
