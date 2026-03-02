@@ -111,6 +111,51 @@ a{color:var(--cyan);text-decoration:none}
 /* FOOTER */
 .footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:.85em;border-top:1px solid var(--border);margin-top:40px}
 
+/* CHAT WIDGET */
+.api-key-bar{max-width:900px;margin:20px auto;padding:16px 24px;background:linear-gradient(135deg,#111128,#0d0d2a);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.api-key-bar label{color:var(--gold);font-size:.9em;font-weight:600;white-space:nowrap}
+.api-key-bar input{flex:1;min-width:200px;background:rgba(0,0,0,.4);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text);font-size:.9em;font-family:monospace;outline:none;transition:border-color .3s}
+.api-key-bar input:focus{border-color:var(--cyan)}
+.api-key-bar input::placeholder{color:#555}
+.api-key-bar .key-status{font-size:.8em;color:var(--muted)}
+.api-key-bar .key-status.saved{color:var(--green)}
+
+.chat-toggle-btn{display:inline-flex;align-items:center;gap:6px;margin-top:15px;padding:10px 20px;background:linear-gradient(135deg,rgba(0,204,204,.15),rgba(255,204,0,.1));border:1px solid rgba(0,204,204,.3);border-radius:10px;color:var(--cyan);font-size:.9em;font-weight:600;cursor:pointer;transition:all .3s;user-select:none}
+.chat-toggle-btn:hover{background:linear-gradient(135deg,rgba(0,204,204,.25),rgba(255,204,0,.18));border-color:var(--cyan);transform:translateY(-1px)}
+.chat-toggle-btn.active{background:linear-gradient(135deg,rgba(0,204,204,.3),rgba(255,204,0,.2));border-color:var(--gold);color:var(--gold)}
+
+.chat-widget{display:none;margin-top:12px;background:rgba(0,0,0,.5);border:1px solid var(--border);border-radius:12px;overflow:hidden;animation:chatSlideIn .3s ease-out}
+.chat-widget.open{display:block}
+@keyframes chatSlideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+.chat-messages{height:300px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.chat-messages::-webkit-scrollbar{width:6px}
+.chat-messages::-webkit-scrollbar-track{background:transparent}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+.chat-msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:.88em;line-height:1.5;word-wrap:break-word;animation:msgFade .3s ease-out}
+@keyframes msgFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,rgba(0,204,204,.2),rgba(0,204,204,.1));border:1px solid rgba(0,204,204,.25);color:var(--text)}
+.chat-msg.assistant{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--text)}
+.chat-msg.system-msg{align-self:center;color:var(--muted);font-size:.8em;font-style:italic;padding:4px 12px;background:none;border:none}
+.chat-msg.error{align-self:center;color:var(--red);font-size:.82em;padding:6px 14px;background:rgba(255,51,68,.08);border:1px solid rgba(255,51,68,.15);border-radius:8px}
+
+.chat-typing{align-self:flex-start;padding:10px 18px;color:var(--muted);font-size:.85em}
+.chat-typing span{display:inline-block;animation:typingBounce .6s ease-in-out infinite;margin:0 1px}
+.chat-typing span:nth-child(2){animation-delay:.1s}
+.chat-typing span:nth-child(3){animation-delay:.2s}
+@keyframes typingBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+.chat-input-area{display:flex;gap:0;border-top:1px solid var(--border);background:rgba(0,0,0,.3)}
+.chat-input-area input{flex:1;background:transparent;border:none;padding:12px 16px;color:var(--text);font-size:.9em;outline:none}
+.chat-input-area input::placeholder{color:#555}
+.chat-input-area button{background:linear-gradient(135deg,var(--cyan),#009999);border:none;color:#000;padding:12px 20px;font-weight:700;cursor:pointer;transition:all .3s;font-size:.9em}
+.chat-input-area button:hover{background:linear-gradient(135deg,#00dddd,#00bbbb)}
+.chat-input-area button:disabled{opacity:.4;cursor:not-allowed}
+
+.chat-welcome{text-align:center;padding:40px 20px;color:var(--muted);font-size:.85em}
+.chat-welcome .being-emoji{font-size:2em;margin-bottom:8px}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   .header h1{font-size:1.8em}
@@ -122,6 +167,10 @@ a{color:var(--cyan);text-decoration:none}
   .being-name{font-size:1.4em}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .being-rank{font-size:1.8em;top:10px;right:12px}
+  .api-key-bar{flex-direction:column;align-items:stretch}
+  .api-key-bar label{text-align:center}
+  .chat-messages{height:250px}
+  .chat-msg{max-width:92%}
 }
 </style>
 </head>
@@ -171,6 +220,13 @@ a{color:var(--cyan);text-decoration:none}
 <div class="scoring-note">
   <div class="icon">🤖⚖️</div>
   <p>All scores below were assigned by <span class="highlight">AI Judge (Claude)</span>. <strong>No human has scored these beings yet.</strong> Human evaluation is the critical next step — Sean meeting and judging them directly.</p>
+</div>
+
+<!-- API KEY INPUT -->
+<div class="api-key-bar" id="apiKeyBar">
+  <label for="apiKeyInput">🔑 OpenRouter API Key:</label>
+  <input type="password" id="apiKeyInput" placeholder="sk-or-v1-... (stored locally, never sent anywhere except OpenRouter)" autocomplete="off">
+  <span class="key-status" id="keyStatus"></span>
 </div>
 
 <!-- ═══════════════════════════════════════════════════ -->
@@ -1790,10 +1846,250 @@ function toggleSection(header) {
   body.classList.toggle('open');
 }
 
-// Open Main Arena by default on load
-document.addEventListener('DOMContentLoaded', function() {
-  // Main Arena is already open via HTML classes
-  // Add smooth scroll for better UX
+// ═══════════════════════════════════════════════════
+// CHAT WIDGET SYSTEM
+// ═══════════════════════════════════════════════════
+
+// Global state
+const chatHistories = {}; // keyed by being id
+let allBeingsData = null; // loaded from JSON
+
+// API Key management
+function getApiKey() {
+  return localStorage.getItem('openrouter_api_key') || '';
+}
+
+function saveApiKey(key) {
+  localStorage.setItem('openrouter_api_key', key);
+}
+
+function initApiKeyInput() {
+  const input = document.getElementById('apiKeyInput');
+  const status = document.getElementById('keyStatus');
+  const saved = getApiKey();
+  if (saved) {
+    input.value = saved;
+    status.textContent = '✓ Key saved';
+    status.className = 'key-status saved';
+  }
+  input.addEventListener('input', function() {
+    const val = this.value.trim();
+    if (val) {
+      saveApiKey(val);
+      status.textContent = '✓ Key saved';
+      status.className = 'key-status saved';
+    } else {
+      localStorage.removeItem('openrouter_api_key');
+      status.textContent = '';
+      status.className = 'key-status';
+    }
+  });
+}
+
+// Build a lookup: being name (lowercased) -> being data
+// Also handle duplicates by including domain context
+function buildBeingLookup(data) {
+  const lookup = {};
+  for (const domain of data) {
+    if (!domain.top_beings) continue;
+    for (const being of domain.top_beings) {
+      // Use id as the primary key for uniqueness
+      lookup[being.id] = being;
+    }
+  }
+  return lookup;
+}
+
+// Find the being data that matches a card
+function findBeingForCard(card, beingLookup) {
+  // Try to match by ID from the being-id element
+  const idEl = card.querySelector('.being-id');
+  if (idEl) {
+    const idText = idEl.textContent;
+    // Extract ID like "B-0a14f013" or "b5dddbe3-..." or "21763ab9-..."
+    const idMatch = idText.match(/ID:\s*([A-Za-z0-9-]+)/);
+    if (idMatch) {
+      let extractedId = idMatch[1];
+      // Check for truncated IDs ending with "..."
+      if (idText.includes(extractedId + '-...')) {
+        // It's a truncated UUID, try prefix match
+        for (const [id, being] of Object.entries(beingLookup)) {
+          if (id.startsWith(extractedId)) return being;
+        }
+      }
+      if (beingLookup[extractedId]) return beingLookup[extractedId];
+      // Try with B- prefix
+      if (beingLookup['B-' + extractedId]) return beingLookup['B-' + extractedId];
+    }
+  }
+  
+  // Fallback: match by name
+  const nameEl = card.querySelector('.being-name');
+  if (nameEl) {
+    const name = nameEl.textContent.trim();
+    for (const being of Object.values(beingLookup)) {
+      if (being.name === name) return being;
+    }
+  }
+  
+  return null;
+}
+
+// Create the chat widget HTML for a being
+function createChatWidget(being) {
+  const widgetId = 'chat-' + being.id;
+  const div = document.createElement('div');
+  div.innerHTML = `
+    <button class="chat-toggle-btn" onclick="toggleChat('${widgetId}', this)">
+      💬 Talk to ${being.name}
+    </button>
+    <div class="chat-widget" id="${widgetId}">
+      <div class="chat-messages" id="${widgetId}-messages">
+        <div class="chat-welcome">
+          <div class="being-emoji">⚔️</div>
+          <div>Start a conversation with <strong style="color:var(--gold)">${being.name}</strong></div>
+          <div style="margin-top:4px;font-size:.85em">Gen ${being.generation || 0} · ${being.traits_json ? being.traits_json.join(', ') : 'ACT-I Being'}</div>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="${widgetId}-input" placeholder="Say something to ${being.name}..." onkeydown="if(event.key==='Enter')sendChat('${being.id}','${widgetId}')">
+        <button onclick="sendChat('${being.id}','${widgetId}')">Send</button>
+      </div>
+    </div>
+  `;
+  return div;
+}
+
+function toggleChat(widgetId, btn) {
+  const widget = document.getElementById(widgetId);
+  if (!widget) return;
+  const isOpen = widget.classList.toggle('open');
+  btn.classList.toggle('active', isOpen);
+  if (isOpen) {
+    const input = document.getElementById(widgetId + '-input');
+    if (input) setTimeout(() => input.focus(), 100);
+  }
+}
+
+async function sendChat(beingId, widgetId) {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    const msgArea = document.getElementById(widgetId + '-messages');
+    appendMessage(msgArea, 'error', '🔑 Please enter your OpenRouter API key at the top of the page first.');
+    document.getElementById('apiKeyInput').focus();
+    return;
+  }
+
+  const input = document.getElementById(widgetId + '-input');
+  const sendBtn = input.nextElementSibling;
+  const userText = input.value.trim();
+  if (!userText) return;
+
+  const msgArea = document.getElementById(widgetId + '-messages');
+
+  // Clear welcome message on first send
+  const welcome = msgArea.querySelector('.chat-welcome');
+  if (welcome) welcome.remove();
+
+  // Show user message
+  appendMessage(msgArea, 'user', userText);
+  input.value = '';
+  input.disabled = true;
+  sendBtn.disabled = true;
+
+  // Init history if needed
+  if (!chatHistories[beingId]) {
+    chatHistories[beingId] = [];
+  }
+  chatHistories[beingId].push({ role: 'user', content: userText });
+
+  // Show typing indicator
+  const typingEl = document.createElement('div');
+  typingEl.className = 'chat-typing';
+  typingEl.innerHTML = '<span>●</span><span>●</span><span>●</span>';
+  msgArea.appendChild(typingEl);
+  msgArea.scrollTop = msgArea.scrollHeight;
+
+  try {
+    // Get the being's system prompt
+    const being = allBeingsLookup[beingId];
+    const systemPrompt = being ? being.system_prompt : 'You are an ACT-I being. Respond with personality, warmth, and wit.';
+
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      ...chatHistories[beingId]
+    ];
+
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + apiKey,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': window.location.href,
+        'X-Title': 'ACT-I Colosseum - Meet the Beings'
+      },
+      body: JSON.stringify({
+        model: 'anthropic/claude-sonnet-4.6',
+        messages: messages,
+        max_tokens: 1024,
+        temperature: 0.85
+      })
+    });
+
+    // Remove typing indicator
+    if (typingEl.parentNode) typingEl.remove();
+
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}));
+      const errMsg = errData.error?.message || `API error ${response.status}`;
+      throw new Error(errMsg);
+    }
+
+    const data = await response.json();
+    const assistantText = data.choices?.[0]?.message?.content || 'No response received.';
+
+    chatHistories[beingId].push({ role: 'assistant', content: assistantText });
+    appendMessage(msgArea, 'assistant', assistantText);
+
+  } catch (err) {
+    if (typingEl.parentNode) typingEl.remove();
+    appendMessage(msgArea, 'error', '⚠️ ' + err.message);
+    // Remove the failed user message from history so they can retry
+    chatHistories[beingId].pop();
+  }
+
+  input.disabled = false;
+  sendBtn.disabled = false;
+  input.focus();
+}
+
+function appendMessage(container, type, text) {
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + type;
+  // Simple markdown-like formatting
+  div.innerHTML = escapeHtml(text)
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n/g, '<br>');
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Global lookup
+let allBeingsLookup = {};
+
+// Initialize everything
+document.addEventListener('DOMContentLoaded', async function() {
+  // Init API key
+  initApiKeyInput();
+
+  // Smooth scroll for colosseum headers
   document.querySelectorAll('.colosseum-header').forEach(header => {
     header.addEventListener('click', function() {
       setTimeout(() => {
@@ -1803,6 +2099,28 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 100);
     });
   });
+
+  // Load beings data
+  try {
+    const resp = await fetch('data/all_beings.json');
+    if (!resp.ok) throw new Error('Failed to load beings data');
+    allBeingsData = await resp.json();
+    allBeingsLookup = buildBeingLookup(allBeingsData);
+
+    // Inject chat widgets into each being card
+    const cards = document.querySelectorAll('.being-card');
+    cards.forEach(card => {
+      const being = findBeingForCard(card, allBeingsLookup);
+      if (being) {
+        const widget = createChatWidget(being);
+        card.appendChild(widget);
+      }
+    });
+
+    console.log(`✅ Chat widgets loaded for ${Object.keys(allBeingsLookup).length} beings`);
+  } catch (err) {
+    console.error('Failed to load beings data:', err);
+  }
 });
 </script>
 
