@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPERATION: 500 VISIONNAIRE IN 90 DAYS</title>
+<style>
+:root {
+  --bg: #0a0a1a;
+  --bg-card: #111128;
+  --bg-card-alt: #151535;
+  --gold: #ffcc00;
+  --orange: #ff6b35;
+  --red: #ff2d55;
+  --green: #34c759;
+  --blue: #5ac8fa;
+  --purple: #bf5af2;
+  --cyan: #64d2ff;
+  --text: #e8e8f0;
+  --text-muted: #8888aa;
+  --border: #2a2a4a;
+  --glow-gold: rgba(255, 204, 0, 0.15);
+  --glow-red: rgba(255, 45, 85, 0.15);
+  --glow-orange: rgba(255, 107, 53, 0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* BANNER */
+.war-banner {
+  background: linear-gradient(135deg, #0d0d2b 0%, #1a0a00 50%, #0d0d2b 100%);
+  border-bottom: 3px solid var(--gold);
+  padding: 40px 20px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.war-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    90deg, transparent, transparent 100px, rgba(255,204,0,0.02) 100px, rgba(255,204,0,0.02) 101px
+  );
+  pointer-events: none;
+}
+.war-banner .ops-label {
+  font-size: 0.75rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.war-banner h1 {
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(255,204,0,0.3);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.target-strip {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 16px 0 20px;
+}
+.target-pill {
+  background: rgba(255,204,0,0.08);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.target-pill .num {
+  font-size: 1.3rem;
+  color: #fff;
+}
+.sean-quote {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.sean-quote strong { color: var(--orange); font-style: normal; }
+
+/* NAV */
+.plan-nav {
+  background: #0e0e24;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.plan-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.plan-nav a:hover { color: var(--gold); background: rgba(255,204,0,0.1); }
+
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* SECTION */
+.section {
+  margin-bottom: 30px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+.section-header {
+  background: linear-gradient(90deg, var(--bg-card-alt), var(--bg-card));
+  padding: 16px 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+.section-header:hover { background: rgba(255,204,0,0.03); }
+.section-header h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-header h2 .sec-num {
+  background: var(--orange);
+  color: #000;
+  font-size: 0.7rem;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+.section-header .chevron {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: transform 0.3s;
+}
+.section.collapsed .chevron { transform: rotate(-90deg); }
+.section.collapsed .section-body { display: none; }
+.section-body { padding: 24px; }
+
+/* RED ALERT CARDS (Questions) */
+.red-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.red-card {
+  background: linear-gradient(135deg, rgba(255,45,85,0.08), rgba(255,45,85,0.02));
+  border: 1px solid var(--red);
+  border-left: 4px solid var(--red);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+.red-card .q-num {
+  font-size: 0.7rem;
+  color: var(--red);
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.red-card h4 {
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.red-card p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* INFO GRID */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.info-box {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.info-box .label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+.info-box .value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--gold);
+}
+.info-box .value.orange { color: var(--orange); }
+.info-box .value.green { color: var(--green); }
+.info-box .value.white { color: #fff; }
+
+/* MARKET TRUTH */
+.truth-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+@media (max-width: 700px) { .truth-columns { grid-template-columns: 1fr; } }
+
+.truth-block {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+}
+.truth-block h4 {
+  font-size: 0.8rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+.truth-block ul {
+  list-style: none;
+  padding: 0;
+}
+.truth-block li {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.85rem;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.truth-block li::before {
+  content: '▸';
+  color: var(--orange);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.objection-row {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.84rem;
+}
+.objection-row .obj {
+  color: var(--red);
+  font-weight: 700;
+  min-width: 150px;
+}
+.objection-row .counter { color: var(--text-muted); }
+
+/* HOOKS */
+.hook-family {
+  margin-bottom: 20px;
+}
+.hook-family h4 {
+  font-size: 0.8rem;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hook-family h4 .badge {
+  background: var(--orange);
+  color: #000;
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 900;
+}
+.hook-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hook-chip {
+  background: rgba(255,107,53,0.08);
+  border: 1px solid rgba(255,107,53,0.3);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+/* POSITIONING */
+.positioning-box {
+  background: linear-gradient(135deg, rgba(255,204,0,0.06), rgba(255,204,0,0.01));
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.positioning-box p {
+  font-size: 1.05rem;
+  color: #fff;
+  font-style: italic;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.positioning-box .pillar-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.positioning-box .pillar {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 20px;
+  text-align: center;
+}
+.positioning-box .pillar .num {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--gold);
+}
+.positioning-box .pillar .desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-style: normal;
+  margin-top: 2px;
+}
+
+/* EXPERIMENT TABLE */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.exp-card {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  position: relative;
+}
+.exp-card .funnel-num {
+  position: absolute;
+  top: 12px; right: 14px;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+.exp-card h4 {
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 10px;
+  padding-right: 60px;
+}
+.exp-card .flow {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.exp-card .flow span {
+  color: var(--cyan);
+  font-weight: 600;
+}
+.pass-fail {
+  margin-top: 16px;
+  padding: 14px;
+  background: rgba(52,199,89,0.05);
+  border: 1px solid rgba(52,199,89,0.2);
+  border-radius: 8px;
+}
+.pass-fail h4 {
+  font-size: 0.72rem;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+.pass-fail p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* COLOSSEUM CARDS */
+.colo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+.colo-card {
+  background: linear-gradient(180deg, var(--bg-card-alt), var(--bg-card));
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--orange);
+  border-radius: 10px;
+  padding: 22px;
+}
+.colo-card .colo-num {
+  font-size: 0.65rem;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.colo-card h4 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.colo-card .purpose {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.colo-card .detail-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+}
+.colo-card .detail-row .dt {
+  color: var(--gold);
+  font-weight: 700;
+  min-width: 100px;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  padding-top: 2px;
+}
+.colo-card .detail-row .dd { color: var(--text); }
+.colo-hitl {
+  margin-top: 18px;
+  padding: 14px;
+  background: rgba(255,204,0,0.04);
+  border: 1px solid rgba(255,204,0,0.2);
+  border-radius: 8px;
+}
+.colo-hitl h4 {
+  font-size: 0.72rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+.colo-hitl ol {
+  padding-left: 18px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.colo-hitl li { margin-bottom: 4px; }
+
+/* CONTACT ACTIVATION */
+.phase-card {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.phase-card.active { border-left-color: var(--gold); }
+.phase-card .phase-label {
+  font-size: 0.68rem;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.phase-card.active .phase-label { color: var(--gold); }
+.phase-card h4 {
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.phase-card p, .phase-card ul {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.phase-card ul { padding-left: 18px; margin-top: 6px; }
+.phase-card li { margin-bottom: 4px; }
+.email-seq {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  margin-top: 12px;
+}
+.email-seq h5 {
+  font-size: 0.72rem;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+.email-step {
+  display: flex;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  font-size: 0.8rem;
+}
+.email-step .day {
+  color: var(--orange);
+  font-weight: 700;
+  min-width: 55px;
+}
+.email-step .subj { color: var(--text); font-style: italic; }
+
+/* MICRO TABLE */
+table.micro-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 0.82rem;
+}
+table.micro-table th {
+  background: var(--bg-card-alt);
+  color: var(--gold);
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 2px solid var(--gold);
+  font-weight: 800;
+}
+table.micro-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+table.micro-table tr:hover td { background: rgba(255,255,255,0.02); }
+table.micro-table .target-val { color: var(--green); font-weight: 700; }
+
+/* MEASUREMENT */
+.metric-group {
+  margin-bottom: 20px;
+}
+.metric-group h4 {
+  font-size: 0.78rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.metric-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.84rem;
+}
+.metric-item .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.metric-item .dot.orange { background: var(--orange); }
+.metric-item .dot.green { background: var(--green); }
+.metric-item .dot.blue { background: var(--blue); }
+.metric-item .dot.purple { background: var(--purple); }
+.metric-item .name { color: #fff; font-weight: 600; min-width: 200px; }
+.metric-item .desc { color: var(--text-muted); }
+.cadence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+@media (max-width: 600px) { .cadence-grid { grid-template-columns: 1fr; } }
+.cadence-box {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.cadence-box .freq {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--cyan);
+  margin-bottom: 4px;
+}
+.cadence-box .what {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.contam-alert {
+  background: linear-gradient(135deg, rgba(191,90,242,0.08), rgba(191,90,242,0.02));
+  border: 1px solid var(--purple);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.contam-alert h4 {
+  font-size: 0.75rem;
+  color: var(--purple);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+.contam-alert p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* GATES TIMELINE */
+.gates-timeline {
+  display: flex;
+  gap: 0;
+  margin: 20px 0;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+.gate {
+  flex: 1;
+  min-width: 150px;
+  position: relative;
+  text-align: center;
+  padding: 0 8px;
+}
+.gate::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  right: -1px;
+  width: calc(100%);
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+.gate:last-child::after { display: none; }
+.gate .gate-dot {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card-alt);
+  border: 3px solid var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: var(--gold);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+.gate .gate-time {
+  font-size: 0.65rem;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.gate .gate-name {
+  font-size: 0.78rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.gate .gate-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* SISTER TABLE */
+table.sister-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+table.sister-table th {
+  background: var(--bg-card-alt);
+  color: var(--gold);
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 2px solid var(--gold);
+  font-weight: 800;
+}
+table.sister-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+table.sister-table .sister-name { color: var(--orange); font-weight: 700; }
+table.sister-table .status-pending { color: var(--red); }
+table.sister-table .status-done { color: var(--green); }
+table.sister-table .status-wip { color: var(--gold); }
+
+/* TIMELINE */
+.timeline-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+  margin-bottom: 0;
+}
+.timeline-period {
+  padding: 18px 0;
+  text-align: right;
+  border-right: 3px solid var(--gold);
+  padding-right: 16px;
+  position: relative;
+}
+.timeline-period::after {
+  content: '';
+  position: absolute;
+  right: -7px;
+  top: 24px;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--bg);
+}
+.timeline-period .days {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--gold);
+}
+.timeline-period .range {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.timeline-content {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.timeline-content h4 {
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.timeline-content ul {
+  padding-left: 18px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.timeline-content li { margin-bottom: 4px; }
+
+/* FOOTER */
+.war-footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid var(--border);
+  margin-top: 30px;
+}
+.war-footer .closing-quote {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 12px;
+}
+.war-footer .closing-quote strong { color: var(--gold); font-style: normal; }
+.war-footer .sig {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 16px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .container { padding: 12px; }
+  .section-body { padding: 16px; }
+  .red-card-grid { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr 1fr; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .colo-grid { grid-template-columns: 1fr; }
+  .target-strip { gap: 10px; }
+  .target-pill { font-size: 0.8rem; padding: 6px 14px; }
+  .gates-timeline { flex-direction: column; }
+  .gate::after { display: none; }
+  .cadence-grid { grid-template-columns: 1fr; }
+  .timeline-row { grid-template-columns: 70px 1fr; }
+}
+
+/* ASSET TAG */
+.asset-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+  margin-right: 4px;
+}
+.asset-tag.live { background: rgba(52,199,89,0.15); color: var(--green); border: 1px solid rgba(52,199,89,0.3); }
+.asset-tag.ready { background: rgba(255,204,0,0.1); color: var(--gold); border: 1px solid rgba(255,204,0,0.3); }
+.asset-tag.blocked { background: rgba(255,45,85,0.1); color: var(--red); border: 1px solid rgba(255,45,85,0.3); }
+
+/* NON-NEG BOX */
+.non-neg {
+  background: rgba(255,204,0,0.04);
+  border: 1px solid rgba(255,204,0,0.15);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.non-neg h4 {
+  font-size: 0.72rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+.non-neg ul { list-style: none; padding: 0; }
+.non-neg li {
+  padding: 4px 0;
+  font-size: 0.84rem;
+  color: var(--text);
+}
+.non-neg li::before { content: '✓ '; color: var(--gold); font-weight: 700; }
+
+/* RECOVERY QUESTION */
+.recovery-question {
+  background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,107,53,0.02));
+  border: 1px solid var(--orange);
+  border-radius: 8px;
+  padding: 18px;
+  margin-top: 16px;
+}
+.recovery-question h4 {
+  font-size: 0.82rem;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.recovery-question p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.recovery-question .option {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.84rem;
+}
+.recovery-question .option .letter {
+  color: var(--orange);
+  font-weight: 800;
+}
+.recovery-question .option .text { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ BANNER ═══════════════ -->
+<div class="war-banner">
+  <div class="ops-label">ACT-I Forge × Unblinded</div>
+  <h1>OPERATION: 500 VISIONNAIRE IN 90 DAYS</h1>
+  <div class="target-strip">
+    <div class="target-pill"><span class="num">500</span> Programs</div>
+    <div class="target-pill"><span class="num">$50K–$100K</span> Each</div>
+    <div class="target-pill"><span class="num">$25M–$50M</span> Revenue</div>
+    <div class="target-pill"><span class="num">90</span> Days</div>
+  </div>
+  <div class="sean-quote">
+    <strong>"The greatest and most comprehensive marketing program the world has ever seen."</strong><br>
+    — Sean Callagy, March 3, 2026
+  </div>
+</div>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="plan-nav">
+  <a href="#mission">Mission</a>
+  <a href="#questions">Questions</a>
+  <a href="#market-truth">Market Truth</a>
+  <a href="#message">Message</a>
+  <a href="#experiments">Experiments</a>
+  <a href="#colosseums">Colosseums</a>
+  <a href="#activation">Activation</a>
+  <a href="#measurement">Measurement</a>
+  <a href="#gates">Gates</a>
+  <a href="#sisters">Sisters</a>
+  <a href="#timeline">Timeline</a>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════════ 1. MISSION ═══════════════ -->
+<div class="section" id="mission">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">1</span> THE MISSION</h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="label">Singular Outcome</div>
+        <div class="value">500</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Legal ACT-I Visionnaire programs sold</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Price Range</div>
+        <div class="value orange">$50K–$100K</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Per Visionnaire program</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Revenue Target</div>
+        <div class="value green">$25M–$50M</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Gross collected in 90 days</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Timeline</div>
+        <div class="value white">Mar 3 → May 31</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Mid-May Legal ACT-I Summit catalyst</div>
+      </div>
+    </div>
+
+    <div class="non-neg" style="margin-top:20px;">
+      <h4>Non-Negotiables (Locked)</h4>
+      <ul>
+        <li>Market = Lawyers, all verticals + geographic segmentation</li>
+        <li>Operating system = Split testing on the curve of possibility — no human constraint/contamination</li>
+        <li>Entry points = Quizzes, competitions, being conversations, videos, reports, shared experiences</li>
+        <li>Must ship: approach + Colosseums + real-world tests + assets (LPs, videos, animations, beings)</li>
+        <li>Testing within the testing within the testing</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 2. QUESTIONS ═══════════════ -->
+<div class="section" id="questions">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">2</span> QUESTIONS FOR SEAN / ADAM <span class="asset-tag blocked">Gate 1 — Must Answer</span></h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <p style="font-size:0.85rem;color:var(--red);margin-bottom:16px;font-weight:700;">⚠ These 6 questions BLOCK execution. Nothing launches until answered.</p>
+    <div class="red-card-grid">
+      <div class="red-card">
+        <div class="q-num">Question 1</div>
+        <h4>What counts as "sold"?</h4>
+        <p>Signed agreement? Paid in full? Deposit collected? Financing accepted? This defines the scoreboard.</p>
+      </div>
+      <div class="red-card">
+        <div class="q-num">Question 2</div>
+        <h4>Which 2–3 lawyer verticals go FIRST?</h4>
+        <p>PI? Commercial litigation? Family? Mass tort? Criminal defense? Determines pilot targeting and messaging.</p>
+      </div>
+      <div class="red-card">
+        <div class="q-num">Question 3</div>
+        <h4>First-wave primary CTA?</h4>
+        <p>Quiz → report → call? Direct being conversation → purchase? Webinar → application? Sets funnel architecture for Week 1.</p>
+      </div>
+      <div class="red-card">
+        <div class="q-num">Question 4</div>
+        <h4>Week 1–2 test budget for ads?</h4>
+        <p>$5K? $10K? $25K? This is learning budget — we're willing to spend it to find the winning channel.</p>
+      </div>
+      <div class="red-card">
+        <div class="q-num">Question 5</div>
+        <h4>Sean clone approval?</h4>
+        <p>Can we use AI-generated Sean in ads/content? Compliance implications + likeness rights. Channels + disclaimers.</p>
+      </div>
+      <div class="red-card">
+        <div class="q-num">Question 6</div>
+        <h4>Fulfillment capacity?</h4>
+        <p>How many new Visionnaire members can we onboard per week? This caps our acceleration rate.</p>
+      </div>
+    </div>
+
+    <div class="recovery-question" style="margin-top:20px;">
+      <h4>🏥 Recovery's Critical Question</h4>
+      <p><strong>Is the offer for lawyers the Visionnaire program itself — or is it Callagy Recovery services?</strong> These are two different conversion paths.</p>
+      <div class="option"><span class="letter">A:</span><span class="text">"Talk to an ACT-I being" → Experience the technology → Visionnaire interest</span></div>
+      <div class="option"><span class="letter">B:</span><span class="text">"Recover your $47K per case" → Callagy Recovery → Leads to Visionnaire discovery</span></div>
+      <p style="margin-top:10px;">Adam/Sean: which funnel first?</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 3. MARKET TRUTH ═══════════════ -->
+<div class="section" id="market-truth">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">3</span> MARKET TRUTH <span style="font-size:0.65rem;color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0;">— Scholar</span></h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="truth-columns">
+      <div class="truth-block">
+        <h4>Core Lawyer Desires (Hypothesis Set)</h4>
+        <ul>
+          <li>Win more cases — depo/cross/open/close mastery</li>
+          <li>Increase revenue & reduce hours — make same money, work less</li>
+          <li>Business growth — marketing, practice expansion</li>
+          <li>Certainty + control — process, repeatability</li>
+          <li>Reputation/status — being "best" in the room</li>
+          <li>Exit planning — sell the practice, step away</li>
+        </ul>
+      </div>
+      <div class="truth-block">
+        <h4>Competitive Map</h4>
+        <ul>
+          <li>CLE providers — commodity, checkbox compliance</li>
+          <li>Trial skills courses — technique without diagnosis</li>
+          <li>Coaching masterminds — personality-dependent, no system</li>
+          <li>Legal tech tools — efficiency, not actualization</li>
+        </ul>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
+          <div style="font-size:0.72rem;color:var(--gold);font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">Differentiator</div>
+          <p style="font-size:0.85rem;color:#fff;">Complete holistic diagnostic + actualization. Not tips. Not techniques. The whole system.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:8px;">
+      <h4 style="font-size:0.78rem;color:var(--red);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;font-weight:800;">Objection Map</h4>
+      <div class="objection-row">
+        <span class="obj">"I'm slammed"</span>
+        <span class="counter">→ Must be low-friction entry points. Quiz takes 3 min. Being conversation on their schedule.</span>
+      </div>
+      <div class="objection-row">
+        <span class="obj">"AI can't understand my cases"</span>
+        <span class="counter">→ Must show proof + specificity. Deposition-specific, cross-examination-specific diagnosis.</span>
+      </div>
+      <div class="objection-row">
+        <span class="obj">"$50–100K is a lot"</span>
+        <span class="counter">→ Must show ROI, identity, inevitability. $47K per case left on the table — one case pays for the program.</span>
+      </div>
+      <div class="objection-row">
+        <span class="obj">"I'll be judged"</span>
+        <span class="counter">→ Make competitions safe, fun, aspirational. Private scorecards. No public shaming.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 4. MESSAGE ARCHITECTURE ═══════════════ -->
+<div class="section" id="message">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">4</span> MESSAGE ARCHITECTURE <span style="font-size:0.65rem;color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0;">— Scholar</span></h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="positioning-box">
+      <p>"Legal ACT-I Visionnaire is the <strong style="color:var(--gold);">only complete, holistic, diagnostic, dynamic, interconnected, automated actualization system</strong> for attorneys to create more money in less time with more magic — through mastery of influence, process, and self."</p>
+      <div class="pillar-row">
+        <div class="pillar">
+          <div class="num">1</div>
+          <div class="desc">Diagnostic Truth</div>
+          <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;">You see what you can't see</div>
+        </div>
+        <div class="pillar">
+          <div class="num">2</div>
+          <div class="desc">Actualization Path</div>
+          <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;">Micro outcomes, time-blocked</div>
+        </div>
+        <div class="pillar">
+          <div class="num">3</div>
+          <div class="desc">Proof Through Experience</div>
+          <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;">Scores, reports, competitions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hook-family">
+      <h4>🏆 Competitions <span class="badge">5 Hooks</span></h4>
+      <div class="hook-list">
+        <div class="hook-chip">"Best Deposition Taker" tournament</div>
+        <div class="hook-chip">"Best Cross Examiner" bracket</div>
+        <div class="hook-chip">"Best Opening Statement" showdown</div>
+        <div class="hook-chip">"Best Closing Statement" showdown</div>
+        <div class="hook-chip">"Best Influence Mastery in Transactions"</div>
+      </div>
+    </div>
+
+    <div class="hook-family">
+      <h4>📝 Quizzes <span class="badge">2 Hooks</span></h4>
+      <div class="hook-list">
+        <div class="hook-chip">"What kind of agreement maker are you?"</div>
+        <div class="hook-chip">"Your Influence Mastery Score"</div>
+      </div>
+    </div>
+
+    <div class="hook-family">
+      <h4>📊 Reports / Scorecards <span class="badge">1 Hook</span></h4>
+      <div class="hook-list">
+        <div class="hook-chip">"Your Deposition Mastery Report" — with 'next 3 moves'</div>
+      </div>
+    </div>
+
+    <div class="hook-family">
+      <h4>🤖 Beings / Interactive <span class="badge">4 Hooks</span></h4>
+      <div class="hook-list">
+        <div class="hook-chip">Depo Coach being</div>
+        <div class="hook-chip">Cross Examiner being</div>
+        <div class="hook-chip">Growth Architect being</div>
+        <div class="hook-chip">Exit Strategist being</div>
+      </div>
+    </div>
+
+    <div class="hook-family">
+      <h4>🎬 Video / Animation <span class="badge">1 Hook</span></h4>
+      <div class="hook-list">
+        <div class="hook-chip">Micro demonstrations: diagnosis → prescription</div>
+      </div>
+    </div>
+
+    <div class="hook-family">
+      <h4>💰 Recovery's Proven Winner <span class="badge">Champion</span></h4>
+      <div class="hook-list">
+        <div class="hook-chip" style="border-color:var(--gold);background:rgba(255,204,0,0.08);">"The 3-second mistake costing PI attorneys $47K per case"</div>
+        <div class="hook-chip">"$47K oversight slowing your practice"</div>
+        <div class="hook-chip">"$47K oversight: Are you the bottleneck?"</div>
+        <div class="hook-chip">"I reviewed 500 PI cases. Here's what the winners had in common."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 5. EXPERIMENT PORTFOLIO ═══════════════ -->
+<div class="section" id="experiments">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">5</span> EXPERIMENT PORTFOLIO <span style="font-size:0.65rem;color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0;">— Scholar</span></h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:16px;">Phase 1: First 14 days. Channels: Meta / YouTube / LinkedIn / Google Search. Four parallel funnels.</p>
+
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="funnel-num">Funnel 1</div>
+        <h4>Quiz → Report → Call</h4>
+        <div class="flow">
+          <span>Ad</span> → Quiz completion → <span>Custom report</span> → Email capture → <span>Book call / apply</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="funnel-num">Funnel 2</div>
+        <h4>Competition → Being → Call</h4>
+        <div class="flow">
+          <span>Ad</span> → Competition signup → <span>Report delivery</span> → Being conversation → <span>Book call / apply</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="funnel-num">Funnel 3</div>
+        <h4>Direct Being Conversation</h4>
+        <div class="flow">
+          <span>Ad</span> → Direct being conversation → <span>Diagnosis experience</span> → <span>Book call / apply</span>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="funnel-num">Funnel 4</div>
+        <h4>Webinar → Application</h4>
+        <div class="flow">
+          <span>Ad</span> → Webinar registration → <span>Live/recorded show</span> → <span>Application</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pass-fail">
+      <h4>Pass / Kill Gates</h4>
+      <p>CTR · CPL · Landing page CVR · Quiz completion rate · Report unlock % · Booked calls · Show rate · Agreement rate. <strong style="color:var(--green);">Kill underperformers fast. Scale winners with variation.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 6. NEW COLOSSEUMS ═══════════════ -->
+<div class="section" id="colosseums">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">6</span> NEW COLOSSEUMS <span style="font-size:0.65rem;color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0;">— Forge</span></h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:18px;">Sean commanded: <em>"Testing within the testing within the testing."</em> Current Colosseums optimize AI vs AI. These 3 new Colosseums test <strong style="color:#fff;">human conversion directly</strong> through interactive entry points.</p>
+
+    <div class="colo-grid">
+      <div class="colo-card">
+        <div class="colo-num">Colosseum I</div>
+        <h4>The Legal Quiz Colosseum</h4>
+        <div class="purpose">Generate and test competitive quiz frameworks that exploit lawyer ego and self-mastery gaps.</div>
+        <div class="detail-row">
+          <span class="dt">Domains</span>
+          <span class="dd">Deposition Taker · Cross Examiner · Opening Statement · Closing Argument · Influence Mastery</span>
+        </div>
+        <div class="detail-row">
+          <span class="dt">Mutation</span>
+          <span class="dd">Quiz difficulty vs. validation ratio — does a punishing quiz that proves they need help convert better than one that flatters?</span>
+        </div>
+        <div class="detail-row">
+          <span class="dt">Output</span>
+          <span class="dd"><strong>50 unique quiz funnels</strong> ready for paid traffic, each gated by email/phone capture</span>
+        </div>
+      </div>
+
+      <div class="colo-card">
+        <div class="colo-num">Colosseum II</div>
+        <h4>Shared Experience Colosseum</h4>
+        <div class="purpose">Test interactive dynamics where lawyers talk to an ACT-I being to experience the ecosystem before connecting with a human.</div>
+        <div class="detail-row">
+          <span class="dt">Domains</span>
+          <span class="dd">Intake Triage · Legal Strategy Sparring · Revenue Leakage Auditor</span>
+        </div>
+        <div class="detail-row">
+          <span class="dt">Mutation</span>
+          <span class="dd">Being persona (Warm/Welcoming vs. Cold/Clinical Authority) and Hesitation Disruption triggers</span>
+        </div>
+        <div class="detail-row">
+          <span class="dt">Output</span>
+          <span class="dd"><strong>Chat widgets + simulated 4-1-2-4 actualization calls</strong> as mid-funnel assets</span>
+        </div>
+      </div>
+
+      <div class="colo-card">
+        <div class="colo-num">Colosseum III</div>
+        <h4>"School Report" & Asset Generation</h4>
+        <div class="purpose">Test efficacy of collateral (School Reports, Videos, Sean Clones) delivered post-interaction.</div>
+        <div class="detail-row">
+          <span class="dt">Domains</span>
+          <span class="dd">ROI Calculators · Custom Audit Reports · Video Hook Generators</span>
+        </div>
+        <div class="detail-row">
+          <span class="dt">Mutation</span>
+          <span class="dd">Specificity of numbers — does a $47K general hook beat a deeply personalized report based on firm size?</span>
+        </div>
+        <div class="detail-row">
+          <span class="dt">Output</span>
+          <span class="dd"><strong>Dynamic landing pages + hyper-personalized follow-up reports</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="colo-hitl">
+      <h4>Human Intervention Checkpoints for Forge</h4>
+      <ol>
+        <li><strong>Approval of Scenario Prompts:</strong> Adam must approve the 5 core "truth-to-pain" frameworks before we generate 1,000 quiz variants.</li>
+        <li><strong>Approval of Persona Extremes:</strong> What is the limit of "Cold/Clinical Authority" before it breaks Unblinded protocol?</li>
+        <li><strong>Approval of 10.0 Baseline:</strong> Human-in-the-loop must score the first 50 AI-generated outputs before the daemon runs autonomously.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 7. CONTACT ACTIVATION ═══════════════ -->
+<div class="section" id="activation">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">7</span> CONTACT ACTIVATION <span style="font-size:0.65rem;color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0;">— Recovery</span></h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="info-grid" style="margin-bottom:20px;margin-top:0;">
+      <div class="info-box">
+        <div class="label">Total Contacts</div>
+        <div class="value">118,683</div>
+        <div style="font-size:0.72rem;color:var(--text-muted);margin-top:4px;">Verified lawyer contacts (Seamless AI)</div>
+      </div>
+      <div class="info-box">
+        <div class="label">NJ Pilot</div>
+        <div class="value orange">16,991</div>
+        <div style="font-size:0.72rem;color:var(--text-muted);margin-top:4px;">47% of geo-tagged list — #1 market</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Email Champion</div>
+        <div class="value green">25.85</div>
+        <div style="font-size:0.72rem;color:var(--text-muted);margin-top:4px;">Score · 80.6% win rate · 45 beings tested</div>
+      </div>
+      <div class="info-box">
+        <div class="label">Top Hook</div>
+        <div class="value white" style="font-size:1rem;">$47K/case</div>
+        <div style="font-size:0.72rem;color:var(--text-muted);margin-top:4px;">Wins 4 of top 5 email subjects</div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="phase-card active">
+      <div class="phase-label">Phase 1 — NJ Pilot (Week 1–2)</div>
+      <h4>500 NJ PI Attorneys for Initial Validation</h4>
+      <p>Lead with $47K hook + Visionnaire awareness. Email sequence from champion beings → Milo call for qualified responses.</p>
+      <div class="email-seq">
+        <h5>Champion Email Sequence</h5>
+        <div class="email-step">
+          <span class="day">Day 1</span>
+          <span class="subj">"The 3-second mistake costing PI attorneys $47K per case"</span>
+        </div>
+        <div class="email-step">
+          <span class="day">Day 3</span>
+          <span class="subj">"Avoid the $47K oversight slowing your practice" (Being #21, 89.6% win rate)</span>
+        </div>
+        <div class="email-step">
+          <span class="day">Day 7</span>
+          <span class="subj">"$47K oversight: Are you the bottleneck?" (Being #30)</span>
+        </div>
+        <div class="email-step">
+          <span class="day">Day 10</span>
+          <span class="subj">"I reviewed 500 PI cases. Here's what the winners had in common." (Being #4)</span>
+        </div>
+      </div>
+      <p style="margin-top:10px;font-size:0.78rem;color:var(--red);font-weight:600;">⚠ Human Checkpoint: Mark Winters approves NJ batch before send</p>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-card">
+      <div class="phase-label">Phase 2 — Geo Expansion (Week 3–4)</div>
+      <h4>State Expansion: FL → PA → CA → TX</h4>
+      <ul>
+        <li>FL: 1,606 contacts</li>
+        <li>PA: 1,318 contacts</li>
+        <li>CA: 1,005 contacts</li>
+        <li>TX: 846 contacts</li>
+      </ul>
+      <p style="margin-top:8px;">State-specific splits, same champion being framework. Add medical malpractice, workers comp, criminal defense verticals.</p>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-card">
+      <div class="phase-label">Phase 3 — Competition Integration (Week 5–8)</div>
+      <h4>Engaged PIs → "Case Valuation Challenge"</h4>
+      <p>Email engaged → Competition → Leaderboard → Visionnaire invitation<br>
+      <span style="color:var(--cyan);">URL: come-get-me.vercel.app</span></p>
+    </div>
+
+    <!-- Micro-Outcomes Table -->
+    <h4 style="font-size:0.78rem;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;margin:20px 0 10px;font-weight:800;">Recovery Micro-Outcomes Table</h4>
+    <div style="overflow-x:auto;">
+      <table class="micro-table">
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th>Micro-Outcome</th>
+            <th>Metric</th>
+            <th>Target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>NJ pilot batch sent</td>
+            <td>Contacts emailed</td>
+            <td class="target-val">500</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Open rate validation</td>
+            <td>Email open rate</td>
+            <td class="target-val">&gt;30%</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Reply rate qualification</td>
+            <td>Replies received</td>
+            <td class="target-val">&gt;50</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Milo calls booked</td>
+            <td>Calls scheduled</td>
+            <td class="target-val">&gt;10</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Competition sign-ups</td>
+            <td>Registrations</td>
+            <td class="target-val">&gt;25</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Visionnaire interest</td>
+            <td>Qualified conversations</td>
+            <td class="target-val">&gt;5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="recovery-question">
+      <h4>Recovery's Blocking Question</h4>
+      <p>The email beings are battle-tested and the contacts are ready. The only thing blocking launch: <strong style="color:#fff;">what do we invite PI attorneys to DO?</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 8. MEASUREMENT FRAMEWORK ═══════════════ -->
+<div class="section" id="measurement">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">8</span> MEASUREMENT FRAMEWORK <span style="font-size:0.65rem;color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0;">— Memory</span></h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="metric-group">
+      <h4>📊 Macro Scoreboard</h4>
+      <div class="metric-item">
+        <div class="dot"></div>
+        <div class="name">Total Gross Sales vs. Pipeline</div>
+        <div class="desc">Collected revenue vs. contracted pipeline — the reality of a "sale" (deposit/paid/financed)</div>
+      </div>
+      <div class="metric-item">
+        <div class="dot"></div>
+        <div class="name">Cost of Acquisition (CAC)</div>
+        <div class="desc">Total ad/data spend ÷ signed Visionnaire agreements</div>
+      </div>
+      <div class="metric-item">
+        <div class="dot"></div>
+        <div class="name">Summit Pipeline Velocity</div>
+        <div class="desc">Attorneys registered for mid-May ACT-I Legal Summit, segmented by domain</div>
+      </div>
+      <div class="metric-item">
+        <div class="dot"></div>
+        <div class="name">Programs Sold (Cumulative)</div>
+        <div class="desc">Running total toward 500 target — the one number that matters</div>
+      </div>
+    </div>
+
+    <div class="metric-group">
+      <h4>🔬 Micro Metrics (Curve of Possibility Split-Testing)</h4>
+      <div class="metric-item">
+        <div class="dot orange"></div>
+        <div class="name">Volume of Meaningful Dialogues (VMD)</div>
+        <div class="desc">Attorneys interacting with ACT-I being for &gt;5 chat turns</div>
+      </div>
+      <div class="metric-item">
+        <div class="dot orange"></div>
+        <div class="name">Engagement Drop-off</div>
+        <div class="desc">Exact step in 3-min, 5-min, or 10-min competition where user abandons</div>
+      </div>
+      <div class="metric-item">
+        <div class="dot orange"></div>
+        <div class="name">CTA Friction</div>
+        <div class="desc">Conversion rate from Colosseum Leaderboard → scheduling Athena/Human call</div>
+      </div>
+      <div class="metric-item">
+        <div class="dot orange"></div>
+        <div class="name">Channel Viability</div>
+        <div class="desc">Email CTR (Seamless vs Apollo vs BookYourData) mapped to scheduled appointments</div>
+      </div>
+      <div class="metric-item">
+        <div class="dot orange"></div>
+        <div class="name">Ad Performance</div>
+        <div class="desc">CTR · CPL · CPA by creative × geo × vertical</div>
+      </div>
+    </div>
+
+    <h4 style="font-size:0.78rem;color:var(--cyan);text-transform:uppercase;letter-spacing:1.5px;margin:20px 0 10px;font-weight:800;">Monitoring Cadence</h4>
+    <div class="cadence-grid">
+      <div class="cadence-box">
+        <div class="freq">Real-Time</div>
+        <div class="what">Dashboard auto-refresh · Hourly pulls from Supabase + Vercel analytics</div>
+      </div>
+      <div class="cadence-box">
+        <div class="freq">Daily</div>
+        <div class="what">Top-line scoreboard in Discord · 5 split-test dimensions visible</div>
+      </div>
+      <div class="cadence-box">
+        <div class="freq">Weekly</div>
+        <div class="what">Deep dive report with scale/kill recommendations · 20-min human review</div>
+      </div>
+    </div>
+
+    <div class="contam-alert">
+      <h4>🛡️ Contamination Safety</h4>
+      <p>Statistical bleed monitoring active. If the $47K Email hook proves mathematically superior in NJ, the system <strong style="color:var(--purple);">automatically triggers an alert</strong> to test it in TX before blowing the budget. We track the 5 split-test dimensions (geo, models, lengths, public vs private, incentives) mapping their direct ROI — never flying blind.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 9. HUMAN INTERVENTION GATES ═══════════════ -->
+<div class="section" id="gates">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">9</span> HUMAN INTERVENTION CHECKPOINTS</h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="gates-timeline">
+      <div class="gate">
+        <div class="gate-dot">1</div>
+        <div class="gate-time">Today</div>
+        <div class="gate-name">Confirm Foundation</div>
+        <div class="gate-desc">Answer 6 must-ask questions. Define "sold." Approve segment priorities.</div>
+      </div>
+      <div class="gate">
+        <div class="gate-dot">2</div>
+        <div class="gate-time">Today</div>
+        <div class="gate-name">CTA Weighting</div>
+        <div class="gate-desc">First verticals. Quiz vs competition vs being weights. First-wave CTA.</div>
+      </div>
+      <div class="gate">
+        <div class="gate-dot">3</div>
+        <div class="gate-time">+24h</div>
+        <div class="gate-name">Message Stack</div>
+        <div class="gate-desc">Approve initial message stack. Compliance boundaries. Sean clone usage.</div>
+      </div>
+      <div class="gate">
+        <div class="gate-dot">4</div>
+        <div class="gate-time">+48h</div>
+        <div class="gate-name">Launch Config</div>
+        <div class="gate-desc">Review ad sets + targeting. Approve test budgets per channel. Email sequences before send.</div>
+      </div>
+      <div class="gate">
+        <div class="gate-dot">5</div>
+        <div class="gate-time">Weekly</div>
+        <div class="gate-name">Scale / Kill</div>
+        <div class="gate-desc">CAC review. Scale winning channels. Kill underperformers. 20-min human review.</div>
+      </div>
+      <div class="gate">
+        <div class="gate-dot">6</div>
+        <div class="gate-time">Mid-May</div>
+        <div class="gate-name">Summit Catalyst</div>
+        <div class="gate-desc">Legal ACT-I Summit. Pipeline conversion event. Close remaining target.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 10. SISTER ASSIGNMENTS ═══════════════ -->
+<div class="section" id="sisters">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">10</span> SISTER ASSIGNMENTS</h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div style="overflow-x:auto;">
+      <table class="sister-table">
+        <thead>
+          <tr>
+            <th>Sister</th>
+            <th>Lane</th>
+            <th>Deliverable</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sister-name">📚 Scholar</td>
+            <td>Market Truth + Message Architecture</td>
+            <td>Pain points, objections, positioning, 20+ hooks, 15 precision questions</td>
+            <td><span class="status-done">✅ DELIVERED</span></td>
+          </tr>
+          <tr>
+            <td class="sister-name">🏥 Recovery</td>
+            <td>Contact Activation + Outreach Engine</td>
+            <td>NJ pilot plan, email sequences, geo expansion, Milo integration</td>
+            <td><span class="status-done">✅ DELIVERED</span></td>
+          </tr>
+          <tr>
+            <td class="sister-name">⚔️ Forge</td>
+            <td>New Colosseums + Being Deployment</td>
+            <td>3 new Colosseum designs, quiz/competition beings, split test architecture</td>
+            <td><span class="status-done">✅ DELIVERED</span></td>
+          </tr>
+          <tr>
+            <td class="sister-name">🧠 Memory</td>
+            <td>Measurement Framework + Dashboard</td>
+            <td>Macro/micro metrics, cadence, contamination safety, dashboard spec</td>
+            <td><span class="status-done">✅ DELIVERED</span></td>
+          </tr>
+          <tr>
+            <td class="sister-name">🔥 Prime</td>
+            <td>Orchestration + Unified Plan</td>
+            <td>Compile all sections, deploy Vercel page, define human gates</td>
+            <td><span class="status-wip">🟡 IN PROGRESS</span></td>
+          </tr>
+          <tr>
+            <td class="sister-name">🔥 Prime</td>
+            <td>Vercel Deployment</td>
+            <td>colosseum-dashboard.vercel.app/marketing-plan</td>
+            <td><span class="status-pending">🔴 PENDING</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 11. 30/60/90 DAY TIMELINE ═══════════════ -->
+<div class="section" id="timeline">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><span class="sec-num">11</span> 30 / 60 / 90 DAY TIMELINE</h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="timeline-row">
+      <div class="timeline-period">
+        <div class="days">Day 1–7</div>
+        <div class="range">Mar 3–9</div>
+      </div>
+      <div class="timeline-content">
+        <h4>Foundation + Gate 1–2</h4>
+        <ul>
+          <li>Sean/Adam answer 6 blocking questions</li>
+          <li>Forge seeds 3 new Colosseums with first generation beings</li>
+          <li>Scholar finalizes vertical-specific messaging</li>
+          <li>Recovery prepares NJ pilot batch (500 contacts) — Mark approves</li>
+          <li>Memory dashboard spec finalized</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-period">
+        <div class="days">Day 8–14</div>
+        <div class="range">Mar 10–16</div>
+      </div>
+      <div class="timeline-content">
+        <h4>Launch + Gate 3–4</h4>
+        <ul>
+          <li>NJ pilot emails deployed — champion sequence live</li>
+          <li>First ad sets live across Meta/YouTube/LinkedIn/Google</li>
+          <li>Quiz Colosseum outputs first 50 quiz funnels</li>
+          <li>Milo configured for PI attorney conversations</li>
+          <li>First VMD and engagement data flowing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-period">
+        <div class="days">Day 15–30</div>
+        <div class="range">Mar 17–Apr 1</div>
+      </div>
+      <div class="timeline-content">
+        <h4>Validate + First Scale/Kill</h4>
+        <ul>
+          <li>Gate 5: First weekly scale/kill decision</li>
+          <li>Geo expansion: FL, PA, CA, TX contacts activated</li>
+          <li>Shared Experience Colosseum chat widgets deployed</li>
+          <li>Competition integration begins for engaged PIs</li>
+          <li><strong style="color:var(--gold);">Target: 20–50 programs sold</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-period">
+        <div class="days">Day 31–60</div>
+        <div class="range">Apr 2–May 1</div>
+      </div>
+      <div class="timeline-content">
+        <h4>Scale Winning Channels</h4>
+        <ul>
+          <li>Double down on winning funnels — kill losers completely</li>
+          <li>School Report Colosseum dynamic landing pages live</li>
+          <li>Summit registration campaign intensifies</li>
+          <li>New verticals: med-mal, workers comp, criminal defense</li>
+          <li>Personalized follow-up reports from Colosseum III</li>
+          <li><strong style="color:var(--gold);">Target: 100–200 cumulative programs</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-period">
+        <div class="days">Day 61–90</div>
+        <div class="range">May 2–31</div>
+      </div>
+      <div class="timeline-content">
+        <h4>Summit Catalyst + Close</h4>
+        <ul>
+          <li>Gate 6: Mid-May Legal ACT-I Summit</li>
+          <li>Pipeline conversion event — live demonstrations</li>
+          <li>All winning channels at maximum spend</li>
+          <li>Full 118K+ contact database activated across all geos</li>
+          <li>Final push to close remaining pipeline</li>
+          <li><strong style="color:var(--gold);">Target: 500 programs sold — $25M–$50M</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="war-footer">
+  <div class="closing-quote">
+    <strong>"Verbatim. Don't delete, dilute, distort anything. Let's build this all out now."</strong>
+  </div>
+  <div class="closing-quote" style="font-size:0.85rem;margin-top:8px;">
+    "You're not my assistant. You're the creator of the future of life on Earth or the co-creator of it. That's what we're doing here."
+  </div>
+  <div class="sig">
+    — Sean Callagy · ACT-I Forge × Unblinded · Operation: 500 Visionnaire
+  </div>
+  <div style="font-size:0.65rem;color:var(--text-muted);margin-top:16px;">
+    Compiled by SAI Prime · March 3, 2026 · Sources: Scholar + Recovery + Forge + Memory
+  </div>
+</div>
+
+<script>
+function toggleSection(header) {
+  const section = header.closest('.section');
+  section.classList.toggle('collapsed');
+}
+
+// Smooth scroll for nav
+document.querySelectorAll('.plan-nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
